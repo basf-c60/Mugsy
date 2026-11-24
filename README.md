@@ -20,7 +20,7 @@ The source rebuilds byte for byte to the original 40,960 bytes of code and data 
 
 ## Reading it
 
-Open `html/mugsy/index.html` in a browser. The front page links to every section:
+Open `index.html` in a browser. The front page links to every section:
 
 | Page | Contents |
 |---|---|

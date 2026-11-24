@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 26812</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26753.html">26753</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26812">Map</a></td>
+<td class="next">
+Next: <a href="26876.html">26876</a>
+</td>
+</tr>
+</table>
+<div class="description">26812: Draw the picture for a speech bubble layout</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+IY points at a 4-byte bubble layout entry: byte 0 is the bubble placement chance, bytes 1-2 are the address of the picture data and byte 3 is the border colour. If the same layout is still on screen (33906=0) the screen is left alone except that the speech bubbles are wiped (cells with attribute 120 cleared); otherwise the screen is cleared and the picture is redrawn by <a href="31247.html">31247</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Layout entry</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26812"></span>26812</td>
+<td class="instruction">LD A,(IY+3)</td>
+<td class="comment-1" rowspan="1">Set the border colour for this layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26815"></span>26815</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Set the border to the layout's colour</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26817"></span>26817</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the caller's HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26818"></span>26818</td>
+<td class="instruction">LD L,(IY+1)</td>
+<td class="comment-1" rowspan="1">Pick up the address of the layout's picture</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26821"></span>26821</td>
+<td class="instruction">LD H,(IY+2)</td>
+<td class="comment-1" rowspan="1">H=high byte of the picture address (HL=picture address)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26824"></span>26824</td>
+<td class="instruction">EX (SP),HL</td>
+<td class="comment-1" rowspan="1">HL=the caller's HL again; the picture address is on the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26825"></span>26825</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">IY=picture data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26827"></span>26827</td>
+<td class="instruction">LD A,(33906)</td>
+<td class="comment-1" rowspan="1">Has the layout changed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26830"></span>26830</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the layout-changed flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26831"></span>26831</td>
+<td class="instruction">JP NZ,<a href="31247.html">31247</a></td>
+<td class="comment-1" rowspan="1">If so, draw the whole picture</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26834"></span>26834</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Otherwise just wipe the speech bubbles: they are the cells with attribute 120</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26835"></span>26835</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26836"></span>26836</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">...and BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26837"></span>26837</td>
+<td class="instruction">LD HL,16384</td>
+<td class="comment-1" rowspan="1">HL=display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26840"></span>26840</td>
+<td class="instruction">LD DE,22528</td>
+<td class="comment-1" rowspan="1">DE=attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26843"></span>26843</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">Reached the end of the attribute file?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26844"></span>26844</td>
+<td class="instruction">CP 91</td>
+<td class="comment-1" rowspan="1">Is this the end of the attribute file (high byte 91)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26846"></span>26846</td>
+<td class="instruction">JR Z,<a href="26812.html#26872">26872</a></td>
+<td class="comment-1" rowspan="1">Finish if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26848"></span>26848</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Is this cell part of a bubble (bright white)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26849"></span>26849</td>
+<td class="instruction">CP 120</td>
+<td class="comment-1" rowspan="1">Is the cell bright white paper (a bubble cell)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26851"></span>26851</td>
+<td class="instruction">JR NZ,<a href="26812.html#26862">26862</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26853"></span>26853</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the cell's address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26854"></span>26854</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1">Clear the 8 pixel rows of the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26856"></span>26856</td>
+<td class="instruction">LD (HL),0</td>
+<td class="comment-1" rowspan="1">Clear one pixel row of the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26858"></span>26858</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down to the next pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26859"></span>26859</td>
+<td class="instruction">DJNZ <a href="26812.html#26856">26856</a></td>
+<td class="comment-1" rowspan="1">Repeat for all eight pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26861"></span>26861</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Back to the top of the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26862"></span>26862</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26863"></span>26863</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26864"></span>26864</td>
+<td class="instruction">JR NZ,<a href="26812.html#26843">26843</a></td>
+<td class="comment-1" rowspan="1">Jump back unless a third of the screen is done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26866"></span>26866</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=H: the current screen third...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26867"></span>26867</td>
+<td class="instruction">ADD A,8</td>
+<td class="comment-1" rowspan="1">Move to the next third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26869"></span>26869</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=the next third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26870"></span>26870</td>
+<td class="instruction">JR <a href="26812.html#26843">26843</a></td>
+<td class="comment-1" rowspan="1">Carry on with the next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26872"></span>26872</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26873"></span>26873</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">...DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26874"></span>26874</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">...and HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26875"></span>26875</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: all speech bubbles are wiped</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26753.html">26753</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26812">Map</a></td>
+<td class="next">
+Next: <a href="26876.html">26876</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

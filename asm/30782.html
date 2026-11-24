@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30782</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30715.html">30715</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30782">Map</a></td>
+<td class="next">
+Next: <a href="30871.html">30871</a>
+</td>
+</tr>
+</table>
+<div class="description">30782: Multiply BCDE by the value at <a href="31030.html#31038">31038</a> (64-bit)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The product goes into <a href="31030.html">31030</a>-31037.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30782"></span>30782</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">Clear the 64-bit product</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30785"></span>30785</td>
+<td class="instruction">LD (31030),HL</td>
+<td class="comment-1" rowspan="1">Clear bytes 0-1 of the 64-bit product...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30788"></span>30788</td>
+<td class="instruction">LD (31032),HL</td>
+<td class="comment-1" rowspan="1">...bytes 2-3...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30791"></span>30791</td>
+<td class="instruction">LD (31034),HL</td>
+<td class="comment-1" rowspan="1">...bytes 4-5...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30794"></span>30794</td>
+<td class="instruction">LD (31036),HL</td>
+<td class="comment-1" rowspan="1">...and bytes 6-7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30797"></span>30797</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Any bits of BCDE left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30798"></span>30798</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine C into the test...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30799"></span>30799</td>
+<td class="instruction">OR D</td>
+<td class="comment-1" rowspan="1">...and D...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30800"></span>30800</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">...and E: zero when the multiplier is used up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30801"></span>30801</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30802"></span>30802</td>
+<td class="instruction">BIT 0,E</td>
+<td class="comment-1" rowspan="1">Is the lowest bit set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30804"></span>30804</td>
+<td class="instruction">JR Z,<a href="30782.html#30855">30855</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30806"></span>30806</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Add the multiplier to the product (64 bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30807"></span>30807</td>
+<td class="instruction">LD HL,(31038)</td>
+<td class="comment-1" rowspan="1">HL=low word of the shifted multiplicand</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30810"></span>30810</td>
+<td class="instruction">LD DE,(31030)</td>
+<td class="comment-1" rowspan="1">DE=low word of the product so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30814"></span>30814</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30815"></span>30815</td>
+<td class="instruction">LD (31030),HL</td>
+<td class="comment-1" rowspan="1">Store the new low word of the product</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30818"></span>30818</td>
+<td class="instruction">LD HL,(31040)</td>
+<td class="comment-1" rowspan="1">HL=second word of the multiplicand</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30821"></span>30821</td>
+<td class="instruction">LD DE,(31032)</td>
+<td class="comment-1" rowspan="1">DE=second word of the product</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30825"></span>30825</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">Add with the carry from below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30827"></span>30827</td>
+<td class="instruction">LD (31032),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30830"></span>30830</td>
+<td class="instruction">LD HL,(31042)</td>
+<td class="comment-1" rowspan="1">HL=third word of the multiplicand</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30833"></span>30833</td>
+<td class="instruction">LD DE,(31034)</td>
+<td class="comment-1" rowspan="1">DE=third word of the product</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30837"></span>30837</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">Add with carry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30839"></span>30839</td>
+<td class="instruction">LD (31034),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30842"></span>30842</td>
+<td class="instruction">LD HL,(31044)</td>
+<td class="comment-1" rowspan="1">HL=top word of the multiplicand</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30845"></span>30845</td>
+<td class="instruction">LD DE,(31036)</td>
+<td class="comment-1" rowspan="1">DE=top word of the product</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30849"></span>30849</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">Add with carry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30851"></span>30851</td>
+<td class="instruction">LD (31036),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30854"></span>30854</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Back to the normal registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30855"></span>30855</td>
+<td class="instruction">LD HL,31038</td>
+<td class="comment-1" rowspan="1">Double the multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30858"></span>30858</td>
+<td class="instruction">CALL <a href="30871.html">30871</a></td>
+<td class="comment-1" rowspan="1">Shift the multiplier left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30861"></span>30861</td>
+<td class="instruction">SRA B</td>
+<td class="comment-1" rowspan="1">Shift BCDE right one bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30863"></span>30863</td>
+<td class="instruction">RR C</td>
+<td class="comment-1" rowspan="1">Shift BCDE right: C...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30865"></span>30865</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">...D...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30867"></span>30867</td>
+<td class="instruction">RR E</td>
+<td class="comment-1" rowspan="1">...and E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30869"></span>30869</td>
+<td class="instruction">JR <a href="30782.html#30797">30797</a></td>
+<td class="comment-1" rowspan="1">Next bit</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30715.html">30715</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30782">Map</a></td>
+<td class="next">
+Next: <a href="30871.html">30871</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

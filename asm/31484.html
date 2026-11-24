@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31484</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31247.html">31247</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31484">Map</a></td>
+<td class="next">
+Next: <a href="31511.html">31511</a>
+</td>
+</tr>
+</table>
+<div class="description">31484: Move HL down one pixel row in the display file (or one row in the attributes)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31484"></span>31484</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Is HL in the attribute file?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31485"></span>31485</td>
+<td class="instruction">CP 88</td>
+<td class="comment-1" rowspan="1">Is the high byte 88 or more (attribute file)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31487"></span>31487</td>
+<td class="instruction">JR C,<a href="31484.html#31496">31496</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31489"></span>31489</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Move down one attribute row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31490"></span>31490</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Add 32 to move down one row of cells...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31492"></span>31492</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">...L=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31493"></span>31493</td>
+<td class="instruction">RET NC</td>
+<td class="comment-1" rowspan="1">Done unless the add carried into the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31494"></span>31494</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Carry: the next page</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31495"></span>31495</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31496"></span>31496</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Move down one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31497"></span>31497</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the new high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31498"></span>31498</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">The low 3 bits count the pixel row in the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31500"></span>31500</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return unless that crossed a character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31501"></span>31501</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Crossed into the next cell row: add 32 to L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31502"></span>31502</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">(next row of cells)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31504"></span>31504</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31505"></span>31505</td>
+<td class="instruction">RET C</td>
+<td class="comment-1" rowspan="1">Carry: in the next third, H is already right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31506"></span>31506</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Otherwise H must go back 8...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31507"></span>31507</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">...to stay in the same third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31509"></span>31509</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=the corrected high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31510"></span>31510</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31247.html">31247</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31484">Map</a></td>
+<td class="next">
+Next: <a href="31511.html">31511</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

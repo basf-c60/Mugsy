@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 46305</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45965.html">45965</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46305">Map</a></td>
+<td class="next">
+Next: <a href="46428.html">46428</a>
+</td>
+</tr>
+</table>
+<div class="description">46305: Shootout: draw the walls of the restaurant</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46305"></span>46305</td>
+<td class="instruction">CALL <a href="45665.html">45665</a></td>
+<td class="comment-1" rowspan="1">Clear the screen to white paper</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46308"></span>46308</td>
+<td class="instruction">LD A,95</td>
+<td class="comment-1" rowspan="1">A=95: the starting y coordinate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46310"></span>46310</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=0: the starting x coordinate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46312"></span>46312</td>
+<td class="instruction">LD D,255</td>
+<td class="comment-1" rowspan="1">D=255: y changes by -1 each step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46314"></span>46314</td>
+<td class="instruction">LD E,1</td>
+<td class="comment-1" rowspan="1">E=1: x changes by +1 each step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46316"></span>46316</td>
+<td class="instruction">LD B,41</td>
+<td class="comment-1" rowspan="1">B=41 points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46318"></span>46318</td>
+<td class="instruction">CALL <a href="46428.html">46428</a></td>
+<td class="comment-1" rowspan="1">Plot a diagonal line (the left wall in perspective)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46321"></span>46321</td>
+<td class="instruction">LD B,27</td>
+<td class="comment-1" rowspan="1">B=27 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46323"></span>46323</td>
+<td class="instruction">CALL <a href="46454.html">46454</a></td>
+<td class="comment-1" rowspan="1">Draw a horizontal line (the back wall's base) along the row HL points at</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46326"></span>46326</td>
+<td class="instruction">LD A,54</td>
+<td class="comment-1" rowspan="1">A=54: the starting y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46328"></span>46328</td>
+<td class="instruction">LD C,40</td>
+<td class="comment-1" rowspan="1">C=40: the starting x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46330"></span>46330</td>
+<td class="instruction">LD D,255</td>
+<td class="comment-1" rowspan="1">D=255: y changes by -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46332"></span>46332</td>
+<td class="instruction">LD E,0</td>
+<td class="comment-1" rowspan="1">E=0: x does not change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46334"></span>46334</td>
+<td class="instruction">LD B,54</td>
+<td class="comment-1" rowspan="1">B=54 points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46336"></span>46336</td>
+<td class="instruction">CALL <a href="46428.html">46428</a></td>
+<td class="comment-1" rowspan="1">Plot a vertical line (a wall edge)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46339"></span>46339</td>
+<td class="instruction">LD A,90</td>
+<td class="comment-1" rowspan="1">A=90: the starting y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46341"></span>46341</td>
+<td class="instruction">LD C,5</td>
+<td class="comment-1" rowspan="1">C=5: the starting x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46343"></span>46343</td>
+<td class="instruction">LD D,255</td>
+<td class="comment-1" rowspan="1">D=255: y -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46345"></span>46345</td>
+<td class="instruction">LD E,0</td>
+<td class="comment-1" rowspan="1">E=0: x constant</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46347"></span>46347</td>
+<td class="instruction">LD B,42</td>
+<td class="comment-1" rowspan="1">B=42 points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46349"></span>46349</td>
+<td class="instruction">CALL <a href="46428.html">46428</a></td>
+<td class="comment-1" rowspan="1">Plot a vertical line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46352"></span>46352</td>
+<td class="instruction">LD A,80</td>
+<td class="comment-1" rowspan="1">A=80: the starting y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46354"></span>46354</td>
+<td class="instruction">LD C,15</td>
+<td class="comment-1" rowspan="1">C=15: the starting x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46356"></span>46356</td>
+<td class="instruction">LD D,255</td>
+<td class="comment-1" rowspan="1">D=255: y -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46358"></span>46358</td>
+<td class="instruction">LD E,0</td>
+<td class="comment-1" rowspan="1">E=0: x constant</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46360"></span>46360</td>
+<td class="instruction">LD B,42</td>
+<td class="comment-1" rowspan="1">B=42 points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46362"></span>46362</td>
+<td class="instruction">CALL <a href="46428.html">46428</a></td>
+<td class="comment-1" rowspan="1">Plot a vertical line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46365"></span>46365</td>
+<td class="instruction">LD A,39</td>
+<td class="comment-1" rowspan="1">A=39: the starting y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46367"></span>46367</td>
+<td class="instruction">LD C,15</td>
+<td class="comment-1" rowspan="1">C=15: the starting x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46369"></span>46369</td>
+<td class="instruction">LD D,1</td>
+<td class="comment-1" rowspan="1">D=1: y +1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46371"></span>46371</td>
+<td class="instruction">LD E,255</td>
+<td class="comment-1" rowspan="1">E=255: x -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46373"></span>46373</td>
+<td class="instruction">LD B,10</td>
+<td class="comment-1" rowspan="1">B=10 points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46375"></span>46375</td>
+<td class="instruction">CALL <a href="46428.html">46428</a></td>
+<td class="comment-1" rowspan="1">Plot a short diagonal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46378"></span>46378</td>
+<td class="instruction">LD A,24</td>
+<td class="comment-1" rowspan="1">A=24: 24 pixel rows for the door</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46380"></span>46380</td>
+<td class="instruction">LD DE,16435</td>
+<td class="comment-1" rowspan="1">DE=16435: the door's position on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46383"></span>46383</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46384"></span>46384</td>
+<td class="instruction">LD HL,48404</td>
+<td class="comment-1" rowspan="1">HL=the door graphic (48404)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46387"></span>46387</td>
+<td class="instruction">LD BC,5</td>
+<td class="comment-1" rowspan="1">BC=5 bytes per row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46390"></span>46390</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the row's address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46391"></span>46391</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy a row of the door onto the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46393"></span>46393</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Get the row's address back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46394"></span>46394</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Next pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46395"></span>46395</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46396"></span>46396</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46397"></span>46397</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">Fix up the address across character boundaries</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46400"></span>46400</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46401"></span>46401</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46402"></span>46402</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46403"></span>46403</td>
+<td class="instruction">JR NZ,<a href="46305.html#46387">46387</a></td>
+<td class="comment-1" rowspan="1">Loop for 24 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46405"></span>46405</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the door's screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46406"></span>46406</td>
+<td class="instruction">CALL <a href="45626.html">45626</a></td>
+<td class="comment-1" rowspan="1">Convert it to an attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46409"></span>46409</td>
+<td class="instruction">LD A,3</td>
+<td class="comment-1" rowspan="1">A=3: three attribute rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46411"></span>46411</td>
+<td class="instruction">LD BC,5</td>
+<td class="comment-1" rowspan="1">BC=5 cells per row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46414"></span>46414</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the row's address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46415"></span>46415</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Set the door's attributes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46417"></span>46417</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46418"></span>46418</td>
+<td class="instruction">LD BC,32</td>
+<td class="comment-1" rowspan="1">BC=32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46421"></span>46421</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46422"></span>46422</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">Down one attribute row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46423"></span>46423</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46424"></span>46424</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46425"></span>46425</td>
+<td class="instruction">JR NZ,<a href="46305.html#46411">46411</a></td>
+<td class="comment-1" rowspan="1">Loop for 3 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46427"></span>46427</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45965.html">45965</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46305">Map</a></td>
+<td class="next">
+Next: <a href="46428.html">46428</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

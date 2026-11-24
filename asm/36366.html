@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 36366</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36348.html">36348</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36366">Map</a></td>
+<td class="next">
+Next: <a href="36486.html">36486</a>
+</td>
+</tr>
+</table>
+<div class="description">36366: Bar-room animation: step 1 (set up)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Draws the Partridge Club picture at <a href="53793.html">53793</a> and initialises the frame pointers and timers for the animated customers, waiters and hoods.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="36366"></span>36366</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36367"></span>36367</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Black border</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36369"></span>36369</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36370"></span>36370</td>
+<td class="instruction">LD (36702),A</td>
+<td class="comment-1" rowspan="1">Figure 1 starts in its first state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36373"></span>36373</td>
+<td class="instruction">LD (36910),A</td>
+<td class="comment-1" rowspan="1">Figure 6 starts in its first state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36376"></span>36376</td>
+<td class="instruction">LD (36860),A</td>
+<td class="comment-1" rowspan="1">Figure 5 starts in its first state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36379"></span>36379</td>
+<td class="instruction">LD (36960),A</td>
+<td class="comment-1" rowspan="1">Figure 7 starts in its first state (bit 7 clear: it may move)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36382"></span>36382</td>
+<td class="instruction">LD A,128</td>
+<td class="comment-1" rowspan="1">A=128</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36384"></span>36384</td>
+<td class="instruction">LD (37031),A</td>
+<td class="comment-1" rowspan="1">Figure 8 starts out of action (bit 7 set)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36387"></span>36387</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: every counter starts at 1, so each figure moves on the first tick</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36389"></span>36389</td>
+<td class="instruction">LD (36663),A</td>
+<td class="comment-1" rowspan="1">Counter for the hoods' route</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36392"></span>36392</td>
+<td class="instruction">LD (36701),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36395"></span>36395</td>
+<td class="instruction">LD (36859),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36398"></span>36398</td>
+<td class="instruction">LD (36909),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36401"></span>36401</td>
+<td class="instruction">LD (36959),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36404"></span>36404</td>
+<td class="instruction">LD (37030),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36407"></span>36407</td>
+<td class="instruction">LD (36751),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36410"></span>36410</td>
+<td class="instruction">LD (36787),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36413"></span>36413</td>
+<td class="instruction">LD (36823),A</td>
+<td class="comment-1" rowspan="1">Counter for figure 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36416"></span>36416</td>
+<td class="instruction">LD HL,41154</td>
+<td class="comment-1" rowspan="1">HL=the first entry of the hoods' route table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36419"></span>36419</td>
+<td class="instruction">LD (41152),HL</td>
+<td class="comment-1" rowspan="1">Store it as the route pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36422"></span>36422</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36424"></span>36424</td>
+<td class="instruction">LD (36616),A</td>
+<td class="comment-1" rowspan="1">Counter for the hoods walking through the club</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36427"></span>36427</td>
+<td class="instruction">LD HL,39926</td>
+<td class="comment-1" rowspan="1">HL=the first frame of the walking hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36430"></span>36430</td>
+<td class="instruction">LD (39924),HL</td>
+<td class="comment-1" rowspan="1">Store it as the frame pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36433"></span>36433</td>
+<td class="instruction">LD HL,40249</td>
+<td class="comment-1" rowspan="1">HL=the first frame of figure 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36436"></span>36436</td>
+<td class="instruction">LD (40194),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36439"></span>36439</td>
+<td class="instruction">LD HL,40759</td>
+<td class="comment-1" rowspan="1">HL=the first frame of figure 5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36442"></span>36442</td>
+<td class="instruction">LD (40694),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36445"></span>36445</td>
+<td class="instruction">LD HL,40872</td>
+<td class="comment-1" rowspan="1">HL=the first frame of figure 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36448"></span>36448</td>
+<td class="instruction">LD (40822),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36451"></span>36451</td>
+<td class="instruction">LD HL,40973</td>
+<td class="comment-1" rowspan="1">HL=the first frame of figure 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36454"></span>36454</td>
+<td class="instruction">LD (40920),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36457"></span>36457</td>
+<td class="instruction">LD HL,41089</td>
+<td class="comment-1" rowspan="1">HL=the first frame of figure 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36460"></span>36460</td>
+<td class="instruction">LD (41024),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36463"></span>36463</td>
+<td class="instruction">LD HL,53793</td>
+<td class="comment-1" rowspan="1">HL=the compressed picture of the Partridge Club</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36466"></span>36466</td>
+<td class="instruction">CALL <a href="32126.html">32126</a></td>
+<td class="comment-1" rowspan="1">Draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36469"></span>36469</td>
+<td class="instruction">LD DE,(41024)</td>
+<td class="comment-1" rowspan="1">DE=figure 8's frame pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36473"></span>36473</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip the link to the next frame...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36474"></span>36474</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">...to the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36475"></span>36475</td>
+<td class="instruction">CALL <a href="37095.html">37095</a></td>
+<td class="comment-1" rowspan="1">Draw figure 8 for the first time</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36478"></span>36478</td>
+<td class="instruction">LD HL,500</td>
+<td class="comment-1" rowspan="1">HL=500</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36481"></span>36481</td>
+<td class="instruction">LD (36493),HL</td>
+<td class="comment-1" rowspan="1">The first pause lasts 500 ticks</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36484"></span>36484</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0: the step is complete</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36485"></span>36485</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36348.html">36348</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36366">Map</a></td>
+<td class="next">
+Next: <a href="36486.html">36486</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

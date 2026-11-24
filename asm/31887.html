@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31887</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31851.html">31851</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31887">Map</a></td>
+<td class="next">
+Next: <a href="31900.html">31900</a>
+</td>
+</tr>
+</table>
+<div class="description">31887: Move the pixel mask D one pixel right</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the zero flag set at the right edge.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31887"></span>31887</td>
+<td class="instruction">RRC D</td>
+<td class="comment-1" rowspan="1">Move the mask right one pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31889"></span>31889</td>
+<td class="instruction">RET NC</td>
+<td class="comment-1" rowspan="1">Return unless it wrapped round</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31890"></span>31890</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31891"></span>31891</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">At the right edge?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31892"></span>31892</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31894"></span>31894</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return (zero flag reset) if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31895"></span>31895</td>
+<td class="instruction">RLC D</td>
+<td class="comment-1" rowspan="1">Undo the move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31897"></span>31897</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Previous cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31898"></span>31898</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31899"></span>31899</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: Z means the edge was reached</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31851.html">31851</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31887">Map</a></td>
+<td class="next">
+Next: <a href="31900.html">31900</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

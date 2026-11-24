@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31247</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31218.html">31218</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31247">Map</a></td>
+<td class="next">
+Next: <a href="31484.html">31484</a>
+</td>
+</tr>
+</table>
+<div class="description">31247: Draw a picture</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Pictures are stored as a list of drawing commands at IY:
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Command</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="" colspan="1" rowspan="1">End of picture</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">8, x, y</td>
+<td class="" colspan="1" rowspan="1">Move the pen to (x,y)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">16, lo, hi, w, h, data...</td>
+<td class="" colspan="1" rowspan="1">Copy a w x h block of bytes to the screen at hi*256+lo (ORed into the display file; written directly into the attributes)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">128-255</td>
+<td class="" colspan="1" rowspan="1">Draw a line: bits 0-2 are the direction flags, and the length comes from bits 3-6 and the top 2 bits of the next byte</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">64-127, x, y</td>
+<td class="" colspan="1" rowspan="1">Flood fill from (x,y); bits 0-2 = the ink colour of the filled cells</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">32-63, hi, lo, runs..., 255</td>
+<td class="" colspan="1" rowspan="1">Paint attribute paper colour (bits 0-2) along a path starting at hi*256+lo; each run byte gives a count (bits 2-7) and a direction (bits 0-1: up, right, down, left)</td>
+</tr>
+</table>
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Picture data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31247"></span>31247</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31248"></span>31248</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31249"></span>31249</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31250"></span>31250</td>
+<td class="instruction">CALL <a href="31218.html">31218</a></td>
+<td class="comment-1" rowspan="1">Clear the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31253"></span>31253</td>
+<td class="instruction">LD D,127</td>
+<td class="comment-1" rowspan="1">Pen x=127</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31255"></span>31255</td>
+<td class="instruction">LD E,63</td>
+<td class="comment-1" rowspan="1">Pen y=63</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31257"></span>31257</td>
+<td class="instruction">LD B,1</td>
+<td class="comment-1" rowspan="1">Default slope</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31259"></span>31259</td>
+<td class="instruction">LD C,1</td>
+<td class="comment-1" rowspan="1">Default direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31261"></span>31261</td>
+<td class="instruction">LD L,1</td>
+<td class="comment-1" rowspan="1">Default length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31263"></span>31263</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">Pick up the next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31266"></span>31266</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is it 0 (end of picture)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31267"></span>31267</td>
+<td class="instruction">JP Z,<a href="31247.html#31480">31480</a></td>
+<td class="comment-1" rowspan="1">Finish if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31270"></span>31270</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at its operands</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31272"></span>31272</td>
+<td class="instruction">CP 8</td>
+<td class="comment-1" rowspan="1">Command 8 (move the pen)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31274"></span>31274</td>
+<td class="instruction">JR NZ,<a href="31247.html#31288">31288</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31276"></span>31276</td>
+<td class="instruction">LD D,(IY+0)</td>
+<td class="comment-1" rowspan="1">D=new x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31279"></span>31279</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31281"></span>31281</td>
+<td class="instruction">LD E,(IY+0)</td>
+<td class="comment-1" rowspan="1">E=new y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31284"></span>31284</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31286"></span>31286</td>
+<td class="instruction">JR <a href="31247.html#31263">31263</a></td>
+<td class="comment-1" rowspan="1">Next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31288"></span>31288</td>
+<td class="instruction">CP 16</td>
+<td class="comment-1" rowspan="1">Command 16 (bitmap block)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31290"></span>31290</td>
+<td class="instruction">JR NZ,<a href="31247.html#31332">31332</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31292"></span>31292</td>
+<td class="instruction">LD L,(IY+0)</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31295"></span>31295</td>
+<td class="instruction">LD H,(IY+1)</td>
+<td class="comment-1" rowspan="1">H=the high byte of the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31298"></span>31298</td>
+<td class="instruction">LD B,(IY+2)</td>
+<td class="comment-1" rowspan="1">B=width in bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31301"></span>31301</td>
+<td class="instruction">LD C,(IY+3)</td>
+<td class="comment-1" rowspan="1">C=height in rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31304"></span>31304</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Skip the address, low byte...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31306"></span>31306</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">...high byte...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31308"></span>31308</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">...and the width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31310"></span>31310</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the bitmap data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31312"></span>31312</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the start of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31313"></span>31313</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the width and height</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31314"></span>31314</td>
+<td class="instruction">CALL <a href="31511.html">31511</a></td>
+<td class="comment-1" rowspan="1">Put a byte on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31317"></span>31317</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31318"></span>31318</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Next byte of data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31320"></span>31320</td>
+<td class="instruction">DJNZ <a href="31247.html#31314">31314</a></td>
+<td class="comment-1" rowspan="1">Repeat for the width of the block</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31322"></span>31322</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the width and height</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31323"></span>31323</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Back to the start of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31324"></span>31324</td>
+<td class="instruction">CALL <a href="31484.html">31484</a></td>
+<td class="comment-1" rowspan="1">Move down a pixel row (or an attribute row)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31327"></span>31327</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One row done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31328"></span>31328</td>
+<td class="instruction">JR NZ,<a href="31247.html#31312">31312</a></td>
+<td class="comment-1" rowspan="1">Repeat for each row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31330"></span>31330</td>
+<td class="instruction">JR <a href="31247.html#31263">31263</a></td>
+<td class="comment-1" rowspan="1">Next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31332"></span>31332</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="1">Bit 7 set (line)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31334"></span>31334</td>
+<td class="instruction">JR Z,<a href="31247.html#31369">31369</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31336"></span>31336</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the command byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31337"></span>31337</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">C=direction flags (bits 0-2)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31339"></span>31339</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the direction flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31340"></span>31340</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the command byte again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31341"></span>31341</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Move bits 3-6 down...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31342"></span>31342</td>
+<td class="instruction">AND 60</td>
+<td class="comment-1" rowspan="1">B=bits 3-6 (high bits of the slope)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31344"></span>31344</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the high part of the slope</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31345"></span>31345</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">Pick up the second byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31348"></span>31348</td>
+<td class="instruction">AND 63</td>
+<td class="comment-1" rowspan="1">Bits 0-5: length-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31350"></span>31350</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the low part of the length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31351"></span>31351</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">L=length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31352"></span>31352</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">A=the second byte again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31355"></span>31355</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31357"></span>31357</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...plus bits 6-7 of the second byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31358"></span>31358</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">Rotate bits 6-7 round to bits 0-1...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31359"></span>31359</td>
+<td class="instruction">AND 3</td>
+<td class="comment-1" rowspan="1">...and keep them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31361"></span>31361</td>
+<td class="instruction">OR B</td>
+<td class="comment-1" rowspan="1">Combine them with the high part of the slope</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31362"></span>31362</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the slope</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31363"></span>31363</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">B=slope</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31364"></span>31364</td>
+<td class="instruction">CALL <a href="31917.html">31917</a></td>
+<td class="comment-1" rowspan="1">Draw the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31367"></span>31367</td>
+<td class="instruction">JR <a href="31247.html#31263">31263</a></td>
+<td class="comment-1" rowspan="1">Next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31369"></span>31369</td>
+<td class="instruction">BIT 6,A</td>
+<td class="comment-1" rowspan="1">Bit 6 set (flood fill)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31371"></span>31371</td>
+<td class="instruction">JR Z,<a href="31247.html#31393">31393</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31373"></span>31373</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">A=the ink colour</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31375"></span>31375</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the pen position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31376"></span>31376</td>
+<td class="instruction">LD D,(IY+0)</td>
+<td class="comment-1" rowspan="1">D=x of the seed point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31379"></span>31379</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31381"></span>31381</td>
+<td class="instruction">LD E,(IY+0)</td>
+<td class="comment-1" rowspan="1">E=y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31384"></span>31384</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31386"></span>31386</td>
+<td class="instruction">CALL <a href="31525.html">31525</a></td>
+<td class="comment-1" rowspan="1">Fill the area</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31389"></span>31389</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore the pen position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31390"></span>31390</td>
+<td class="instruction">JP <a href="31247.html#31263">31263</a></td>
+<td class="comment-1" rowspan="1">Next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31393"></span>31393</td>
+<td class="instruction">BIT 5,A</td>
+<td class="comment-1" rowspan="1">Bit 5 set (paint attributes)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31395"></span>31395</td>
+<td class="instruction">JP Z,<a href="31247.html#31263">31263</a></td>
+<td class="comment-1" rowspan="1">Ignore the command if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31398"></span>31398</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Bits 0-2: paper colour</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31400"></span>31400</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">Multiply the paper colour by 8...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31401"></span>31401</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...to put it in bits 3-5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31402"></span>31402</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">C=paper colour*8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31403"></span>31403</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31404"></span>31404</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31405"></span>31405</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31406"></span>31406</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the paper colour in bits 3-5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31407"></span>31407</td>
+<td class="instruction">LD H,(IY+0)</td>
+<td class="comment-1" rowspan="1">HL=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31410"></span>31410</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the low byte of the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31412"></span>31412</td>
+<td class="instruction">LD L,(IY+0)</td>
+<td class="comment-1" rowspan="1">L=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31415"></span>31415</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the first run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31417"></span>31417</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">Pick up the next run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31420"></span>31420</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point at the next run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31422"></span>31422</td>
+<td class="instruction">CP 255</td>
+<td class="comment-1" rowspan="1">End of the runs?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31424"></span>31424</td>
+<td class="instruction">JR Z,<a href="31247.html#31474">31474</a></td>
+<td class="comment-1" rowspan="1">Finish if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31426"></span>31426</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the run byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31427"></span>31427</td>
+<td class="instruction">AND 3</td>
+<td class="comment-1" rowspan="1">E=direction (0 up, 1 right, 2 down, 3 left)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31429"></span>31429</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31430"></span>31430</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">B=length of the run (bits 2-7, plus 1)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31431"></span>31431</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Shift the run length down...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31432"></span>31432</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...two places</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31433"></span>31433</td>
+<td class="instruction">AND 63</td>
+<td class="comment-1" rowspan="1">Keep the length bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31435"></span>31435</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">The length is one more</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31436"></span>31436</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31437"></span>31437</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Take the ink of this cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31438"></span>31438</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Keep the ink</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31440"></span>31440</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">Move the ink to bits 3-5, where the paper is...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31441"></span>31441</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31442"></span>31442</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31443"></span>31443</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="1">Is it the same as the new paper?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31444"></span>31444</td>
+<td class="instruction">JR NZ,<a href="31247.html#31448">31448</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31446"></span>31446</td>
+<td class="instruction">XOR 56</td>
+<td class="comment-1" rowspan="1">If so use paper 7 instead, so the ink stays visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31448"></span>31448</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Move the ink back to bits 0-2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31449"></span>31449</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Move the ink back to bits 0-2...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31450"></span>31450</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31451"></span>31451</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine it with the paper</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31452"></span>31452</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Set the attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31453"></span>31453</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">Move in the run's direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31454"></span>31454</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Zero means up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31455"></span>31455</td>
+<td class="instruction">CALL Z,<a href="31755.html">31755</a></td>
+<td class="comment-1" rowspan="1">Up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31458"></span>31458</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">1 means right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31459"></span>31459</td>
+<td class="instruction">CALL Z,<a href="31806.html">31806</a></td>
+<td class="comment-1" rowspan="1">Right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31462"></span>31462</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">2 means down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31463"></span>31463</td>
+<td class="instruction">CALL Z,<a href="31772.html">31772</a></td>
+<td class="comment-1" rowspan="1">Down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31466"></span>31466</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">3 means left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31467"></span>31467</td>
+<td class="instruction">CALL Z,<a href="31796.html">31796</a></td>
+<td class="comment-1" rowspan="1">Left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31470"></span>31470</td>
+<td class="instruction">DJNZ <a href="31247.html#31437">31437</a></td>
+<td class="comment-1" rowspan="1">Repeat for the length of the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31472"></span>31472</td>
+<td class="instruction">JR <a href="31247.html#31417">31417</a></td>
+<td class="comment-1" rowspan="1">Next run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31474"></span>31474</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31475"></span>31475</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31476"></span>31476</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31477"></span>31477</td>
+<td class="instruction">JP <a href="31247.html#31263">31263</a></td>
+<td class="comment-1" rowspan="1">Next command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31480"></span>31480</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31481"></span>31481</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31482"></span>31482</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31483"></span>31483</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31218.html">31218</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31247">Map</a></td>
+<td class="next">
+Next: <a href="31484.html">31484</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

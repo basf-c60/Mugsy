@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32995</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32982.html">32982</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32995">Map</a></td>
+<td class="next">
+Next: <a href="33032.html">33032</a>
+</td>
+</tr>
+</table>
+<div class="description">32995: Toggle the speaker with a pulse</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32995"></span>32995</td>
+<td class="instruction">BIT 7,D</td>
+<td class="comment-1" rowspan="1">Test bit 7 of the pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32997"></span>32997</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: speaker off</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32999"></span>32999</td>
+<td class="instruction">LD A,16</td>
+<td class="comment-1" rowspan="1">A=speaker bit (this operand is modified by <a href="32866.html#32890">32890</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33001"></span>33001</td>
+<td class="instruction">JP <a href="32995.html#33004">33004</a></td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33004"></span>33004</td>
+<td class="instruction">JP <a href="32995.html#33007">33007</a></td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33007"></span>33007</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Speaker on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33009"></span>33009</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33010"></span>33010</td>
+<td class="instruction">AND 127</td>
+<td class="comment-1" rowspan="1">Mask the pitch (A is overwritten below, so this has no effect)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33012"></span>33012</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33013"></span>33013</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33014"></span>33014</td>
+<td class="instruction">DEC D</td>
+<td class="comment-1" rowspan="1">Delay for half a cycle</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33015"></span>33015</td>
+<td class="instruction">CALL <a href="33032.html">33032</a></td>
+<td class="comment-1" rowspan="1">Wait a half cycle</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33018"></span>33018</td>
+<td class="instruction">JR NZ,<a href="32995.html#33014">33014</a></td>
+<td class="comment-1" rowspan="1">Repeat until the half cycle is over</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33020"></span>33020</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: speaker bit off</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33022"></span>33022</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Speaker off</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33024"></span>33024</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">Delay for the other half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33025"></span>33025</td>
+<td class="instruction">CALL <a href="33032.html">33032</a></td>
+<td class="comment-1" rowspan="1">Wait a half cycle</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33028"></span>33028</td>
+<td class="instruction">JR NZ,<a href="32995.html#33024">33024</a></td>
+<td class="comment-1" rowspan="1">Repeat until the half cycle is over</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33030"></span>33030</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33031"></span>33031</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32982.html">32982</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32995">Map</a></td>
+<td class="next">
+Next: <a href="33032.html">33032</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

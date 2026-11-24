@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: VM variables</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="mugsy.css" />
+<script type="text/javascript" src="mugsy.js" defer></script>
+</head>
+<body class="Variables">
+<header class="site"><div class="bar"><a class="brand" href="index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">VM variables</h1>
+<div class="paragraph">
+All values are stored multiplied by 100. Money is counted in thousands of dollars ("grand").
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Var</th>
+<th colspan="1" rowspan="1">Address</th>
+<th colspan="1" rowspan="1">Name</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html">33552</a></td>
+<td class="" colspan="1" rowspan="1">StartClients</td>
+<td class="" colspan="1" rowspan="1">Number of clients at the start of the game (400)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">1</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33556">33556</a></td>
+<td class="" colspan="1" rowspan="1">Squeezed</td>
+<td class="" colspan="1" rowspan="1">Number of clients squeezed this year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">2</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33560">33560</a></td>
+<td class="" colspan="1" rowspan="1">Raided</td>
+<td class="" colspan="1" rowspan="1">Amount (in grand) taken by the cops in a raid</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">3</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33564">33564</a></td>
+<td class="" colspan="1" rowspan="1">Hoods</td>
+<td class="" colspan="1" rowspan="1">Number of hoods in the mob (shown on the status line)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">4</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33568">33568</a></td>
+<td class="" colspan="1" rowspan="1">Killed</td>
+<td class="" colspan="1" rowspan="1">Number of hoods rubbed out last year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">5</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33572">33572</a></td>
+<td class="" colspan="1" rowspan="1">Price</td>
+<td class="" colspan="1" rowspan="1">Average protection payment per client</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">6</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33576">33576</a></td>
+<td class="" colspan="1" rowspan="1">Year</td>
+<td class="" colspan="1" rowspan="1">Current year (starts at 1)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">7</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33580">33580</a></td>
+<td class="" colspan="1" rowspan="1">Dough</td>
+<td class="" colspan="1" rowspan="1">Dough in the safe, in thousands of dollars (shown on the status line)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">8</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33584">33584</a></td>
+<td class="" colspan="1" rowspan="1">Clients</td>
+<td class="" colspan="1" rowspan="1">Number of clients (shown on the status line as CUSTOMERS)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">9</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33588">33588</a></td>
+<td class="" colspan="1" rowspan="1">Recruits</td>
+<td class="" colspan="1" rowspan="1">Number of hoods recruited last year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">10</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33592">33592</a></td>
+<td class="" colspan="1" rowspan="1">TotalKilled</td>
+<td class="" colspan="1" rowspan="1">Total number of hoods killed during the game</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">11</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33596">33596</a></td>
+<td class="" colspan="1" rowspan="1">Blunders</td>
+<td class="" colspan="1" rowspan="1">Number of blunders (silly answers) made this year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">12</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33600">33600</a></td>
+<td class="" colspan="1" rowspan="1">TotalBlunders</td>
+<td class="" colspan="1" rowspan="1">Total number of blunders made during the game</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">13</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33604">33604</a></td>
+<td class="" colspan="1" rowspan="1">HoodYears</td>
+<td class="" colspan="1" rowspan="1">Sum of the mob size over all years</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">14</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33608">33608</a></td>
+<td class="" colspan="1" rowspan="1">Loan</td>
+<td class="" colspan="1" rowspan="1">Loan from Nick the Greek (in grand)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">15</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33612">33612</a></td>
+<td class="" colspan="1" rowspan="1">Score</td>
+<td class="" colspan="1" rowspan="1">Final score (percentage)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">16</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33616">33616</a></td>
+<td class="" colspan="1" rowspan="1">TotalTakings</td>
+<td class="" colspan="1" rowspan="1">Total protection takings</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">17</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33620">33620</a></td>
+<td class="" colspan="1" rowspan="1">TotalProfit</td>
+<td class="" colspan="1" rowspan="1">Total profit</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">18</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33624">33624</a></td>
+<td class="" colspan="1" rowspan="1">ClientYears</td>
+<td class="" colspan="1" rowspan="1">Sum of the number of clients over all years</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">19</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33628">33628</a></td>
+<td class="" colspan="1" rowspan="1">Bought</td>
+<td class="" colspan="1" rowspan="1">Number of clients bought from the syndicate this year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">20</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33632">33632</a></td>
+<td class="" colspan="1" rowspan="1">Sold</td>
+<td class="" colspan="1" rowspan="1">Number of clients sold to the syndicate this year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">21</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33636">33636</a></td>
+<td class="" colspan="1" rowspan="1">Unsqueezed</td>
+<td class="" colspan="1" rowspan="1">Number of clients available to be squeezed</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">22</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33640">33640</a></td>
+<td class="" colspan="1" rowspan="1">ClientsLeft</td>
+<td class="" colspan="1" rowspan="1">Number of clients that would be left after a sale</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">23</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33644">33644</a></td>
+<td class="" colspan="1" rowspan="1">Ammo</td>
+<td class="" colspan="1" rowspan="1">Amount spent on artillery and ammo this year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">24</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33648">33648</a></td>
+<td class="" colspan="1" rowspan="1">FedsKilled</td>
+<td class="" colspan="1" rowspan="1">Number of recruits killed in the shootout with the feds</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">25</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33652">33652</a></td>
+<td class="" colspan="1" rowspan="1">Takings</td>
+<td class="" colspan="1" rowspan="1">Protection takings this year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">26</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33656">33656</a></td>
+<td class="" colspan="1" rowspan="1">Profit</td>
+<td class="" colspan="1" rowspan="1">Profit this year (after Rocco has taken his cut)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">27</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33660">33660</a></td>
+<td class="" colspan="1" rowspan="1">Interest</td>
+<td class="" colspan="1" rowspan="1">Interest rate on Nick the Greek's loan (percent)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">28</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33664">33664</a></td>
+<td class="" colspan="1" rowspan="1">HoodGrowth</td>
+<td class="" colspan="1" rowspan="1">Percentage growth of the mob over the game</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">29</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33668">33668</a></td>
+<td class="" colspan="1" rowspan="1">ClientGrowth</td>
+<td class="" colspan="1" rowspan="1">Percentage growth of the client list over the game</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">30</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33672">33672</a></td>
+<td class="" colspan="1" rowspan="1">Handout</td>
+<td class="" colspan="1" rowspan="1">Handout paid to keep the hoods loyal</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">31</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33676">33676</a></td>
+<td class="" colspan="1" rowspan="1">Bribe</td>
+<td class="" colspan="1" rowspan="1">Bribe paid to Rocco's mob</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">32</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33680">33680</a></td>
+<td class="" colspan="1" rowspan="1">Kickback</td>
+<td class="" colspan="1" rowspan="1">Annual kickback to the cops</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">33</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33684">33684</a></td>
+<td class="" colspan="1" rowspan="1">Tmp</td>
+<td class="" colspan="1" rowspan="1">Scratch variable</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">34</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33688">33688</a></td>
+<td class="" colspan="1" rowspan="1">ClientCost</td>
+<td class="" colspan="1" rowspan="1">Price of a client this year (in grand)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">35</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33692">33692</a></td>
+<td class="" colspan="1" rowspan="1">Input</td>
+<td class="" colspan="1" rowspan="1">Number entered by the player (x100 fixed point; see <a href="asm/27790.html">27790</a>)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">36</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33696">33696</a></td>
+<td class="" colspan="1" rowspan="1">Years</td>
+<td class="" colspan="1" rowspan="1">Number of years the game will last (7-11, chosen at random by <a href="asm/33937.html">33937</a>)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">37</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33700">33700</a></td>
+<td class="" colspan="1" rowspan="1">K800</td>
+<td class="" colspan="1" rowspan="1">Constant: 800</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">38</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33704">33704</a></td>
+<td class="" colspan="1" rowspan="1">K1000</td>
+<td class="" colspan="1" rowspan="1">Constant: 1000</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">39</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33708">33708</a></td>
+<td class="" colspan="1" rowspan="1">Km005</td>
+<td class="" colspan="1" rowspan="1">Constant: -0.05</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">40</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33712">33712</a></td>
+<td class="" colspan="1" rowspan="1">Km010</td>
+<td class="" colspan="1" rowspan="1">Constant: -0.1</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">41</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33716">33716</a></td>
+<td class="" colspan="1" rowspan="1">K05</td>
+<td class="" colspan="1" rowspan="1">Constant: 0.5</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33720">33720</a></td>
+<td class="" colspan="1" rowspan="1">K15</td>
+<td class="" colspan="1" rowspan="1">Constant: 1.5</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">43</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33724">33724</a></td>
+<td class="" colspan="1" rowspan="1">K2</td>
+<td class="" colspan="1" rowspan="1">Constant: 2</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">44</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33728">33728</a></td>
+<td class="" colspan="1" rowspan="1">K3</td>
+<td class="" colspan="1" rowspan="1">Constant: 3</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">45</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33732">33732</a></td>
+<td class="" colspan="1" rowspan="1">K35</td>
+<td class="" colspan="1" rowspan="1">Constant: 3.5</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">46</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33736">33736</a></td>
+<td class="" colspan="1" rowspan="1">K4</td>
+<td class="" colspan="1" rowspan="1">Constant: 4</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">47</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33740">33740</a></td>
+<td class="" colspan="1" rowspan="1">K5</td>
+<td class="" colspan="1" rowspan="1">Constant: 5</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">48</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33744">33744</a></td>
+<td class="" colspan="1" rowspan="1">K6</td>
+<td class="" colspan="1" rowspan="1">Constant: 6</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">49</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33748">33748</a></td>
+<td class="" colspan="1" rowspan="1">K7</td>
+<td class="" colspan="1" rowspan="1">Constant: 7</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">50</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33752">33752</a></td>
+<td class="" colspan="1" rowspan="1">K8</td>
+<td class="" colspan="1" rowspan="1">Constant: 8</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">51</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33756">33756</a></td>
+<td class="" colspan="1" rowspan="1">K9</td>
+<td class="" colspan="1" rowspan="1">Constant: 9</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">52</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33760">33760</a></td>
+<td class="" colspan="1" rowspan="1">K11</td>
+<td class="" colspan="1" rowspan="1">Constant: 11</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">53</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33764">33764</a></td>
+<td class="" colspan="1" rowspan="1">K12</td>
+<td class="" colspan="1" rowspan="1">Constant: 12</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">54</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33768">33768</a></td>
+<td class="" colspan="1" rowspan="1">K13</td>
+<td class="" colspan="1" rowspan="1">Constant: 13</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">55</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33772">33772</a></td>
+<td class="" colspan="1" rowspan="1">K15b</td>
+<td class="" colspan="1" rowspan="1">Constant: 15</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">56</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33776">33776</a></td>
+<td class="" colspan="1" rowspan="1">K17</td>
+<td class="" colspan="1" rowspan="1">Constant: 17</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">57</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33780">33780</a></td>
+<td class="" colspan="1" rowspan="1">K19</td>
+<td class="" colspan="1" rowspan="1">Constant: 19</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">58</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33784">33784</a></td>
+<td class="" colspan="1" rowspan="1">K20</td>
+<td class="" colspan="1" rowspan="1">Constant: 20</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">59</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33788">33788</a></td>
+<td class="" colspan="1" rowspan="1">K25</td>
+<td class="" colspan="1" rowspan="1">Constant: 25</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">60</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33792">33792</a></td>
+<td class="" colspan="1" rowspan="1">K35b</td>
+<td class="" colspan="1" rowspan="1">Constant: 35</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">61</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33796">33796</a></td>
+<td class="" colspan="1" rowspan="1">K50</td>
+<td class="" colspan="1" rowspan="1">Constant: 50</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">62</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33800">33800</a></td>
+<td class="" colspan="1" rowspan="1">K60</td>
+<td class="" colspan="1" rowspan="1">Constant: 60</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">63</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33804">33804</a></td>
+<td class="" colspan="1" rowspan="1">K99</td>
+<td class="" colspan="1" rowspan="1">Constant: 99</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">64</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33808">33808</a></td>
+<td class="" colspan="1" rowspan="1">K100</td>
+<td class="" colspan="1" rowspan="1">Constant: 100</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">65</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33812">33812</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v0 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">66</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33816">33816</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v1 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">67</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33820">33820</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v2 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">68</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33824">33824</a></td>
+<td class="" colspan="1" rowspan="1">K40</td>
+<td class="" colspan="1" rowspan="1">Initial value of v3 (part of the table at <a href="asm/33552.html#33812">33812</a>); also used as the constant 40</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">69</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33828">33828</a></td>
+<td class="" colspan="1" rowspan="1">K10</td>
+<td class="" colspan="1" rowspan="1">Initial value of v4 (part of the table at <a href="asm/33552.html#33812">33812</a>); also used as the constant 10</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">70</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33832">33832</a></td>
+<td class="" colspan="1" rowspan="1">K25c</td>
+<td class="" colspan="1" rowspan="1">Initial value of v5 (part of the table at <a href="asm/33552.html#33812">33812</a>); also used as the constant 2.5</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">71</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33836">33836</a></td>
+<td class="" colspan="1" rowspan="1">K1</td>
+<td class="" colspan="1" rowspan="1">Initial value of v6 (part of the table at <a href="asm/33552.html#33812">33812</a>); also used as the constant 1</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">72</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33840">33840</a></td>
+<td class="" colspan="1" rowspan="1">K0</td>
+<td class="" colspan="1" rowspan="1">Initial value of v7 (part of the table at <a href="asm/33552.html#33812">33812</a>); also used as the constant 0</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">73</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33844">33844</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v8 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">74</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33848">33848</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v9 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">75</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33852">33852</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v10 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">76</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33856">33856</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v11 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">77</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33860">33860</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v12 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">78</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33864">33864</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v13 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">79</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33868">33868</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v14 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">80</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33872">33872</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v15 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">81</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33876">33876</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v16 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">82</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33880">33880</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v17 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">83</td>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html#33884">33884</a></td>
+<td class="" colspan="1" rowspan="1">-</td>
+<td class="" colspan="1" rowspan="1">Initial value of v18 (part of the table at <a href="asm/33552.html#33812">33812</a>); not otherwise used</td>
+</tr>
+</table>
+</div>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

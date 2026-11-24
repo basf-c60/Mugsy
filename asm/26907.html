@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 26907</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26898.html">26898</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26907">Map</a></td>
+<td class="next">
+Next: <a href="26921.html">26921</a>
+</td>
+</tr>
+</table>
+<div class="description">26907: Wait for a keypress for up to BC iterations</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the zero flag reset as soon as a key is pressed, or with the zero flag set after BC loops.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Loop count</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26907"></span>26907</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0: select every keyboard half-row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26908"></span>26908</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read every half-row of the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26910"></span>26910</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the key bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26912"></span>26912</td>
+<td class="instruction">CP 31</td>
+<td class="comment-1" rowspan="1">Is any key pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26914"></span>26914</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return (zero flag reset) if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26915"></span>26915</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Count down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26916"></span>26916</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Is BC zero? Test B...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26917"></span>26917</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">...together with C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26918"></span>26918</td>
+<td class="instruction">JR NZ,<a href="26907.html#26907">26907</a></td>
+<td class="comment-1" rowspan="1">Keep waiting until BC is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26920"></span>26920</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with the zero flag set (timeout)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26898.html">26898</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26907">Map</a></td>
+<td class="next">
+Next: <a href="26921.html">26921</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

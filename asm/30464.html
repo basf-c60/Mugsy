@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30464</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30461.html">30461</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30464">Map</a></td>
+<td class="next">
+Next: <a href="30479.html">30479</a>
+</td>
+</tr>
+</table>
+<div class="description">30464: VM op 19: SUB</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30464"></span>30464</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Subtract the low words...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30465"></span>30465</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Keep the low word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30466"></span>30466</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the second operand</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30467"></span>30467</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=low word of the first operand</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30468"></span>30468</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30469"></span>30469</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Subtract the low words</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30471"></span>30471</td>
+<td class="instruction">EX (SP),HL</td>
+<td class="comment-1" rowspan="1">HL=high word of the first operand; the low difference goes on the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30472"></span>30472</td>
+<td class="instruction">SBC HL,BC</td>
+<td class="comment-1" rowspan="1">...and the high words with borrow</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30474"></span>30474</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the high difference</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30475"></span>30475</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30476"></span>30476</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">BC=high word of the difference</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30477"></span>30477</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=low word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30478"></span>30478</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: BCDE=the difference</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30461.html">30461</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30464">Map</a></td>
+<td class="next">
+Next: <a href="30479.html">30479</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

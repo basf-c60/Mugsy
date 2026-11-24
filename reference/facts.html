@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Trivia</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Facts">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Trivia</h1>
+<ul class="contents">
+<li><a href="#pickone">Pick-one messages</a></li>
+<li><a href="#louey">Louey</a></li>
+<li><a href="#source">Leftover source code</a></li>
+<li><a href="#constants">Constants that aren't</a></li>
+<li><a href="#random">Random numbers from the program itself</a></li>
+<li><a href="#selfmod">Self-modifying music</a></li>
+<li><a href="#hush">Jack Benny</a></li>
+<li><a href="#loader">Two loaders</a></li>
+<li><a href="#scheduler">The shootout is a tiny multitasking system</a></li>
+<li><a href="#handouttrap">The handout is a lottery ticket</a></li>
+<li><a href="#romcall">The shootout borrows the ROM</a></li>
+<li><a href="#overflow">Number entry: quirks and overflow</a></li>
+<li><a href="#yeargoesby">The end-of-year animation is a weighted coin toss</a></li>
+<li><a href="#backgrounds">Which background you get</a></li>
+<li><a href="#im2">Interrupt mode 2 and the 257-byte table</a></li>
+</ul>
+<div><span id="pickone"></span></div>
+<div class="box box-1">
+<div class="box-title">Pick-one messages</div>
+<div class="paragraph">
+<div class="paragraph">
+Most of Louey's "pick one of these" lines are not stored as a bracketed list inside one message. The message the script says (for example <a href="../asm/49774.html#53164">53164</a>) is only a few bytes long: a random choice (control code 10) between back-references (control code 11), each pointing at a complete message of its own just before it (<a href="../asm/49774.html#53008">53008</a> and <a href="../asm/49774.html#53097">53097</a>). That is why the message at <a href="../asm/49774.html#53164">53164</a> looks like a single 290-character reply in the listing, when what you actually get is one of the two, 160 or 127 characters long. Of the 118 messages, 27 are reached only this way. Even so, the two hush-money replies are among the longest in the game: they fill speech bubbles of 11 and 10 lines (the bubble routine pairs up lines, so the nine widths in the table at <a href="../asm/28728.html">28728</a> cover bubbles of up to 18 lines). The longest line of all is the contract warning at <a href="../asm/49774.html#50687">50687</a>, about 200 characters.
+</div>
+</div>
+</div>
+<div><span id="louey"></span></div>
+<div class="box box-2">
+<div class="box-title">Louey</div>
+<div class="paragraph">
+<div class="paragraph">
+Louey has 118 messages (plus a dozen rating words) and they are among the most heavily compressed text in any Spectrum
+game of the time: most words take one or two bytes, and repeated phrases are reused with a back-reference
+(control code 11).
+</div>
+</div>
+</div>
+<div><span id="source"></span></div>
+<div class="box box-1">
+<div class="box-title">Leftover source code</div>
+<div class="paragraph">
+<div class="paragraph">
+The area at <a href="../asm/53353.html">53353</a>-53792 holds fragments of the game's original assembler source, left there by the assembler in the
+memory image that was saved to tape. Readable labels include REGENFL, HITST, HTSTAT, HITOK and COMEBK (and the tail end of another, ending in HAPE3, whose first letter has been overwritten), with
+tab-separated mnemonics such as <code>LD A,(HITST)</code> and <code>AND A</code>. The interrupt jump at <a href="../asm/53456.html">53456</a> and the
+IM2 vector table at <a href="../asm/53504.html">53504</a> are written over parts of it.
+</div>
+</div>
+</div>
+<div><span id="constants"></span></div>
+<div class="box box-2">
+<div class="box-title">Constants that aren't</div>
+<div class="paragraph">
+<div class="paragraph">
+The VM has no immediate operands, so every number the script needs is held in a variable. Variables 37-64 are true
+constants, but the most frequently used ones (0, 1, 2.5, 10 and 40) are v72, v71, v70, v69 and v68, which are actually
+entries of the table of initial values copied into v0-v18 at the start of each game (<a href="../asm/33937.html">33937</a>).
+</div>
+</div>
+</div>
+<div><span id="random"></span></div>
+<div class="box box-1">
+<div class="box-title">Random numbers from the program itself</div>
+<div class="paragraph">
+<div class="paragraph">
+The random number generator (<a href="../asm/30026.html">30026</a>) has no seed in the usual sense. It walks a pointer through memory 256 bytes at a
+time (starting at 20480, in the display file), adds and XORs the bytes it finds there, and rejects a result equal to the
+previous one. So the "random" numbers depend partly on what is on the screen.
+</div>
+</div>
+</div>
+<div><span id="selfmod"></span></div>
+<div class="box box-2">
+<div class="box-title">Self-modifying music</div>
+<div class="paragraph">
+<div class="paragraph">
+The tune player (<a href="../asm/32866.html">32866</a>) changes its own code for each note: it writes the border/speaker value into the operand of
+the <code>LD A,16</code> at <a href="../asm/32995.html#32999">32999</a> and the length of a delay into the <code>LD B,4</code> at <a href="../asm/32866.html#32929">32929</a>. It also mixes the
+Z80's refresh register (<code>LD A,R</code>) into the note timing for a slightly rough sound.
+</div>
+</div>
+</div>
+<div><span id="hush"></span></div>
+<div class="box box-1">
+<div class="box-title">Jack Benny</div>
+<div class="paragraph">
+<div class="paragraph">
+Every silly answer costs a blunder first, and then Louey offers to keep quiet about it (<a href="../asm/28304.html">28304</a>). With 19 grand or more in the safe the price is one grand, and one of the two lines he may say is: "If your boys heard about it you wud get more laughs than Jack Benny." With 3 to 18 grand he charges a tenth of what you have, rounded down (so nothing at all below 10 grand), and with less than 3 he cannot help at all and you take a second blunder. So the hush money never removes the blunder itself; it only costs you the money.
+</div>
+</div>
+</div>
+<div><span id="loader"></span></div>
+<div class="box box-2">
+<div class="box-title">Two loaders</div>
+<div class="paragraph">
+<div class="paragraph">
+The BASIC loaders in the TAP and TZX images differ slightly: the TAP version uses PAPER 1: INK 1 and waits for a
+key (PAUSE 0) before starting the game, while the TZX version uses PAPER 0: INK 0 and starts straight away. The
+loading screen header says CODE 32768,6912 but the loader loads it at 16384.
+</div>
+</div>
+</div>
+<div><span id="scheduler"></span></div>
+<div class="box box-1">
+<div class="box-title">The shootout is a tiny multitasking system</div>
+<div class="paragraph">
+<div class="paragraph">
+The shootout (<a href="../asm/42112.html">42112</a>) is not a single game loop. Each moving thing (the two diners who are the bystanders, Mugsy, the hit man and
+the two bullets) is a "figure" with a 39-byte record, a timer and a handler. A custom interrupt routine (<a href="../asm/48539.html">48539</a>) runs fifty
+times a second: for each figure whose timer is 0 it counts down a delay and, when the delay ends, sets the stack
+pointer to the figure's record and uses <code>POP</code> to load HL, DE, BC and IY straight from it, then jumps to IY,
+a sprite routine that draws the figure with its registers already set up. When the drawing finishes it marks the
+figure as ready; the main loop (<a href="../asm/42977.html">42977</a>) notices, and runs the figure's handler, which reads the next byte of its
+route script (or the keyboard, for Mugsy) and decides the next move. The diners follow fixed scripts of a couple of
+hundred steps (<a href="../asm/46645.html">46645</a>, <a href="../asm/46825.html">46825</a>); the hit man picks one of six eight-byte fragments (<a href="../asm/47034.html">47034</a>) according to where
+Mugsy is, and fires when they are on the same row.
+</div>
+<div class="paragraph">
+<img src="../images/shootout.png" alt="The restaurant in the shootout" />
+</div>
+</div>
+</div>
+<div><span id="handouttrap"></span></div>
+<div class="box box-2">
+<div class="box-title">The handout is a lottery ticket</div>
+<div class="paragraph">
+<div class="paragraph">
+The question "how many grand do you give the boys?" sounds like loyalty money, but the only thing the game does with
+the answer is turn it into Mugsy's hit points for the shootout (<a href="../asm/28358.html">28358</a>, <a href="../asm/42112.html">42112</a>). Because the conversion keeps only
+the low three bits of a fixed-point number, the hit points cycle 5, 6, 7, 8, 1, 2, 3, 4, 5 &hellip; as the handout
+grows: giving the boys a little more can leave Mugsy as fragile as possible. With nobody pressing a key, a Mugsy with 1
+hit point lasts about 14 seconds from the moment the shootout routine starts, one with 4 about 18 and one with 8 about 20 (measured by
+running the shootout routine in the Z80 simulator: 719, 921 and 1019 frames at 50 per second).
+</div>
+</div>
+</div>
+<div><span id="romcall"></span></div>
+<div class="box box-1">
+<div class="box-title">The shootout borrows the ROM</div>
+<div class="paragraph">
+<div class="paragraph">
+The restaurant walls are drawn with the Spectrum ROM's pixel-address routine: <a href="../asm/46428.html">46428</a> calls 8880 ($22B0), the
+second half of PIXEL-ADD, skipping its range check, and relies on it to turn a (y, x) pair into a display file address
+and bit position.
+</div>
+</div>
+</div>
+<div><span id="overflow"></span></div>
+<div class="box box-2">
+<div class="box-title">Number entry: quirks and overflow</div>
+<div class="paragraph">
+<div class="paragraph">
+The number-entry routine (<a href="../asm/27790.html">27790</a>, parsing in <a href="../asm/27869.html">27869</a>) accepts an optional sign followed by digits. A lone &quot;-&quot; or &quot;+&quot; is accepted as zero, leading zeros are harmless, and anything with a decimal point is turned away with a complaint about fractions (and counted as a blunder), so every answer has to be a whole number. &quot;-5&quot; is read as 5 but flagged as negative, which every question in the script refuses.
+</div>
+<div class="paragraph">
+Numbers typed in answer to a question are held as 32-bit signed counts of hundredths, and the digit-by-digit conversion at <a href="../asm/27869.html">27869</a> never checks for overflow, so the largest number you can really enter is 21,474,836.47. Typing 21474837 wraps round to a negative number and is treated like any other negative answer. Typing 42949672 comes out as -0.96; typing 42949673 comes out as +0.04 and 42949696 as 23.04, and 4294967296 (ten digits) comes out as exactly zero. In other words, a figure of 43 million or more is silently taken modulo 42,949,672.96. (Measured by typing these numbers into the number-entry routine at <a href="../asm/27790.html">27790</a> in the Z80 simulator; the answer line has room for only about ten digits, which is still plenty to wrap round.)
+</div>
+</div>
+</div>
+<div><span id="yeargoesby"></span></div>
+<div class="box box-1">
+<div class="box-title">The end-of-year animation is a weighted coin toss</div>
+<div class="paragraph">
+<div class="paragraph">
+At the end of every year the "A year goes by" routine (<a href="../asm/33994.html">33994</a>) plays one of two animations: the hoods filing through the Partridge Club, or the getaway car driving past. Nothing in the game chooses between them. It is not the year, the size of the mob, the cash in the safe or anything that happened during the year. The routine makes one call to the random routine (<a href="../asm/30014.html">30014</a>, limit 100) and plays the bar room if the result is below 50.
+</div>
+<div class="paragraph">
+It is not a fair toss. The random routine is not uniform (see the <a href="facts.html#random">random numbers entry</a>), and for this limit 154 of its 256 raw values give a result below 50 and 102 give 50 or more. So the Partridge Club comes up about 60% of the time and the getaway car about 40%. This comes from reading the routine and counting its raw values, not from playing the game thousands of times, so treat the percentages as approximate.
+</div>
+</div>
+</div>
+<div><span id="backgrounds"></span></div>
+<div class="box box-2">
+<div class="box-title">Which background you get</div>
+<div class="paragraph">
+<div class="paragraph">
+The backgrounds behind Louey's speech bubbles are random too, in two stages, and neither stage is an even split. At the start of each year the game rolls once (<a href="../asm/24614.html">24614</a>): below 50 selects the first table of three pictures, otherwise the second (about 60% and 40%, because of the uneven random routine; see the <a href="facts.html#random">random numbers entry</a>). Then, every time Louey speaks without asking for a particular placement, the SAY routine (<a href="../asm/28549.html">28549</a>) rolls again and takes the first picture in that year's table whose chance value is above the roll. If that is the picture already on screen it rolls again, so the background always changes between lines. Messages that ask for the fixed answer bubble always show the close-up of the hood (<a href="../asm/64646.html">64646</a>), and some messages keep whatever is on screen.
+</div>
+<table class="boxed">
+<tr><th>Table (this year)</th><th>Picture</th><th>Chance of a roll within the table</th><th>Overall</th></tr>
+<tr><td>First (about 60%)</td><td>A figure in a doorway between headlights (<a href="../asm/58673.html">58673</a>)</td><td>44.5%</td><td>26.8%</td></tr>
+<tr><td>First</td><td>Two hoods at a table (<a href="../asm/59397.html">59397</a>)</td><td>31.2%</td><td>18.8%</td></tr>
+<tr><td>First</td><td>A man in a hat at a table (<a href="../asm/57583.html">57583</a>)</td><td>24.2%</td><td>14.6%</td></tr>
+<tr><td>Second (about 40%)</td><td>Hoods and a car in the city (<a href="../asm/63601.html">63601</a>)</td><td>46.9%</td><td>18.7%</td></tr>
+<tr><td>Second</td><td>Two figures at the waterfront (<a href="../asm/61625.html">61625</a>)</td><td>27.3%</td><td>10.9%</td></tr>
+<tr><td>Second</td><td>The getaway car from above (<a href="../asm/60526.html">60526</a>)</td><td>25.8%</td><td>10.3%</td></tr>
+</table>
+<div class="paragraph">
+So the waterfront and the getaway car are the rarest backgrounds, each shown only about one line in ten, and a year that uses the second table never shows the two table scenes or the doorway. The percentages come from counting the random routine's 256 raw values (the same method as <a href="facts.html#yeargoesby">the animation entry</a>) and ignore the "never the same twice" re-roll, which shifts the odds a little depending on what is on screen. They are not measured from play.
+</div>
+</div>
+</div>
+<div><span id="im2"></span></div>
+<div class="box box-1">
+<div class="box-title">Interrupt mode 2 and the 257-byte table</div>
+<div class="paragraph">
+<div class="paragraph">
+The Z80 can answer the Spectrum's 50-times-a-second screen interrupt in three ways. In mode 1, the Spectrum's normal mode, it jumps to the ROM, which scans the keyboard and counts frames. In mode 2 (IM 2) the CPU builds an address from the I register (the high byte) and a byte that the hardware puts on the bus (the low byte), reads a 16-bit vector from that address and jumps to it. The Spectrum puts no reliable byte on the bus, so the low byte is effectively random, and programs get round that with a 257-byte table in which every byte is the same.
+</div>
+<div class="paragraph">
+Mugsy does exactly that. The table at <a href="../asm/53504.html">53504</a> is filled with 208, so whatever the low byte is, the vector read is 208 &times; 257 = 53456 ($D0D0), and a <code>JP</code> sits there (<a href="../asm/53456.html">53456</a>). The code that starts an animation or the shootout (<a href="../asm/33994.html">33994</a>, <a href="../asm/42112.html">42112</a>) patches the address in that jump to its own interrupt routine (<a href="../asm/34069.html">34069</a> for the animations, <a href="../asm/48539.html">48539</a> for the shootout), sets I to 209 (the table's high byte, $D1), selects IM 2 and enables interrupts. From then on the routine runs fifty times a second without the main program doing anything: for the animations it counts down a timer and sets a "tick" flag that the animation steps wait for, which keeps the speed steady, and the shootout uses it to run its cooperative scheduler (see <a href="facts.html#scheduler">the shootout is a tiny multitasking system</a>). When it has finished, the game puts I back to 63 (the ROM's normal value) and returns to mode 1 so the ROM keyboard routines work again.
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

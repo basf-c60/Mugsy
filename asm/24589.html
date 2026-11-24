@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 24589</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24576.html">24576</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24589">Map</a></td>
+<td class="next">
+Next: <a href="24609.html">24609</a>
+</td>
+</tr>
+</table>
+<div class="description">24589: Main loop: play one game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Initialises the variables, shows Louey's greeting and then plays years until the game status flag at <a href="33888.html#33897">33897</a> is non-zero. A value of 2 means "another game"; 1 means "no more".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24589"></span>24589</td>
+<td class="instruction">CALL <a href="33937.html">33937</a></td>
+<td class="comment-1" rowspan="1">Initialise the VM variables and flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24592"></span>24592</td>
+<td class="instruction">LD IY,24609</td>
+<td class="comment-1" rowspan="1">Run the script at <a href="24609.html">24609</a>: Louey says "Hi Boss, it's Louey your sidekick here..."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24596"></span>24596</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the greeting script</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24599"></span>24599</td>
+<td class="instruction">CALL <a href="24614.html">24614</a></td>
+<td class="comment-1" rowspan="1">Play years until the game ends</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24602"></span>24602</td>
+<td class="instruction">LD A,(33897)</td>
+<td class="comment-1" rowspan="1">Pick up the game status flag (1=quit, 2=new game)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24605"></span>24605</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count down: 1 (quit) becomes 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24606"></span>24606</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return (and hang) if the player doesn't want another game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24607"></span>24607</td>
+<td class="instruction">JR <a href="24589.html#24589">24589</a></td>
+<td class="comment-1" rowspan="1">Otherwise start a new game</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24576.html">24576</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24589">Map</a></td>
+<td class="next">
+Next: <a href="24609.html">24609</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

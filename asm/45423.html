@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45423</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45353.html">45353</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45423">Map</a></td>
+<td class="next">
+Next: <a href="45438.html">45438</a>
+</td>
+</tr>
+</table>
+<div class="description">45423: Shootout: step a figure in its current direction</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45423"></span>45423</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the figure's screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45424"></span>45424</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45426"></span>45426</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45427"></span>45427</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45428"></span>45428</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45430"></span>45430</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45431"></span>45431</td>
+<td class="instruction">LD A,(42336)</td>
+<td class="comment-1" rowspan="1">A=the direction code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45434"></span>45434</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45436"></span>45436</td>
+<td class="instruction">JR NZ,<a href="45438.html#45454">45454</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45353.html">45353</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45423">Map</a></td>
+<td class="next">
+Next: <a href="45438.html">45438</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

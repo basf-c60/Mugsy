@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30342</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30335.html">30335</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30342">Map</a></td>
+<td class="next">
+Next: <a href="30424.html">30424</a>
+</td>
+</tr>
+</table>
+<div class="description">30342: Compare BCDE with a variable</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Compares the value in BCDE with the variable whose number is the next byte in the VM stream.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BCDE</td>
+<td class="register-desc">First value</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">F</td>
+<td class="register-desc">Zero set if equal; carry set if the variable is less than BCDE</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30342"></span>30342</td>
+<td class="instruction">CALL <a href="31197.html">31197</a></td>
+<td class="comment-1" rowspan="1">BCDE=first variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30345"></span>30345</td>
+<td class="instruction">CALL <a href="30214.html">30214</a></td>
+<td class="comment-1" rowspan="1">Fetch the number of the second variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30348"></span>30348</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the variable number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30349"></span>30349</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">HL=variable number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30351"></span>30351</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=2*variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30352"></span>30352</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=4*variable number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30353"></span>30353</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the low word of the first value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30354"></span>30354</td>
+<td class="instruction">LD DE,33552</td>
+<td class="comment-1" rowspan="1">Point IY at the second variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30357"></span>30357</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=address of the second variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30358"></span>30358</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30359"></span>30359</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Copy HL into IY...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30360"></span>30360</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">...by way of the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30362"></span>30362</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Is the first value zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30363"></span>30363</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine C into the zero test...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30364"></span>30364</td>
+<td class="instruction">OR D</td>
+<td class="comment-1" rowspan="1">...and D...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30365"></span>30365</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">...and E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30366"></span>30366</td>
+<td class="instruction">JR Z,<a href="30342.html#30396">30396</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30368"></span>30368</td>
+<td class="instruction">LD A,(IY+3)</td>
+<td class="comment-1" rowspan="1">Do the signs differ?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30371"></span>30371</td>
+<td class="instruction">XOR B</td>
+<td class="comment-1" rowspan="1">Compare the sign bits: XOR the top bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30372"></span>30372</td>
+<td class="instruction">AND 128</td>
+<td class="comment-1" rowspan="1">Keep just the sign bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30374"></span>30374</td>
+<td class="instruction">JR NZ,<a href="30342.html#30417">30417</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30376"></span>30376</td>
+<td class="instruction">LD A,(IY+3)</td>
+<td class="comment-1" rowspan="1">Same sign: compare the high bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30379"></span>30379</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Compare the top bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30380"></span>30380</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if they differ (carry set if the second is lower)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30381"></span>30381</td>
+<td class="instruction">LD A,(IY+2)</td>
+<td class="comment-1" rowspan="1">Compare the next bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30384"></span>30384</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="1">Compare the next bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30385"></span>30385</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Different: that decides it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30386"></span>30386</td>
+<td class="instruction">LD A,(IY+1)</td>
+<td class="comment-1" rowspan="1">Next byte of the second value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30389"></span>30389</td>
+<td class="instruction">CP D</td>
+<td class="comment-1" rowspan="1">Compare with D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30390"></span>30390</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Different: that decides it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30391"></span>30391</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">Compare the low bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30394"></span>30394</td>
+<td class="instruction">CP E</td>
+<td class="comment-1" rowspan="1">Compare the lowest bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30395"></span>30395</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with the flags: Z=equal, C=second is smaller</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30396"></span>30396</td>
+<td class="instruction">BIT 7,(IY+3)</td>
+<td class="comment-1" rowspan="1">First value is zero: is the second negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30400"></span>30400</td>
+<td class="instruction">JR Z,<a href="30342.html#30404">30404</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30402"></span>30402</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">Carry set: second &lt; first</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30403"></span>30403</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with carry set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30404"></span>30404</td>
+<td class="instruction">LD A,(IY+3)</td>
+<td class="comment-1" rowspan="1">Set the zero flag if the second is also zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30407"></span>30407</td>
+<td class="instruction">OR (IY+2)</td>
+<td class="comment-1" rowspan="1">OR in the next byte...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30410"></span>30410</td>
+<td class="instruction">OR (IY+1)</td>
+<td class="comment-1" rowspan="1">...and the next...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30413"></span>30413</td>
+<td class="instruction">OR (IY+0)</td>
+<td class="comment-1" rowspan="1">...and the lowest</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30416"></span>30416</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return (the carry flag is reset by OR)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30417"></span>30417</td>
+<td class="instruction">BIT 7,B</td>
+<td class="comment-1" rowspan="1">Signs differ: is the first value negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30419"></span>30419</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return (zero and carry reset: second &gt; first) if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30420"></span>30420</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Otherwise reset the zero flag...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30422"></span>30422</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">...and set the carry flag: second &lt; first</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30423"></span>30423</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with NZ and carry set</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30335.html">30335</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30342">Map</a></td>
+<td class="next">
+Next: <a href="30424.html">30424</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

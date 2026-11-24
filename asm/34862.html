@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34862</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34817.html">34817</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34862">Map</a></td>
+<td class="next">
+Next: <a href="34912.html">34912</a>
+</td>
+</tr>
+</table>
+<div class="description">34862: Getaway car animation: draw the next frame of the animation at 21260</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34862"></span>34862</td>
+<td class="instruction">LD A,(34068)</td>
+<td class="comment-1" rowspan="1">A=the tick flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34865"></span>34865</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34866"></span>34866</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if no tick has happened</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34867"></span>34867</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34868"></span>34868</td>
+<td class="instruction">LD (34068),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34871"></span>34871</td>
+<td class="instruction">LD HL,(39453)</td>
+<td class="comment-1" rowspan="1">HL=the frame list position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34874"></span>34874</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the next frame's address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34875"></span>34875</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34876"></span>34876</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34877"></span>34877</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34878"></span>34878</td>
+<td class="instruction">LD (39453),DE</td>
+<td class="comment-1" rowspan="1">Store the new position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34882"></span>34882</td>
+<td class="instruction">LD DE,21260</td>
+<td class="comment-1" rowspan="1">DE=the screen address (21260)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34885"></span>34885</td>
+<td class="instruction">LD B,13</td>
+<td class="comment-1" rowspan="1">B=13 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34887"></span>34887</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=a byte of the frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34888"></span>34888</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Put it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34889"></span>34889</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34890"></span>34890</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Down a pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34891"></span>34891</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34892"></span>34892</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Crossed into the next character row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34894"></span>34894</td>
+<td class="instruction">JR Z,<a href="34862.html#34899">34899</a></td>
+<td class="comment-1" rowspan="1">Yes: adjust</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34896"></span>34896</td>
+<td class="instruction">DJNZ <a href="34862.html#34887">34887</a></td>
+<td class="comment-1" rowspan="1">Loop for 13 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34898"></span>34898</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34899"></span>34899</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34900"></span>34900</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34902"></span>34902</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34903"></span>34903</td>
+<td class="instruction">JR C,<a href="34862.html#34896">34896</a></td>
+<td class="comment-1" rowspan="1">Carry: next third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34905"></span>34905</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34906"></span>34906</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34908"></span>34908</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34909"></span>34909</td>
+<td class="instruction">JP <a href="34862.html#34896">34896</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34817.html">34817</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34862">Map</a></td>
+<td class="next">
+Next: <a href="34912.html">34912</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

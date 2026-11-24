@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 35141</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="35000.html">35000</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#35141">Map</a></td>
+<td class="next">
+Next: <a href="35192.html">35192</a>
+</td>
+</tr>
+</table>
+<div class="description">35141: Draw part of the car (clipped)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="35141"></span>35141</td>
+<td class="instruction">ADD A,H</td>
+<td class="comment-1" rowspan="1">Add the offset to the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35142"></span>35142</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35143"></span>35143</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35144"></span>35144</td>
+<td class="instruction">ADD A,96</td>
+<td class="comment-1" rowspan="1">Add 96: three character rows down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35146"></span>35146</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35147"></span>35147</td>
+<td class="instruction">LD B,12</td>
+<td class="comment-1" rowspan="1">B=12 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35149"></span>35149</td>
+<td class="instruction">BIT 7,H</td>
+<td class="comment-1" rowspan="1">Is the left-clip flag set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35151"></span>35151</td>
+<td class="instruction">JR NZ,<a href="35141.html#35167">35167</a></td>
+<td class="comment-1" rowspan="1">Yes: clip on the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35153"></span>35153</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35154"></span>35154</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35156"></span>35156</td>
+<td class="instruction">CP 30</td>
+<td class="comment-1" rowspan="1">Column 30?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35158"></span>35158</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Yes: clipped on the right, return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35159"></span>35159</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=a graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35160"></span>35160</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Mask the screen byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35161"></span>35161</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35162"></span>35162</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35163"></span>35163</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35164"></span>35164</td>
+<td class="instruction">DJNZ <a href="35141.html#35153">35153</a></td>
+<td class="comment-1" rowspan="1">Loop for 12 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35166"></span>35166</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35167"></span>35167</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35168"></span>35168</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35170"></span>35170</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Column 3?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35172"></span>35172</td>
+<td class="instruction">JR Z,<a href="35141.html#35181">35181</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35174"></span>35174</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35175"></span>35175</td>
+<td class="instruction">JR Z,<a href="35141.html#35185">35185</a></td>
+<td class="comment-1" rowspan="1">Wrapped to column 0: adjust the third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35177"></span>35177</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35178"></span>35178</td>
+<td class="instruction">DJNZ <a href="35141.html#35167">35167</a></td>
+<td class="comment-1" rowspan="1">Loop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35180"></span>35180</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35181"></span>35181</td>
+<td class="instruction">RES 7,H</td>
+<td class="comment-1" rowspan="1">Clear the left-clip flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35183"></span>35183</td>
+<td class="instruction">JR <a href="35141.html#35153">35153</a></td>
+<td class="comment-1" rowspan="1">Start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35185"></span>35185</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35186"></span>35186</td>
+<td class="instruction">ADD A,8</td>
+<td class="comment-1" rowspan="1">Next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35188"></span>35188</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35189"></span>35189</td>
+<td class="instruction">JP <a href="35141.html#35177">35177</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="35000.html">35000</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#35141">Map</a></td>
+<td class="next">
+Next: <a href="35192.html">35192</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

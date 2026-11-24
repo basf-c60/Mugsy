@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 36617</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36616.html">36616</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36617">Map</a></td>
+<td class="next">
+Next: <a href="36663.html">36663</a>
+</td>
+</tr>
+</table>
+<div class="description">36617: Bar-room animation: animate the hoods walking through the club</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="36617"></span>36617</td>
+<td class="instruction">LD A,(36616)</td>
+<td class="comment-1" rowspan="1">A=the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36620"></span>36620</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36621"></span>36621</td>
+<td class="instruction">LD (36616),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36624"></span>36624</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Not time for a new frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36625"></span>36625</td>
+<td class="instruction">LD HL,(39924)</td>
+<td class="comment-1" rowspan="1">HL=the position in the walking hoods' list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36628"></span>36628</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the number of ticks this frame lasts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36629"></span>36629</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36630"></span>36630</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Zero marks the end of the list: stop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36631"></span>36631</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36632"></span>36632</td>
+<td class="instruction">LD (36616),A</td>
+<td class="comment-1" rowspan="1">Store it as the new counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36635"></span>36635</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Is the delay 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36637"></span>36637</td>
+<td class="instruction">LD B,1</td>
+<td class="comment-1" rowspan="1">B=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36639"></span>36639</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the list position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36640"></span>36640</td>
+<td class="instruction">CALL Z,<a href="41997.html">41997</a></td>
+<td class="comment-1" rowspan="1">If so, wait a moment (a step sound)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36643"></span>36643</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the list position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36644"></span>36644</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the low byte of the record address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36645"></span>36645</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36646"></span>36646</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36647"></span>36647</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36648"></span>36648</td>
+<td class="instruction">LD (39924),HL</td>
+<td class="comment-1" rowspan="1">Store the new list position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36651"></span>36651</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the record: the screen address then the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36652"></span>36652</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36653"></span>36653</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36654"></span>36654</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36655"></span>36655</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36656"></span>36656</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the screen address, DE=the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36657"></span>36657</td>
+<td class="instruction">CALL <a href="34097.html">34097</a></td>
+<td class="comment-1" rowspan="1">Draw the three-cell-wide sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36660"></span>36660</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Clear the zero flag: the step is not complete</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36662"></span>36662</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36616.html">36616</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36617">Map</a></td>
+<td class="next">
+Next: <a href="36663.html">36663</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

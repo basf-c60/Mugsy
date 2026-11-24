@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42940</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42931.html">42931</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42940">Map</a></td>
+<td class="next">
+Next: <a href="42957.html">42957</a>
+</td>
+</tr>
+</table>
+<div class="description">42940: Shootout: load a furniture descriptor into the furniture slot</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Copies the 10-byte descriptor at HL: 6 bytes (screen address and graphic data) and then 4 bytes (attribute address and colour) into the seventh figure record, which the interrupt routine draws.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42940"></span>42940</td>
+<td class="instruction">LD DE,42623</td>
+<td class="comment-1" rowspan="1">DE=where the furniture slot keeps its first six data bytes (<a href="42375.html#42623">42623</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42943"></span>42943</td>
+<td class="instruction">LD BC,6</td>
+<td class="comment-1" rowspan="1">BC=6 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42946"></span>42946</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy the screen position and graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42948"></span>42948</td>
+<td class="instruction">LD DE,42635</td>
+<td class="comment-1" rowspan="1">DE=where it keeps the attribute data (42635)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42951"></span>42951</td>
+<td class="instruction">LD BC,4</td>
+<td class="comment-1" rowspan="1">BC=4 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42954"></span>42954</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42956"></span>42956</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42931.html">42931</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42940">Map</a></td>
+<td class="next">
+Next: <a href="42957.html">42957</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

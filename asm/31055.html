@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31055</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31030.html">31030</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31055">Map</a></td>
+<td class="next">
+Next: <a href="31179.html">31179</a>
+</td>
+</tr>
+</table>
+<div class="description">31055: Divide the 64-bit number at <a href="31030.html">31030</a> by BCDE</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Shift-and-subtract long division. The quotient goes into <a href="31030.html#31038">31038</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31055"></span>31055</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">Clear the quotient</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31058"></span>31058</td>
+<td class="instruction">LD (31038),HL</td>
+<td class="comment-1" rowspan="1">Clear the quotient: bytes 0-1...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31061"></span>31061</td>
+<td class="instruction">LD (31040),HL</td>
+<td class="comment-1" rowspan="1">...bytes 2-3...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31064"></span>31064</td>
+<td class="instruction">LD (31042),HL</td>
+<td class="comment-1" rowspan="1">...bytes 4-5...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31067"></span>31067</td>
+<td class="instruction">LD (31044),HL</td>
+<td class="comment-1" rowspan="1">...and bytes 6-7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31070"></span>31070</td>
+<td class="instruction">LD (31046),DE</td>
+<td class="comment-1" rowspan="1">Store BCDE as the divisor (64 bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31074"></span>31074</td>
+<td class="instruction">LD (31048),BC</td>
+<td class="comment-1" rowspan="1">Divisor bytes 4-5 from BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31078"></span>31078</td>
+<td class="instruction">LD (31050),HL</td>
+<td class="comment-1" rowspan="1">Divisor bytes 6-7 are zero...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31081"></span>31081</td>
+<td class="instruction">LD (31052),HL</td>
+<td class="comment-1" rowspan="1">...(HL is still 0)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31084"></span>31084</td>
+<td class="instruction">CALL <a href="30893.html">30893</a></td>
+<td class="comment-1" rowspan="1">Is the dividend smaller than the divisor?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31087"></span>31087</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Keep the comparison result...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31088"></span>31088</td>
+<td class="instruction">CALL <a href="30945.html">30945</a></td>
+<td class="comment-1" rowspan="1">Undo the trial subtraction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31091"></span>31091</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">...and get it back after undoing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31092"></span>31092</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return with a quotient of 0 if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31093"></span>31093</td>
+<td class="instruction">LD HL,31037</td>
+<td class="comment-1" rowspan="1">Find the highest non-zero byte of the dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31096"></span>31096</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1">Examine up to 8 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31098"></span>31098</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the byte of the dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31099"></span>31099</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is it zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31100"></span>31100</td>
+<td class="instruction">JR NZ,<a href="31055.html#31106">31106</a></td>
+<td class="comment-1" rowspan="1">Found a non-zero byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31102"></span>31102</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Zero: look at the next lower byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31103"></span>31103</td>
+<td class="instruction">DJNZ <a href="31055.html#31098">31098</a></td>
+<td class="comment-1" rowspan="1">Keep looking down the bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31105"></span>31105</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">The dividend is zero: quotient 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31106"></span>31106</td>
+<td class="instruction">LD C,128</td>
+<td class="comment-1" rowspan="1">Find its highest set bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31108"></span>31108</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31109"></span>31109</td>
+<td class="instruction">AND C</td>
+<td class="comment-1" rowspan="1">Test bit C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31110"></span>31110</td>
+<td class="instruction">JR NZ,<a href="31055.html#31116">31116</a></td>
+<td class="comment-1" rowspan="1">Found the highest set bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31112"></span>31112</td>
+<td class="instruction">RRC C</td>
+<td class="comment-1" rowspan="1">Try the next lower bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31114"></span>31114</td>
+<td class="instruction">JR <a href="31055.html#31108">31108</a></td>
+<td class="comment-1" rowspan="1">Keep looking</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31116"></span>31116</td>
+<td class="instruction">LD DE,16</td>
+<td class="comment-1" rowspan="1">Point DE at the corresponding byte of the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31119"></span>31119</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=the matching byte of the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31120"></span>31120</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=address of the divisor byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31121"></span>31121</td>
+<td class="instruction">LD B,1</td>
+<td class="comment-1" rowspan="1">B counts the shifts needed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31123"></span>31123</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Shift the divisor left until its top bit lines up with the dividend's</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31124"></span>31124</td>
+<td class="instruction">AND C</td>
+<td class="comment-1" rowspan="1">Is the same bit set in the divisor?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31125"></span>31125</td>
+<td class="instruction">JR NZ,<a href="31055.html#31136">31136</a></td>
+<td class="comment-1" rowspan="1">The bits line up: stop shifting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31127"></span>31127</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Not yet: count another shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31128"></span>31128</td>
+<td class="instruction">LD HL,31046</td>
+<td class="comment-1" rowspan="1">HL=the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31131"></span>31131</td>
+<td class="instruction">CALL <a href="30871.html">30871</a></td>
+<td class="comment-1" rowspan="1">Shift the divisor left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31134"></span>31134</td>
+<td class="instruction">JR <a href="31055.html#31123">31123</a></td>
+<td class="comment-1" rowspan="1">Check again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31136"></span>31136</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the shift count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31137"></span>31137</td>
+<td class="instruction">LD HL,31038</td>
+<td class="comment-1" rowspan="1">Shift the quotient left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31140"></span>31140</td>
+<td class="instruction">CALL <a href="30871.html">30871</a></td>
+<td class="comment-1" rowspan="1">Shift the quotient left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31143"></span>31143</td>
+<td class="instruction">CALL <a href="30893.html">30893</a></td>
+<td class="comment-1" rowspan="1">Subtract the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31146"></span>31146</td>
+<td class="instruction">JR Z,<a href="31055.html#31153">31153</a></td>
+<td class="comment-1" rowspan="1">Jump if the result was not negative</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31148"></span>31148</td>
+<td class="instruction">CALL <a href="30945.html">30945</a></td>
+<td class="comment-1" rowspan="1">Otherwise add it back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31151"></span>31151</td>
+<td class="instruction">JR <a href="31055.html#31161">31161</a></td>
+<td class="comment-1" rowspan="1">Skip the remaining bit-setting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31153"></span>31153</td>
+<td class="instruction">LD A,(31038)</td>
+<td class="comment-1" rowspan="1">Set the lowest bit of the quotient</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31156"></span>31156</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">...a 1 for a successful subtraction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31158"></span>31158</td>
+<td class="instruction">LD (31038),A</td>
+<td class="comment-1" rowspan="1">Store the quotient</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31161"></span>31161</td>
+<td class="instruction">LD HL,31030</td>
+<td class="comment-1" rowspan="1">Shift the dividend left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31164"></span>31164</td>
+<td class="instruction">CALL <a href="30871.html">30871</a></td>
+<td class="comment-1" rowspan="1">Shift the dividend left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31167"></span>31167</td>
+<td class="instruction">DJNZ <a href="31055.html#31137">31137</a></td>
+<td class="comment-1" rowspan="1">Repeat for each bit position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31169"></span>31169</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the shift count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31170"></span>31170</td>
+<td class="instruction">LD HL,31030</td>
+<td class="comment-1" rowspan="1">Shift the remainder back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31173"></span>31173</td>
+<td class="instruction">CALL <a href="30882.html">30882</a></td>
+<td class="comment-1" rowspan="1">Shift the remainder right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31176"></span>31176</td>
+<td class="instruction">DJNZ <a href="31055.html#31170">31170</a></td>
+<td class="comment-1" rowspan="1">Once for each shift made</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31178"></span>31178</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the quotient is in <a href="31030.html#31038">31038</a> (64 bits)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31030.html">31030</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31055">Map</a></td>
+<td class="next">
+Next: <a href="31179.html">31179</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

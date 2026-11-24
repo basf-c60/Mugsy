@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29236</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29161.html">29161</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29236">Map</a></td>
+<td class="next">
+Next: <a href="29248.html">29248</a>
+</td>
+</tr>
+</table>
+<div class="description">29236: Compare IX and IY</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the carry flag set if IX&lt;IY.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29236"></span>29236</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29237"></span>29237</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save IX...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29239"></span>29239</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">...in HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29240"></span>29240</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save IY...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29242"></span>29242</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">...in DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29243"></span>29243</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29244"></span>29244</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Subtract: carry set if IX is less than IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29246"></span>29246</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29247"></span>29247</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29161.html">29161</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29236">Map</a></td>
+<td class="next">
+Next: <a href="29248.html">29248</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

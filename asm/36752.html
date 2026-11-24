@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 36752</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36751.html">36751</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36752">Map</a></td>
+<td class="next">
+Next: <a href="36787.html">36787</a>
+</td>
+</tr>
+</table>
+<div class="description">36752: Bar-room animation: animate figure 2 (at 16769)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="36752"></span>36752</td>
+<td class="instruction">LD A,(36751)</td>
+<td class="comment-1" rowspan="1">A=figure 2's counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36755"></span>36755</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36756"></span>36756</td>
+<td class="instruction">LD (36751),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36759"></span>36759</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Not time to change yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36760"></span>36760</td>
+<td class="instruction">LD BC,2564</td>
+<td class="comment-1" rowspan="1">BC=the delay range (minimum 10, up to 4 more)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36763"></span>36763</td>
+<td class="instruction">CALL <a href="36610.html">36610</a></td>
+<td class="comment-1" rowspan="1">A=a random delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36766"></span>36766</td>
+<td class="instruction">LD (36751),A</td>
+<td class="comment-1" rowspan="1">Set the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36769"></span>36769</td>
+<td class="instruction">LD HL,(40302)</td>
+<td class="comment-1" rowspan="1">HL=figure 2's frame pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36772"></span>36772</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the next frame's address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36773"></span>36773</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36774"></span>36774</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36775"></span>36775</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36776"></span>36776</td>
+<td class="instruction">LD (40302),DE</td>
+<td class="comment-1" rowspan="1">Store the pointer to the next frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36780"></span>36780</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36781"></span>36781</td>
+<td class="instruction">LD HL,16769</td>
+<td class="comment-1" rowspan="1">HL=figure 2's screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36784"></span>36784</td>
+<td class="instruction">JP <a href="34093.html">34093</a></td>
+<td class="comment-1" rowspan="1">Draw the sprite</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36751.html">36751</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36752">Map</a></td>
+<td class="next">
+Next: <a href="36787.html">36787</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

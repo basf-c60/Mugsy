@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45044</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44953.html">44953</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45044">Map</a></td>
+<td class="next">
+Next: <a href="45079.html">45079</a>
+</td>
+</tr>
+</table>
+<div class="description">45044: Shootout: remove the gun flash</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45044"></span>45044</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45045"></span>45045</td>
+<td class="instruction">CALL <a href="45626.html">45626</a></td>
+<td class="comment-1" rowspan="1">Convert to an attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45048"></span>45048</td>
+<td class="instruction">LD A,(42336)</td>
+<td class="comment-1" rowspan="1">A=the state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45051"></span>45051</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45053"></span>45053</td>
+<td class="instruction">JR NZ,<a href="45044.html#45061">45061</a></td>
+<td class="comment-1" rowspan="1">Yes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45055"></span>45055</td>
+<td class="instruction">LD HL,96</td>
+<td class="comment-1" rowspan="1">HL=96</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45058"></span>45058</td>
+<td class="instruction">JP <a href="45044.html#45064">45064</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45061"></span>45061</td>
+<td class="instruction">LD HL,95</td>
+<td class="comment-1" rowspan="1">HL=95</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45064"></span>45064</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=the cell ahead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45065"></span>45065</td>
+<td class="instruction">LD A,58</td>
+<td class="comment-1" rowspan="1">A=58: furniture</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45067"></span>45067</td>
+<td class="instruction">LD BC,4</td>
+<td class="comment-1" rowspan="1">BC=4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45070"></span>45070</td>
+<td class="instruction">CPI</td>
+<td class="comment-1" rowspan="1">Look for it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45072"></span>45072</td>
+<td class="instruction">JR Z,<a href="45044.html#45077">45077</a></td>
+<td class="comment-1" rowspan="1">Found</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45074"></span>45074</td>
+<td class="instruction">JP PE,<a href="45044.html#45070">45070</a></td>
+<td class="comment-1" rowspan="1">Keep looking</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45077"></span>45077</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45078"></span>45078</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44953.html">44953</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45044">Map</a></td>
+<td class="next">
+Next: <a href="45079.html">45079</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

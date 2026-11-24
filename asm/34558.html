@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34558</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34537.html">34537</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34558">Map</a></td>
+<td class="next">
+Next: <a href="34579.html">34579</a>
+</td>
+</tr>
+</table>
+<div class="description">34558: Getaway step 7</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34558"></span>34558</td>
+<td class="instruction">CALL <a href="34862.html">34862</a></td>
+<td class="comment-1" rowspan="1">Draw the next frame of the street animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34561"></span>34561</td>
+<td class="instruction">CALL <a href="35366.html">35366</a></td>
+<td class="comment-1" rowspan="1">Draw the next frame of the figure at 17728</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34564"></span>34564</td>
+<td class="instruction">CALL <a href="35284.html">35284</a></td>
+<td class="comment-1" rowspan="1">Play the delay sound and animate the figures</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34567"></span>34567</td>
+<td class="instruction">CALL <a href="35251.html">35251</a></td>
+<td class="comment-1" rowspan="1">Draw the next frame of the figure at 18838</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34570"></span>34570</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if the figure's frame did not change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34571"></span>34571</td>
+<td class="instruction">LD A,(34294)</td>
+<td class="comment-1" rowspan="1">A=the step counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34574"></span>34574</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34575"></span>34575</td>
+<td class="instruction">LD (34294),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34578"></span>34578</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return (Z set when the counter ran out)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34537.html">34537</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34558">Map</a></td>
+<td class="next">
+Next: <a href="34579.html">34579</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

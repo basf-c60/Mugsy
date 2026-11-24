@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28879</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28757.html">28757</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28879">Map</a></td>
+<td class="next">
+Next: <a href="28885.html">28885</a>
+</td>
+</tr>
+</table>
+<div class="description">28879: Add the bubble margin for the current line</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+L=L+(IY+0).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28879"></span>28879</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">A=margin for this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28882"></span>28882</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="1">Add it to the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28883"></span>28883</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the indented column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28884"></span>28884</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28757.html">28757</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28879">Map</a></td>
+<td class="next">
+Next: <a href="28885.html">28885</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

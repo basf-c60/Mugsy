@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28905</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28895.html">28895</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28905">Map</a></td>
+<td class="next">
+Next: <a href="29006.html">29006</a>
+</td>
+</tr>
+</table>
+<div class="description">28905: Draw the outline of a speech bubble</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Draws the rounded white bubble (paper 7) with one blank line above and below the text area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28905"></span>28905</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28907"></span>28907</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the registers this routine uses...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28908"></span>28908</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">...(HL=screen position, DE=width table)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28909"></span>28909</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">...and BC, which will count rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28910"></span>28910</td>
+<td class="instruction">CALL <a href="28895.html">28895</a></td>
+<td class="comment-1" rowspan="1">Start one row above the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28913"></span>28913</td>
+<td class="instruction">LD A,(28755)</td>
+<td class="comment-1" rowspan="1">B=number of lines in the top half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28916"></span>28916</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=lines in the top half...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28917"></span>28917</td>
+<td class="instruction">LD A,(28756)</td>
+<td class="comment-1" rowspan="1">...plus the lines in the bottom half (28756)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28920"></span>28920</td>
+<td class="instruction">ADD A,B</td>
+<td class="comment-1" rowspan="1">...to give the number of rows above the middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28921"></span>28921</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28922"></span>28922</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=pixel offset 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28924"></span>28924</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the screen position for the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28925"></span>28925</td>
+<td class="instruction">CALL <a href="28879.html">28879</a></td>
+<td class="comment-1" rowspan="1">Indent by the margin</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28928"></span>28928</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=width of this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28929"></span>28929</td>
+<td class="instruction">CALL <a href="29006.html">29006</a></td>
+<td class="comment-1" rowspan="1">Paint the white background for it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28932"></span>28932</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Back to the start of this row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28933"></span>28933</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Next margin entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28935"></span>28935</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next line width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28936"></span>28936</td>
+<td class="instruction">CALL <a href="28885.html">28885</a></td>
+<td class="comment-1" rowspan="1">Move down a row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28939"></span>28939</td>
+<td class="instruction">DJNZ <a href="28905.html#28922">28922</a></td>
+<td class="comment-1" rowspan="1">Repeat for the top half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28941"></span>28941</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the screen position of the middle row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28942"></span>28942</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Back to the widest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28943"></span>28943</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">Back to the widest line's margin entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28945"></span>28945</td>
+<td class="instruction">CALL <a href="28879.html">28879</a></td>
+<td class="comment-1" rowspan="1">Indent by the margin</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28948"></span>28948</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the width of the widest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28949"></span>28949</td>
+<td class="instruction">CALL <a href="29006.html">29006</a></td>
+<td class="comment-1" rowspan="1">Paint the blank row above the text (as wide as the line below it)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28952"></span>28952</td>
+<td class="instruction">LD A,(28755)</td>
+<td class="comment-1" rowspan="1">Is there an odd middle line?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28955"></span>28955</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test for no odd middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28956"></span>28956</td>
+<td class="instruction">JR Z,<a href="28905.html#28961">28961</a></td>
+<td class="comment-1" rowspan="1">Skip the extra step if there is none</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28958"></span>28958</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Odd middle line: step back one more width...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28959"></span>28959</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">...and one more margin entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28961"></span>28961</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the screen position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28962"></span>28962</td>
+<td class="instruction">CALL <a href="28885.html">28885</a></td>
+<td class="comment-1" rowspan="1">Move down a row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28965"></span>28965</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the screen position of the middle row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28966"></span>28966</td>
+<td class="instruction">CALL <a href="28879.html">28879</a></td>
+<td class="comment-1" rowspan="1">Indent by the margin of the middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28969"></span>28969</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=width of the middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28970"></span>28970</td>
+<td class="instruction">CALL <a href="29006.html">29006</a></td>
+<td class="comment-1" rowspan="1">Paint the middle row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28973"></span>28973</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the screen position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28974"></span>28974</td>
+<td class="instruction">LD A,(28756)</td>
+<td class="comment-1" rowspan="1">B=number of lines in the bottom half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28977"></span>28977</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=lines in the bottom half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28978"></span>28978</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test for none</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28979"></span>28979</td>
+<td class="instruction">JR Z,<a href="28905.html#29000">29000</a></td>
+<td class="comment-1" rowspan="1">Jump if there are none</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28981"></span>28981</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=pixel offset 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28983"></span>28983</td>
+<td class="instruction">CALL <a href="28885.html">28885</a></td>
+<td class="comment-1" rowspan="1">Move down a row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28986"></span>28986</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the screen position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28987"></span>28987</td>
+<td class="instruction">CALL <a href="28879.html">28879</a></td>
+<td class="comment-1" rowspan="1">Indent by the margin</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28990"></span>28990</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the width of the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28991"></span>28991</td>
+<td class="instruction">CALL <a href="29006.html">29006</a></td>
+<td class="comment-1" rowspan="1">Paint the background for this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28994"></span>28994</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the screen position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28995"></span>28995</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">Previous margin</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28997"></span>28997</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Previous width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28998"></span>28998</td>
+<td class="instruction">DJNZ <a href="28905.html#28981">28981</a></td>
+<td class="comment-1" rowspan="1">Repeat for the bottom half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29000"></span>29000</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29001"></span>29001</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">...DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29002"></span>29002</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">...HL...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29003"></span>29003</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">...and IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29005"></span>29005</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the whole bubble background is painted</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28895.html">28895</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28905">Map</a></td>
+<td class="next">
+Next: <a href="29006.html">29006</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

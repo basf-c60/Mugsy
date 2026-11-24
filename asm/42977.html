@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42977</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42970.html">42970</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42977">Map</a></td>
+<td class="next">
+Next: <a href="43018.html">43018</a>
+</td>
+</tr>
+</table>
+<div class="description">42977: Shootout: main loop (the figure dispatcher)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The shootout is a small cooperative scheduler. Each of the six figures (bystander 1, bystander 2, Mugsy, the hit man, Mugsy's bullet and the hit man's bullet) has a timer byte at 42250+n and a handler address in the table at <a href="42238.html">42238</a>. A timer of 0 means that the figure's countdown is running; the interrupt routine <a href="48539.html">48539</a> ticks the countdown and, when it reaches zero, draws the figure's next frame and sets the timer to 1. A timer of 1 tells this routine that the figure is ready for new orders: it runs the handler, which reads the next byte of the figure's route script (or the keyboard, for Mugsy), moves it, and leaves the timer to be decremented back to 0. A timer of 3 parks a figure for good.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42977"></span>42977</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42978"></span>42978</td>
+<td class="instruction">LD (42333),A</td>
+<td class="comment-1" rowspan="1">Clear the "somebody is down" flag for this pass of the loop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42981"></span>42981</td>
+<td class="instruction">LD A,(42311)</td>
+<td class="comment-1" rowspan="1">A=number of figure slots in use (7 while the furniture is drawn, then 6)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42984"></span>42984</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the slot count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42985"></span>42985</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=0: the slot number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42987"></span>42987</td>
+<td class="instruction">LD HL,42250</td>
+<td class="comment-1" rowspan="1">HL=the slot timers (<a href="42250.html">42250</a>...)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42990"></span>42990</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: a timer of 1 means the figure is ready for new orders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42992"></span>42992</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">Is this slot's timer 1?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42993"></span>42993</td>
+<td class="instruction">JR NZ,<a href="42977.html#43013">43013</a></td>
+<td class="comment-1" rowspan="1">No: leave this figure alone for now</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42995"></span>42995</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the loop counter and slot number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42996"></span>42996</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the timer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42997"></span>42997</td>
+<td class="instruction">LD B,0</td>
+<td class="comment-1" rowspan="1">B=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42999"></span>42999</td>
+<td class="instruction">RL C</td>
+<td class="comment-1" rowspan="1">C=slot number*2: the offset into the handler table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43001"></span>43001</td>
+<td class="instruction">LD HL,42238</td>
+<td class="comment-1" rowspan="1">HL=handler table (<a href="42238.html">42238</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43004"></span>43004</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">Point at this slot's entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43005"></span>43005</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=low byte of the handler address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43006"></span>43006</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43007"></span>43007</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43008"></span>43008</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=handler address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43009"></span>43009</td>
+<td class="instruction">JP (HL)</td>
+<td class="comment-1" rowspan="1">Run the handler (it ends with JP <a href="42977.html#43010">43010</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43010"></span>43010</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the timer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43011"></span>43011</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the loop counter and slot number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43012"></span>43012</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">Timer 1 becomes 0: the interrupt routine now counts this figure's next move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43013"></span>43013</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next slot's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43014"></span>43014</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Next slot number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43015"></span>43015</td>
+<td class="instruction">DJNZ <a href="42977.html#42990">42990</a></td>
+<td class="comment-1" rowspan="1">Loop for all slots</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43017"></span>43017</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42970.html">42970</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42977">Map</a></td>
+<td class="next">
+Next: <a href="43018.html">43018</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

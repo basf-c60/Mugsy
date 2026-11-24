@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 41997</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37101.html">37101</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41997">Map</a></td>
+<td class="next">
+Next: <a href="42014.html">42014</a>
+</td>
+</tr>
+</table>
+<div class="description">41997: Delay for BC units, B times</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41997"></span>41997</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the repeat count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41998"></span>41998</td>
+<td class="instruction">CALL <a href="42026.html">42026</a></td>
+<td class="comment-1" rowspan="1">Play the shootout sound effect</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42001"></span>42001</td>
+<td class="instruction">LD BC,(41993)</td>
+<td class="comment-1" rowspan="1">BC=the delay length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42005"></span>42005</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Count the delay down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42006"></span>42006</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Test BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42007"></span>42007</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">...for zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42008"></span>42008</td>
+<td class="instruction">JR NZ,<a href="41997.html#42005">42005</a></td>
+<td class="comment-1" rowspan="1">Loop until it is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42010"></span>42010</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the repeat count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42011"></span>42011</td>
+<td class="instruction">DJNZ <a href="41997.html#41997">41997</a></td>
+<td class="comment-1" rowspan="1">Repeat B times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42013"></span>42013</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="37101.html">37101</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41997">Map</a></td>
+<td class="next">
+Next: <a href="42014.html">42014</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

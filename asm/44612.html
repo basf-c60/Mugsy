@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44612</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44558.html">44558</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44612">Map</a></td>
+<td class="next">
+Next: <a href="44726.html">44726</a>
+</td>
+</tr>
+</table>
+<div class="description">44612: Shootout: work out the left and upper limits for a figure</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44612"></span>44612</td>
+<td class="instruction">LD A,(IX+18)</td>
+<td class="comment-1" rowspan="1">A=the figure's screen address, high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44615"></span>44615</td>
+<td class="instruction">CP 72</td>
+<td class="comment-1" rowspan="1">Is it in the top part of the screen?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44617"></span>44617</td>
+<td class="instruction">JR NC,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">No: use the default limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44619"></span>44619</td>
+<td class="instruction">LD A,(IX+17)</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44622"></span>44622</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44623"></span>44623</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44625"></span>44625</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44626"></span>44626</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=the full byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44627"></span>44627</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44629"></span>44629</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44630"></span>44630</td>
+<td class="instruction">CP 128</td>
+<td class="comment-1" rowspan="1">Row 4 (128)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44632"></span>44632</td>
+<td class="instruction">JR NZ,<a href="44612.html#44646">44646</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44634"></span>44634</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44635"></span>44635</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Column 4?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44637"></span>44637</td>
+<td class="instruction">JR NZ,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">No: default</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44639"></span>44639</td>
+<td class="instruction">LD A,4</td>
+<td class="comment-1" rowspan="1">A=4: left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44641"></span>44641</td>
+<td class="instruction">LD HL,16512</td>
+<td class="comment-1" rowspan="1">HL=16512</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44644"></span>44644</td>
+<td class="instruction">JR <a href="44612.html#44719">44719</a></td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44646"></span>44646</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44647"></span>44647</td>
+<td class="instruction">CP 160</td>
+<td class="comment-1" rowspan="1">Row 5 (160)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44649"></span>44649</td>
+<td class="instruction">JR NZ,<a href="44612.html#44663">44663</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44651"></span>44651</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44652"></span>44652</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Column below 3?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44654"></span>44654</td>
+<td class="instruction">JR C,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">Yes: default</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44656"></span>44656</td>
+<td class="instruction">LD A,3</td>
+<td class="comment-1" rowspan="1">A=3: left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44658"></span>44658</td>
+<td class="instruction">LD HL,16544</td>
+<td class="comment-1" rowspan="1">HL=16544</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44661"></span>44661</td>
+<td class="instruction">JR <a href="44612.html#44719">44719</a></td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44663"></span>44663</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44664"></span>44664</td>
+<td class="instruction">CP 192</td>
+<td class="comment-1" rowspan="1">Row 6 (192)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44666"></span>44666</td>
+<td class="instruction">JR NZ,<a href="44612.html#44680">44680</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44668"></span>44668</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44669"></span>44669</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Column below 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44671"></span>44671</td>
+<td class="instruction">JR C,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">Yes: default</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44673"></span>44673</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="1">A=2: left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44675"></span>44675</td>
+<td class="instruction">LD HL,16576</td>
+<td class="comment-1" rowspan="1">HL=16576</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44678"></span>44678</td>
+<td class="instruction">JR Z,<a href="44612.html#44719">44719</a></td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44680"></span>44680</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44681"></span>44681</td>
+<td class="instruction">CP 224</td>
+<td class="comment-1" rowspan="1">Row 7 (224)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44683"></span>44683</td>
+<td class="instruction">JR NZ,<a href="44612.html#44697">44697</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44685"></span>44685</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44686"></span>44686</td>
+<td class="instruction">AND 3</td>
+<td class="comment-1" rowspan="1">Low two bits of the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44688"></span>44688</td>
+<td class="instruction">JR Z,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">Zero: default</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44690"></span>44690</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44692"></span>44692</td>
+<td class="instruction">LD HL,16608</td>
+<td class="comment-1" rowspan="1">HL=16608</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44695"></span>44695</td>
+<td class="instruction">JR <a href="44612.html#44719">44719</a></td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44697"></span>44697</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44698"></span>44698</td>
+<td class="instruction">CP 0</td>
+<td class="comment-1" rowspan="1">Row 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44700"></span>44700</td>
+<td class="instruction">JR NZ,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">No: default</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44702"></span>44702</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44703"></span>44703</td>
+<td class="instruction">CP 0</td>
+<td class="comment-1" rowspan="1">Column 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44705"></span>44705</td>
+<td class="instruction">JR NZ,<a href="44612.html#44714">44714</a></td>
+<td class="comment-1" rowspan="1">No: default</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44707"></span>44707</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44709"></span>44709</td>
+<td class="instruction">LD HL,18432</td>
+<td class="comment-1" rowspan="1">HL=18432</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44712"></span>44712</td>
+<td class="instruction">JR <a href="44612.html#44719">44719</a></td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44714"></span>44714</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: no left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44716"></span>44716</td>
+<td class="instruction">LD HL,16512</td>
+<td class="comment-1" rowspan="1">HL=16512: the top of the playing area</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44719"></span>44719</td>
+<td class="instruction">LD (42298),HL</td>
+<td class="comment-1" rowspan="1">Store the upper limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44722"></span>44722</td>
+<td class="instruction">LD (42314),A</td>
+<td class="comment-1" rowspan="1">Store the left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44725"></span>44725</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44558.html">44558</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44612">Map</a></td>
+<td class="next">
+Next: <a href="44726.html">44726</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

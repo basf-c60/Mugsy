@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32400</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32365.html">32365</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32400">Map</a></td>
+<td class="next">
+Next: <a href="32434.html">32434</a>
+</td>
+</tr>
+</table>
+<div class="description">32400: Read an x coordinate (absolute or delta)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32400"></span>32400</td>
+<td class="instruction">LD D,1</td>
+<td class="comment-1" rowspan="1">D=1: read one bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32402"></span>32402</td>
+<td class="instruction">CALL <a href="32539.html">32539</a></td>
+<td class="comment-1" rowspan="1">Read it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32405"></span>32405</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32406"></span>32406</td>
+<td class="instruction">JR Z,<a href="32400.html#32413">32413</a></td>
+<td class="comment-1" rowspan="1">Zero: a short delta follows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32408"></span>32408</td>
+<td class="instruction">LD D,8</td>
+<td class="comment-1" rowspan="1">D=8: an absolute coordinate has eight bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32410"></span>32410</td>
+<td class="instruction">JP <a href="32539.html">32539</a></td>
+<td class="comment-1" rowspan="1">Read it and return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32413"></span>32413</td>
+<td class="instruction">LD A,(IY+5)</td>
+<td class="comment-1" rowspan="1">A=the number of bits in a short x delta (from the picture header)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32416"></span>32416</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the number of bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32417"></span>32417</td>
+<td class="instruction">CALL <a href="32539.html">32539</a></td>
+<td class="comment-1" rowspan="1">Read the delta (left-aligned in A)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32420"></span>32420</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32421"></span>32421</td>
+<td class="instruction">LD A,(IY+5)</td>
+<td class="comment-1" rowspan="1">A=the number of bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32424"></span>32424</td>
+<td class="instruction">SRA D</td>
+<td class="comment-1" rowspan="1">Shift right, keeping the sign...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32426"></span>32426</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">...until the delta is right-aligned</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32427"></span>32427</td>
+<td class="instruction">CP 8</td>
+<td class="comment-1" rowspan="1">...(8 minus the number of bits times)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32429"></span>32429</td>
+<td class="instruction">JR NZ,<a href="32400.html#32424">32424</a></td>
+<td class="comment-1" rowspan="1">Repeat</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32431"></span>32431</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the signed delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32432"></span>32432</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1">Add the old x (C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32433"></span>32433</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Add it to the old x</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32365.html">32365</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32400">Map</a></td>
+<td class="next">
+Next: <a href="32434.html">32434</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

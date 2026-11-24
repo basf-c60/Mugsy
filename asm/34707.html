@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34707</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34643.html">34643</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34707">Map</a></td>
+<td class="next">
+Next: <a href="34759.html">34759</a>
+</td>
+</tr>
+</table>
+<div class="description">34707: Getaway car animation: move the second hood</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34707"></span>34707</td>
+<td class="instruction">LD A,(34293)</td>
+<td class="comment-1" rowspan="1">A=the second hood's counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34710"></span>34710</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34711"></span>34711</td>
+<td class="instruction">LD (34293),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34714"></span>34714</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Not time to move yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34715"></span>34715</td>
+<td class="instruction">LD A,5</td>
+<td class="comment-1" rowspan="1">A=5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34717"></span>34717</td>
+<td class="instruction">LD (34293),A</td>
+<td class="comment-1" rowspan="1">Reload the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34720"></span>34720</td>
+<td class="instruction">LD HL,(37933)</td>
+<td class="comment-1" rowspan="1">HL=the second hood's screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34723"></span>34723</td>
+<td class="instruction">LD A,(37937)</td>
+<td class="comment-1" rowspan="1">A=the pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34726"></span>34726</td>
+<td class="instruction">ADD A,2</td>
+<td class="comment-1" rowspan="1">Add 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34728"></span>34728</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Keep it within a byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34730"></span>34730</td>
+<td class="instruction">LD (37937),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34733"></span>34733</td>
+<td class="instruction">JR NZ,<a href="34707.html#34739">34739</a></td>
+<td class="comment-1" rowspan="1">Still inside the byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34735"></span>34735</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34736"></span>34736</td>
+<td class="instruction">LD (37933),HL</td>
+<td class="comment-1" rowspan="1">Store the new address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34739"></span>34739</td>
+<td class="instruction">LD HL,(37939)</td>
+<td class="comment-1" rowspan="1">HL=the second hood's frame list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34742"></span>34742</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the next frame address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34743"></span>34743</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34744"></span>34744</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34745"></span>34745</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34746"></span>34746</td>
+<td class="instruction">LD (37939),DE</td>
+<td class="comment-1" rowspan="1">Store the new list position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34750"></span>34750</td>
+<td class="instruction">LD A,(37937)</td>
+<td class="comment-1" rowspan="1">A=the pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34753"></span>34753</td>
+<td class="instruction">LD DE,24192</td>
+<td class="comment-1" rowspan="1">DE=the second hood's sprite buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34756"></span>34756</td>
+<td class="instruction">JP <a href="34135.html">34135</a></td>
+<td class="comment-1" rowspan="1">Prepare the shifted sprite</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34643.html">34643</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34707">Map</a></td>
+<td class="next">
+Next: <a href="34759.html">34759</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

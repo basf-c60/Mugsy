@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29873</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29810.html">29810</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29873">Map</a></td>
+<td class="next">
+Next: <a href="29897.html">29897</a>
+</td>
+</tr>
+</table>
+<div class="description">29873: Control code 5: insert a sub-message</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Takes a message address from the VM byte stream (or uses the default set by SETMSG/26740 if it is 0) and renders it.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29873"></span>29873</td>
+<td class="instruction">CALL <a href="30196.html">30196</a></td>
+<td class="comment-1" rowspan="1">Fetch a message address from the VM byte stream</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29876"></span>29876</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29877"></span>29877</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">Is it 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29878"></span>29878</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">Combine with E: is the address zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29879"></span>29879</td>
+<td class="instruction">JR NZ,<a href="29873.html#29885">29885</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29881"></span>29881</td>
+<td class="instruction">LD DE,(33898)</td>
+<td class="comment-1" rowspan="1">Otherwise use the default set by SETMSG</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29885"></span>29885</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save the message pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29887"></span>29887</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Keep the sub-message address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29888"></span>29888</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">IX=sub-message</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29890"></span>29890</td>
+<td class="instruction">CALL <a href="29452.html">29452</a></td>
+<td class="comment-1" rowspan="1">Render it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29893"></span>29893</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore the message pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29895"></span>29895</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag: code done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29896"></span>29896</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29810.html">29810</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29873">Map</a></td>
+<td class="next">
+Next: <a href="29897.html">29897</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

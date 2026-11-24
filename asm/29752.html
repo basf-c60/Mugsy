@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29752</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29630.html">29630</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29752">Map</a></td>
+<td class="next">
+Next: <a href="29790.html">29790</a>
+</td>
+</tr>
+</table>
+<div class="description">29752: Print one decimal digit</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Subtracts the power of ten in BC/DE from the number in HL'/HL repeatedly to work out the digit.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29752"></span>29752</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Copy the high word of the power of ten into DE'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29753"></span>29753</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29754"></span>29754</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">...DE'=high word of the power of ten...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29755"></span>29755</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">...and back again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29756"></span>29756</td>
+<td class="instruction">LD C,47</td>
+<td class="comment-1" rowspan="1">C will count from "0"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29758"></span>29758</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Next digit value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29759"></span>29759</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29760"></span>29760</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Subtract the power of ten (low word)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29762"></span>29762</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the high words...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29763"></span>29763</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">...and high word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29765"></span>29765</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">...and back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29766"></span>29766</td>
+<td class="instruction">JR NC,<a href="29752.html#29758">29758</a></td>
+<td class="comment-1" rowspan="1">Repeat until the number goes negative</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29768"></span>29768</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add the power of ten back on (low word)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29769"></span>29769</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the high words...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29770"></span>29770</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">...and high word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29772"></span>29772</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">...and back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29773"></span>29773</td>
+<td class="instruction">LD A,(29629)</td>
+<td class="comment-1" rowspan="1">Has a non-zero digit been printed yet?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29776"></span>29776</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the leading-zero flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29777"></span>29777</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29778"></span>29778</td>
+<td class="instruction">JP NZ,<a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Print it if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29781"></span>29781</td>
+<td class="instruction">CP 48</td>
+<td class="comment-1" rowspan="1">Is it a leading zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29783"></span>29783</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Skip it if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29784"></span>29784</td>
+<td class="instruction">LD (29629),A</td>
+<td class="comment-1" rowspan="1">Otherwise leading zeros are over</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29787"></span>29787</td>
+<td class="instruction">JP <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Print the digit</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29630.html">29630</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29752">Map</a></td>
+<td class="next">
+Next: <a href="29790.html">29790</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34069</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34066.html">34066</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34069">Map</a></td>
+<td class="next">
+Next: <a href="34093.html">34093</a>
+</td>
+</tr>
+</table>
+<div class="description">34069: Interrupt routine for the animations</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Counts down <a href="34066.html">34066</a>; when it reaches zero it reloads it from 34067 and sets the tick flag at 34068.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34069"></span>34069</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34070"></span>34070</td>
+<td class="instruction">LD A,(34066)</td>
+<td class="comment-1" rowspan="1">Decrement the interrupt countdown</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34073"></span>34073</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34074"></span>34074</td>
+<td class="instruction">LD (34066),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34077"></span>34077</td>
+<td class="instruction">JR NZ,<a href="34069.html#34090">34090</a></td>
+<td class="comment-1" rowspan="1">Jump unless it has reached zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34079"></span>34079</td>
+<td class="instruction">LD A,(34067)</td>
+<td class="comment-1" rowspan="1">Reload the countdown</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34082"></span>34082</td>
+<td class="instruction">LD (34066),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34085"></span>34085</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">Set the tick flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34087"></span>34087</td>
+<td class="instruction">LD (34068),A</td>
+<td class="comment-1" rowspan="1">Set the tick flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34090"></span>34090</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34091"></span>34091</td>
+<td class="instruction">RETI</td>
+<td class="comment-1" rowspan="1">Return from the interrupt</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34066.html">34066</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34069">Map</a></td>
+<td class="next">
+Next: <a href="34093.html">34093</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

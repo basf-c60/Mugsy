@@ -1,0 +1,732 @@
+Mugsy - the VM scripts, decoded (generated from mugsy.skool by tools/vmscript.py)
+Variables are shown by name (see the Variables page); * marks a jump target; message text is shown after SAY.
+
+ 24609 SAY 49798,20 "Hi Boss, it's Louey your sidekick here wit' da lowdown on da mob..."
+ 24613 END
+
+ 24652 SAY 49838,1 "Last year (Killed) guys got rubbed out by other mobs and (Recruits) hoods wuz recruited by the organisation."
+ 24658 IFLT K0,Recruits,24670
+ 24663 SAY 49917,9 "[City Hall think you stink/Some of da boys is sayin' you're all washed up], Boss."
+ 24667 GOTO 24713
+*24670 IFPEEKEQ 33888,1,24713
+ 24676 RND K1
+ 24678 MUL K10
+ 24680 MUL Recruits
+ 24682 DIV Hoods
+ 24684 STORE FedsKilled
+ 24686 DIV Recruits,K2
+ 24689 ADD FedsKilled
+ 24691 INT
+ 24692 STORE FedsKilled
+ 24694 ADD TotalKilled,FedsKilled
+ 24697 STORE TotalKilled
+ 24699 SUB Hoods,FedsKilled
+ 24702 STORE Hoods
+ 24704 SAY 49927,9 "But some was undercover feds and (FedsKilled) got killed in the shootout."
+ 24709 POKE 1,33888
+*24713 IFPEEKEQ 33888,1,24729
+ 24719 SAY 49960,8 "So da mob now contains (Hoods) <msg 53284> hoodlums."
+ 24726 GOTO 24736
+*24729 SAY 49960,9 "So da mob now contains (Hoods) <msg 53286> hoodlums."
+*24736 IFLT K9,Hoods,24756
+ 24741 SAY 49984,1 "Me and the boys is gettin' out pronto."
+*24745 SAY 50003,9 "What a Schmuck you are, Mugsy!"
+ 24749 POKE 2,33890
+ 24753 GOTO 26431
+*24756 ADD HoodYears,Hoods
+ 24759 STORE HoodYears
+ 24761 IFNE K0,Squeezed,24781
+ 24766 SAY 50016,1 "We didn't run no rackets, Boss."
+ 24770 LOAD K0
+ 24772 STORE Takings
+ 24774 LOAD K0
+ 24776 STORE Profit
+ 24778 GOTO 24832
+*24781 MUL Squeezed,Price
+ 24784 ADD K05
+ 24786 INT
+ 24787 STORE Takings
+ 24789 MUL Price,K1000
+ 24792 STORE Tmp
+ 24794 SAY 50037,1 "We protected (Squeezed) of your (Clients) clients last year and squeezed them for an average of $(Tmp), so we made (Takings) thousand bucks."
+ 24802 LOAD Takings
+ 24804 STORE Profit
+ 24806 ADD TotalTakings,Takings
+ 24809 STORE TotalTakings
+ 24811 IFPEEKEQ 33891,1,24843
+ 24817 IFGE K3,Takings,24843
+ 24822 DIV Takings,K2
+ 24825 INT
+ 24826 STORE Profit
+ 24828 SAY 50080,9 "but Rocco's mob got half of that when they jumped us last winter."
+*24832 IFEQ K0,Raided,24879
+ 24837 SETMSG 53293
+ 24840 GOTO 24851
+*24843 IFEQ K0,Raided,24879
+ 24848 SETMSG 53295
+*24851 ADD Dough,Profit
+ 24854 SUB Raided
+ 24856 STORE Tmp
+ 24858 IFLT K10,Tmp,24903
+ 24863 ADD Dough,Profit
+ 24866 SUB K10
+ 24868 STORE Raided
+ 24870 IFLT K1,Raided,24903
+ 24875 LOAD K0
+ 24877 STORE Raided
+*24879 IFPEEKEQ 33891,1,24894
+ 24885 SAY 50121,9 "<msg 53295>, we kept our noses clean wit' da inmates of da precint house,"
+ 24891 GOTO 24900
+*24894 SAY 50121,9 "<msg 53293>, we kept our noses clean wit' da inmates of da precint house,"
+*24900 GOTO 24910
+*24903 SAY 50173,9 "<msg 0> the cops raided us and took (Raided) grand from our safe, Boss."
+*24910 POKE 1,33891
+ 24914 ADD ClientYears,Clients
+ 24917 STORE ClientYears
+ 24919 ADD Dough,Profit
+ 24922 SUB Raided
+ 24924 STORE Dough
+ 24926 ADD TotalProfit,Profit
+ 24929 STORE TotalProfit
+ 24931 IFEQ K0,Loan,24987
+ 24936 ADD Interest,K100
+ 24939 MUL Loan
+ 24941 DIV K100
+ 24943 INT
+ 24944 STORE Loan
+ 24946 SUB Dough,Loan
+ 24949 STORE Tmp
+ 24951 IFLE K0,Tmp,24965
+ 24956 SAY 50203,1 "You've got exactly (Dough) grand in the safe, Boss. Anyways, dat's less than da (Loan) grand ya owe Nick the Greek, so he's takin' over."
+ 24962 GOTO 24745
+*24965 SAY 50267,1 "Nick the Greek has got the (Loan) grand ya owed him."
+ 24970 IFNE K10,Tmp,24982
+ 24975 SAY 50289,1 "So ya aint got the dough ta buy rods and bullets so da boys can defend theirselves. Sorry, Boss,- you're goin' for a ride."
+ 24979 GOTO 24745
+*24982 SUB Dough,Loan
+ 24985 STORE Dough
+*24987 SAY 50351,9 "You got (Dough) thousand bucks."
+ 24992 IFPEEKEQ 33895,1,25015
+ 24998 IFPEEKEQ 33894,1,25011
+ 25004 SAY 50520,1 "Your cousin Abe has muscled in on your territory. You've had it."
+ 25008 GOTO 24745
+*25011 SAY 50670,9 "[Well, ya lived for another year./Lucky you're still in charge./I gotta hand it to ya, Boss./I just don't know how ya do it, Boss./Ya sure are a survivor, Boss./Gee, You're still da boss, Boss./Cripes, you're still hangin' on.]"
+*25015 ADD TotalBlunders,Blunders
+ 25018 STORE TotalBlunders
+ 25020 IFEQ Years,Year,26431
+ 25025 IFGE K2,Blunders,25037
+ 25030 LOAD K0
+ 25032 STORE Blunders
+ 25034 GOTO 25048
+*25037 DIV Years,K2
+ 25040 INT
+ 25041 STORE Tmp
+ 25043 IFNE Years,Year,25138
+*25048 IFPEEKEQ 33893,1,25063
+ 25054 SAY 50687,0 "<msg 53299> some of da boys in the mob is sayin' you're past it and they're talkin about puttin' out a contract on you. If it goes any further, how many grand ( if any) will you pay to keep the good guys faithful?"
+ 25060 GOTO 25069
+*25063 SAY 50687,0 "<msg 53297> some of da boys in the mob is sayin' you're past it and they're talkin about puttin' out a contract on you. If it goes any further, how many grand ( if any) will you pay to keep the good guys faithful?"
+*25069 CALL 27790 (get a number from the player)
+ 25072 LOAD Input
+ 25074 STORE Handout
+ 25076 IFPEEKEQ 33896,1,25111
+ 25082 IFPEEKEQ 33896,2,25134
+ 25088 SUB Dough,Handout
+ 25091 STORE Tmp
+ 25093 IFLT K0,Tmp,25125
+ 25098 SAY 50819,9 "You'll kill us wit' kindness, Boss.....( you've only got (Dough) grand). Tell me that again, Boss."
+ 25103 ADD Blunders,K1
+ 25106 STORE Blunders
+ 25108 GOTO 25118
+*25111 SAY 50787,9 "Boss, the boys'll gun ya down."
+ 25115 CALL 28297 (Louey charges hush money for a blunder)
+*25118 SAY 50806,8 "How many grand for the handout?."
+ 25122 GOTO 25069
+*25125 SAY 50869,9 "Okay, Boss, my guys will help ya."
+ 25129 SUB Dough,Handout
+ 25132 STORE Dough
+*25134 POKE 2,33892
+*25138 IFPEEKEQ 33895,2,25148
+ 25144 SAY 50888,9 "It costs one grand to put the squeeze on each client, and the godfather made the rule that our gangsters each get one client to protect for theirselves."
+*25148 RND K1
+ 25150 MUL K6
+ 25152 ADD K1
+ 25154 STORE Tmp
+ 25156 IFLT K5,Tmp,25168
+ 25161 POKE 1,33891
+ 25165 GOTO 25287
+*25168 POKE 2,33891
+ 25172 SAY 50955,1 "The word is that Rocco's gettin' uppity. They say he wants ta muscle in on your patch, Boss."
+ 25176 MUL Hoods,K2
+ 25179 ADD Clients
+ 25181 ADD Loan
+ 25183 ADD K100
+ 25185 STORE Tmp
+ 25187 IFLT Tmp,Dough,25287
+ 25192 SAY 51001,8 "Dis could be tough, but maybe we can buy off Rocco's mob. How many grand ( if any) can you pay?"
+*25196 CALL 27790 (get a number from the player)
+ 25199 LOAD Input
+ 25201 STORE Bribe
+ 25203 IFPEEKEQ 33896,1,25235
+ 25209 IFPEEKEQ 33896,2,25287
+ 25215 IFLE Bribe,Dough,25249
+ 25220 SAY 51113,9 "You must be off ya rocker, Boss, we've only got (Dough) grand."
+ 25225 CALL 28297 (Louey charges hush money for a blunder)
+ 25228 SAY 51144,8 "Better try again - how many G's?"
+ 25232 GOTO 25196
+*25235 SAY 51048,9 "Rocco aint usually regarded as a philanthropist, Boss. He don't give nuthin' away."
+ 25239 CALL 28297 (Louey charges hush money for a blunder)
+ 25242 SAY 51103,8 "How many thousand, Boss?"
+ 25246 GOTO 25196
+*25249 SUB Dough,Bribe
+ 25252 STORE Tmp
+ 25254 IFLT K5,Tmp,25274
+ 25259 SAY 51163,9 "Geez, Boss, we're gonna need some ourselves. Ya wanna think again?"
+ 25263 CALL 28297 (Louey charges hush money for a blunder)
+ 25266 ADD Blunders,K1
+ 25269 STORE Blunders
+ 25271 GOTO 25196
+*25274 SAY 51199,9 "Okay, Boss, we'll see if it works."
+ 25278 SUB Dough,Bribe
+ 25281 STORE Dough
+ 25283 POKE 1,33891
+*25287 IFPEEKEQ 33895,1,25305
+ 25293 RND K1
+ 25295 MUL K6
+ 25297 ADD K13
+ 25299 INT
+ 25300 STORE ClientCost
+ 25302 GOTO 25314
+*25305 RND K1
+ 25307 MUL K10
+ 25309 ADD K11
+ 25311 INT
+ 25312 STORE ClientCost
+*25314 SAY 51223,1 "This year we can buy or sell clients for (ClientCost) grand each."
+ 25319 MUL Hoods,K5
+ 25322 STORE Tmp
+ 25324 IFGT Clients,Tmp,25345
+ 25329 SAY 51241,9 "The boys is workin' real hard. Now, how many clients do we buy from the syndicate?"
+ 25333 GOTO 25361
+*25336 SAY 51317,9 "Minuses won't wash here, Mugsy. How many do we buy?"
+ 25340 ADD Blunders,K1
+ 25343 STORE Blunders
+*25345 IFLE K13,ClientCost,25357
+ 25350 SAY 51312,8 "How many do we buy from the syndicate this year, Boss? ( The price is right!)."
+ 25354 GOTO 25361
+*25357 SAY 51292,8 "How many do we buy from the syndicate this year, Boss?"
+*25361 CALL 27790 (get a number from the player)
+ 25364 LOAD Input
+ 25366 STORE Bought
+ 25368 IFPEEKEQ 33896,2,25423
+ 25374 IFPEEKEQ 33896,1,25336
+ 25380 MUL Bought,ClientCost
+ 25383 STORE Tmp
+ 25385 SUB Dough,Tmp
+ 25388 STORE Tmp
+ 25390 IFLE K0,Tmp,25402
+ 25395 SAY 51340,9 "Cripes, Boss, you gotta be outa ya mind, we aint made of money."
+ 25399 GOTO 25345
+*25402 LOAD Tmp
+ 25404 STORE Dough
+ 25406 ADD Clients,Bought
+ 25409 STORE Clients
+ 25411 GOTO 25505
+*25414 SAY 51461,1 "Cut the minus garbage, Mugsy!"
+ 25418 ADD Blunders,K1
+ 25421 STORE Blunders
+*25423 IFGE K19,ClientCost,25435
+ 25428 SAY 51382,8 "How many do ya wanna sell? ( The price is right!)."
+ 25432 GOTO 25439
+*25435 SAY 51371,8 "How many do ya wanna sell?"
+*25439 CALL 27790 (get a number from the player)
+ 25442 LOAD Input
+ 25444 STORE Sold
+ 25446 IFPEEKEQ 33896,2,25505
+ 25452 IFPEEKEQ 33896,1,25414
+ 25458 IFGE Clients,Sold,25474
+*25463 SAY 51387,9 "Geez, Boss, we've only got (Clients) customers. If the boys think you wanna make a fast buck and then skip, you could be takin' an unexpected ride!"
+ 25468 CALL 28297 (Louey charges hush money for a blunder)
+ 25471 GOTO 25423
+*25474 IFNE Clients,Sold,25483
+ 25479 SAY 51483,9 "Jumpin' jellyfish, Boss,- how do ya expect us ta survive if ya sell all our clients to the syndicate?"
+*25483 SUB Clients,Sold
+ 25486 STORE ClientsLeft
+ 25488 IFGT Hoods,ClientsLeft,25463
+ 25493 MUL Sold,ClientCost
+ 25496 ADD Dough
+ 25498 STORE Dough
+ 25500 SUB Clients,Sold
+ 25503 STORE Clients
+*25505 IFNE K0,Dough,25517
+ 25510 SAY 51534,1 "As you know, Mugsy, that means we aint got nuthin' left."
+ 25514 GOTO 24745
+*25517 SAY 51554,0 "As you know, Boss, that leaves (Dough) thousand bucks in the safe. How many grand are ya gonna give the boys for artillery and ammo?"
+ 25522 GOTO 25534
+*25525 SAY 51684,8 "Cut the negatives, sucker!"
+ 25529 ADD Blunders,K1
+ 25532 STORE Blunders
+*25534 CALL 27790 (get a number from the player)
+ 25537 LOAD Input
+ 25539 STORE Ammo
+ 25541 IFPEEKEQ 33896,2,25621
+ 25547 IFPEEKEQ 33896,1,25525
+ 25553 SUB Dough,Ammo
+ 25556 STORE Tmp
+ 25558 IFEQ K0,Tmp,25583
+ 25563 IFLT K0,Tmp,25595
+ 25568 SAY 51612,9 "You aint thinkin' straight, Boss. There's only (Dough) grand left in the safe."
+ 25573 CALL 28297 (Louey charges hush money for a blunder)
+ 25576 SAY 51103,8 "How many thousand, Boss?"
+ 25580 GOTO 25534
+*25583 SAY 51644,8 "Geez, there'll be nuthin' left. Tell me that again, Boss, I musta misheard you."
+ 25587 ADD Blunders,K1
+ 25590 STORE Blunders
+ 25592 GOTO 25534
+*25595 IFLT Hoods,Ammo,25641
+ 25600 SAY 51699,9 "Gee, da boys is gonna be hoppin' mad, Boss- you sure got guts!"
+ 25604 DIV Ammo,Hoods
+ 25607 STORE Tmp
+ 25609 IFGT K05,Tmp,25625
+ 25614 POKE 1,33894
+ 25618 GOTO 25629
+*25621 SAY 51734,9 "Ya gonna get da guys bumped off."
+*25625 POKE 2,33894
+*25629 POKE 2,33889
+ 25633 ADD Blunders,K1
+ 25636 STORE Blunders
+ 25638 GOTO 25681
+*25641 MUL Hoods,K2
+ 25644 STORE Tmp
+ 25646 IFLE Tmp,Ammo,25658
+ 25651 SAY 51751,9 "Yeah, Boss, keep'em scared, eh!"
+ 25655 GOTO 25672
+*25658 MUL Hoods,K5
+ 25661 STORE Tmp
+ 25663 IFGT Hoods,Ammo,25677
+ 25668 SAY 51770,9 "Cripes, Boss, they could fight a war with the hardware that'll buy."
+*25672 ADD Blunders,K1
+ 25675 STORE Blunders
+*25677 POKE 1,33894
+*25681 SUB Dough,Ammo
+ 25684 STORE Dough
+ 25686 SUB Clients,Hoods
+ 25689 STORE Unsqueezed
+ 25691 IFLT K0,Unsqueezed,25725
+ 25696 SAY 51809,9 "We got so few clients left that squeezin' them aint gonna pay your moll's hooch bills."
+ 25700 ADD Blunders,K1
+ 25703 STORE Blunders
+ 25705 LOAD K0
+ 25707 STORE Squeezed
+ 25709 LOAD K0
+ 25711 STORE Loan
+ 25713 GOTO 25909
+*25716 SAY 51889,9 "Forget the negatives, Mugsy- just tell me how many customers to lean on this year."
+*25720 ADD Blunders,K1
+ 25723 STORE Blunders
+*25725 SAY 51858,8 "We got (Unsqueezed) clients in need of protection, Boss. How many do we put the squeeze on this year?"
+ 25730 CALL 27790 (get a number from the player)
+ 25733 LOAD Input
+ 25735 STORE Squeezed
+ 25737 IFPEEKEQ 33896,2,25886
+ 25743 IFPEEKEQ 33896,1,25716
+ 25749 IFGE Unsqueezed,Squeezed,25762
+ 25754 SAY 51919,9 "Boss, there's only (Unsqueezed) clients, and da guys gotta make an honest livin'........ How many clients, Mugsy?"
+ 25759 GOTO 25720
+*25762 IFGE Dough,Squeezed,25828
+ 25767 SAY 52074,9 "[But we've only got (Dough) grand./Have ya lost ya marbles, Mugsy? We've only $(Dough) thousand left./Cut the kiddin', Boss. You know there's only (Dough) grand in the safe.]"
+ 25772 ADD Blunders,K1
+ 25775 STORE Blunders
+ 25777 SUB Squeezed,Dough
+ 25780 STORE Tmp
+ 25782 IFGT K20,Tmp,25725
+ 25787 IFGT K800,Tmp,25800
+ 25792 SAY 52083,9 "What wuz dat, Boss? I could've swore you said (Squeezed)."
+ 25797 GOTO 25725
+*25800 SUB Squeezed,Dough
+ 25803 STORE Loan
+ 25805 RND K1
+ 25807 MUL K60
+ 25809 ADD K40
+ 25811 INT
+ 25812 STORE Interest
+ 25814 SAY 52114,9 "Great noos, Boss!...... I set up this deal wit' Nick the Greek. He's gonna lend you the other (Loan) grand at only (Interest) percent interest."
+ 25820 ADD Dough,Loan
+ 25823 STORE Dough
+ 25825 GOTO 25842
+*25828 DIV Unsqueezed,K3
+ 25831 STORE Tmp
+ 25833 IFGE Tmp,Squeezed,25886
+*25838 LOAD K0
+ 25840 STORE Loan
+*25842 MUL Hoods,K40
+ 25845 STORE Tmp
+ 25847 IFLT Squeezed,Tmp,25904
+ 25852 SAY 52194,9 "Watch out, Boss, the boys aint gonna like workin' that hard."
+ 25856 ADD Dough,Ammo
+ 25859 STORE Dough
+ 25861 MUL Hoods,K50
+ 25864 NEG
+ 25865 ADD Squeezed
+ 25867 ADD Ammo
+ 25869 STORE Ammo
+ 25871 MUL Hoods,K50
+ 25874 STORE Squeezed
+ 25876 SUB Dough,Ammo
+ 25879 SUB Squeezed
+ 25881 STORE Dough
+ 25883 GOTO 25909
+*25886 SAY 51971,9 "You sure don't dig da protection racket, - do ya, Boss?"
+ 25890 ADD Blunders,K1
+ 25893 STORE Blunders
+ 25895 IFPEEKEQ 33896,2,25909
+ 25901 GOTO 25838
+*25904 SUB Dough,Squeezed
+ 25907 STORE Dough
+*25909 IFEQ K0,Dough,25991
+ 25914 GOTO 25929
+*25917 SAY 52262,8 "If dat means you want the cops to pay us, forget it. How much?"
+ 25921 ADD Blunders,K1
+ 25924 STORE Blunders
+ 25926 GOTO 25934
+*25929 SAY 52217,8 "Outa you (Dough) grand, how much are you putting aside for the annual kickback to the cops?"
+*25934 CALL 27790 (get a number from the player)
+ 25937 LOAD Input
+ 25939 STORE Kickback
+ 25941 IFPEEKEQ 33896,2,25995
+ 25947 IFPEEKEQ 33896,1,25917
+ 25953 IFGT Kickback,Dough,25966
+ 25958 SUB Dough,Kickback
+ 25961 STORE Dough
+ 25963 GOTO 25995
+*25966 IFEQ K0,Dough,25987
+ 25971 SAY 52353,9 "Geez, Boss, you sure are scared of these cops. But you musta forgot you only have (Dough) grand...... Anyway, I guess you want I should let da cops have the whole lot. ( Ya stoopid jerk )."
+ 25976 LOAD Dough
+ 25978 STORE Kickback
+ 25980 LOAD K0
+ 25982 STORE Dough
+ 25984 GOTO 25995
+*25987 SAY 52289,9 "Boy are you scared of da cops! Well they're gonna get a dissy dis year'cos there aint no funds left. ( Ya stoopid wally )."
+*25991 LOAD K0
+ 25993 STORE Kickback
+*25995 POKE 2,33895
+ 25999 IFPEEKNE 33892,2,26071
+ 26005 DIV Handout,Hoods
+ 26008 DIV K3
+ 26010 ADD K1
+ 26012 STORE Tmp
+ 26014 SAY 50359,9 "You're through, Boss, the hit man from Detroit is on his way in,"
+ 26018 CALL 28358 (shootout with the hit man from Detroit)
+ 26021 IFPEEKNE 33892,3,26034
+ 26027 SAY 50434,1 "Tough luck Boss, me and the boys'll give ya a decent funeral."
+ 26031 GOTO 24745
+*26034 SAY 50398,1 "Geez, so much for the contract, you've eliminated their hit man."
+ 26038 IFPEEKNE 33892,2,26067
+ 26044 RND K1
+ 26046 MUL K40
+ 26048 ADD K20
+ 26050 DIV K100
+ 26052 MUL Dough
+ 26054 INT
+ 26055 STORE Tmp
+ 26057 SUB Dough,Tmp
+ 26060 STORE Dough
+ 26062 SAY 50471,9 "But its gonna cost ya (Tmp) grand to keep the cops quiet about all the people what got wasted in the shootout."
+*26067 POKE 1,33892
+*26071 IFPEEKEQ 33894,1,26090
+ 26077 RND K1
+ 26079 STORE Tmp
+ 26081 IFGE K05,Tmp,26090
+ 26086 POKE 1,33894
+*26090 RND K1
+ 26092 MUL K35
+ 26094 ADD K15
+ 26096 STORE Price
+ 26098 MUL Price,K100
+ 26101 ADD K05
+ 26103 INT
+ 26104 DIV K100
+ 26106 STORE Price
+ 26108 SUB K10,Price
+ 26111 SUB Blunders
+ 26113 STORE Tmp
+ 26115 IFNE K0,Tmp,26125
+ 26120 SUB Blunders,K1
+ 26123 STORE Blunders
+*26125 ADD Dough,Kickback
+ 26128 ADD K1
+ 26130 STORE Tmp
+ 26132 MUL Dough,Dough
+ 26135 DIV Tmp
+ 26137 STORE Input
+ 26139 MUL Kickback,K8
+ 26142 STORE Raided
+ 26144 MUL Squeezed,Price
+ 26147 SUB Raided
+ 26149 STORE Raided
+ 26151 SUB K10,Price
+ 26154 SUB Blunders
+ 26156 STORE Tmp
+ 26158 DIV Raided,Tmp
+ 26161 STORE Raided
+ 26163 RND K1
+ 26165 MUL Kickback
+ 26167 STORE Tmp
+ 26169 SUB Input,Tmp
+ 26172 ADD Raided
+ 26174 INT
+ 26175 STORE Raided
+ 26177 IFLT K20,Raided,26186
+ 26182 LOAD K0
+ 26184 STORE Raided
+*26186 SQRT Hoods
+ 26188 MUL Hoods
+ 26190 MUL Clients
+ 26192 STORE Tmp
+ 26194 ADD Ammo,Kickback
+ 26197 SQRT
+ 26198 MUL Clients
+ 26200 MUL Clients
+ 26202 DIV Tmp
+ 26204 STORE Recruits
+ 26206 MUL Blunders,K4
+ 26209 STORE Tmp
+ 26211 SUB Recruits,Tmp
+ 26214 STORE Recruits
+ 26216 MUL Blunders,K2
+ 26219 STORE Tmp
+ 26221 SUB Recruits,Tmp
+ 26224 INT
+ 26225 STORE Recruits
+ 26227 IFPEEKEQ 33894,1,26238
+ 26233 ADD Recruits,Recruits
+ 26236 STORE Recruits
+*26238 IFLE K0,Recruits,26250
+ 26243 LOAD K0
+ 26245 STORE Recruits
+ 26247 GOTO 26259
+*26250 IFGT K100,Recruits,26259
+ 26255 LOAD K99
+ 26257 STORE Recruits
+*26259 POKE 1,33888
+ 26263 RND K1
+ 26265 MUL K10
+ 26267 STORE Tmp
+ 26269 IFGT K8,Tmp,26278
+ 26274 POKE 2,33888
+*26278 IFGT K15b,Recruits,26287
+ 26283 SAY 52535,9 "[Say, Boss, the word is you're doin' okay!/They're sayin' you're doin' a good job here, Boss./The Chicago mobs have heard of you now. They think you might be another Scarface.]"
+*26287 MUL Ammo,K2
+ 26290 ADD K1
+ 26292 STORE Tmp
+ 26294 MUL Hoods,Hoods
+ 26297 DIV Tmp
+ 26299 STORE Killed
+ 26301 ADD Dough,K1
+ 26304 STORE Tmp
+ 26306 MUL Kickback,K20
+ 26309 DIV Tmp
+ 26311 STORE Tmp
+ 26313 RND K1
+ 26315 MUL Blunders
+ 26317 MUL K10
+ 26319 ADD Killed
+ 26321 SUB Tmp
+ 26323 INT
+ 26324 STORE Killed
+ 26326 IFLE K0,Killed,26338
+ 26331 LOAD K0
+ 26333 STORE Killed
+ 26335 GOTO 26402
+*26338 IFGT K100,Killed,26347
+ 26343 LOAD K99
+ 26345 STORE Killed
+*26347 IFLT Killed,Hoods,26402
+ 26352 ADD Blunders,K6
+ 26355 STORE Killed
+ 26357 RND K1
+ 26359 ADD Blunders
+ 26361 ADD K5
+ 26363 DIV Killed
+ 26365 STORE Killed
+ 26367 ADD Hoods,K1
+ 26370 MUL Killed
+ 26372 INT
+ 26373 STORE Killed
+ 26375 IFGE K100,Killed,26384
+ 26380 LOAD K99
+ 26382 STORE Killed
+*26384 MUL Hoods,K6
+ 26387 STORE Tmp
+ 26389 IFGT Tmp,Ammo,26398
+ 26394 HALF Killed
+ 26396 STORE Killed
+*26398 SAY 52544,9 "You aint doin' too good, Mugsy! The organisation is gettin' a bad reputation an some of da boys is thinkin' of gettin' out while they can."
+*26402 SUB Hoods,Killed
+ 26405 ADD Recruits
+ 26407 STORE Hoods
+ 26409 ADD TotalKilled,Killed
+ 26412 STORE TotalKilled
+ 26414 SAY 49784,9 "A year goes by ......"
+ 26418 CALL 33994 ("A year goes by ......" animation)
+ 26421 ADD Year,K1
+ 26424 STORE Year
+ 26426 POKE 0,33897
+ 26430 END
+*26431 IFPEEKEQ 33890,2,26469
+ 26437 SAY 52607,5 "Okay, Mugsy, me an the (Hoods) boys,"
+ 26442 MUL Year,K12
+ 26445 STORE Tmp
+ 26447 IFGT Tmp,TotalKilled,26460
+ 26452 SAY 52631,5 "has had enough of your crazy mob for the last (Year) years. So we're off ta find some better rackets in [The Bahamas/Florida/Disneyland/Hawaii/Las Vegas]."
+ 26457 GOTO 26465
+*26460 SAY 52705,5 "has done pretty good in the mob for the last (Year) years. So we're goin' ta invest in some new rackets in [Alcatraz/Sing - Sing/San Quentin/Siberia]."
+*26465 SAY 49774,9 "So long Mugsy."
+*26469 SUB Hoods,K40
+ 26472 MUL K100
+ 26474 DIV K40
+ 26476 STORE HoodGrowth
+ 26478 DIV TotalTakings,HoodYears
+ 26481 STORE TotalTakings
+ 26483 SUB Clients,StartClients
+ 26486 MUL K100
+ 26488 DIV StartClients
+ 26490 STORE ClientGrowth
+ 26492 DIV TotalProfit,ClientYears
+ 26495 STORE TotalProfit
+ 26497 ADD Score,K10
+ 26500 STORE Score
+ 26502 IFPEEKEQ 33890,2,26513
+ 26508 ADD Score,K10
+ 26511 STORE Score
+*26513 SUB Years,Year
+ 26516 STORE Tmp
+ 26518 IFGE K4,Tmp,26527
+ 26523 LOAD K4
+ 26525 STORE Tmp
+*26527 MUL Tmp,K3
+ 26530 NEG
+ 26531 ADD Score
+ 26533 STORE Score
+ 26535 DIV HoodGrowth,K10
+ 26538 INT
+ 26539 STORE Tmp
+ 26541 IFLE Km005,Tmp,26550
+ 26546 LOAD Km005
+ 26548 STORE Tmp
+*26550 IFGE K15b,Tmp,26559
+ 26555 LOAD K15b
+ 26557 STORE Tmp
+*26559 ADD Score,Tmp
+ 26562 STORE Score
+ 26564 SUB TotalTakings,K25
+ 26567 MUL K2
+ 26569 INT
+ 26570 STORE Tmp
+ 26572 IFLE K0,Tmp,26581
+ 26577 LOAD K0
+ 26579 STORE Tmp
+*26581 IFGE K10,Tmp,26590
+ 26586 LOAD K10
+ 26588 STORE Tmp
+*26590 ADD Tmp,Score
+ 26593 STORE Score
+ 26595 DIV ClientGrowth,K4
+ 26598 INT
+ 26599 STORE Tmp
+ 26601 IFLE Km010,Tmp,26610
+ 26606 LOAD Km010
+ 26608 STORE Tmp
+*26610 IFGE K17,Tmp,26619
+ 26615 LOAD K17
+ 26617 STORE Tmp
+*26619 ADD Score,Tmp
+ 26622 ADD K35b
+ 26624 SUB TotalBlunders
+ 26626 STORE Score
+ 26628 DIV TotalKilled,K4
+ 26631 INT
+ 26632 STORE Tmp
+ 26634 IFGE K20,Tmp,26643
+ 26639 LOAD K20
+ 26641 STORE Tmp
+*26643 SUB Score,Tmp
+ 26646 STORE Score
+ 26648 SUB TotalProfit,K25c
+ 26651 MUL K20
+ 26653 INT
+ 26654 STORE Tmp
+ 26656 IFLE Km010,Tmp,26665
+ 26661 LOAD Km010
+ 26663 STORE Tmp
+*26665 IFGE K10,Tmp,26674
+ 26670 LOAD K10
+ 26672 STORE Tmp
+*26674 ADD Score,Tmp
+ 26677 STORE Score
+ 26679 IFGE K100,Score,26688
+ 26684 LOAD K100
+ 26686 STORE Score
+*26688 IFLT K0,Score,26704
+ 26693 LOAD K0
+ 26695 STORE Score
+ 26697 POKE 1,33896
+ 26701 GOTO 26714
+*26704 DIV Score,K10
+ 26707 INT
+ 26708 ADD K2
+ 26710 DIV K100
+ 26712 STORE Tmp
+*26714 CALL 26740 (choose the end-of-game rating)
+ 26717 SAY 52770,8 "You were <msg 0>. You scored (Score)%. Hows about another game, Mugsy?"
+ 26724 CALL 27753 (get a yes/no answer)
+ 26727 JZ 26735
+ 26730 POKE 1,33897
+ 26734 END
+*26735 POKE 2,33897
+ 26739 END
+
+ 27785 SAY 52964,8 "Don't get smart wit' me, Mugsy! Just " yeah" or " nope" is fine."
+ 27789 END
+
+ 27807 SAY 52861,8 "[What wuz dat, Boss? I missed it/It's okay, Boss - this line aint tapped. Let's have the answer]."
+*27811 ADD Blunders,K1
+ 27814 STORE Blunders
+ 27816 END
+
+ 27828 SAY 52957,8 "[Geez, Boss, fractions makes my head hurt. Gimme a good answer./Cripes, Boss, don't make wit' da fractions. I never did learn to dig them. Let's have it in good numbers!]"
+ 27832 GOTO 27811
+
+ 27995 LOAD K0
+ 27997 STORE Input
+ 27999 END
+
+ 28000 MUL Input,K10
+ 28003 STORE Input
+ 28005 END
+
+ 28006 MUL Tmp,K100
+ 28009 STORE Tmp
+ 28011 ADD Input,Tmp
+ 28014 STORE Input
+ 28016 END
+
+ 28304 ADD Blunders,K1
+ 28307 STORE Blunders
+ 28309 IFLE K3,Dough,28320
+ 28314 ADD Blunders,K1
+ 28317 STORE Blunders
+ 28319 END
+*28320 IFLE K19,Dough,28344
+ 28325 DIV Dough,K10
+ 28328 INT
+ 28329 STORE Tmp
+ 28331 SUB Dough,Tmp
+ 28334 STORE Dough
+ 28336 SAY 53256,5 "[Your stoopidity takes my breath away, Mugsy. But for a mere (Tmp) grand I won't tell nobody./Mugsy! You're so dumb. It's gonna cost you (Tmp) G's ta make me forget it.]"
+ 28341 GOTO 28353
+*28344 SAY 53164,5 "[Dat was real stoopid, Boss! If your boys heard about it you wud get more laughs than Jack Benny. However, for one crummy grand I guarantee ta keep my trap shut./Cripes, Boss, sometimes you're real dumb. But for a lousy grand I can be persuaded not to spill da beans about your stoopidity.]"
+ 28348 SUB Dough,K1
+ 28351 STORE Dough
+*28353 SAY 53263,9 "Gee ta, Boss! Now tell me........."
+ 28357 END

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32126</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32124.html">32124</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32126">Map</a></td>
+<td class="next">
+Next: <a href="32294.html">32294</a>
+</td>
+</tr>
+</table>
+<div class="description">32126: Draw a compressed picture</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The larger full-screen pictures (the Partridge Club and the street outside Milton's) use a second, more compact format: a 9-byte header (the offset of the end of the point bit-stream, the bit position where it ends, the offset of the attribute data and four bit widths for the coordinate deltas), a bit-stream of points in which each coordinate is stored as a variable-width delta read by <a href="32539.html">32539</a>, line segments drawn between the points (<a href="32612.html">32612</a>), and finally three run-length encoded passes over the attribute file (ink, then paper, then bright and flash).
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Picture data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32126"></span>32126</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32127"></span>32127</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">IY=picture header</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32129"></span>32129</td>
+<td class="instruction">CALL <a href="31218.html">31218</a></td>
+<td class="comment-1" rowspan="1">Clear the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32132"></span>32132</td>
+<td class="instruction">LD DE,9</td>
+<td class="comment-1" rowspan="1">The bit-stream starts after the 9-byte header</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32135"></span>32135</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=the start of the bit-stream</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32136"></span>32136</td>
+<td class="instruction">LD (32536),HL</td>
+<td class="comment-1" rowspan="1">Set the bit-stream pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32139"></span>32139</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Start at bit 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32140"></span>32140</td>
+<td class="instruction">LD (32538),A</td>
+<td class="comment-1" rowspan="1">Store bit position 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32143"></span>32143</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Start at (0,0)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32146"></span>32146</td>
+<td class="instruction">CALL <a href="32294.html">32294</a></td>
+<td class="comment-1" rowspan="1">Draw the strokes...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32149"></span>32149</td>
+<td class="instruction">JR NZ,<a href="32126.html#32146">32146</a></td>
+<td class="comment-1" rowspan="1">...until the end of the point list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32151"></span>32151</td>
+<td class="instruction">LD L,(IY+3)</td>
+<td class="comment-1" rowspan="1">HL=the offset of the attribute data (header bytes 3-4)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32154"></span>32154</td>
+<td class="instruction">LD H,(IY+4)</td>
+<td class="comment-1" rowspan="1">H=the high byte of the offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32157"></span>32157</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Copy IY into DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32159"></span>32159</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">...by way of the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32160"></span>32160</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add the address of the header</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32161"></span>32161</td>
+<td class="instruction">LD (32124),HL</td>
+<td class="comment-1" rowspan="1">Remember it: it also marks the end of the list of fill seeds</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32164"></span>32164</td>
+<td class="instruction">LD L,(IY+0)</td>
+<td class="comment-1" rowspan="1">HL=the offset of the end of the point bit-stream (header bytes 0-1)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32167"></span>32167</td>
+<td class="instruction">LD H,(IY+1)</td>
+<td class="comment-1" rowspan="1">H=the high byte of the offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32170"></span>32170</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=the address just after the bit-stream</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32171"></span>32171</td>
+<td class="instruction">LD A,(IY+2)</td>
+<td class="comment-1" rowspan="1">Does the bit-stream end part-way through a byte (header byte 2)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32174"></span>32174</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32175"></span>32175</td>
+<td class="instruction">JR Z,<a href="32126.html#32178">32178</a></td>
+<td class="comment-1" rowspan="1">Zero: no padding byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32177"></span>32177</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Yes: skip that last byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32178"></span>32178</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32179"></span>32179</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">IY=the list of fill seed points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32181"></span>32181</td>
+<td class="instruction">LD D,(IY+1)</td>
+<td class="comment-1" rowspan="1">D=x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32184"></span>32184</td>
+<td class="instruction">LD A,175</td>
+<td class="comment-1" rowspan="1">E=175-y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32186"></span>32186</td>
+<td class="instruction">SUB (IY+0)</td>
+<td class="comment-1" rowspan="1">A=175-y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32189"></span>32189</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=y counted from the top</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32190"></span>32190</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32192"></span>32192</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Next seed point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32194"></span>32194</td>
+<td class="instruction">LD A,56</td>
+<td class="comment-1" rowspan="1">Fill with ink 0 on paper 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32196"></span>32196</td>
+<td class="instruction">CALL <a href="31525.html">31525</a></td>
+<td class="comment-1" rowspan="1">Fill the area around the seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32199"></span>32199</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Reached the end of the seed points?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32201"></span>32201</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the position in the list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32202"></span>32202</td>
+<td class="instruction">LD DE,(32124)</td>
+<td class="comment-1" rowspan="1">DE=the end of the list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32206"></span>32206</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32207"></span>32207</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Compare</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32209"></span>32209</td>
+<td class="instruction">JR NZ,<a href="32126.html#32181">32181</a></td>
+<td class="comment-1" rowspan="1">Jump back if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32211"></span>32211</td>
+<td class="instruction">LD DE,(32124)</td>
+<td class="comment-1" rowspan="1">DE=run-length attribute data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32215"></span>32215</td>
+<td class="instruction">LD HL,22528</td>
+<td class="comment-1" rowspan="1">First pass over the attribute file: the ink colours</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32218"></span>32218</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Reached the end of the attribute file?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32219"></span>32219</td>
+<td class="instruction">CP 91</td>
+<td class="comment-1" rowspan="1">Is the high byte 91 (the end of the attribute file)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32221"></span>32221</td>
+<td class="instruction">JR Z,<a href="32126.html#32241">32241</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32223"></span>32223</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Bits 0-4: run length-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32224"></span>32224</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the run length bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32226"></span>32226</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the run length minus one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32227"></span>32227</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">B=the run length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32228"></span>32228</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Bits 5-7: the ink colour</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32229"></span>32229</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of attribute data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32230"></span>32230</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Keep the colour bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32232"></span>32232</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">Rotate bits 5-7 round to bits 0-2...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32233"></span>32233</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32234"></span>32234</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32235"></span>32235</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Set the ink for the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32236"></span>32236</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32237"></span>32237</td>
+<td class="instruction">DJNZ <a href="32126.html#32235">32235</a></td>
+<td class="comment-1" rowspan="1">Repeat for every cell in the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32239"></span>32239</td>
+<td class="instruction">JR <a href="32126.html#32218">32218</a></td>
+<td class="comment-1" rowspan="1">Next run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32241"></span>32241</td>
+<td class="instruction">LD HL,22528</td>
+<td class="comment-1" rowspan="1">Second pass: the paper colours</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32244"></span>32244</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Reached the end of the attribute file?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32245"></span>32245</td>
+<td class="instruction">CP 91</td>
+<td class="comment-1" rowspan="1">Is the high byte 91?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32247"></span>32247</td>
+<td class="instruction">JR Z,<a href="32126.html#32269">32269</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32249"></span>32249</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Bits 0-4: run length-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32250"></span>32250</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the run length bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32252"></span>32252</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the run length minus one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32253"></span>32253</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">B=the run length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32254"></span>32254</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Bits 5-7: the paper colour</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32255"></span>32255</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of attribute data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32256"></span>32256</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Keep the colour bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32258"></span>32258</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Move bits 5-7 down to bits 3-5...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32259"></span>32259</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32260"></span>32260</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the paper colour</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32261"></span>32261</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">Add the paper to each cell in the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32262"></span>32262</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Merge it with the ink already there</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32263"></span>32263</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32264"></span>32264</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32265"></span>32265</td>
+<td class="instruction">DJNZ <a href="32126.html#32261">32261</a></td>
+<td class="comment-1" rowspan="1">Repeat for every cell in the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32267"></span>32267</td>
+<td class="instruction">JR <a href="32126.html#32244">32244</a></td>
+<td class="comment-1" rowspan="1">Next run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32269"></span>32269</td>
+<td class="instruction">LD HL,22528</td>
+<td class="comment-1" rowspan="1">Third pass: bright and flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32272"></span>32272</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Reached the end of the attribute file?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32273"></span>32273</td>
+<td class="instruction">CP 91</td>
+<td class="comment-1" rowspan="1">Is the high byte 91?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32275"></span>32275</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32276"></span>32276</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Bits 0-5: run length-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32277"></span>32277</td>
+<td class="instruction">AND 63</td>
+<td class="comment-1" rowspan="1">Keep the run length bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32279"></span>32279</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the run length minus one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32280"></span>32280</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">B=the run length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32281"></span>32281</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Bits 6-7: bright and flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32282"></span>32282</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of attribute data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32283"></span>32283</td>
+<td class="instruction">AND 192</td>
+<td class="comment-1" rowspan="1">Keep the bright and flash bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32285"></span>32285</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32286"></span>32286</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">Add them to each cell in the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32287"></span>32287</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Merge them with the colours already there</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32288"></span>32288</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32289"></span>32289</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32290"></span>32290</td>
+<td class="instruction">DJNZ <a href="32126.html#32286">32286</a></td>
+<td class="comment-1" rowspan="1">Repeat for every cell in the run</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32292"></span>32292</td>
+<td class="instruction">JR <a href="32126.html#32272">32272</a></td>
+<td class="comment-1" rowspan="1">Next run</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32124.html">32124</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32126">Map</a></td>
+<td class="next">
+Next: <a href="32294.html">32294</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

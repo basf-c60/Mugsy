@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 49710</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="48640.html">48640</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49710">Map</a></td>
+<td class="next">
+Next: <a href="49774.html">49774</a>
+</td>
+</tr>
+</table>
+<div class="description">49710: Common words</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The 32 words that the game uses most, each reachable through a single byte in a message (96-127) instead of the two bytes of an ordinary dictionary reference. <a href="29907.html">29907</a> takes the byte minus 96 as an index into this table; each entry is two bytes, the offset of the word in the dictionary at <a href="48640.html">48640</a> (which also gives the page), and the page number in the low four bits of the second byte (the routine adds 80 to it to make the word type 5, an ordinary word). The table is in order of use, commonest first, which is why the low token numbers are the busiest. The counts below are the number of times each token appears in the messages.
+</div>
+<div class="paragraph">
+The commonest are "the" (49), "you" (36), "grand" (22), "da" (19), "ya" (19).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49710"></span>49710</td>
+<td class="instruction">DEFB 147,3</td>
+<td class="comment-1" rowspan="1">Token 96: "the" (dictionary offset 915), used 49 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49712"></span>49712</td>
+<td class="instruction">DEFB 38,4</td>
+<td class="comment-1" rowspan="1">Token 97: "you" (dictionary offset 1062), used 36 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49714"></span>49714</td>
+<td class="instruction">DEFB 137,1</td>
+<td class="comment-1" rowspan="1">Token 98: "grand" (dictionary offset 393), used 22 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49716"></span>49716</td>
+<td class="instruction">DEFB 255,0</td>
+<td class="comment-1" rowspan="1">Token 99: "da" (dictionary offset 255), used 19 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49718"></span>49718</td>
+<td class="instruction">DEFB 22,4</td>
+<td class="comment-1" rowspan="1">Token 100: "ya" (dictionary offset 1046), used 19 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49720"></span>49720</td>
+<td class="instruction">DEFB 230,1</td>
+<td class="comment-1" rowspan="1">Token 101: "in" (dictionary offset 486), used 17 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49722"></span>49722</td>
+<td class="instruction">DEFB 244,3</td>
+<td class="comment-1" rowspan="1">Token 102: "we" (dictionary offset 1012), used 17 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49724"></span>49724</td>
+<td class="instruction">DEFB 129,1</td>
+<td class="comment-1" rowspan="1">Token 103: "got" (dictionary offset 385), used 16 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49726"></span>49726</td>
+<td class="instruction">DEFB 140,2</td>
+<td class="comment-1" rowspan="1">Token 104: "of" (dictionary offset 652), used 14 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49728"></span>49728</td>
+<td class="instruction">DEFB 171,0</td>
+<td class="comment-1" rowspan="1">Token 105: "boys" (dictionary offset 171), used 14 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49730"></span>49730</td>
+<td class="instruction">DEFB 64,0</td>
+<td class="comment-1" rowspan="1">Token 106: "a" (dictionary offset 64), used 14 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49732"></span>49732</td>
+<td class="instruction">DEFB 59,1</td>
+<td class="comment-1" rowspan="1">Token 107: "for" (dictionary offset 315), used 14 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49734"></span>49734</td>
+<td class="instruction">DEFB 98,0</td>
+<td class="comment-1" rowspan="1">Token 108: "and" (dictionary offset 98), used 13 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49736"></span>49736</td>
+<td class="instruction">DEFB 55,2</td>
+<td class="comment-1" rowspan="1">Token 109: "many" (dictionary offset 567), used 13 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49738"></span>49738</td>
+<td class="instruction">DEFB 236,1</td>
+<td class="comment-1" rowspan="1">Token 110: "it" (dictionary offset 492), used 12 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49740"></span>49740</td>
+<td class="instruction">DEFB 233,1</td>
+<td class="comment-1" rowspan="1">Token 111: "is" (dictionary offset 489), used 12 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49742"></span>49742</td>
+<td class="instruction">DEFB 201,3</td>
+<td class="comment-1" rowspan="1">Token 112: "to" (dictionary offset 969), used 11 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49744"></span>49744</td>
+<td class="instruction">DEFB 143,3</td>
+<td class="comment-1" rowspan="1">Token 113: "that" (dictionary offset 911), used 10 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49746"></span>49746</td>
+<td class="instruction">DEFB 80,0</td>
+<td class="comment-1" rowspan="1">Token 114: "aint" (dictionary offset 80), used 10 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49748"></span>49748</td>
+<td class="instruction">DEFB 120,1</td>
+<td class="comment-1" rowspan="1">Token 115: "gonna" (dictionary offset 376), used 10 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49750"></span>49750</td>
+<td class="instruction">DEFB 156,2</td>
+<td class="comment-1" rowspan="1">Token 116: "only" (dictionary offset 668), used 10 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49752"></span>49752</td>
+<td class="instruction">DEFB 29,4</td>
+<td class="comment-1" rowspan="1">Token 117: "year" (dictionary offset 1053), used 9 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49754"></span>49754</td>
+<td class="instruction">DEFB 150,2</td>
+<td class="comment-1" rowspan="1">Token 118: "on" (dictionary offset 662), used 9 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49756"></span>49756</td>
+<td class="instruction">DEFB 41,4</td>
+<td class="comment-1" rowspan="1">Token 119: "your" (dictionary offset 1065), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49758"></span>49758</td>
+<td class="instruction">DEFB 209,0</td>
+<td class="comment-1" rowspan="1">Token 120: "clients" (dictionary offset 209), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49760"></span>49760</td>
+<td class="instruction">DEFB 58,3</td>
+<td class="comment-1" rowspan="1">Token 121: "so" (dictionary offset 826), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49762"></span>49762</td>
+<td class="instruction">DEFB 122,3</td>
+<td class="comment-1" rowspan="1">Token 122: "ta" (dictionary offset 890), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49764"></span>49764</td>
+<td class="instruction">DEFB 59,2</td>
+<td class="comment-1" rowspan="1">Token 123: "me" (dictionary offset 571), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49766"></span>49766</td>
+<td class="instruction">DEFB 31,1</td>
+<td class="comment-1" rowspan="1">Token 124: "do" (dictionary offset 287), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49768"></span>49768</td>
+<td class="instruction">DEFB 150,0</td>
+<td class="comment-1" rowspan="1">Token 125: "be" (dictionary offset 150), used 8 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49770"></span>49770</td>
+<td class="instruction">DEFB 81,2</td>
+<td class="comment-1" rowspan="1">Token 126: "mob" (dictionary offset 593), used 7 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49772"></span>49772</td>
+<td class="instruction">DEFB 224,0</td>
+<td class="comment-1" rowspan="1">Token 127: "cops" (dictionary offset 224), used 7 times</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="48640.html">48640</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49710">Map</a></td>
+<td class="next">
+Next: <a href="49774.html">49774</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

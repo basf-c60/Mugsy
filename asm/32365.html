@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32365</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32294.html">32294</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32365">Map</a></td>
+<td class="next">
+Next: <a href="32400.html">32400</a>
+</td>
+</tr>
+</table>
+<div class="description">32365: Read the next point (x in C, y in B)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32365"></span>32365</td>
+<td class="instruction">LD D,1</td>
+<td class="comment-1" rowspan="1">Read one bit: absolute or relative coordinates?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32367"></span>32367</td>
+<td class="instruction">CALL <a href="32539.html">32539</a></td>
+<td class="comment-1" rowspan="1">Read it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32370"></span>32370</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32371"></span>32371</td>
+<td class="instruction">JR Z,<a href="32365.html#32382">32382</a></td>
+<td class="comment-1" rowspan="1">Zero: only one coordinate is given</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32373"></span>32373</td>
+<td class="instruction">CALL <a href="32400.html">32400</a></td>
+<td class="comment-1" rowspan="1">Read x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32376"></span>32376</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32377"></span>32377</td>
+<td class="instruction">CALL <a href="32434.html">32434</a></td>
+<td class="comment-1" rowspan="1">Read y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32380"></span>32380</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32381"></span>32381</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32382"></span>32382</td>
+<td class="instruction">LD D,1</td>
+<td class="comment-1" rowspan="1">Read one bit: short or long deltas?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32384"></span>32384</td>
+<td class="instruction">CALL <a href="32539.html">32539</a></td>
+<td class="comment-1" rowspan="1">Read it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32387"></span>32387</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32388"></span>32388</td>
+<td class="instruction">JR NZ,<a href="32365.html#32395">32395</a></td>
+<td class="comment-1" rowspan="1">One: it is a y delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32390"></span>32390</td>
+<td class="instruction">CALL <a href="32468.html">32468</a></td>
+<td class="comment-1" rowspan="1">Read a long x delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32393"></span>32393</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the new x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32394"></span>32394</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32395"></span>32395</td>
+<td class="instruction">CALL <a href="32502.html">32502</a></td>
+<td class="comment-1" rowspan="1">Read a long y delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32398"></span>32398</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the new y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32399"></span>32399</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32294.html">32294</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32365">Map</a></td>
+<td class="next">
+Next: <a href="32400.html">32400</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

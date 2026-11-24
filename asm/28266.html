@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28266</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28221.html">28221</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28266">Map</a></td>
+<td class="next">
+Next: <a href="28297.html">28297</a>
+</td>
+</tr>
+</table>
+<div class="description">28266: Wait one frame and read the keyboard</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Enables interrupts long enough for one ROM interrupt (which scans the keyboard), then checks bit 5 of FLAGS to see if a new key has been pressed.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Key code (if the zero flag is reset)</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28266"></span>28266</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28268"></span>28268</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28269"></span>28269</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28270"></span>28270</td>
+<td class="instruction">LD IY,(33900)</td>
+<td class="comment-1" rowspan="1">Restore IY for the ROM interrupt routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28274"></span>28274</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Let one interrupt happen (the ROM scans the keyboard)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28275"></span>28275</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Wait for the next interrupt</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28276"></span>28276</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Interrupts off again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28277"></span>28277</td>
+<td class="instruction">LD A,(23611)</td>
+<td class="comment-1" rowspan="1">Has a new key been pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28280"></span>28280</td>
+<td class="instruction">BIT 5,A</td>
+<td class="comment-1" rowspan="1">Is the ROM's new-key flag (bit 5 of FLAGS) set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28282"></span>28282</td>
+<td class="instruction">JR Z,<a href="28266.html#28292">28292</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28284"></span>28284</td>
+<td class="instruction">RES 5,A</td>
+<td class="comment-1" rowspan="1">Acknowledge it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28286"></span>28286</td>
+<td class="instruction">LD (23611),A</td>
+<td class="comment-1" rowspan="1">Store the flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28289"></span>28289</td>
+<td class="instruction">LD A,(23560)</td>
+<td class="comment-1" rowspan="1">A=the key code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28292"></span>28292</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28293"></span>28293</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28294"></span>28294</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28296"></span>28296</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28221.html">28221</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28266">Map</a></td>
+<td class="next">
+Next: <a href="28297.html">28297</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

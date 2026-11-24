@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28021</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28017.html">28017</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28021">Map</a></td>
+<td class="next">
+Next: <a href="28030.html">28030</a>
+</td>
+</tr>
+</table>
+<div class="description">28021: Check whether A is a digit</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the carry flag set if A is "0"-"9".
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Character code</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">F</td>
+<td class="register-desc">Carry set if A is a digit</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28021"></span>28021</td>
+<td class="instruction">CP 48</td>
+<td class="comment-1" rowspan="1">Below "0"?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28023"></span>28023</td>
+<td class="instruction">JR C,<a href="28021.html#28028">28028</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28025"></span>28025</td>
+<td class="instruction">CP 58</td>
+<td class="comment-1" rowspan="1">Below ":" (i.e. "0"-"9")?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28027"></span>28027</td>
+<td class="instruction">RET C</td>
+<td class="comment-1" rowspan="1">Return with the carry flag set if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28028"></span>28028</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag (and reset the carry flag): not a digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28029"></span>28029</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: Z means not a digit</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28017.html">28017</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28021">Map</a></td>
+<td class="next">
+Next: <a href="28030.html">28030</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

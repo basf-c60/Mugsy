@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29630</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29629.html">29629</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29630">Map</a></td>
+<td class="next">
+Next: <a href="29752.html">29752</a>
+</td>
+</tr>
+</table>
+<div class="description">29630: Print a number</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Prints the signed fixed-point value in BCDE in decimal (without leading zeros), adding a decimal point and two decimal places only if the fractional part is non-zero.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BCDE</td>
+<td class="register-desc">Number (x100)</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29630"></span>29630</td>
+<td class="instruction">BIT 7,B</td>
+<td class="comment-1" rowspan="1">Is the number negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29632"></span>29632</td>
+<td class="instruction">JR Z,<a href="29630.html#29642">29642</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29634"></span>29634</td>
+<td class="instruction">CALL <a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Make it positive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29637"></span>29637</td>
+<td class="instruction">LD A,45</td>
+<td class="comment-1" rowspan="1">A="-"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29639"></span>29639</td>
+<td class="instruction">CALL <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Put the minus sign in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29642"></span>29642</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Copy the high word (BC) into HL'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29643"></span>29643</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29644"></span>29644</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">...HL'=high word of the number...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29645"></span>29645</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">...and back again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29646"></span>29646</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=low word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29647"></span>29647</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Leading zeros are not printed yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29648"></span>29648</td>
+<td class="instruction">LD (29629),A</td>
+<td class="comment-1" rowspan="1">Clear the leading-zero flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29651"></span>29651</td>
+<td class="instruction">LD BC,15258</td>
+<td class="comment-1" rowspan="1">BC/DE=1,000,000,000 (the number is in hundredths, so this is ten million)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29654"></span>29654</td>
+<td class="instruction">LD DE,51712</td>
+<td class="comment-1" rowspan="1">DE=low word of the divisor 1,000,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29657"></span>29657</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print that digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29660"></span>29660</td>
+<td class="instruction">LD BC,1525</td>
+<td class="comment-1" rowspan="1">BC/DE=100,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29663"></span>29663</td>
+<td class="instruction">LD DE,57600</td>
+<td class="comment-1" rowspan="1">DE=low word of 100,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29666"></span>29666</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the millions digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29669"></span>29669</td>
+<td class="instruction">LD BC,152</td>
+<td class="comment-1" rowspan="1">BC/DE=10,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29672"></span>29672</td>
+<td class="instruction">LD DE,38528</td>
+<td class="comment-1" rowspan="1">DE=low word of 10,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29675"></span>29675</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the hundred-thousands digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29678"></span>29678</td>
+<td class="instruction">LD BC,15</td>
+<td class="comment-1" rowspan="1">BC/DE=1,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29681"></span>29681</td>
+<td class="instruction">LD DE,16960</td>
+<td class="comment-1" rowspan="1">DE=low word of 1,000,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29684"></span>29684</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the ten-thousands digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29687"></span>29687</td>
+<td class="instruction">LD BC,1</td>
+<td class="comment-1" rowspan="1">BC/DE=100,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29690"></span>29690</td>
+<td class="instruction">LD DE,34464</td>
+<td class="comment-1" rowspan="1">DE=low word of 100,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29693"></span>29693</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the thousands digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29696"></span>29696</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC/DE=10,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29699"></span>29699</td>
+<td class="instruction">LD DE,10000</td>
+<td class="comment-1" rowspan="1">DE=10,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29702"></span>29702</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the hundreds digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29705"></span>29705</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC/DE=1,000 (tens)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29708"></span>29708</td>
+<td class="instruction">LD DE,1000</td>
+<td class="comment-1" rowspan="1">DE=1,000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29711"></span>29711</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the tens digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29714"></span>29714</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">From now on zeros are printed (so 0 comes out as "0")</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29716"></span>29716</td>
+<td class="instruction">LD (29629),A</td>
+<td class="comment-1" rowspan="1">Set the leading-zero flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29719"></span>29719</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC/DE=100 (units)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29722"></span>29722</td>
+<td class="instruction">LD DE,100</td>
+<td class="comment-1" rowspan="1">DE=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29725"></span>29725</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the units digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29728"></span>29728</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Is there a fractional part?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29729"></span>29729</td>
+<td class="instruction">OR H</td>
+<td class="comment-1" rowspan="1">Combine with H to test the fraction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29730"></span>29730</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not: whole numbers have no decimal point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29731"></span>29731</td>
+<td class="instruction">LD A,46</td>
+<td class="comment-1" rowspan="1">A="."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29733"></span>29733</td>
+<td class="instruction">CALL <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Put the decimal point in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29736"></span>29736</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC/DE=10 (tenths)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29739"></span>29739</td>
+<td class="instruction">LD DE,10</td>
+<td class="comment-1" rowspan="1">DE=10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29742"></span>29742</td>
+<td class="instruction">CALL <a href="29752.html">29752</a></td>
+<td class="comment-1" rowspan="1">Print the tenths digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29745"></span>29745</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=hundredths digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29746"></span>29746</td>
+<td class="instruction">ADD A,48</td>
+<td class="comment-1" rowspan="1">Convert it to ASCII</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29748"></span>29748</td>
+<td class="instruction">CALL <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Put it in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29751"></span>29751</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29629.html">29629</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29630">Map</a></td>
+<td class="next">
+Next: <a href="29752.html">29752</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

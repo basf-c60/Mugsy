@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29320</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29319.html">29319</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29320">Map</a></td>
+<td class="next">
+Next: <a href="29452.html">29452</a>
+</td>
+</tr>
+</table>
+<div class="description">29320: Render a message into the text buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Clears the buffer, renders the message at HL into it and then, if the text is too wide for one line, inserts a line break near the middle so that the bubble comes out roughly round.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Message address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29320"></span>29320</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the message address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29321"></span>29321</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0, to clear the first-character flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29322"></span>29322</td>
+<td class="instruction">LD (29319),A</td>
+<td class="comment-1" rowspan="1">Clear the first-character flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29325"></span>29325</td>
+<td class="instruction">LD HL,23808</td>
+<td class="comment-1" rowspan="1">Point the buffer pointer at the start of the text buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29328"></span>29328</td>
+<td class="instruction">LD (29926),HL</td>
+<td class="comment-1" rowspan="1">Start the text buffer pointer at 23808</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29331"></span>29331</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">IX=message address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29333"></span>29333</td>
+<td class="instruction">CALL <a href="29452.html">29452</a></td>
+<td class="comment-1" rowspan="1">Render the message into the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29336"></span>29336</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Terminate the buffer with a zero byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29337"></span>29337</td>
+<td class="instruction">CALL <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Store the zero terminator in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29340"></span>29340</td>
+<td class="instruction">LD A,(33906)</td>
+<td class="comment-1" rowspan="1">Has the bubble layout changed since the last message?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29343"></span>29343</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the layout-changed flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29344"></span>29344</td>
+<td class="instruction">JR NZ,<a href="29320.html#29445">29445</a></td>
+<td class="comment-1" rowspan="1">Jump if so (the screen will be redrawn anyway)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29346"></span>29346</td>
+<td class="instruction">CALL <a href="29294.html">29294</a></td>
+<td class="comment-1" rowspan="1">HL=width of the new text in pixels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29349"></span>29349</td>
+<td class="instruction">LD DE,(33907)</td>
+<td class="comment-1" rowspan="1">DE=width of the previous text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29353"></span>29353</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag for the subtraction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29354"></span>29354</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Is the new text at least as wide?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29356"></span>29356</td>
+<td class="instruction">JR NC,<a href="29320.html#29445">29445</a></td>
+<td class="comment-1" rowspan="1">Jump if so (the new bubble will cover the old one)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29358"></span>29358</td>
+<td class="instruction">LD DE,0</td>
+<td class="comment-1" rowspan="1">Otherwise work out how many 3-pixel spaces are needed...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29361"></span>29361</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=0 (the new width), HL=old width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29362"></span>29362</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29363"></span>29363</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">...HL=old width-new width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29365"></span>29365</td>
+<td class="instruction">LD DE,3</td>
+<td class="comment-1" rowspan="1">Spaces are 3 pixels wide</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29368"></span>29368</td>
+<td class="instruction">LD BC,65535</td>
+<td class="comment-1" rowspan="1">BC will count the spaces</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29371"></span>29371</td>
+<td class="instruction">INC BC</td>
+<td class="comment-1" rowspan="1">Count one more space</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29372"></span>29372</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29373"></span>29373</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Divide by 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29375"></span>29375</td>
+<td class="instruction">JR NC,<a href="29320.html#29371">29371</a></td>
+<td class="comment-1" rowspan="1">Loop while the width remaining is at least 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29377"></span>29377</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Are any spaces needed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29378"></span>29378</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine B and C to test BC for zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29379"></span>29379</td>
+<td class="instruction">JR Z,<a href="29320.html#29445">29445</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29381"></span>29381</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the number of spaces</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29382"></span>29382</td>
+<td class="instruction">SRL B</td>
+<td class="comment-1" rowspan="1">Half of them go in front of the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29384"></span>29384</td>
+<td class="instruction">RR C</td>
+<td class="comment-1" rowspan="1">Half the count in BC (carry out of B into C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29386"></span>29386</td>
+<td class="instruction">LD HL,(29926)</td>
+<td class="comment-1" rowspan="1">HL=address of the terminator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29389"></span>29389</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">HL=address of the last character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29390"></span>29390</td>
+<td class="instruction">LD E,L</td>
+<td class="comment-1" rowspan="1">DE=HL: the address of the last character...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29391"></span>29391</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1">DE=HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29392"></span>29392</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">Move the end of the text along by BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29393"></span>29393</td>
+<td class="instruction">LD (29926),HL</td>
+<td class="comment-1" rowspan="1">Update the buffer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29396"></span>29396</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=last character, DE=its new position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29397"></span>29397</td>
+<td class="instruction">LD BC,23807</td>
+<td class="comment-1" rowspan="1">BC=length of the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29400"></span>29400</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29401"></span>29401</td>
+<td class="instruction">SBC HL,BC</td>
+<td class="comment-1" rowspan="1">HL=length of the text in the buffer (counted down from the end)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29403"></span>29403</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29404"></span>29404</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">HL=address of the last character again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29405"></span>29405</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">BC=length, ready for LDDR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29406"></span>29406</td>
+<td class="instruction">LDDR</td>
+<td class="comment-1" rowspan="1">Shift the text right to make room for the leading spaces</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29408"></span>29408</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the total number of spaces</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29409"></span>29409</td>
+<td class="instruction">LD HL,(29926)</td>
+<td class="comment-1" rowspan="1">HL=end of the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29412"></span>29412</td>
+<td class="instruction">LD DE,23808</td>
+<td class="comment-1" rowspan="1">DE=start of the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29415"></span>29415</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Fill in pairs of spaces...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29416"></span>29416</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the high byte of the count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29417"></span>29417</td>
+<td class="instruction">JR NZ,<a href="29320.html#29427">29427</a></td>
+<td class="comment-1" rowspan="1">Jump if at least 256 left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29419"></span>29419</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=low byte of the count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29420"></span>29420</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it for zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29421"></span>29421</td>
+<td class="instruction">JR Z,<a href="29320.html#29440">29440</a></td>
+<td class="comment-1" rowspan="1">Jump if none left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29423"></span>29423</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="1">Just one left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29425"></span>29425</td>
+<td class="instruction">JR Z,<a href="29320.html#29437">29437</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29427"></span>29427</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">Put a space at the front...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29429"></span>29429</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Space at the start of the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29430"></span>29430</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">...and one at the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29431"></span>29431</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next position at the front</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29432"></span>29432</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next position at the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29433"></span>29433</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">One fewer space to place...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29434"></span>29434</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Two fewer spaces to place</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29435"></span>29435</td>
+<td class="instruction">JR <a href="29320.html#29415">29415</a></td>
+<td class="comment-1" rowspan="1">Loop back for the next pair</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29437"></span>29437</td>
+<td class="instruction">LD (HL),32</td>
+<td class="comment-1" rowspan="1">Put the odd space at the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29439"></span>29439</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Step over the odd space</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29440"></span>29440</td>
+<td class="instruction">LD (HL),0</td>
+<td class="comment-1" rowspan="1">Terminate the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29442"></span>29442</td>
+<td class="instruction">LD (29926),HL</td>
+<td class="comment-1" rowspan="1">Update the buffer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29445"></span>29445</td>
+<td class="instruction">CALL <a href="29294.html">29294</a></td>
+<td class="comment-1" rowspan="1">Measure the final text...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29448"></span>29448</td>
+<td class="instruction">LD (33907),HL</td>
+<td class="comment-1" rowspan="1">...and remember its width for next time</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29451"></span>29451</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with HL=the final width</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29319.html">29319</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29320">Map</a></td>
+<td class="next">
+Next: <a href="29452.html">29452</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32084</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32066.html">32066</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32084">Map</a></td>
+<td class="next">
+Next: <a href="32124.html">32124</a>
+</td>
+</tr>
+</table>
+<div class="description">32084: Convert a display file address and mask back to coordinates</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Inverse of <a href="32066.html">32066</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32084"></span>32084</td>
+<td class="instruction">LD A,255</td>
+<td class="comment-1" rowspan="1">Turn the mask back into a bit position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32086"></span>32086</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Count the shifts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32087"></span>32087</td>
+<td class="instruction">RLC D</td>
+<td class="comment-1" rowspan="1">Rotate the mask left until the bit falls out</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32089"></span>32089</td>
+<td class="instruction">JR NC,<a href="32084.html#32086">32086</a></td>
+<td class="comment-1" rowspan="1">Repeat</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32091"></span>32091</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the bit position (0-7)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32092"></span>32092</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">x=8*column+bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32093"></span>32093</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32095"></span>32095</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">Multiply by 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32096"></span>32096</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32097"></span>32097</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32098"></span>32098</td>
+<td class="instruction">OR D</td>
+<td class="comment-1" rowspan="1">Add the bit position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32099"></span>32099</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32100"></span>32100</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">y=row within the character...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32101"></span>32101</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Keep the pixel row within the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32103"></span>32103</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32104"></span>32104</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">...plus 8*character row...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32105"></span>32105</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Keep the character row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32107"></span>32107</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Move them to bits 3-5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32108"></span>32108</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32109"></span>32109</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">Add the pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32110"></span>32110</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32111"></span>32111</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">...plus 64*third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32112"></span>32112</td>
+<td class="instruction">AND 24</td>
+<td class="comment-1" rowspan="1">Keep the third bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32114"></span>32114</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">Move them to bits 6-7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32115"></span>32115</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32116"></span>32116</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32117"></span>32117</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">Add the lower bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32118"></span>32118</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=y counted from the top</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32119"></span>32119</td>
+<td class="instruction">LD A,175</td>
+<td class="comment-1" rowspan="1">Convert to the ROM's coordinates</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32121"></span>32121</td>
+<td class="instruction">SUB E</td>
+<td class="comment-1" rowspan="1">Subtract from 175</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32122"></span>32122</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=y counted from the bottom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32123"></span>32123</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32066.html">32066</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32084">Map</a></td>
+<td class="next">
+Next: <a href="32124.html">32124</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29790</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29752.html">29752</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29790">Map</a></td>
+<td class="next">
+Next: <a href="29808.html">29808</a>
+</td>
+</tr>
+</table>
+<div class="description">29790: Control code 11: repeat earlier text</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The next byte is an offset back (n-256) to some text earlier in the message area, which is rendered up to its own end marker. This saves space where messages share phrases.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29790"></span>29790</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save the message pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29792"></span>29792</td>
+<td class="instruction">LD E,(IX+1)</td>
+<td class="comment-1" rowspan="1">E=offset (as a negative number: the text is earlier in memory)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29795"></span>29795</td>
+<td class="instruction">LD D,255</td>
+<td class="comment-1" rowspan="1">D=255, so DE is a negative offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29797"></span>29797</td>
+<td class="instruction">ADD IX,DE</td>
+<td class="comment-1" rowspan="1">IX=address of the earlier text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29799"></span>29799</td>
+<td class="instruction">CALL <a href="29452.html">29452</a></td>
+<td class="comment-1" rowspan="1">Render it until its own end marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29802"></span>29802</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore the message pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29804"></span>29804</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Skip the offset byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29806"></span>29806</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag: code done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29807"></span>29807</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29752.html">29752</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29790">Map</a></td>
+<td class="next">
+Next: <a href="29808.html">29808</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

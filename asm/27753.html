@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 27753</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27724.html">27724</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27753">Map</a></td>
+<td class="next">
+Next: <a href="27785.html">27785</a>
+</td>
+</tr>
+</table>
+<div class="description">27753: VM native: get a yes/no answer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Reads a line of input and returns with the zero flag set for "Y" or "y" and reset for "N" or "n". Any other answer makes Louey say "Don't get smart wit' me, Mugsy!..." (script at <a href="27785.html">27785</a>) and asks again.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="27753"></span>27753</td>
+<td class="instruction">CALL <a href="28037.html">28037</a></td>
+<td class="comment-1" rowspan="1">Read a line of input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27756"></span>27756</td>
+<td class="instruction">LD A,(23808)</td>
+<td class="comment-1" rowspan="1">Pick up the first character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27759"></span>27759</td>
+<td class="instruction">CP 89</td>
+<td class="comment-1" rowspan="1">"Y"?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27761"></span>27761</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return with the zero flag set if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27762"></span>27762</td>
+<td class="instruction">CP 121</td>
+<td class="comment-1" rowspan="1">"y"?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27764"></span>27764</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return with the zero flag set (yes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27765"></span>27765</td>
+<td class="instruction">CP 78</td>
+<td class="comment-1" rowspan="1">"N"?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27767"></span>27767</td>
+<td class="instruction">JR Z,<a href="27753.html#27782">27782</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27769"></span>27769</td>
+<td class="instruction">CP 110</td>
+<td class="comment-1" rowspan="1">"n"?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27771"></span>27771</td>
+<td class="instruction">JR Z,<a href="27753.html#27782">27782</a></td>
+<td class="comment-1" rowspan="1">Jump if so (no)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27773"></span>27773</td>
+<td class="instruction">LD IY,27785</td>
+<td class="comment-1" rowspan="1">Otherwise Louey says "Don't get smart wit' me, Mugsy!..."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27777"></span>27777</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the script that says "Don't get smart wit' me"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27780"></span>27780</td>
+<td class="instruction">JR <a href="27753.html#27753">27753</a></td>
+<td class="comment-1" rowspan="1">And asks again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27782"></span>27782</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Reset the zero flag for "no"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27784"></span>27784</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with the zero flag reset (no)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27724.html">27724</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27753">Map</a></td>
+<td class="next">
+Next: <a href="27785.html">27785</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

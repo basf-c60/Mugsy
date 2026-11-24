@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45122</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45079.html">45079</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45122">Map</a></td>
+<td class="next">
+Next: <a href="45155.html">45155</a>
+</td>
+</tr>
+</table>
+<div class="description">45122: Shootout: move to the next figure slot</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45122"></span>45122</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45123"></span>45123</td>
+<td class="instruction">LD A,(42371)</td>
+<td class="comment-1" rowspan="1">A=frame counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45126"></span>45126</td>
+<td class="instruction">LD HL,(42369)</td>
+<td class="comment-1" rowspan="1">HL=the frame table pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45129"></span>45129</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One frame less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45130"></span>45130</td>
+<td class="instruction">JR Z,<a href="45122.html#45141">45141</a></td>
+<td class="comment-1" rowspan="1">None left: wrap round</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45132"></span>45132</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next frame (4 bytes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45133"></span>45133</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45134"></span>45134</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45135"></span>45135</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45136"></span>45136</td>
+<td class="instruction">LD (42369),HL</td>
+<td class="comment-1" rowspan="1">Store the pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45139"></span>45139</td>
+<td class="instruction">JR <a href="45122.html#45150">45150</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45141"></span>45141</td>
+<td class="instruction">LD HL,(42309)</td>
+<td class="comment-1" rowspan="1">HL=the start of the table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45144"></span>45144</td>
+<td class="instruction">LD (42369),HL</td>
+<td class="comment-1" rowspan="1">Store the pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45147"></span>45147</td>
+<td class="instruction">LD A,(42312)</td>
+<td class="comment-1" rowspan="1">A=the number of frames</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45150"></span>45150</td>
+<td class="instruction">LD (42371),A</td>
+<td class="comment-1" rowspan="1">Store the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45153"></span>45153</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45154"></span>45154</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45079.html">45079</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45122">Map</a></td>
+<td class="next">
+Next: <a href="45155.html">45155</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

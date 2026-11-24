@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 27869</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27868.html">27868</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27869">Map</a></td>
+<td class="next">
+Next: <a href="27995.html">27995</a>
+</td>
+</tr>
+</table>
+<div class="description">27869: Parse the input buffer as a number</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Checks the text at 23808 for an optional sign, digits and a decimal point, then runs the small VM scripts at <a href="27995.html">27995</a>, <a href="28000.html">28000</a> and <a href="28006.html">28006</a> to accumulate the value in v35 (each digit: v35=v35*10+digit*100). Returns with the zero flag reset if the entry was not a valid whole number, and with the carry flag reset if it contained a decimal point.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="27869"></span>27869</td>
+<td class="instruction">LD HL,23808</td>
+<td class="comment-1" rowspan="1">Point HL at the input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27872"></span>27872</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Pick up the first character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27873"></span>27873</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the first character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27874"></span>27874</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return (zero flag set: invalid) if the line is empty</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27875"></span>27875</td>
+<td class="instruction">CP 45</td>
+<td class="comment-1" rowspan="1">A minus sign?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27877"></span>27877</td>
+<td class="instruction">JR Z,<a href="27869.html#27892">27892</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27879"></span>27879</td>
+<td class="instruction">CP 43</td>
+<td class="comment-1" rowspan="1">A plus sign?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27881"></span>27881</td>
+<td class="instruction">JR Z,<a href="27869.html#27892">27892</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27883"></span>27883</td>
+<td class="instruction">CP 46</td>
+<td class="comment-1" rowspan="1">A decimal point?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27885"></span>27885</td>
+<td class="instruction">JP Z,<a href="28017.html">28017</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27888"></span>27888</td>
+<td class="instruction">CALL <a href="28021.html">28021</a></td>
+<td class="comment-1" rowspan="1">Is it a digit?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27891"></span>27891</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return (zero flag set: invalid) if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27892"></span>27892</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27893"></span>27893</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27894"></span>27894</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">End of the line?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27895"></span>27895</td>
+<td class="instruction">JR Z,<a href="27869.html#27908">27908</a></td>
+<td class="comment-1" rowspan="1">Jump if so: the entry is valid</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27897"></span>27897</td>
+<td class="instruction">CP 46</td>
+<td class="comment-1" rowspan="1">A decimal point?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27899"></span>27899</td>
+<td class="instruction">JP Z,<a href="28017.html">28017</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27902"></span>27902</td>
+<td class="instruction">CALL <a href="28021.html">28021</a></td>
+<td class="comment-1" rowspan="1">A digit?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27905"></span>27905</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return (invalid) if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27906"></span>27906</td>
+<td class="instruction">JR <a href="27869.html#27892">27892</a></td>
+<td class="comment-1" rowspan="1">Check the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27908"></span>27908</td>
+<td class="instruction">LD IX,23808</td>
+<td class="comment-1" rowspan="1">Now convert the number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27912"></span>27912</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Clear the minus flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27913"></span>27913</td>
+<td class="instruction">LD (27868),A</td>
+<td class="comment-1" rowspan="1">Store it: no minus sign yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27916"></span>27916</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Pick up the first character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27919"></span>27919</td>
+<td class="instruction">CP 45</td>
+<td class="comment-1" rowspan="1">A minus sign?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27921"></span>27921</td>
+<td class="instruction">JR NZ,<a href="27869.html#27928">27928</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27923"></span>27923</td>
+<td class="instruction">LD (27868),A</td>
+<td class="comment-1" rowspan="1">Set the minus flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27926"></span>27926</td>
+<td class="instruction">JR <a href="27869.html#27932">27932</a></td>
+<td class="comment-1" rowspan="1">Skip over the sign</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27928"></span>27928</td>
+<td class="instruction">CP 43</td>
+<td class="comment-1" rowspan="1">A plus sign?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27930"></span>27930</td>
+<td class="instruction">JR NZ,<a href="27869.html#27934">27934</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27932"></span>27932</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Skip the sign</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27934"></span>27934</td>
+<td class="instruction">LD IY,27995</td>
+<td class="comment-1" rowspan="1">Run the VM script that sets v35 to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27938"></span>27938</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the script: v35=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27941"></span>27941</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27944"></span>27944</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">End of the line?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27945"></span>27945</td>
+<td class="instruction">JR Z,<a href="27869.html#27980">27980</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27947"></span>27947</td>
+<td class="instruction">LD IY,28000</td>
+<td class="comment-1" rowspan="1">Run the VM script that multiplies v35 by 10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27951"></span>27951</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the script: v35=v35*10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27954"></span>27954</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">A=the digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27957"></span>27957</td>
+<td class="instruction">SUB 48</td>
+<td class="comment-1" rowspan="1">Convert it from ASCII</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27959"></span>27959</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">BCDE=digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27960"></span>27960</td>
+<td class="instruction">LD D,0</td>
+<td class="comment-1" rowspan="1">D=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27962"></span>27962</td>
+<td class="instruction">LD B,D</td>
+<td class="comment-1" rowspan="1">B=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27963"></span>27963</td>
+<td class="instruction">LD C,D</td>
+<td class="comment-1" rowspan="1">C=0: BCDE=the digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27964"></span>27964</td>
+<td class="instruction">LD L,33</td>
+<td class="comment-1" rowspan="1">Store it in v33</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27966"></span>27966</td>
+<td class="instruction">CALL <a href="31179.html">31179</a></td>
+<td class="comment-1" rowspan="1">Store the digit in v33</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27969"></span>27969</td>
+<td class="instruction">LD IY,28006</td>
+<td class="comment-1" rowspan="1">Run the VM script that adds 100*v33 to v35</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27973"></span>27973</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the script: add 100*v33 to v35 (the number is kept in hundredths)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27976"></span>27976</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27978"></span>27978</td>
+<td class="instruction">JR <a href="27869.html#27941">27941</a></td>
+<td class="comment-1" rowspan="1">Next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27980"></span>27980</td>
+<td class="instruction">LD L,35</td>
+<td class="comment-1" rowspan="1">Load v35 into BCDE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27982"></span>27982</td>
+<td class="instruction">CALL <a href="31201.html">31201</a></td>
+<td class="comment-1" rowspan="1">BCDE=the number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27985"></span>27985</td>
+<td class="instruction">LD A,(27868)</td>
+<td class="comment-1" rowspan="1">Was there a minus sign?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27988"></span>27988</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the minus-sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27989"></span>27989</td>
+<td class="instruction">CALL NZ,<a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Negate the number if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27992"></span>27992</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Reset the zero flag: the entry was valid</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27994"></span>27994</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: Z set if the entry was invalid, NZ if it was valid</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27868.html">27868</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27869">Map</a></td>
+<td class="next">
+Next: <a href="27995.html">27995</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

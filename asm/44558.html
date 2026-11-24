@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44558</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44525.html">44525</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44558">Map</a></td>
+<td class="next">
+Next: <a href="44612.html">44612</a>
+</td>
+</tr>
+</table>
+<div class="description">44558: Shootout: start a falling-over animation</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44558"></span>44558</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the record address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44559"></span>44559</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the animation length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44560"></span>44560</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the graphic address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44561"></span>44561</td>
+<td class="instruction">CALL <a href="45693.html">45693</a></td>
+<td class="comment-1" rowspan="1">Copy the record to the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44564"></span>44564</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Get the graphic address back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44565"></span>44565</td>
+<td class="instruction">LD (42355),BC</td>
+<td class="comment-1" rowspan="1">Store it as the figure's frame pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44569"></span>44569</td>
+<td class="instruction">CALL <a href="45155.html">45155</a></td>
+<td class="comment-1" rowspan="1">Copy the coordinates</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44572"></span>44572</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Get the animation length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44573"></span>44573</td>
+<td class="instruction">LD (42373),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44576"></span>44576</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="1">Divide by 8...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44577"></span>44577</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="1">...by shifting right...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44578"></span>44578</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="1">...three times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44579"></span>44579</td>
+<td class="instruction">LD (42367),A</td>
+<td class="comment-1" rowspan="1">Store the number of cells</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44582"></span>44582</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44583"></span>44583</td>
+<td class="instruction">LD B,20</td>
+<td class="comment-1" rowspan="1">B=20: drop the figure 20 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44585"></span>44585</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down one row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44586"></span>44586</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">Fix up the address across character boundaries</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44589"></span>44589</td>
+<td class="instruction">DJNZ <a href="44558.html#44585">44585</a></td>
+<td class="comment-1" rowspan="1">Repeat 20 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44591"></span>44591</td>
+<td class="instruction">LD (42353),HL</td>
+<td class="comment-1" rowspan="1">Store the new screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44594"></span>44594</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44595"></span>44595</td>
+<td class="instruction">CALL <a href="45182.html">45182</a></td>
+<td class="comment-1" rowspan="1">Compute the pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44598"></span>44598</td>
+<td class="instruction">CALL <a href="45626.html">45626</a></td>
+<td class="comment-1" rowspan="1">Convert to an attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44601"></span>44601</td>
+<td class="instruction">LD (42365),DE</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44605"></span>44605</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44606"></span>44606</td>
+<td class="instruction">CALL <a href="45702.html">45702</a></td>
+<td class="comment-1" rowspan="1">Copy the workspace back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44609"></span>44609</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44525.html">44525</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44558">Map</a></td>
+<td class="next">
+Next: <a href="44612.html">44612</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

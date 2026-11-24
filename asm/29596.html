@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29596</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29594.html">29594</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29596">Map</a></td>
+<td class="next">
+Next: <a href="29608.html">29608</a>
+</td>
+</tr>
+</table>
+<div class="description">29596: Control codes 1/4: fetch a variable from the VM stream</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Reads a variable number from the VM byte stream (not the message!) and loads that variable into BCDE, then puts a space in the buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29596"></span>29596</td>
+<td class="instruction">CALL <a href="30214.html">30214</a></td>
+<td class="comment-1" rowspan="1">Fetch a variable number from the VM byte stream</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29599"></span>29599</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=variable number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29600"></span>29600</td>
+<td class="instruction">CALL <a href="31201.html">31201</a></td>
+<td class="comment-1" rowspan="1">Load the variable into BCDE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29603"></span>29603</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">A=space</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29605"></span>29605</td>
+<td class="instruction">JP <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Put a space in the buffer</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29594.html">29594</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29596">Map</a></td>
+<td class="next">
+Next: <a href="29608.html">29608</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

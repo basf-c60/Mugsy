@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 27817</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27807.html">27807</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27817">Map</a></td>
+<td class="next">
+Next: <a href="27828.html">27828</a>
+</td>
+</tr>
+</table>
+<div class="description">27817: Complain about a fraction and try again</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Entered with the carry flag reset when the number contained a decimal point.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="27817"></span>27817</td>
+<td class="instruction">JR NC,<a href="27835.html">27835</a></td>
+<td class="comment-1" rowspan="1">Jump if there was no decimal point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27819"></span>27819</td>
+<td class="instruction">LD IY,27828</td>
+<td class="comment-1" rowspan="1">Louey complains about fractions (another blunder)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27823"></span>27823</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the script that complains about fractions</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27826"></span>27826</td>
+<td class="instruction">JR <a href="27790.html">27790</a></td>
+<td class="comment-1" rowspan="1">Ask again</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27807.html">27807</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27817">Map</a></td>
+<td class="next">
+Next: <a href="27828.html">27828</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

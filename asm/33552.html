@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 33552</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33051.html">33051</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33552">Map</a></td>
+<td class="next">
+Next: <a href="33888.html">33888</a>
+</td>
+</tr>
+</table>
+<div class="description">33552: VM variables</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The VM has 84 32-bit signed variables, each holding a fixed-point number with two decimal places (so 1.00 is stored as 100). Variables 37-64 are constants; variables 65-83 are the table of initial values for v0-v18 copied by <a href="33937.html">33937</a>, but the script also uses v68-v72 as the constants 40, 10, 2.5, 1 and 0. See the <a href="../Variables.html">variables page</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33552"></span>33552</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v0 (StartClients): Number of clients at the start of the game (400) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33556"></span>33556</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v1 (Squeezed): Number of clients squeezed this year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33560"></span>33560</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v2 (Raided): Amount (in grand) taken by the cops in a raid [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33564"></span>33564</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v3 (Hoods): Number of hoods in the mob (shown on the status line) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33568"></span>33568</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v4 (Killed): Number of hoods rubbed out last year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33572"></span>33572</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v5 (Price): Average protection payment per client [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33576"></span>33576</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v6 (Year): Current year (starts at 1) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33580"></span>33580</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v7 (Dough): Dough in the safe, in thousands of dollars (shown on the status line) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33584"></span>33584</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v8 (Clients): Number of clients (shown on the status line as CUSTOMERS) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33588"></span>33588</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v9 (Recruits): Number of hoods recruited last year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33592"></span>33592</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v10 (TotalKilled): Total number of hoods killed during the game [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33596"></span>33596</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v11 (Blunders): Number of blunders (silly answers) made this year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33600"></span>33600</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v12 (TotalBlunders): Total number of blunders made during the game [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33604"></span>33604</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v13 (HoodYears): Sum of the mob size over all years [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33608"></span>33608</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v14 (Loan): Loan from Nick the Greek (in grand) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33612"></span>33612</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v15 (Score): Final score (percentage) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33616"></span>33616</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v16 (TotalTakings): Total protection takings [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33620"></span>33620</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v17 (TotalProfit): Total profit [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33624"></span>33624</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v18 (ClientYears): Sum of the number of clients over all years [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33628"></span>33628</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v19 (Bought): Number of clients bought from the syndicate this year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33632"></span>33632</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v20 (Sold): Number of clients sold to the syndicate this year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33636"></span>33636</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v21 (Unsqueezed): Number of clients available to be squeezed [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33640"></span>33640</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v22 (ClientsLeft): Number of clients that would be left after a sale [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33644"></span>33644</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v23 (Ammo): Amount spent on artillery and ammo this year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33648"></span>33648</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v24 (FedsKilled): Number of recruits killed in the shootout with the feds [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33652"></span>33652</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v25 (Takings): Protection takings this year [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33656"></span>33656</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v26 (Profit): Profit this year (after Rocco has taken his cut) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33660"></span>33660</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v27 (Interest): Interest rate on Nick the Greek's loan (percent) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33664"></span>33664</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v28 (HoodGrowth): Percentage growth of the mob over the game [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33668"></span>33668</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v29 (ClientGrowth): Percentage growth of the client list over the game [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33672"></span>33672</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v30 (Handout): Handout paid to keep the hoods loyal [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33676"></span>33676</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v31 (Bribe): Bribe paid to Rocco's mob [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33680"></span>33680</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v32 (Kickback): Annual kickback to the cops [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33684"></span>33684</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v33 (Tmp): Scratch variable [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33688"></span>33688</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v34 (ClientCost): Price of a client this year (in grand) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33692"></span>33692</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v35 (Input): Number entered by the player (x100 fixed point; see <a href="27790.html">27790</a>) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33696"></span>33696</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v36 (Years): Number of years the game will last (7-11, chosen at random by <a href="33937.html">33937</a>) [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33700"></span>33700</td>
+<td class="instruction">DEFB 128,56,1,0</td>
+<td class="comment-1" rowspan="1">v37 (K800): Constant: 800 [800]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33704"></span>33704</td>
+<td class="instruction">DEFB 160,134,1,0</td>
+<td class="comment-1" rowspan="1">v38 (K1000): Constant: 1000 [1000]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33708"></span>33708</td>
+<td class="instruction">DEFB 251,255,255,255</td>
+<td class="comment-1" rowspan="1">v39 (Km005): Constant: -0.05 [-0.05]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33712"></span>33712</td>
+<td class="instruction">DEFB 246,255,255,255</td>
+<td class="comment-1" rowspan="1">v40 (Km010): Constant: -0.1 [-0.1]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33716"></span>33716</td>
+<td class="instruction">DEFB 50,0,0,0</td>
+<td class="comment-1" rowspan="1">v41 (K05): Constant: 0.5 [0.5]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33720"></span>33720</td>
+<td class="instruction">DEFB 150,0,0,0</td>
+<td class="comment-1" rowspan="1">v42 (K15): Constant: 1.5 [1.5]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33724"></span>33724</td>
+<td class="instruction">DEFB 200,0,0,0</td>
+<td class="comment-1" rowspan="1">v43 (K2): Constant: 2 [2]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33728"></span>33728</td>
+<td class="instruction">DEFB 44,1,0,0</td>
+<td class="comment-1" rowspan="1">v44 (K3): Constant: 3 [3]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33732"></span>33732</td>
+<td class="instruction">DEFB 94,1,0,0</td>
+<td class="comment-1" rowspan="1">v45 (K35): Constant: 3.5 [3.5]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33736"></span>33736</td>
+<td class="instruction">DEFB 144,1,0,0</td>
+<td class="comment-1" rowspan="1">v46 (K4): Constant: 4 [4]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33740"></span>33740</td>
+<td class="instruction">DEFB 244,1,0,0</td>
+<td class="comment-1" rowspan="1">v47 (K5): Constant: 5 [5]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33744"></span>33744</td>
+<td class="instruction">DEFB 88,2,0,0</td>
+<td class="comment-1" rowspan="1">v48 (K6): Constant: 6 [6]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33748"></span>33748</td>
+<td class="instruction">DEFB 188,2,0,0</td>
+<td class="comment-1" rowspan="1">v49 (K7): Constant: 7 [7]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33752"></span>33752</td>
+<td class="instruction">DEFB 32,3,0,0</td>
+<td class="comment-1" rowspan="1">v50 (K8): Constant: 8 [8]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33756"></span>33756</td>
+<td class="instruction">DEFB 132,3,0,0</td>
+<td class="comment-1" rowspan="1">v51 (K9): Constant: 9 [9]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33760"></span>33760</td>
+<td class="instruction">DEFB 76,4,0,0</td>
+<td class="comment-1" rowspan="1">v52 (K11): Constant: 11 [11]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33764"></span>33764</td>
+<td class="instruction">DEFB 176,4,0,0</td>
+<td class="comment-1" rowspan="1">v53 (K12): Constant: 12 [12]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33768"></span>33768</td>
+<td class="instruction">DEFB 20,5,0,0</td>
+<td class="comment-1" rowspan="1">v54 (K13): Constant: 13 [13]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33772"></span>33772</td>
+<td class="instruction">DEFB 220,5,0,0</td>
+<td class="comment-1" rowspan="1">v55 (K15b): Constant: 15 [15]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33776"></span>33776</td>
+<td class="instruction">DEFB 164,6,0,0</td>
+<td class="comment-1" rowspan="1">v56 (K17): Constant: 17 [17]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33780"></span>33780</td>
+<td class="instruction">DEFB 108,7,0,0</td>
+<td class="comment-1" rowspan="1">v57 (K19): Constant: 19 [19]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33784"></span>33784</td>
+<td class="instruction">DEFB 208,7,0,0</td>
+<td class="comment-1" rowspan="1">v58 (K20): Constant: 20 [20]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33788"></span>33788</td>
+<td class="instruction">DEFB 196,9,0,0</td>
+<td class="comment-1" rowspan="1">v59 (K25): Constant: 25 [25]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33792"></span>33792</td>
+<td class="instruction">DEFB 172,13,0,0</td>
+<td class="comment-1" rowspan="1">v60 (K35b): Constant: 35 [35]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33796"></span>33796</td>
+<td class="instruction">DEFB 136,19,0,0</td>
+<td class="comment-1" rowspan="1">v61 (K50): Constant: 50 [50]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33800"></span>33800</td>
+<td class="instruction">DEFB 112,23,0,0</td>
+<td class="comment-1" rowspan="1">v62 (K60): Constant: 60 [60]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33804"></span>33804</td>
+<td class="instruction">DEFB 172,38,0,0</td>
+<td class="comment-1" rowspan="1">v63 (K99): Constant: 99 [99]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33808"></span>33808</td>
+<td class="instruction">DEFB 16,39,0,0</td>
+<td class="comment-1" rowspan="1">v64 (K100): Constant: 100 [100]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33812"></span>33812</td>
+<td class="instruction">DEFB 64,156,0,0</td>
+<td class="comment-1" rowspan="1">v65 (v65): Initial value of v0 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [400]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33816"></span>33816</td>
+<td class="instruction">DEFB 48,117,0,0</td>
+<td class="comment-1" rowspan="1">v66 (v66): Initial value of v1 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [300]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33820"></span>33820</td>
+<td class="instruction">DEFB 76,29,0,0</td>
+<td class="comment-1" rowspan="1">v67 (v67): Initial value of v2 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [75]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33824"></span>33824</td>
+<td class="instruction">DEFB 160,15,0,0</td>
+<td class="comment-1" rowspan="1">v68 (K40): Initial value of v3 (part of the table at <a href="33552.html#33812">33812</a>); also used as the constant 40 [40]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33828"></span>33828</td>
+<td class="instruction">DEFB 232,3,0,0</td>
+<td class="comment-1" rowspan="1">v69 (K10): Initial value of v4 (part of the table at <a href="33552.html#33812">33812</a>); also used as the constant 10 [10]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33832"></span>33832</td>
+<td class="instruction">DEFB 250,0,0,0</td>
+<td class="comment-1" rowspan="1">v70 (K25c): Initial value of v5 (part of the table at <a href="33552.html#33812">33812</a>); also used as the constant 2.5 [2.5]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33836"></span>33836</td>
+<td class="instruction">DEFB 100,0,0,0</td>
+<td class="comment-1" rowspan="1">v71 (K1): Initial value of v6 (part of the table at <a href="33552.html#33812">33812</a>); also used as the constant 1 [1]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33840"></span>33840</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v72 (K0): Initial value of v7 (part of the table at <a href="33552.html#33812">33812</a>); also used as the constant 0 [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33844"></span>33844</td>
+<td class="instruction">DEFB 64,156,0,0</td>
+<td class="comment-1" rowspan="1">v73 (v73): Initial value of v8 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [400]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33848"></span>33848</td>
+<td class="instruction">DEFB 232,3,0,0</td>
+<td class="comment-1" rowspan="1">v74 (v74): Initial value of v9 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [10]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33852"></span>33852</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v75 (v75): Initial value of v10 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33856"></span>33856</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v76 (v76): Initial value of v11 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33860"></span>33860</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v77 (v77): Initial value of v12 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33864"></span>33864</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v78 (v78): Initial value of v13 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33868"></span>33868</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v79 (v79): Initial value of v14 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33872"></span>33872</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v80 (v80): Initial value of v15 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33876"></span>33876</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v81 (v81): Initial value of v16 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33880"></span>33880</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v82 (v82): Initial value of v17 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33884"></span>33884</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-1" rowspan="1">v83 (v83): Initial value of v18 (part of the table at <a href="33552.html#33812">33812</a>); not otherwise used [0]</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33051.html">33051</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33552">Map</a></td>
+<td class="next">
+Next: <a href="33888.html">33888</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

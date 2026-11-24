@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30279</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30271.html">30271</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30279">Map</a></td>
+<td class="next">
+Next: <a href="30289.html">30289</a>
+</td>
+</tr>
+</table>
+<div class="description">30279: VM op 9: IFPEEKEQ</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30279"></span>30279</td>
+<td class="instruction">CALL <a href="30211.html">30211</a></td>
+<td class="comment-1" rowspan="1">Op 9 (IFPEEKEQ): fetch an address and a byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30282"></span>30282</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">Compare the byte at the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30283"></span>30283</td>
+<td class="instruction">CALL <a href="30196.html">30196</a></td>
+<td class="comment-1" rowspan="1">Fetch the jump address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30286"></span>30286</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return unless equal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30287"></span>30287</td>
+<td class="instruction">JR <a href="30238.html#30242">30242</a></td>
+<td class="comment-1" rowspan="1">Otherwise jump</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30271.html">30271</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30279">Map</a></td>
+<td class="next">
+Next: <a href="30289.html">30289</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

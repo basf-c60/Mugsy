@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30657</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30654.html">30654</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30657">Map</a></td>
+<td class="next">
+Next: <a href="30707.html">30707</a>
+</td>
+</tr>
+</table>
+<div class="description">30657: VM op 22: MUL (BCDE=BCDE*BC'DE'/100)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Both values are fixed point with two decimal places, so the 64-bit product is divided by 100. The signs are handled separately by <a href="30993.html">30993</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30657"></span>30657</td>
+<td class="instruction">CALL <a href="30993.html">30993</a></td>
+<td class="comment-1" rowspan="1">Make both operands positive, noting the sign of the result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30660"></span>30660</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to BC'DE', the second operand...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30661"></span>30661</td>
+<td class="instruction">LD (31038),DE</td>
+<td class="comment-1" rowspan="1">Store BC'DE' as the multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30665"></span>30665</td>
+<td class="instruction">LD (31040),BC</td>
+<td class="comment-1" rowspan="1">Store its top word as the multiplier's</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30669"></span>30669</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30670"></span>30670</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">Clear the top half of the multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30673"></span>30673</td>
+<td class="instruction">LD (31042),HL</td>
+<td class="comment-1" rowspan="1">Clear multiplier bytes 4-5...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30676"></span>30676</td>
+<td class="instruction">LD (31044),HL</td>
+<td class="comment-1" rowspan="1">...and 6-7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30679"></span>30679</td>
+<td class="instruction">CALL <a href="30782.html">30782</a></td>
+<td class="comment-1" rowspan="1">64-bit product=BCDE*multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30682"></span>30682</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Divide by 100 (the fixed-point scale)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30685"></span>30685</td>
+<td class="instruction">LD DE,100</td>
+<td class="comment-1" rowspan="1">DE=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30688"></span>30688</td>
+<td class="instruction">CALL <a href="31055.html">31055</a></td>
+<td class="comment-1" rowspan="1">Divide by 100 (the fixed-point scale)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30691"></span>30691</td>
+<td class="instruction">LD DE,(31038)</td>
+<td class="comment-1" rowspan="1">BCDE=result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30695"></span>30695</td>
+<td class="instruction">LD BC,(31040)</td>
+<td class="comment-1" rowspan="1">BC=the top word of the quotient</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30699"></span>30699</td>
+<td class="instruction">LD A,(31054)</td>
+<td class="comment-1" rowspan="1">Should it be negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30702"></span>30702</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30703"></span>30703</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30704"></span>30704</td>
+<td class="instruction">JP <a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Negate it</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30654.html">30654</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30657">Map</a></td>
+<td class="next">
+Next: <a href="30707.html">30707</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

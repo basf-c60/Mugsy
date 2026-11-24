@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30482</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30479.html">30479</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30482">Map</a></td>
+<td class="next">
+Next: <a href="30488.html">30488</a>
+</td>
+</tr>
+</table>
+<div class="description">30482: VM op 29: RND (replace E with a random number 0..E)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Only the low byte of the accumulator is changed, so RND behaves oddly on values of 2.56 or more. The script only ever uses RND v71 (1.00), giving a random number between 0 and 1.00.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30482"></span>30482</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30483"></span>30483</td>
+<td class="instruction">CALL <a href="30014.html">30014</a></td>
+<td class="comment-1" rowspan="1">Replace it with a random number 0..A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30486"></span>30486</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30487"></span>30487</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30479.html">30479</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30482">Map</a></td>
+<td class="next">
+Next: <a href="30488.html">30488</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

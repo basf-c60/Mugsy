@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28358</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28304.html">28304</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28358">Map</a></td>
+<td class="next">
+Next: <a href="28404.html">28404</a>
+</td>
+</tr>
+</table>
+<div class="description">28358: VM native: shootout with the hit man from Detroit</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Works out Mugsy's hit points from v33 (set by the script from the handout: (low byte of v33 AND 7)+1, or 8 if v33 is 2.56 or more) and plays the shootout at <a href="42112.html">42112</a>. On return flag 4 (<a href="33888.html#33892">33892</a>) is set to the result: 1 = the hit man was killed, 2 = the hit man was killed but bystanders were hit (the cops then want 20-60% of the safe), 3 = Mugsy was killed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28358"></span>28358</td>
+<td class="instruction">LD L,33</td>
+<td class="comment-1" rowspan="1">Variable 33 holds the handout, set by the script</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28360"></span>28360</td>
+<td class="instruction">CALL <a href="31201.html">31201</a></td>
+<td class="comment-1" rowspan="1">BCDE=the handout (as a fixed-point number)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28363"></span>28363</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Combine the upper three bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28364"></span>28364</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28365"></span>28365</td>
+<td class="instruction">OR D</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28366"></span>28366</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=the low byte of the handout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28367"></span>28367</td>
+<td class="instruction">JR Z,<a href="28358.html#28371">28371</a></td>
+<td class="comment-1" rowspan="1">The upper bytes are zero: use the low byte as it is</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28369"></span>28369</td>
+<td class="instruction">LD A,255</td>
+<td class="comment-1" rowspan="1">The handout is 2.56 or more: use 255 (8 hit points)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28371"></span>28371</td>
+<td class="instruction">CALL <a href="42112.html">42112</a></td>
+<td class="comment-1" rowspan="1">Play the shootout (A gives Mugsy's hit points)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28374"></span>28374</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28375"></span>28375</td>
+<td class="instruction">LD A,(23611)</td>
+<td class="comment-1" rowspan="1">Read the keyboard flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28378"></span>28378</td>
+<td class="instruction">RES 5,A</td>
+<td class="comment-1" rowspan="1">Forget any keypress left over from the shootout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28380"></span>28380</td>
+<td class="instruction">LD (23611),A</td>
+<td class="comment-1" rowspan="1">Store the flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28383"></span>28383</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28384"></span>28384</td>
+<td class="instruction">BIT 0,A</td>
+<td class="comment-1" rowspan="1">Was Mugsy killed (bit 0)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28386"></span>28386</td>
+<td class="instruction">JR Z,<a href="28358.html#28394">28394</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28388"></span>28388</td>
+<td class="instruction">LD A,3</td>
+<td class="comment-1" rowspan="1">A=3: Mugsy was killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28390"></span>28390</td>
+<td class="instruction">LD (33892),A</td>
+<td class="comment-1" rowspan="1">Store the outcome in flag 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28393"></span>28393</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28394"></span>28394</td>
+<td class="instruction">AND 12</td>
+<td class="comment-1" rowspan="1">Were any bystanders hit (bits 2 and 3)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28396"></span>28396</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: the hit man was killed and no bystanders were hurt</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28398"></span>28398</td>
+<td class="instruction">JR Z,<a href="28358.html#28390">28390</a></td>
+<td class="comment-1" rowspan="1">Zero: store 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28400"></span>28400</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="1">A=2: the hit man was killed but bystanders were hit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28402"></span>28402</td>
+<td class="instruction">JR <a href="28358.html#28390">28390</a></td>
+<td class="comment-1" rowspan="1">Store the outcome</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28304.html">28304</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28358">Map</a></td>
+<td class="next">
+Next: <a href="28404.html">28404</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

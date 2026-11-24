@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28757</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28728.html">28728</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28757">Map</a></td>
+<td class="next">
+Next: <a href="28879.html">28879</a>
+</td>
+</tr>
+</table>
+<div class="description">28757: Print the text buffer into a speech bubble</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Works out how many lines the text needs (<a href="29161.html">29161</a>), then prints it line by line, centring each line within the oval bubble shape described by the table of line widths at <a href="28728.html">28728</a> and left margins at 28746. The bubble outline itself is drawn first by <a href="28905.html">28905</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Text</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Display file address of the top of the bubble</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28757"></span>28757</td>
+<td class="instruction">CALL <a href="28671.html">28671</a></td>
+<td class="comment-1" rowspan="1">Measure the words of the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28760"></span>28760</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save IX...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28762"></span>28762</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">...and IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28764"></span>28764</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28765"></span>28765</td>
+<td class="instruction">CALL <a href="29161.html">29161</a></td>
+<td class="comment-1" rowspan="1">Work out the number of lines needed (B)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28768"></span>28768</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Is it odd?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28769"></span>28769</td>
+<td class="instruction">AND 1</td>
+<td class="comment-1" rowspan="1">Keep bit 0: 1 if the number of lines is odd</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28771"></span>28771</td>
+<td class="instruction">LD (28755),A</td>
+<td class="comment-1" rowspan="1">Store the odd-line flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28774"></span>28774</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=number of lines again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28775"></span>28775</td>
+<td class="instruction">SRL A</td>
+<td class="comment-1" rowspan="1">B/2 lines in each half of the bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28777"></span>28777</td>
+<td class="instruction">LD (28756),A</td>
+<td class="comment-1" rowspan="1">Remember the number of lines in each half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28780"></span>28780</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=lines in each half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28781"></span>28781</td>
+<td class="instruction">LD A,(28755)</td>
+<td class="comment-1" rowspan="1">C=index of the widest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28784"></span>28784</td>
+<td class="instruction">ADD A,B</td>
+<td class="comment-1" rowspan="1">Add the odd-line flag: the index of the middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28785"></span>28785</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=index of the middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28786"></span>28786</td>
+<td class="instruction">LD B,0</td>
+<td class="comment-1" rowspan="1">BC=index, to look up the left offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28788"></span>28788</td>
+<td class="instruction">LD HL,28737</td>
+<td class="comment-1" rowspan="1">Look up the left offset of the bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28791"></span>28791</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">HL=address of the offset for that line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28792"></span>28792</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1">C=the left offset of the bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28793"></span>28793</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28794"></span>28794</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">Add the left offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28795"></span>28795</td>
+<td class="instruction">CALL <a href="28885.html">28885</a></td>
+<td class="comment-1" rowspan="1">Leave a blank row above the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28798"></span>28798</td>
+<td class="instruction">LD IY,28746</td>
+<td class="comment-1" rowspan="1">IY points at the margins for each line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28802"></span>28802</td>
+<td class="instruction">LD DE,28728</td>
+<td class="comment-1" rowspan="1">DE points at the widths of the lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28805"></span>28805</td>
+<td class="instruction">CALL <a href="28905.html">28905</a></td>
+<td class="comment-1" rowspan="1">Draw the bubble outline</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28808"></span>28808</td>
+<td class="instruction">LD A,(28755)</td>
+<td class="comment-1" rowspan="1">B=number of lines in the top half (plus the middle line if odd)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28811"></span>28811</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the odd-line flag...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28812"></span>28812</td>
+<td class="instruction">LD A,(28756)</td>
+<td class="comment-1" rowspan="1">...plus the lines in the top half...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28815"></span>28815</td>
+<td class="instruction">ADD A,B</td>
+<td class="comment-1" rowspan="1">...gives the rows above the middle line...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28816"></span>28816</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">...B=row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28817"></span>28817</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=pixel offset 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28819"></span>28819</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the screen position of this row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28820"></span>28820</td>
+<td class="instruction">CALL <a href="28879.html">28879</a></td>
+<td class="comment-1" rowspan="1">Indent by the margin for this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28823"></span>28823</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=width of this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28824"></span>28824</td>
+<td class="instruction">CALL <a href="29029.html">29029</a></td>
+<td class="comment-1" rowspan="1">Print as many words as fit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28827"></span>28827</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Back to the start of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28828"></span>28828</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Next margin</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28830"></span>28830</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28831"></span>28831</td>
+<td class="instruction">CALL <a href="28885.html">28885</a></td>
+<td class="comment-1" rowspan="1">Move down a row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28834"></span>28834</td>
+<td class="instruction">DJNZ <a href="28757.html#28817">28817</a></td>
+<td class="comment-1" rowspan="1">Repeat for the top half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28836"></span>28836</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Step back to the middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28837"></span>28837</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">Back to the middle line's margin entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28839"></span>28839</td>
+<td class="instruction">LD A,(28755)</td>
+<td class="comment-1" rowspan="1">Is there an odd middle line?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28842"></span>28842</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test for an odd middle line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28843"></span>28843</td>
+<td class="instruction">JR Z,<a href="28757.html#28848">28848</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28845"></span>28845</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">If so step back once more</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28846"></span>28846</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">...and its margin entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28848"></span>28848</td>
+<td class="instruction">LD A,(28756)</td>
+<td class="comment-1" rowspan="1">B=number of lines in the bottom half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28851"></span>28851</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=number of lines in the bottom half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28852"></span>28852</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test for none</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28853"></span>28853</td>
+<td class="instruction">JR Z,<a href="28757.html#28874">28874</a></td>
+<td class="comment-1" rowspan="1">Jump if there are none</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28855"></span>28855</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=pixel offset 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28857"></span>28857</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep the screen position of this row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28858"></span>28858</td>
+<td class="instruction">CALL <a href="28879.html">28879</a></td>
+<td class="comment-1" rowspan="1">Indent by the margin for this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28861"></span>28861</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=width of this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28862"></span>28862</td>
+<td class="instruction">CALL <a href="29029.html">29029</a></td>
+<td class="comment-1" rowspan="1">Print as many words as fit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28865"></span>28865</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Back to the start of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28866"></span>28866</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">Previous margin (the bottom half mirrors the top)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28868"></span>28868</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Previous width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28869"></span>28869</td>
+<td class="instruction">CALL <a href="28885.html">28885</a></td>
+<td class="comment-1" rowspan="1">Move down a row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28872"></span>28872</td>
+<td class="instruction">DJNZ <a href="28757.html#28855">28855</a></td>
+<td class="comment-1" rowspan="1">Repeat for the bottom half</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28874"></span>28874</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore IY...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28876"></span>28876</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">...and IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28878"></span>28878</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the bubble and its text are drawn</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28728.html">28728</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28757">Map</a></td>
+<td class="next">
+Next: <a href="28879.html">28879</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

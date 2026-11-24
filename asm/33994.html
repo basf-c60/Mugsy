@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 33994</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33993.html">33993</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33994">Map</a></td>
+<td class="next">
+Next: <a href="34040.html">34040</a>
+</td>
+</tr>
+</table>
+<div class="description">33994: VM native: "A year goes by ......" animation</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Installs the IM2 interrupt routine at <a href="34069.html">34069</a> (via the jump at <a href="53456.html">53456</a> and the vector table at <a href="53504.html">53504</a>) and then plays one of two short animations chosen at random: the bar-room scene (step table at <a href="36348.html">36348</a>) or the getaway car (step table at <a href="34298.html">34298</a>).
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">Nothing</td>
+<td class="register-desc">in the game chooses between them: not the year, the hoods, the cash or what happened in the year. The choice is one call of the random routine (<a href="30014.html">30014</a>, limit 100); a result below 50 gives the bar room. That is not an even split, because the routine is not uniform (see <a href="30026.html">30026</a>): counting the 256 raw values gives 154 for the bar room and 102 for the car, about 60% to 40%.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="33994"></span>
+<div class="comments">
+<div class="paragraph">
+<img src="../images/baranim.gif" alt="The bar-room animation" /> <img src="../images/caranim.gif" alt="The getaway car animation" />
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="33994"></span>33994</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Interrupts off while the animation interrupt routine is installed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33995"></span>33995</td>
+<td class="instruction">LD HL,34069</td>
+<td class="comment-1" rowspan="1">Point the interrupt jump at <a href="53456.html">53456</a>...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33998"></span>33998</td>
+<td class="instruction">LD (53457),HL</td>
+<td class="comment-1" rowspan="1">...at the interrupt routine at <a href="34069.html">34069</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="34001"></span>34001</td>
+<td class="instruction">LD A,209</td>
+<td class="comment-1" rowspan="1">Point I at the vector table at <a href="53504.html">53504</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="34003"></span>34003</td>
+<td class="instruction">LD I,A</td>
+<td class="comment-1" rowspan="1">Point the interrupt vector register at the table at <a href="53504.html">53504</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="34005"></span>34005</td>
+<td class="instruction">IM 2</td>
+<td class="comment-1" rowspan="1">Select interrupt mode 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34007"></span>34007</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts: <a href="34069.html">34069</a> now runs fifty times a second</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34008"></span>34008</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Clear the sequence-finished flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34009"></span>34009</td>
+<td class="instruction">LD (33993),A</td>
+<td class="comment-1" rowspan="1">Clear the "animation finished" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34012"></span>34012</td>
+<td class="instruction">LD A,100</td>
+<td class="comment-1" rowspan="1">Pick one of the two animations at random</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34014"></span>34014</td>
+<td class="instruction">CALL <a href="30014.html">30014</a></td>
+<td class="comment-1" rowspan="1">A=a random number from 0 to 100 (not evenly spread: below 50 about 60% of the time)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34017"></span>34017</td>
+<td class="instruction">LD IX,36348</td>
+<td class="comment-1" rowspan="1">Bar-room animation...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34021"></span>34021</td>
+<td class="instruction">CP 50</td>
+<td class="comment-1" rowspan="1">Below 50?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34023"></span>34023</td>
+<td class="instruction">JR C,<a href="33994.html#34029">34029</a></td>
+<td class="comment-1" rowspan="1">...if the number is below 50</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34025"></span>34025</td>
+<td class="instruction">LD IX,34298</td>
+<td class="comment-1" rowspan="1">Otherwise the getaway car animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34029"></span>34029</td>
+<td class="instruction">CALL <a href="34040.html">34040</a></td>
+<td class="comment-1" rowspan="1">Run the animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34032"></span>34032</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Interrupts off again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34033"></span>34033</td>
+<td class="instruction">LD A,63</td>
+<td class="comment-1" rowspan="1">Restore I (63 is its normal value)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34035"></span>34035</td>
+<td class="instruction">LD I,A</td>
+<td class="comment-1" rowspan="1">Put I back as the ROM expects it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34037"></span>34037</td>
+<td class="instruction">IM 1</td>
+<td class="comment-1" rowspan="1">Back to interrupt mode 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34039"></span>34039</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33993.html">33993</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33994">Map</a></td>
+<td class="next">
+Next: <a href="34040.html">34040</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

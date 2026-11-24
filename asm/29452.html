@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29452</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29320.html">29320</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29452">Map</a></td>
+<td class="next">
+Next: <a href="29458.html">29458</a>
+</td>
+</tr>
+</table>
+<div class="description">29452: Render a message</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Calls <a href="29458.html">29458</a> for each item until the end of the message.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Message</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29452"></span>29452</td>
+<td class="instruction">CALL <a href="29458.html">29458</a></td>
+<td class="comment-1" rowspan="1">Render one item</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29455"></span>29455</td>
+<td class="instruction">JR NZ,<a href="29452.html#29452">29452</a></td>
+<td class="comment-1" rowspan="1">Repeat until an item ends the message</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29457"></span>29457</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the message has been rendered</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29320.html">29320</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29452">Map</a></td>
+<td class="next">
+Next: <a href="29458.html">29458</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

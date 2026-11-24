@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 26876</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26812.html">26812</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26876">Map</a></td>
+<td class="next">
+Next: <a href="26898.html">26898</a>
+</td>
+</tr>
+</table>
+<div class="description">26876: Wait for a key to be pressed or for a timeout</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+First waits until all keys are released, then waits (up to A periods of about one second each) for a key to be pressed. Used after each speech bubble.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Number of timeout periods</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26876"></span>26876</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save AF...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26877"></span>26877</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">...and BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26878"></span>26878</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=number of timeout periods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26879"></span>26879</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Select every keyboard half-row (high byte of the port = 0)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26880"></span>26880</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read every half-row of the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26882"></span>26882</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the key bits only</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26884"></span>26884</td>
+<td class="instruction">CP 31</td>
+<td class="comment-1" rowspan="1">Are all keys released?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26886"></span>26886</td>
+<td class="instruction">JR NZ,<a href="26876.html#26879">26879</a></td>
+<td class="comment-1" rowspan="1">Wait until they are</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26888"></span>26888</td>
+<td class="instruction">CALL <a href="26898.html">26898</a></td>
+<td class="comment-1" rowspan="1">Wait about a second for a keypress</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26891"></span>26891</td>
+<td class="instruction">JR NZ,<a href="26876.html#26895">26895</a></td>
+<td class="comment-1" rowspan="1">Finish if a key was pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26893"></span>26893</td>
+<td class="instruction">DJNZ <a href="26876.html#26888">26888</a></td>
+<td class="comment-1" rowspan="1">Otherwise try again for up to B periods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26895"></span>26895</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26896"></span>26896</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">...and AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26897"></span>26897</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: Z set if the time ran out, NZ if a key was pressed</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26812.html">26812</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26876">Map</a></td>
+<td class="next">
+Next: <a href="26898.html">26898</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

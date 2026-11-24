@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31525</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31522.html">31522</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31525">Map</a></td>
+<td class="next">
+Next: <a href="31755.html">31755</a>
+</td>
+</tr>
+</table>
+<div class="description">31525: Flood fill</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Fills the area containing the pixel at (D,E) solidly with ink, scanning left and right along each row and remembering whether the rows above and below need filling. Every cell it touches also gets A as its ink colour (bits 3-5 of A, if any, are ORed in as paper: the compressed pictures pass 56, meaning ink 0 on paper 7).
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Attribute bits for the filled cells (ink in bits 0-2)</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">x coordinate</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">y coordinate</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31525"></span>31525</td>
+<td class="instruction">LD (31522),A</td>
+<td class="comment-1" rowspan="1">Store the attribute bits for the filled cells</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31528"></span>31528</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31529"></span>31529</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31530"></span>31530</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31531"></span>31531</td>
+<td class="instruction">LD HL,22528</td>
+<td class="comment-1" rowspan="1">HL=22528: an address in the attribute file, used as the end marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31534"></span>31534</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Push a zero marker (the end of the stack of seeds)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31535"></span>31535</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31538"></span>31538</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Push the marker (HL=22528, DE=0 below it) on the seed stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31539"></span>31539</td>
+<td class="instruction">CALL <a href="32066.html">32066</a></td>
+<td class="comment-1" rowspan="1">Get the address and mask of the seed point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31542"></span>31542</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the pixel mask of the seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31543"></span>31543</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">Is this pixel set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31544"></span>31544</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Is the pixel at HL set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31545"></span>31545</td>
+<td class="instruction">JR NZ,<a href="31525.html#31555">31555</a></td>
+<td class="comment-1" rowspan="1">Jump if so: the left edge has been reached</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31547"></span>31547</td>
+<td class="instruction">CALL <a href="31900.html">31900</a></td>
+<td class="comment-1" rowspan="1">Otherwise move left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31550"></span>31550</td>
+<td class="instruction">JR NZ,<a href="31525.html#31543">31543</a></td>
+<td class="comment-1" rowspan="1">And keep going</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31552"></span>31552</td>
+<td class="instruction">JP <a href="31525.html#31561">31561</a></td>
+<td class="comment-1" rowspan="1">The left edge of the screen was reached: start filling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31555"></span>31555</td>
+<td class="instruction">CALL <a href="32034.html">32034</a></td>
+<td class="comment-1" rowspan="1">Plot the edge pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31558"></span>31558</td>
+<td class="instruction">CALL <a href="31887.html">31887</a></td>
+<td class="comment-1" rowspan="1">Move right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31561"></span>31561</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Clear the up/down flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31564"></span>31564</td>
+<td class="instruction">LD (31523),BC</td>
+<td class="comment-1" rowspan="1">Clear both flags (above and below)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31568"></span>31568</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">Reached a full byte boundary?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31569"></span>31569</td>
+<td class="instruction">CP 128</td>
+<td class="comment-1" rowspan="1">Is the mask the leftmost pixel of a byte?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31571"></span>31571</td>
+<td class="instruction">JR NZ,<a href="31525.html#31577">31577</a></td>
+<td class="comment-1" rowspan="1">No: do it pixel by pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31573"></span>31573</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Is the whole byte empty?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31574"></span>31574</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31575"></span>31575</td>
+<td class="instruction">JR Z,<a href="31525.html#31643">31643</a></td>
+<td class="comment-1" rowspan="1">Jump if so (fill it in one go)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31577"></span>31577</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31578"></span>31578</td>
+<td class="instruction">CALL <a href="31823.html">31823</a></td>
+<td class="comment-1" rowspan="1">Look at the pixel above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31581"></span>31581</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: the flag for "above" if nothing is pushed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31583"></span>31583</td>
+<td class="instruction">JR Z,<a href="31525.html#31601">31601</a></td>
+<td class="comment-1" rowspan="1">Jump if at the top</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31585"></span>31585</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the pixel mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31586"></span>31586</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Is the pixel above set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31587"></span>31587</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: the flag if it is blocked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31589"></span>31589</td>
+<td class="instruction">JR NZ,<a href="31525.html#31601">31601</a></td>
+<td class="comment-1" rowspan="1">Jump if it is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31591"></span>31591</td>
+<td class="instruction">LD A,(31523)</td>
+<td class="comment-1" rowspan="1">Was the pixel above already being filled?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31594"></span>31594</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31595"></span>31595</td>
+<td class="instruction">JR NZ,<a href="31525.html#31604">31604</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31597"></span>31597</td>
+<td class="instruction">EX (SP),HL</td>
+<td class="comment-1" rowspan="1">Otherwise push it as a new seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31598"></span>31598</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Push the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31599"></span>31599</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Push the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31600"></span>31600</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">A=1: the flag says a seed is now pending above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31601"></span>31601</td>
+<td class="instruction">LD (31523),A</td>
+<td class="comment-1" rowspan="1">Store the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31604"></span>31604</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the current address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31605"></span>31605</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Keep it on the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31606"></span>31606</td>
+<td class="instruction">CALL <a href="31851.html">31851</a></td>
+<td class="comment-1" rowspan="1">Look at the pixel below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31609"></span>31609</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: the flag for "below" if nothing is pushed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31611"></span>31611</td>
+<td class="instruction">JR Z,<a href="31525.html#31630">31630</a></td>
+<td class="comment-1" rowspan="1">Jump if at the bottom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31613"></span>31613</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the pixel mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31614"></span>31614</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Is the pixel below set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31615"></span>31615</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: the flag if it is blocked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31617"></span>31617</td>
+<td class="instruction">JR NZ,<a href="31525.html#31630">31630</a></td>
+<td class="comment-1" rowspan="1">Jump if it is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31619"></span>31619</td>
+<td class="instruction">LD A,(31524)</td>
+<td class="comment-1" rowspan="1">Was the pixel below already being filled?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31622"></span>31622</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31623"></span>31623</td>
+<td class="instruction">JR NZ,<a href="31525.html#31633">31633</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31625"></span>31625</td>
+<td class="instruction">EX (SP),HL</td>
+<td class="comment-1" rowspan="1">Otherwise push it as a new seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31626"></span>31626</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Push the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31627"></span>31627</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Push the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31628"></span>31628</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: a seed is now pending below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31630"></span>31630</td>
+<td class="instruction">LD (31524),A</td>
+<td class="comment-1" rowspan="1">Store the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31633"></span>31633</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the current address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31634"></span>31634</td>
+<td class="instruction">CALL <a href="32034.html">32034</a></td>
+<td class="comment-1" rowspan="1">Plot this pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31637"></span>31637</td>
+<td class="instruction">CALL <a href="31887.html">31887</a></td>
+<td class="comment-1" rowspan="1">Move right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31640"></span>31640</td>
+<td class="instruction">JP <a href="31525.html#31728">31728</a></td>
+<td class="comment-1" rowspan="1">Move on along the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31643"></span>31643</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Fill a whole byte at once: check the bytes above and below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31646"></span>31646</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31647"></span>31647</td>
+<td class="instruction">CALL <a href="31823.html">31823</a></td>
+<td class="comment-1" rowspan="1">Look at the byte above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31650"></span>31650</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the byte above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31651"></span>31651</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31652"></span>31652</td>
+<td class="instruction">JR Z,<a href="31525.html#31662">31662</a></td>
+<td class="comment-1" rowspan="1">At the top of the screen: it counts as clear</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31654"></span>31654</td>
+<td class="instruction">CP 255</td>
+<td class="comment-1" rowspan="1">Is the byte above full?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31656"></span>31656</td>
+<td class="instruction">JR Z,<a href="31525.html#31662">31662</a></td>
+<td class="comment-1" rowspan="1">Yes: treat as blocked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31658"></span>31658</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is it empty?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31659"></span>31659</td>
+<td class="instruction">JR NZ,<a href="31525.html#31577">31577</a></td>
+<td class="comment-1" rowspan="1">Neither empty nor full: do it pixel by pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31661"></span>31661</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">C=1: the byte above is empty</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31662"></span>31662</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31663"></span>31663</td>
+<td class="instruction">CALL <a href="31851.html">31851</a></td>
+<td class="comment-1" rowspan="1">Look at the byte below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31666"></span>31666</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the byte below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31667"></span>31667</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31668"></span>31668</td>
+<td class="instruction">JR Z,<a href="31525.html#31678">31678</a></td>
+<td class="comment-1" rowspan="1">At the bottom of the picture: it counts as clear</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31670"></span>31670</td>
+<td class="instruction">CP 255</td>
+<td class="comment-1" rowspan="1">Is the byte below full?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31672"></span>31672</td>
+<td class="instruction">JR Z,<a href="31525.html#31678">31678</a></td>
+<td class="comment-1" rowspan="1">Yes: treat as blocked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31674"></span>31674</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is it empty?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31675"></span>31675</td>
+<td class="instruction">JR NZ,<a href="31525.html#31577">31577</a></td>
+<td class="comment-1" rowspan="1">Neither: do it pixel by pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31677"></span>31677</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">B=1: the byte below is empty</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31678"></span>31678</td>
+<td class="instruction">LD A,(31523)</td>
+<td class="comment-1" rowspan="1">A=the flag for above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31681"></span>31681</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31682"></span>31682</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=C (above is empty)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31683"></span>31683</td>
+<td class="instruction">JR NZ,<a href="31525.html#31697">31697</a></td>
+<td class="comment-1" rowspan="1">A seed is already pending above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31685"></span>31685</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is the byte above empty?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31686"></span>31686</td>
+<td class="instruction">JR Z,<a href="31525.html#31697">31697</a></td>
+<td class="comment-1" rowspan="1">No: nothing to push</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31688"></span>31688</td>
+<td class="instruction">LD (31523),A</td>
+<td class="comment-1" rowspan="1">Remember that a seed is pending above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31691"></span>31691</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31692"></span>31692</td>
+<td class="instruction">CALL <a href="31823.html">31823</a></td>
+<td class="comment-1" rowspan="1">Move to the byte above</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31695"></span>31695</td>
+<td class="instruction">EX (SP),HL</td>
+<td class="comment-1" rowspan="1">Push it as a new seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31696"></span>31696</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Push the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31697"></span>31697</td>
+<td class="instruction">LD (31523),A</td>
+<td class="comment-1" rowspan="1">Store the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31700"></span>31700</td>
+<td class="instruction">LD A,(31524)</td>
+<td class="comment-1" rowspan="1">A=the flag for below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31703"></span>31703</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31704"></span>31704</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=B (below is empty)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31705"></span>31705</td>
+<td class="instruction">JR NZ,<a href="31525.html#31719">31719</a></td>
+<td class="comment-1" rowspan="1">A seed is already pending below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31707"></span>31707</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is the byte below empty?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31708"></span>31708</td>
+<td class="instruction">JR Z,<a href="31525.html#31719">31719</a></td>
+<td class="comment-1" rowspan="1">No: nothing to push</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31710"></span>31710</td>
+<td class="instruction">LD (31524),A</td>
+<td class="comment-1" rowspan="1">Remember that a seed is pending below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31713"></span>31713</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31714"></span>31714</td>
+<td class="instruction">CALL <a href="31851.html">31851</a></td>
+<td class="comment-1" rowspan="1">Move to the byte below</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31717"></span>31717</td>
+<td class="instruction">EX (SP),HL</td>
+<td class="comment-1" rowspan="1">Push it as a new seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31718"></span>31718</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Push the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31719"></span>31719</td>
+<td class="instruction">LD (HL),255</td>
+<td class="comment-1" rowspan="1">Fill the whole byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31721"></span>31721</td>
+<td class="instruction">CALL <a href="32045.html">32045</a></td>
+<td class="comment-1" rowspan="1">Set its ink</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31724"></span>31724</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31725"></span>31725</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Reached the right edge of the screen?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31726"></span>31726</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31728"></span>31728</td>
+<td class="instruction">JR Z,<a href="31525.html#31738">31738</a></td>
+<td class="comment-1" rowspan="1">At the right edge: this run is finished</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31730"></span>31730</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31731"></span>31731</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Is the next pixel set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31732"></span>31732</td>
+<td class="instruction">JP Z,<a href="31525.html#31568">31568</a></td>
+<td class="comment-1" rowspan="1">No: carry on filling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31735"></span>31735</td>
+<td class="instruction">CALL <a href="32034.html">32034</a></td>
+<td class="comment-1" rowspan="1">Plot the pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31738"></span>31738</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Pick up the next seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31739"></span>31739</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Pick up the address of the next seed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31740"></span>31740</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Is it the zero marker?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31741"></span>31741</td>
+<td class="instruction">CP 88</td>
+<td class="comment-1" rowspan="1">Is it the end marker (high byte 88)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31743"></span>31743</td>
+<td class="instruction">JP NZ,<a href="31525.html#31543">31543</a></td>
+<td class="comment-1" rowspan="1">Fill from it if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31746"></span>31746</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31748"></span>31748</td>
+<td class="instruction">LD (31522),A</td>
+<td class="comment-1" rowspan="1">Reset the attribute bits to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31751"></span>31751</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31752"></span>31752</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31753"></span>31753</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31754"></span>31754</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31522.html">31522</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31525">Map</a></td>
+<td class="next">
+Next: <a href="31755.html">31755</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

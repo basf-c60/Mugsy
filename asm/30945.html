@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30945</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30893.html">30893</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30945">Map</a></td>
+<td class="next">
+Next: <a href="30993.html">30993</a>
+</td>
+</tr>
+</table>
+<div class="description">30945: Add the divisor to the dividend (64-bit)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30945"></span>30945</td>
+<td class="instruction">LD HL,(31030)</td>
+<td class="comment-1" rowspan="1">Add the divisor to the dividend, 16 bits at a time</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30948"></span>30948</td>
+<td class="instruction">LD DE,(31046)</td>
+<td class="comment-1" rowspan="1">DE=low word of the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30952"></span>30952</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add the low words</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30953"></span>30953</td>
+<td class="instruction">LD (31030),HL</td>
+<td class="comment-1" rowspan="1">Store the new low word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30956"></span>30956</td>
+<td class="instruction">LD HL,(31032)</td>
+<td class="comment-1" rowspan="1">HL=second word of the dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30959"></span>30959</td>
+<td class="instruction">LD DE,(31048)</td>
+<td class="comment-1" rowspan="1">DE=second word of the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30963"></span>30963</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">Add with carry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30965"></span>30965</td>
+<td class="instruction">LD (31032),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30968"></span>30968</td>
+<td class="instruction">LD HL,(31034)</td>
+<td class="comment-1" rowspan="1">HL=third word of the dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30971"></span>30971</td>
+<td class="instruction">LD DE,(31050)</td>
+<td class="comment-1" rowspan="1">DE=third word of the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30975"></span>30975</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">Add with carry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30977"></span>30977</td>
+<td class="instruction">LD (31034),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30980"></span>30980</td>
+<td class="instruction">LD HL,(31036)</td>
+<td class="comment-1" rowspan="1">HL=top word of the dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30983"></span>30983</td>
+<td class="instruction">LD DE,(31052)</td>
+<td class="comment-1" rowspan="1">DE=top word of the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30987"></span>30987</td>
+<td class="instruction">ADC HL,DE</td>
+<td class="comment-1" rowspan="1">Add with carry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30989"></span>30989</td>
+<td class="instruction">LD (31036),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30992"></span>30992</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the trial subtraction is undone</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30893.html">30893</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30945">Map</a></td>
+<td class="next">
+Next: <a href="30993.html">30993</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

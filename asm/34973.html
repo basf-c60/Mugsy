@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34973</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34912.html">34912</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34973">Map</a></td>
+<td class="next">
+Next: <a href="35000.html">35000</a>
+</td>
+</tr>
+</table>
+<div class="description">34973: Draw a masked 2x4 tile</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34973"></span>34973</td>
+<td class="instruction">LD BC,11</td>
+<td class="comment-1" rowspan="1">BC=11: the distance to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34976"></span>34976</td>
+<td class="instruction">LD A,4</td>
+<td class="comment-1" rowspan="1">A=4 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34978"></span>34978</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Save the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34979"></span>34979</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=a byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34980"></span>34980</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34981"></span>34981</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34982"></span>34982</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">AND with the mask byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34983"></span>34983</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34984"></span>34984</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34985"></span>34985</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34986"></span>34986</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34987"></span>34987</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34988"></span>34988</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34989"></span>34989</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">AND with the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34990"></span>34990</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34991"></span>34991</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34992"></span>34992</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the buffer address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34993"></span>34993</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">Move to the start of the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34994"></span>34994</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the buffer address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34995"></span>34995</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Get the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34996"></span>34996</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34997"></span>34997</td>
+<td class="instruction">JR NZ,<a href="34973.html#34978">34978</a></td>
+<td class="comment-1" rowspan="1">Loop for four rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34999"></span>34999</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34912.html">34912</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34973">Map</a></td>
+<td class="next">
+Next: <a href="35000.html">35000</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29907</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29897.html">29897</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29907">Map</a></td>
+<td class="next">
+Next: <a href="29926.html">29926</a>
+</td>
+</tr>
+</table>
+<div class="description">29907: Expand a common word</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Byte values 96-127 index the table of common words at <a href="49710.html">49710</a> (values from 128 are two-byte dictionary references and never reach this routine).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29907"></span>29907</td>
+<td class="instruction">SUB 96</td>
+<td class="comment-1" rowspan="1">A=index (0-31)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29909"></span>29909</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29910"></span>29910</td>
+<td class="instruction">LD D,0</td>
+<td class="comment-1" rowspan="1">DE=index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29912"></span>29912</td>
+<td class="instruction">LD HL,49710</td>
+<td class="comment-1" rowspan="1">Point HL at the table of common words</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29915"></span>29915</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add the index once...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29916"></span>29916</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add 2*index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29917"></span>29917</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29918"></span>29918</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte of the table entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29919"></span>29919</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=page</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29920"></span>29920</td>
+<td class="instruction">ADD A,80</td>
+<td class="comment-1" rowspan="1">Add 80 (type 5: an ordinary word)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29922"></span>29922</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=page and type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29923"></span>29923</td>
+<td class="instruction">JP <a href="29458.html#29487">29487</a></td>
+<td class="comment-1" rowspan="1">Print the word</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29897.html">29897</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29907">Map</a></td>
+<td class="next">
+Next: <a href="29926.html">29926</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

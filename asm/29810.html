@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29810</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29808.html">29808</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29810">Map</a></td>
+<td class="next">
+Next: <a href="29873.html">29873</a>
+</td>
+</tr>
+</table>
+<div class="description">29810: Control code 10: random choice</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The next byte is the number of alternatives n, followed by n single items (one or two bytes each). One item is chosen at random and rendered. This is how Louey varies his patter ("[What wuz dat, Boss? I missed it/It's okay, Boss - this line aint tapped...]").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29810"></span>29810</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point at the number of alternatives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29812"></span>29812</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">A=the number of alternatives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29815"></span>29815</td>
+<td class="instruction">LD (29808),A</td>
+<td class="comment-1" rowspan="1">Store it as the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29818"></span>29818</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">A=n-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29819"></span>29819</td>
+<td class="instruction">CALL <a href="30014.html">30014</a></td>
+<td class="comment-1" rowspan="1">Pick a random number 0..n-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29822"></span>29822</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">A=1..n</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29823"></span>29823</td>
+<td class="instruction">LD (29809),A</td>
+<td class="comment-1" rowspan="1">Store the choice</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29826"></span>29826</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point at the first alternative</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29828"></span>29828</td>
+<td class="instruction">LD A,(29809)</td>
+<td class="comment-1" rowspan="1">Is this the chosen alternative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29831"></span>29831</td>
+<td class="instruction">LD HL,29808</td>
+<td class="comment-1" rowspan="1">HL=the counter of alternatives still to skip</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29834"></span>29834</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">Is this the chosen one?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29835"></span>29835</td>
+<td class="instruction">JR NZ,<a href="29810.html#29844">29844</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29837"></span>29837</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Keep the message pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29839"></span>29839</td>
+<td class="instruction">CALL <a href="29458.html">29458</a></td>
+<td class="comment-1" rowspan="1">Render it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29842"></span>29842</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore the message pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29844"></span>29844</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Get the first byte of this alternative</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29847"></span>29847</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="1">A dictionary word (2 bytes)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29849"></span>29849</td>
+<td class="instruction">JR NZ,<a href="29810.html#29859">29859</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29851"></span>29851</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Control code 2 (2 bytes)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29853"></span>29853</td>
+<td class="instruction">JR Z,<a href="29810.html#29859">29859</a></td>
+<td class="comment-1" rowspan="1">Two-byte item: skip both bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29855"></span>29855</td>
+<td class="instruction">CP 11</td>
+<td class="comment-1" rowspan="1">Control code 11 (2 bytes)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29857"></span>29857</td>
+<td class="instruction">JR NZ,<a href="29810.html#29861">29861</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29859"></span>29859</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Skip the second byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29861"></span>29861</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Skip the first byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29863"></span>29863</td>
+<td class="instruction">LD HL,29808</td>
+<td class="comment-1" rowspan="1">Count down the alternatives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29866"></span>29866</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One alternative fewer to go</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29867"></span>29867</td>
+<td class="instruction">JR NZ,<a href="29810.html#29828">29828</a></td>
+<td class="comment-1" rowspan="1">Jump back for the next one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29869"></span>29869</td>
+<td class="instruction">DEC IX</td>
+<td class="comment-1" rowspan="1">Point at the last byte (the caller moves on)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29871"></span>29871</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag: code done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29872"></span>29872</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the zero flag tells the caller the message continues</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29808.html">29808</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29810">Map</a></td>
+<td class="next">
+Next: <a href="29873.html">29873</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

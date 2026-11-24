@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42931</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42639.html">42639</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42931">Map</a></td>
+<td class="next">
+Next: <a href="42940.html">42940</a>
+</td>
+</tr>
+</table>
+<div class="description">42931: Shootout: wait for an interrupt</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42931"></span>42931</td>
+<td class="instruction">LD HL,42256</td>
+<td class="comment-1" rowspan="1">HL=the furniture slot's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42934"></span>42934</td>
+<td class="instruction">LD (HL),0</td>
+<td class="comment-1" rowspan="1">Set it to 0 so that the interrupt routine runs its countdown</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42936"></span>42936</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42937"></span>42937</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Wait for the next interrupt</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42938"></span>42938</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Disable interrupts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42939"></span>42939</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42639.html">42639</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42931">Map</a></td>
+<td class="next">
+Next: <a href="42940.html">42940</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

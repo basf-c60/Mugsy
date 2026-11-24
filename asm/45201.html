@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45201</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45182.html">45182</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45201">Map</a></td>
+<td class="next">
+Next: <a href="45276.html">45276</a>
+</td>
+</tr>
+</table>
+<div class="description">45201: Shootout: draw a figure (masked)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45201"></span>45201</td>
+<td class="instruction">LD B,0</td>
+<td class="comment-1" rowspan="1">B=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45203"></span>45203</td>
+<td class="instruction">LD A,255</td>
+<td class="comment-1" rowspan="1">A=255</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45205"></span>45205</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Keep it in A'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45206"></span>45206</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">A=32: 32 rows to copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45208"></span>45208</td>
+<td class="instruction">LD HL,(42355)</td>
+<td class="comment-1" rowspan="1">HL=the figure's graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45211"></span>45211</td>
+<td class="instruction">LD DE,(42307)</td>
+<td class="comment-1" rowspan="1">DE=the frame buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45215"></span>45215</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Get the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45216"></span>45216</td>
+<td class="instruction">LD C,2</td>
+<td class="comment-1" rowspan="1">C=2: two bytes per row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45218"></span>45218</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="1">Copy a row of two bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45220"></span>45220</td>
+<td class="instruction">JP PE,<a href="45201.html#45218">45218</a></td>
+<td class="comment-1" rowspan="1">Loop for each byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45223"></span>45223</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Add a blank byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45224"></span>45224</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45225"></span>45225</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Save the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45226"></span>45226</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45227"></span>45227</td>
+<td class="instruction">JR NZ,<a href="45201.html#45215">45215</a></td>
+<td class="comment-1" rowspan="1">Loop for 32 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45229"></span>45229</td>
+<td class="instruction">LD HL,(42307)</td>
+<td class="comment-1" rowspan="1">HL=the frame buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45232"></span>45232</td>
+<td class="instruction">LD (42355),HL</td>
+<td class="comment-1" rowspan="1">The buffer is the graphic now</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45235"></span>45235</td>
+<td class="instruction">LD A,(42373)</td>
+<td class="comment-1" rowspan="1">A=the number of cells</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45238"></span>45238</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45239"></span>45239</td>
+<td class="instruction">LD A,(42374)</td>
+<td class="comment-1" rowspan="1">A=the width in bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45242"></span>45242</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45243"></span>45243</td>
+<td class="instruction">LD A,(42338)</td>
+<td class="comment-1" rowspan="1">A=the pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45246"></span>45246</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45247"></span>45247</td>
+<td class="instruction">LD A,4</td>
+<td class="comment-1" rowspan="1">A=4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45249"></span>45249</td>
+<td class="instruction">SUB B</td>
+<td class="comment-1" rowspan="1">4 minus the shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45250"></span>45250</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1">Double it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45251"></span>45251</td>
+<td class="instruction">JR Z,<a href="45201.html#45275">45275</a></td>
+<td class="comment-1" rowspan="1">Nothing to shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45253"></span>45253</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">Set the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45254"></span>45254</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the shift count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45255"></span>45255</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1">B=the width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45256"></span>45256</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the row start</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45257"></span>45257</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift a byte right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45259"></span>45259</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45260"></span>45260</td>
+<td class="instruction">DJNZ <a href="45201.html#45257">45257</a></td>
+<td class="comment-1" rowspan="1">Repeat for the whole row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45262"></span>45262</td>
+<td class="instruction">LD (42305),HL</td>
+<td class="comment-1" rowspan="1">Remember the position reached</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45265"></span>45265</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the row start</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45266"></span>45266</td>
+<td class="instruction">DEC D</td>
+<td class="comment-1" rowspan="1">One shift less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45267"></span>45267</td>
+<td class="instruction">JR NZ,<a href="45201.html#45255">45255</a></td>
+<td class="comment-1" rowspan="1">Repeat</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45269"></span>45269</td>
+<td class="instruction">LD HL,(42305)</td>
+<td class="comment-1" rowspan="1">HL=the position reached</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45272"></span>45272</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45273"></span>45273</td>
+<td class="instruction">JR NZ,<a href="45201.html#45254">45254</a></td>
+<td class="comment-1" rowspan="1">Repeat</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45275"></span>45275</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45182.html">45182</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45201">Map</a></td>
+<td class="next">
+Next: <a href="45276.html">45276</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

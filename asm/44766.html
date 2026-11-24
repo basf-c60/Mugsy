@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44766</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44726.html">44726</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44766">Map</a></td>
+<td class="next">
+Next: <a href="44884.html">44884</a>
+</td>
+</tr>
+</table>
+<div class="description">44766: Shootout: deal with Mugsy firing</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44766"></span>44766</td>
+<td class="instruction">LD A,(42331)</td>
+<td class="comment-1" rowspan="1">A=has Mugsy's bullet landed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44769"></span>44769</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44770"></span>44770</td>
+<td class="instruction">JR Z,<a href="44766.html#44802">44802</a></td>
+<td class="comment-1" rowspan="1">No: check the hit man's</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44772"></span>44772</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44773"></span>44773</td>
+<td class="instruction">LD (42331),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44776"></span>44776</td>
+<td class="instruction">LD IX,42492</td>
+<td class="comment-1" rowspan="1">IX=the hit man's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44780"></span>44780</td>
+<td class="instruction">CALL <a href="44525.html">44525</a></td>
+<td class="comment-1" rowspan="1">Is the bullet touching him?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44783"></span>44783</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44784"></span>44784</td>
+<td class="instruction">JR Z,<a href="44766.html#44797">44797</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44786"></span>44786</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44787"></span>44787</td>
+<td class="instruction">LD HL,42302</td>
+<td class="comment-1" rowspan="1">HL=the hit man's hit points (42302)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44790"></span>44790</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One hit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44791"></span>44791</td>
+<td class="instruction">JR NZ,<a href="44766.html#44797">44797</a></td>
+<td class="comment-1" rowspan="1">Still alive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44793"></span>44793</td>
+<td class="instruction">LD (HL),4</td>
+<td class="comment-1" rowspan="1">Reset the counter (he has taken 4 hits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44795"></span>44795</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: he is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44797"></span>44797</td>
+<td class="instruction">LD (42330),A</td>
+<td class="comment-1" rowspan="1">Record whether he is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44800"></span>44800</td>
+<td class="instruction">JR <a href="44766.html#44834">44834</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44802"></span>44802</td>
+<td class="instruction">LD A,(42332)</td>
+<td class="comment-1" rowspan="1">A=has the hit man's bullet landed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44805"></span>44805</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44806"></span>44806</td>
+<td class="instruction">JR Z,<a href="44766.html#44883">44883</a></td>
+<td class="comment-1" rowspan="1">No: finished</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44808"></span>44808</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44809"></span>44809</td>
+<td class="instruction">LD (42332),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44812"></span>44812</td>
+<td class="instruction">LD IX,42453</td>
+<td class="comment-1" rowspan="1">IX=Mugsy's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44816"></span>44816</td>
+<td class="instruction">CALL <a href="44525.html">44525</a></td>
+<td class="comment-1" rowspan="1">Is the bullet touching him?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44819"></span>44819</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44820"></span>44820</td>
+<td class="instruction">JR Z,<a href="44766.html#44831">44831</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44822"></span>44822</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44823"></span>44823</td>
+<td class="instruction">LD HL,42301</td>
+<td class="comment-1" rowspan="1">HL=Mugsy's hit points (42301)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44826"></span>44826</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One hit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44827"></span>44827</td>
+<td class="instruction">JR NZ,<a href="44766.html#44831">44831</a></td>
+<td class="comment-1" rowspan="1">Still alive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44829"></span>44829</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1: Mugsy is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44831"></span>44831</td>
+<td class="instruction">LD (42329),A</td>
+<td class="comment-1" rowspan="1">Record whether Mugsy is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44834"></span>44834</td>
+<td class="instruction">LD IX,42375</td>
+<td class="comment-1" rowspan="1">IX=bystander 1's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44838"></span>44838</td>
+<td class="instruction">CALL <a href="44525.html">44525</a></td>
+<td class="comment-1" rowspan="1">Is a bullet touching him?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44841"></span>44841</td>
+<td class="instruction">LD (42327),A</td>
+<td class="comment-1" rowspan="1">Record it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44844"></span>44844</td>
+<td class="instruction">LD IX,42414</td>
+<td class="comment-1" rowspan="1">IX=bystander 2's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44848"></span>44848</td>
+<td class="instruction">CALL <a href="44525.html">44525</a></td>
+<td class="comment-1" rowspan="1">Is a bullet touching him?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44851"></span>44851</td>
+<td class="instruction">LD (42328),A</td>
+<td class="comment-1" rowspan="1">Record it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44854"></span>44854</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44855"></span>44855</td>
+<td class="instruction">JR Z,<a href="44766.html#44867">44867</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44857"></span>44857</td>
+<td class="instruction">LD HL,42251</td>
+<td class="comment-1" rowspan="1">HL=bystander 2's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44860"></span>44860</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=his timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44861"></span>44861</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Is it 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44863"></span>44863</td>
+<td class="instruction">JR NZ,<a href="44766.html#44867">44867</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44865"></span>44865</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Make him ready</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44867"></span>44867</td>
+<td class="instruction">LD A,(42327)</td>
+<td class="comment-1" rowspan="1">A=is bystander 1 hit?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44870"></span>44870</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44871"></span>44871</td>
+<td class="instruction">JR Z,<a href="44766.html#44883">44883</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44873"></span>44873</td>
+<td class="instruction">LD HL,42250</td>
+<td class="comment-1" rowspan="1">HL=his timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44876"></span>44876</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=his timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44877"></span>44877</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Is it 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44879"></span>44879</td>
+<td class="instruction">JR NZ,<a href="44766.html#44883">44883</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44881"></span>44881</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Make him ready</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44883"></span>44883</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44726.html">44726</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44766">Map</a></td>
+<td class="next">
+Next: <a href="44884.html">44884</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

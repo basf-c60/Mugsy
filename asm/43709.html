@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 43709</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43471.html">43471</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43709">Map</a></td>
+<td class="next">
+Next: <a href="43814.html">43814</a>
+</td>
+</tr>
+</table>
+<div class="description">43709: Shootout: place a bullet in front of its owner (B=rows down from the top of the figure)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43709"></span>43709</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">A=the owner's state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43712"></span>43712</td>
+<td class="instruction">LD (IY+0),A</td>
+<td class="comment-1" rowspan="1">Give the bullet the same facing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43715"></span>43715</td>
+<td class="instruction">LD L,(IX+17)</td>
+<td class="comment-1" rowspan="1">L=the owner's screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43718"></span>43718</td>
+<td class="instruction">LD H,(IX+18)</td>
+<td class="comment-1" rowspan="1">H=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43721"></span>43721</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Move down one pixel row...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43722"></span>43722</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">(using this subroutine)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43725"></span>43725</td>
+<td class="instruction">DJNZ <a href="43709.html#43721">43721</a></td>
+<td class="comment-1" rowspan="1">...B times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43727"></span>43727</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">A=the bullet's state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43730"></span>43730</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Which way?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43732"></span>43732</td>
+<td class="instruction">JR NZ,<a href="43709.html#43743">43743</a></td>
+<td class="comment-1" rowspan="1">Left: handle that</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43734"></span>43734</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Facing right: move the bullet two cells right of the gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43735"></span>43735</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Another one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43736"></span>43736</td>
+<td class="instruction">LD A,4</td>
+<td class="comment-1" rowspan="1">A=4: right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43738"></span>43738</td>
+<td class="instruction">LD (IY+0),A</td>
+<td class="comment-1" rowspan="1">Set the bullet's direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43741"></span>43741</td>
+<td class="instruction">JR <a href="43709.html#43749">43749</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43743"></span>43743</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Facing left: one cell to the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43744"></span>43744</td>
+<td class="instruction">LD A,64</td>
+<td class="comment-1" rowspan="1">A=64: left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43746"></span>43746</td>
+<td class="instruction">LD (IY+0),A</td>
+<td class="comment-1" rowspan="1">Set the direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43749"></span>43749</td>
+<td class="instruction">LD (IY+17),L</td>
+<td class="comment-1" rowspan="1">Set the bullet's screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43752"></span>43752</td>
+<td class="instruction">LD (IY+18),H</td>
+<td class="comment-1" rowspan="1">And high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43755"></span>43755</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43756"></span>43756</td>
+<td class="instruction">CALL <a href="45626.html">45626</a></td>
+<td class="comment-1" rowspan="1">Convert to an attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43759"></span>43759</td>
+<td class="instruction">LD (IY+29),E</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43762"></span>43762</td>
+<td class="instruction">LD (IY+30),D</td>
+<td class="comment-1" rowspan="1">And high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43765"></span>43765</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43766"></span>43766</td>
+<td class="instruction">LD (IY+3),A</td>
+<td class="comment-1" rowspan="1">Clear some counters</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43769"></span>43769</td>
+<td class="instruction">LD (IY+4),A</td>
+<td class="comment-1" rowspan="1">And another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43772"></span>43772</td>
+<td class="instruction">LD (IY+13),A</td>
+<td class="comment-1" rowspan="1">And another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43775"></span>43775</td>
+<td class="instruction">LD (IY+14),A</td>
+<td class="comment-1" rowspan="1">And another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43778"></span>43778</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43779"></span>43779</td>
+<td class="instruction">LD HL,42218</td>
+<td class="comment-1" rowspan="1">HL=Mugsy's standing frame table (42218)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43782"></span>43782</td>
+<td class="instruction">LD (42309),HL</td>
+<td class="comment-1" rowspan="1">Use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43785"></span>43785</td>
+<td class="instruction">LD HL,23775</td>
+<td class="comment-1" rowspan="1">HL=frame buffer (23775)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43788"></span>43788</td>
+<td class="instruction">LD (42307),HL</td>
+<td class="comment-1" rowspan="1">Use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43791"></span>43791</td>
+<td class="instruction">LD A,6</td>
+<td class="comment-1" rowspan="1">A=6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43793"></span>43793</td>
+<td class="instruction">LD (42277),A</td>
+<td class="comment-1" rowspan="1">Countdown 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43796"></span>43796</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43797"></span>43797</td>
+<td class="instruction">LD (42316),A</td>
+<td class="comment-1" rowspan="1">Reset the fire state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43800"></span>43800</td>
+<td class="instruction">LD HL,42453</td>
+<td class="comment-1" rowspan="1">HL=his record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43803"></span>43803</td>
+<td class="instruction">CALL <a href="44726.html">44726</a></td>
+<td class="comment-1" rowspan="1">Redraw him standing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43806"></span>43806</td>
+<td class="instruction">LD HL,42488</td>
+<td class="comment-1" rowspan="1">HL=42488</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43809"></span>43809</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Set the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43811"></span>43811</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43471.html">43471</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43709">Map</a></td>
+<td class="next">
+Next: <a href="43814.html">43814</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

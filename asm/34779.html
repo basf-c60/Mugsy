@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34779</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34769.html">34769</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34779">Map</a></td>
+<td class="next">
+Next: <a href="34798.html">34798</a>
+</td>
+</tr>
+</table>
+<div class="description">34779: Draw the first hood (masked, pre-shifted)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34779"></span>34779</td>
+<td class="instruction">LD HL,24384</td>
+<td class="comment-1" rowspan="1">HL=the first hood's sprite buffer (24384)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34782"></span>34782</td>
+<td class="instruction">LD DE,(37101)</td>
+<td class="comment-1" rowspan="1">DE=its screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34786"></span>34786</td>
+<td class="instruction">LD (37103),DE</td>
+<td class="comment-1" rowspan="1">Remember where it is drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34790"></span>34790</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34791"></span>34791</td>
+<td class="instruction">LD HL,24096</td>
+<td class="comment-1" rowspan="1">HL'=the first hood's background save area</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34794"></span>34794</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34795"></span>34795</td>
+<td class="instruction">JP <a href="34135.html#34203">34203</a></td>
+<td class="comment-1" rowspan="1">Draw it, saving the background</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34769.html">34769</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34779">Map</a></td>
+<td class="next">
+Next: <a href="34798.html">34798</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

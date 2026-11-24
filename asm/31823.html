@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31823</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31806.html">31806</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31823">Map</a></td>
+<td class="next">
+Next: <a href="31851.html">31851</a>
+</td>
+</tr>
+</table>
+<div class="description">31823: Move HL up one pixel row</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the zero flag set if the top of the screen has been reached.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31823"></span>31823</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Move up one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31824"></span>31824</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31825"></span>31825</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Pixel row within the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31827"></span>31827</td>
+<td class="instruction">CP 7</td>
+<td class="comment-1" rowspan="1">Did that cross a character row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31829"></span>31829</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return (zero flag reset) if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31830"></span>31830</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31831"></span>31831</td>
+<td class="instruction">SUB 32</td>
+<td class="comment-1" rowspan="1">Up one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31833"></span>31833</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31834"></span>31834</td>
+<td class="instruction">JR C,<a href="31823.html#31840">31840</a></td>
+<td class="comment-1" rowspan="1">Borrow: H is already right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31836"></span>31836</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31837"></span>31837</td>
+<td class="instruction">ADD A,8</td>
+<td class="comment-1" rowspan="1">Add 8 to move to the previous third's last row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31839"></span>31839</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31840"></span>31840</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Above the top of the screen?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31841"></span>31841</td>
+<td class="instruction">CP 63</td>
+<td class="comment-1" rowspan="1">Is it 63 (above the display file)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31843"></span>31843</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return (zero flag reset) if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31844"></span>31844</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Undo the move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31845"></span>31845</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31846"></span>31846</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Put the row back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31848"></span>31848</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31849"></span>31849</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31850"></span>31850</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: Z means the edge was reached</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31806.html">31806</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31823">Map</a></td>
+<td class="next">
+Next: <a href="31851.html">31851</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

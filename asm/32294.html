@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32294</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32126.html">32126</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32294">Map</a></td>
+<td class="next">
+Next: <a href="32365.html">32365</a>
+</td>
+</tr>
+</table>
+<div class="description">32294: Draw the next stroke of a compressed picture</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the zero flag set at the end of the point list.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32294"></span>32294</td>
+<td class="instruction">LD HL,(32536)</td>
+<td class="comment-1" rowspan="1">Reached the end of the point list?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32297"></span>32297</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Copy IY into DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32299"></span>32299</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">...by way of the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32300"></span>32300</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32301"></span>32301</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">HL=the stream pointer's offset from the header</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32303"></span>32303</td>
+<td class="instruction">LD E,(IY+0)</td>
+<td class="comment-1" rowspan="1">E=the low byte of the offset of the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32306"></span>32306</td>
+<td class="instruction">LD D,(IY+1)</td>
+<td class="comment-1" rowspan="1">D=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32309"></span>32309</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32310"></span>32310</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Compare: is this the end byte?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32312"></span>32312</td>
+<td class="instruction">JR NZ,<a href="32294.html#32321">32321</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32314"></span>32314</td>
+<td class="instruction">LD A,(32538)</td>
+<td class="comment-1" rowspan="1">Check the bit position too</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32317"></span>32317</td>
+<td class="instruction">CP (IY+2)</td>
+<td class="comment-1" rowspan="1">Is it the end bit position too?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32320"></span>32320</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return with the zero flag set at the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32321"></span>32321</td>
+<td class="instruction">LD D,1</td>
+<td class="comment-1" rowspan="1">Read one bit: 1 = start a new stroke, 0 = continue the current one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32323"></span>32323</td>
+<td class="instruction">CALL <a href="32539.html">32539</a></td>
+<td class="comment-1" rowspan="1">Read the bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32326"></span>32326</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32327"></span>32327</td>
+<td class="instruction">JR Z,<a href="32294.html#32340">32340</a></td>
+<td class="comment-1" rowspan="1">Jump to continue the stroke</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32329"></span>32329</td>
+<td class="instruction">CALL <a href="32365.html">32365</a></td>
+<td class="comment-1" rowspan="1">Read the starting point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32332"></span>32332</td>
+<td class="instruction">CALL <a href="32596.html">32596</a></td>
+<td class="comment-1" rowspan="1">Plot it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32335"></span>32335</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Merge the pixel with the screen byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32336"></span>32336</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32337"></span>32337</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Reset the zero flag: more to come</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32339"></span>32339</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32340"></span>32340</td>
+<td class="instruction">LD (32610),BC</td>
+<td class="comment-1" rowspan="1">Remember the start of the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32344"></span>32344</td>
+<td class="instruction">CALL <a href="32596.html">32596</a></td>
+<td class="comment-1" rowspan="1">Get its screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32347"></span>32347</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the pixel mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32348"></span>32348</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32349"></span>32349</td>
+<td class="instruction">LD BC,(32610)</td>
+<td class="comment-1" rowspan="1">BC'=the line start</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32353"></span>32353</td>
+<td class="instruction">CALL <a href="32365.html">32365</a></td>
+<td class="comment-1" rowspan="1">Read the next point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32356"></span>32356</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the end point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32357"></span>32357</td>
+<td class="instruction">CALL <a href="32612.html">32612</a></td>
+<td class="comment-1" rowspan="1">Draw a line to it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32360"></span>32360</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32361"></span>32361</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">BC=the end point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32362"></span>32362</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Reset the zero flag: more to come</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32364"></span>32364</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32126.html">32126</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32294">Map</a></td>
+<td class="next">
+Next: <a href="32365.html">32365</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

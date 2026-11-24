@@ -1,0 +1,1004 @@
+[Config]
+GameDir=mugsy
+HtmlWriterClass=skoolkit.skoolhtml.HtmlWriter
+
+[Game]
+Game=Mugsy
+Copyright=&copy; 1984 Melbourne House. Disassembly &copy; 2026.
+Release=Mugsy disassembly 1.0 (SkoolKit 10.2)
+StyleSheet=skoolkit.css;theme/mugsy.css
+JavaScript=theme/mugsy.js
+LinkInternalOperands=1
+
+[Resources]
+images/terrific.png=images
+images/shootout.png=images
+images/sprites.png=images
+images/baranim.gif=images
+images/font.png=images
+images/caranim.gif=images
+images/shootanim.gif=images
+images/pic53793.png=images
+images/pic55692.png=images
+images/pic57583.png=images
+images/pic58673.png=images
+images/pic59397.png=images
+images/pic60526.png=images
+images/pic61625.png=images
+images/pic63601.png=images
+images/pic64646.png=images
+images/hobbit22.png=images
+images/hobbit_vs_mugsy_engine.png=images
+
+[Index]
+Overview
+MemoryMaps
+Reference
+
+[Index:Overview:The game and the code]
+Overview
+Economics
+VM
+Variables
+Pictures
+Hobbit
+
+[Index:MemoryMaps:Browse the disassembly]
+RoutinesMap
+DataMap
+MessagesMap
+MemoryMap
+UnusedMap
+
+[Index:Reference:Reference]
+Bugs
+Facts
+
+[PageHeaders]
+Overview=Overview
+VM=The VM
+Variables=VM variables
+Pictures=The pictures
+Hobbit=Mugsy and The Hobbit
+Economics=The economics of Mugsy
+
+[Titles]
+Overview=Overview
+VM=The VM
+Variables=VM variables
+Pictures=The pictures
+Hobbit=Mugsy and The Hobbit
+Economics=The economics of Mugsy
+
+[Template:Layout]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{Game[Game]}: {SkoolKit[title]}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<# foreach($css,SkoolKit[stylesheets]) #>
+<link rel="stylesheet" type="text/css" href="{$css[href]}" />
+<# endfor #>
+<# foreach($js,SkoolKit[javascripts]) #>
+<script type="text/javascript" src="{$js[src]}" defer></script>
+<# endfor #>
+</head>
+<body class="{SkoolKit[page_id]}">
+<header class="site"><div class="bar"><a class="brand" href="{SkoolKit[index_href]}">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<# if(SkoolKit[page_id]=='GameIndex') #>
+<div class="hero">
+<h1 class="page-title">Mugsy, taken apart</h1>
+<p class="lede">An annotated disassembly of <em>Mugsy</em> (Melbourne House, 1984) for the ZX Spectrum: a comic-strip game of gangsters, protection money and a hit man, driven by a bytecode script. Every routine is titled and explained, every instruction commented.</p>
+<ul class="stats">
+<li><b>356</b><span>blocks titled and described</span></li>
+<li><b>8,229</b><span>line comments</span></li>
+<li><b>15</b><span>trivia entries</span></li>
+<li><b>12</b><span>bugs in the original</span></li>
+<li><b>84</b><span>script variables</span></li>
+</ul>
+</div>
+<div class="cards">
+<a class="card" href="Overview.html"><strong>Overview</strong><span>What the game is, how the program is laid out and how the pieces fit together.</span></a>
+<a class="card" href="Economics.html"><strong>Economics and strategy</strong><span>The yearly model in full, what each answer does, and the best strategy found.</span></a>
+<a class="card" href="maps/routines.html"><strong>Browse the code</strong><span>Every routine, with its purpose, inputs and outputs, and a comment on each instruction.</span></a>
+<a class="card" href="reference/bugs.html"><strong>Bugs</strong><span>12 faults in the original, each re-tested on the simulator or the script.</span></a>
+<a class="card" href="reference/facts.html"><strong>Trivia</strong><span>15 odd facts about the program, checked against the code.</span></a>
+<a class="card" href="Pictures.html"><strong>Pictures</strong><span>All nine pictures, the shootout figures, the font and three recorded animations.</span></a>
+<a class="card" href="Hobbit.html"><strong>Mugsy and The Hobbit</strong><span>The picture engine is a descendant of The Hobbit's. A routine-by-routine comparison.</span></a>
+</div>
+<# else #>
+<h1 class="page-title">{SkoolKit[page_header][1]}</h1>
+<# endif #>
+<# include({SkoolKit[include]}) #>
+</main>
+<# include(footer) #>
+</body>
+</html>
+
+[Page:Overview]
+PageContent=#INCLUDE(Overview)
+
+[PageHeader:Overview]
+Overview
+
+[Overview]
+<div class="paragraph">
+<b>Mugsy</b> (Melbourne House, 1984) is a "comic strip" strategy game.
+You are Mugsy, boss of a 1920s protection racket, and your sidekick Louey reports to you each year in speech bubbles
+over full-screen pictures. You decide how many clients to buy or sell, how much to spend on artillery and ammo, how
+many clients to squeeze, how much to hand to the cops as a kickback, and whether to pay off rival mobs or your own
+disgruntled hoods. The game is meant to last 7 to 11 years (chosen at random, but see the #LINK(Bugs#years)(bug about the game rarely ending on time)) unless you are rubbed out first, and ends with a
+percentage score and a rating.
+</div>
+<div class="paragraph">
+<b>Loading.</b> The tape holds a BASIC loader (CLEAR 24575, then LOAD "s" CODE 16384 for the loading screen and
+LOAD "mugsy" CODE for 40,960 bytes at #R24576-65535) and starts the game with PRINT USR 24576 (#R24576). There is no
+copy protection; the TAP and TZX images in this project have identical code and screen blocks.
+</div>
+<div class="paragraph">
+<b>Economics.</b> The yearly model, what each of your answers really does and the best strategy are on the
+#LINK(Economics)(economics page). In short: squeeze everybody, buy clients, spend about 1.5 grand per hood on ammo,
+pay a large (but not total) kickback, keep nothing in the safe, and pay a small handout (about 0.1 grand per hood) that
+gives Mugsy the full 8 hit points for the shootout.
+</div>
+<div class="paragraph">
+<b>Structure.</b> Almost all of the game logic is written not in Z80 code but in a compact bytecode, interpreted by
+the routine at #R30092 (see the #LINK(VM)(VM reference)). The script for one year is the block at #R24652. The VM has
+84 signed 32-bit fixed-point variables (two decimal places; see the #LINK(Variables)(variables page)), nine flag
+bytes at #R33888, and op 14 calls native Z80 routines for input (#R27790, #R27753), the hush-money scene (#R28297),
+the end-of-game rating (#R26740), the "A year goes by" animation (#R33994) and the hit-man shootout (#R28358).
+</div>
+<div class="paragraph">
+<b>Text.</b> Louey's lines (#R49774) are compressed. The 32 commonest words are single bytes (96-127, via #R49710) and
+the other words are two-byte references into a dictionary of 225 words (#R48640). Control codes insert numbers and
+money values taken from the VM stream after the SAY instruction, pick random alternatives, or repeat earlier text (#R29458).
+The rendered text is word-wrapped into an oval speech bubble (#R28757) in a six-pixel-high proportional font
+(#R27087), while the status lines use the ROM font (#R27724).
+</div>
+<div class="paragraph">
+<b>Pictures.</b> The bubble backgrounds are vector pictures drawn by #R31247 from command lists (lines, flood fills,
+bitmap blocks and attribute runs), chosen at random from two tables of layouts (#R33909). The two full-screen pictures
+used in the animations (the Partridge Club and the street) are in a more compact bit-stream format drawn by #R32126.
+All nine pictures are shown on the #LINK(Pictures)(pictures page). The picture engine is a descendant of the one in The Hobbit; see the #LINK(Hobbit)(Hobbit page).
+</div>
+<div class="paragraph">
+<b>Animations and arcade sequence.</b> At the end of each year one of two IM2-driven animations plays (#R33994): the
+hoods passing through the Partridge Club, or the getaway car. Nothing in the game decides which: it is a random choice, and because the random routine is uneven the club comes up about 60% of the time and the car about 40% (see the #LINK(Facts#yeargoesby)(trivia page)). If your hoods put out a contract on you, the hit man from
+Detroit arrives and you play an arcade shootout in a restaurant (#R42112), controlled with Q/Z (up/down), I/P
+(left/right) and B/N/M (fire).
+</div>
+<div class="paragraph">
+<b>Memory map.</b>
+#TABLE(default,centre,:w)
+{ =h Address | =h Contents }
+{ #R24576-24651 | Start-up and main loop }
+{ #R24652-26739 | VM script for one year }
+{ #R26740-28403 | Keyboard, input and font printing }
+{ #R27087-27723 | Proportional font }
+{ #R28404-30013 | Status lines, speech bubbles and the text renderer }
+{ #R30014-31217 | Random numbers, the VM interpreter and fixed-point arithmetic }
+{ #R31218-32830 | Picture drawing (both formats) }
+{ #R32832-33550 | Theme tune }
+{ #R33552-33936 | VM variables, flags and bubble layouts }
+{ #R33937-37100 | Initialisation and the end-of-year animations }
+{ #R37101-41996 | Animation graphics }
+{ #R41997-48638 | The hit-man shootout (code, data and graphics) }
+{ #R48640-53352 | Dictionary, common words and messages }
+{ #R53353-53792 | Leftover assembler source, the interrupt jump and the IM2 vector table }
+{ #R53793-65535 | Pictures }
+TABLE#
+</div>
+<div class="paragraph">
+<b>How this disassembly was made.</b> The code was separated from the data by running the game in SkoolKit's Z80
+simulator with scripted keypresses for many games (recording every executed address), then following every branch
+statically from those addresses. The VM scripts were traced from the nine places that start the interpreter, and the
+messages were decoded with a Python reimplementation of the text renderer. About 95% of the code instructions have comments written
+by hand (the shootout, the animations and the picture routines were also checked by running them in the simulator); the
+rest carry comments generated from a table of known variables and routines, so they say what the instruction does in
+game terms where that is known and literally otherwise.
+The generated mugsy.asm also assembles, with an unmodified copy of sjasmplus 1.24.1 (<code>sjasmplus --raw=out.bin mugsy.asm</code>), to exactly the same 40,960 bytes as the tape, in addition to SkoolKit's own skool2bin check.
+</div>
+
+[Page:VM]
+PageContent=#INCLUDE(VM)
+
+[PageHeader:VM]
+The VM
+
+[VM]
+<div class="paragraph">
+The interpreter (#R30092) keeps its program counter at #R30090 and its accumulator in BCDE, with a second operand in
+BC'DE' (called alt in the table below). "v" operands are one-byte variable numbers; "addr" operands are two-byte addresses. Comparisons jump to the
+address when the condition holds. The flags returned by each instruction survive into the next, so JZ after CALL tests
+the result of the native routine.
+</div>
+<div class="paragraph">
+#TABLE(default,centre,:w,:w,:w)
+{ =h Op | =h Mnemonic | =h Operands | =h Action }
+{ 0 | END | | Return from the interpreter }
+{ 1 | SAY | addr, flags, [extra] | Show the message at addr in a speech bubble (#R28549). Any number or money placeholders in the message take one variable number each from the bytes that follow; sub-message placeholders take an address. }
+{ 2 | SETMSG | addr | Set the default sub-message (used by a sub-message placeholder whose address is 0) }
+{ 3 | IFEQ | v1, v2, addr | Jump if v1 = v2 }
+{ 4 | IFNE | v1, v2, addr | Jump if v1 &lt;&gt; v2 }
+{ 5 | IFLE | v1, v2, addr | Jump if v1 &lt;= v2 }
+{ 6 | IFLT | v1, v2, addr | Jump if v1 &lt; v2 }
+{ 7 | IFGT | v1, v2, addr | Jump if v1 &gt; v2 }
+{ 8 | IFGE | v1, v2, addr | Jump if v1 &gt;= v2 }
+{ 9 | IFPEEKEQ | addr1, n, addr2 | Jump to addr2 if PEEK addr1 = n }
+{ 10 | IFPEEKNE | addr1, n, addr2 | Jump to addr2 if PEEK addr1 &lt;&gt; n }
+{ 11 | POKE | n, addr | POKE addr, n }
+{ 12 | JZ | addr | Jump if the zero flag is set }
+{ 13 | GOTO | addr | Jump }
+{ 14 | CALL | addr | Call a Z80 routine }
+{ 15 | STORE | v | v = acc }
+{ 16 / 17 / 18 | ADD | - / v / v1,v2 | acc = acc+alt / acc+v / v1+v2 }
+{ 19 / 20 / 21 | SUB | - / v / v1,v2 | acc = acc-alt / acc-v / v1-v2 }
+{ 22 / 23 / 24 | MUL | - / v / v1,v2 | acc = acc*alt / acc*v / v1*v2 (fixed point) }
+{ 25 / 26 | DIV | v / v1,v2 | acc = acc/v / v1/v2 (0 if dividing by 0) }
+{ 27 | INT | | acc = whole part of acc }
+{ 28 | LOAD | v | acc = v }
+{ 29 / 30 | RND | - / v | acc = a random number from 0 to acc (or v), worked out on the low byte only, so RND v71 (v71 = 1.00) gives 0.00 to 1.00 (see the #LINK(Facts#random)(trivia entry on random numbers)) }
+{ 31 | NEG | | acc = -acc }
+{ 32 | HALF | v | acc = v/2 }
+{ 33 / 34 | SQRT | - / v | acc = square root of acc (or v) }
+TABLE#
+</div>
+
+[Page:Variables]
+PageContent=#INCLUDE(Variables)
+
+[PageHeader:Variables]
+VM variables
+
+[Variables]
+<div class="paragraph">
+All values are stored multiplied by 100. Money is counted in thousands of dollars ("grand").
+</div>
+<div class="paragraph">
+#TABLE(default,centre,centre,:w,:w)
+{ =h Var | =h Address | =h Name | =h Meaning }
+{ 0 | #R33552 | StartClients | Number of clients at the start of the game (400) }
+{ 1 | #R33556 | Squeezed | Number of clients squeezed this year }
+{ 2 | #R33560 | Raided | Amount (in grand) taken by the cops in a raid }
+{ 3 | #R33564 | Hoods | Number of hoods in the mob (shown on the status line) }
+{ 4 | #R33568 | Killed | Number of hoods rubbed out last year }
+{ 5 | #R33572 | Price | Average protection payment per client }
+{ 6 | #R33576 | Year | Current year (starts at 1) }
+{ 7 | #R33580 | Dough | Dough in the safe, in thousands of dollars (shown on the status line) }
+{ 8 | #R33584 | Clients | Number of clients (shown on the status line as CUSTOMERS) }
+{ 9 | #R33588 | Recruits | Number of hoods recruited last year }
+{ 10 | #R33592 | TotalKilled | Total number of hoods killed during the game }
+{ 11 | #R33596 | Blunders | Number of blunders (silly answers) made this year }
+{ 12 | #R33600 | TotalBlunders | Total number of blunders made during the game }
+{ 13 | #R33604 | HoodYears | Sum of the mob size over all years }
+{ 14 | #R33608 | Loan | Loan from Nick the Greek (in grand) }
+{ 15 | #R33612 | Score | Final score (percentage) }
+{ 16 | #R33616 | TotalTakings | Total protection takings }
+{ 17 | #R33620 | TotalProfit | Total profit }
+{ 18 | #R33624 | ClientYears | Sum of the number of clients over all years }
+{ 19 | #R33628 | Bought | Number of clients bought from the syndicate this year }
+{ 20 | #R33632 | Sold | Number of clients sold to the syndicate this year }
+{ 21 | #R33636 | Unsqueezed | Number of clients available to be squeezed }
+{ 22 | #R33640 | ClientsLeft | Number of clients that would be left after a sale }
+{ 23 | #R33644 | Ammo | Amount spent on artillery and ammo this year }
+{ 24 | #R33648 | FedsKilled | Number of recruits killed in the shootout with the feds }
+{ 25 | #R33652 | Takings | Protection takings this year }
+{ 26 | #R33656 | Profit | Profit this year (after Rocco has taken his cut) }
+{ 27 | #R33660 | Interest | Interest rate on Nick the Greek's loan (percent) }
+{ 28 | #R33664 | HoodGrowth | Percentage growth of the mob over the game }
+{ 29 | #R33668 | ClientGrowth | Percentage growth of the client list over the game }
+{ 30 | #R33672 | Handout | Handout paid to keep the hoods loyal }
+{ 31 | #R33676 | Bribe | Bribe paid to Rocco's mob }
+{ 32 | #R33680 | Kickback | Annual kickback to the cops }
+{ 33 | #R33684 | Tmp | Scratch variable }
+{ 34 | #R33688 | ClientCost | Price of a client this year (in grand) }
+{ 35 | #R33692 | Input | Number entered by the player (x100 fixed point; see #R27790) }
+{ 36 | #R33696 | Years | Number of years the game will last (7-11, chosen at random by #R33937) }
+{ 37 | #R33700 | K800 | Constant: 800 }
+{ 38 | #R33704 | K1000 | Constant: 1000 }
+{ 39 | #R33708 | Km005 | Constant: -0.05 }
+{ 40 | #R33712 | Km010 | Constant: -0.1 }
+{ 41 | #R33716 | K05 | Constant: 0.5 }
+{ 42 | #R33720 | K15 | Constant: 1.5 }
+{ 43 | #R33724 | K2 | Constant: 2 }
+{ 44 | #R33728 | K3 | Constant: 3 }
+{ 45 | #R33732 | K35 | Constant: 3.5 }
+{ 46 | #R33736 | K4 | Constant: 4 }
+{ 47 | #R33740 | K5 | Constant: 5 }
+{ 48 | #R33744 | K6 | Constant: 6 }
+{ 49 | #R33748 | K7 | Constant: 7 }
+{ 50 | #R33752 | K8 | Constant: 8 }
+{ 51 | #R33756 | K9 | Constant: 9 }
+{ 52 | #R33760 | K11 | Constant: 11 }
+{ 53 | #R33764 | K12 | Constant: 12 }
+{ 54 | #R33768 | K13 | Constant: 13 }
+{ 55 | #R33772 | K15b | Constant: 15 }
+{ 56 | #R33776 | K17 | Constant: 17 }
+{ 57 | #R33780 | K19 | Constant: 19 }
+{ 58 | #R33784 | K20 | Constant: 20 }
+{ 59 | #R33788 | K25 | Constant: 25 }
+{ 60 | #R33792 | K35b | Constant: 35 }
+{ 61 | #R33796 | K50 | Constant: 50 }
+{ 62 | #R33800 | K60 | Constant: 60 }
+{ 63 | #R33804 | K99 | Constant: 99 }
+{ 64 | #R33808 | K100 | Constant: 100 }
+{ 65 | #R33812 | - | Initial value of v0 (part of the table at #R33812); not otherwise used }
+{ 66 | #R33816 | - | Initial value of v1 (part of the table at #R33812); not otherwise used }
+{ 67 | #R33820 | - | Initial value of v2 (part of the table at #R33812); not otherwise used }
+{ 68 | #R33824 | K40 | Initial value of v3 (part of the table at #R33812); also used as the constant 40 }
+{ 69 | #R33828 | K10 | Initial value of v4 (part of the table at #R33812); also used as the constant 10 }
+{ 70 | #R33832 | K25c | Initial value of v5 (part of the table at #R33812); also used as the constant 2.5 }
+{ 71 | #R33836 | K1 | Initial value of v6 (part of the table at #R33812); also used as the constant 1 }
+{ 72 | #R33840 | K0 | Initial value of v7 (part of the table at #R33812); also used as the constant 0 }
+{ 73 | #R33844 | - | Initial value of v8 (part of the table at #R33812); not otherwise used }
+{ 74 | #R33848 | - | Initial value of v9 (part of the table at #R33812); not otherwise used }
+{ 75 | #R33852 | - | Initial value of v10 (part of the table at #R33812); not otherwise used }
+{ 76 | #R33856 | - | Initial value of v11 (part of the table at #R33812); not otherwise used }
+{ 77 | #R33860 | - | Initial value of v12 (part of the table at #R33812); not otherwise used }
+{ 78 | #R33864 | - | Initial value of v13 (part of the table at #R33812); not otherwise used }
+{ 79 | #R33868 | - | Initial value of v14 (part of the table at #R33812); not otherwise used }
+{ 80 | #R33872 | - | Initial value of v15 (part of the table at #R33812); not otherwise used }
+{ 81 | #R33876 | - | Initial value of v16 (part of the table at #R33812); not otherwise used }
+{ 82 | #R33880 | - | Initial value of v17 (part of the table at #R33812); not otherwise used }
+{ 83 | #R33884 | - | Initial value of v18 (part of the table at #R33812); not otherwise used }
+TABLE#
+</div>
+
+[Page:Pictures]
+PageContent=#INCLUDE(Pictures)
+
+[PageHeader:Pictures]
+The pictures
+
+[Pictures]
+<div class="paragraph">
+Every picture in the game is stored as drawing commands, not as a bitmap. Two formats exist: the compressed format drawn by #R32126 (the full-screen bar and street) and the command-list format drawn by #R31247 (lines, flood fills, attribute paints and copied blocks). These images were produced by running the game's own routines in the Z80 simulator on a cleared screen; nothing was redrawn by hand.
+</div>
+<table class="boxed">
+<tr><th>Picture</th><th>Address</th><th>Format</th></tr>
+<tr><td><img src="images/pic53793.png" width="256" alt="The Partridge Club (bar room)"><br>The Partridge Club (bar room)</td><td>#R53793</td><td>compressed</td></tr>
+<tr><td><img src="images/pic55692.png" width="256" alt="The street outside Milton's"><br>The street outside Milton's</td><td>#R55692</td><td>compressed</td></tr>
+<tr><td><img src="images/pic57583.png" width="256" alt="A man in a hat at a table"><br>A man in a hat at a table</td><td>#R57583</td><td>command list</td></tr>
+<tr><td><img src="images/pic58673.png" width="256" alt="A figure in a doorway between headlights"><br>A figure in a doorway between headlights</td><td>#R58673</td><td>command list</td></tr>
+<tr><td><img src="images/pic59397.png" width="256" alt="Two hoods at a table"><br>Two hoods at a table</td><td>#R59397</td><td>command list</td></tr>
+<tr><td><img src="images/pic60526.png" width="256" alt="The getaway car from above"><br>The getaway car from above</td><td>#R60526</td><td>command list</td></tr>
+<tr><td><img src="images/pic61625.png" width="256" alt="Two figures at the waterfront"><br>Two figures at the waterfront</td><td>#R61625</td><td>command list</td></tr>
+<tr><td><img src="images/pic63601.png" width="256" alt="Hoods and a car in the city"><br>Hoods and a car in the city</td><td>#R63601</td><td>command list</td></tr>
+<tr><td><img src="images/pic64646.png" width="256" alt="The close-up of a hood"><br>The close-up of a hood</td><td>#R64646</td><td>command list</td></tr>
+</table>
+<div class="paragraph">
+The shootout figures are plain 16&times;32 bitmaps, two bytes per row, listed by the frame tables at #R42174-42237 (see the graphics block at #R47082):
+</div>
+<div class="paragraph"><img src="images/sprites.png" alt="The shootout figures" /></div>
+
+<div class="paragraph">
+The two "A year goes by" animations (see #R33994), recorded by running the game's own step routines in the Z80 simulator. In the bar room the customers and waiters blink and the hoods walk in, cross the club and leave; in the street a car drives past and bullet marks appear on the wall.
+</div>
+<div class="paragraph"><img src="images/baranim.gif" alt="The Partridge Club animation" /></div>
+<div class="paragraph"><img src="images/caranim.gif" alt="The getaway car animation" /></div>
+<div class="paragraph">
+The restaurant shootout (#R42112), recorded by running the real routine in the Z80 simulator with a scripted player who shuffles about and keeps firing. The room, with its tables, chairs and the picture on the wall, is the same in every game; the figures are the sprites shown above.
+</div>
+<div class="paragraph"><img src="images/shootanim.gif" alt="The restaurant shootout" /></div>
+
+
+<div class="paragraph">
+The game's own proportional font (characters 32-122, from #R27087). Each glyph is six pixels high with a width byte, so the text in the speech bubbles is typeset a pixel at a time; there are no lower-case letters, because codes 97-122 are small capitals.
+</div>
+<div class="paragraph"><img src="images/font.png" alt="The proportional font" /></div>
+
+
+[Page:Hobbit]
+PageContent=#INCLUDE(Hobbit)
+
+[PageHeader:Hobbit]
+Mugsy and The Hobbit
+
+[Hobbit]
+<div class="paragraph">
+Mugsy's picture engine is not new. It is a modified copy of the one in <i>The Hobbit</i> (Melbourne House, 1982), written two years earlier. This page records how the two compare, from a routine-by-routine comparison of the code and from running each game's drawing routines on the other's picture data in the Z80 simulator. The Hobbit side comes from a separate disassembly of that game (its routine addresses are written in hex below and are not linked from here).
+</div>
+<div class="paragraph">
+In short: the command format, the interpreter, the line drawer, the attribute painting and the flood fill are the same code, adapted. All 22 of The Hobbit's pictures draw pixel for pixel identically in Mugsy's engine. The reverse does not work, because Mugsy added a command and a bigger drawing area.
+</div>
+
+<div class="paragraph"><b>Routine by routine</b></div>
+<table class="boxed">
+<tr><th>Job</th><th>The Hobbit</th><th>Mugsy</th><th>Instructions the same</th><th>Notes</th></tr>
+<tr><td>Picture interpreter</td><td>$8985</td><td>#R31247</td><td>97% of The Hobbit's, 84% of Mugsy's</td><td>Same registers and same order of tests. Mugsy adds command 16 and drops the header and the dark-room check.</td></tr>
+<tr><td>Line drawer</td><td>$8B2F</td><td>#R31917</td><td>89% / 74%</td><td>Same stepped-slope algorithm. Mugsy swaps the saves of HL and BC for calls into its own pixel code.</td></tr>
+<tr><td>Attribute-cell movers</td><td>$8AD3-$8B08</td><td>#R31755-#R31822</td><td>100% / 83%</td><td>Move one cell up, down, left or right in the attribute file. Mugsy adds range checks.</td></tr>
+<tr><td>Attribute-paint command</td><td>inside $8985</td><td>inside #R31247</td><td>essentially identical</td><td>Including the trick of flipping the ink with XOR 56 when it would equal the new paper.</td></tr>
+<tr><td>Flood fill</td><td>$8A4F</td><td>#R31525</td><td>75% / 34%</td><td>Same scan-line algorithm with seeds on the stack and above/below flags. Mugsy adds a fast path that fills a whole empty byte at once.</td></tr>
+<tr><td>Plot a pixel with ink</td><td>$8B93</td><td>#R32034</td><td>53% / 68%</td><td>Same idea (set the pixel, then set the cell's ink). The Hobbit keeps only the paper and swaps the ink if it equals the paper; Mugsy keeps paper, bright and flash and ORs the ink in.</td></tr>
+<tr><td>Coordinates to screen address</td><td>$8BBC</td><td>#R32066</td><td>23% / 17%</td><td>Different. The Hobbit computes the address by hand from 127-y; Mugsy uses 175-y and the ROM's PIXEL-ADD routine, and also has an inverse routine at #R32084.</td></tr>
+<tr><td>Start a picture</td><td>$8BE9</td><td>#R31218</td><td>different</td><td>The Hobbit clears the top 128 rows and fills the attributes from two header bytes; Mugsy clears the whole screen and its pictures have no header.</td></tr>
+</table>
+
+<div class="paragraph"><b>The command format</b></div>
+<div class="paragraph">
+Both engines start with the pen at (127,63), with D as x and E as y measured upwards from the bottom, and both read the same commands:
+</div>
+<table class="boxed">
+<tr><th>Command byte</th><th>Meaning</th><th>In The Hobbit</th><th>In Mugsy</th></tr>
+<tr><td>0</td><td>end of picture</td><td>yes</td><td>yes</td></tr>
+<tr><td>8, x, y</td><td>move the pen</td><td>yes</td><td>yes</td></tr>
+<tr><td>16, ...</td><td>bitmap block</td><td>no</td><td>yes (Mugsy's addition)</td></tr>
+<tr><td>bit 7 set</td><td>line: direction, slope and length in two bytes</td><td>yes</td><td>yes, same decoding</td></tr>
+<tr><td>%01000ccc, x, y</td><td>flood fill with ink ccc</td><td>yes</td><td>yes</td></tr>
+<tr><td>%00100ccc, address, runs, 255</td><td>paint attribute cells with paper ccc</td><td>yes</td><td>yes</td></tr>
+</table>
+<div class="paragraph">
+Anything else is ignored by both. The Hobbit's pictures also start with two bytes (border colour and the picture area's colours), which its engine consumes and Mugsy's does not, so a Hobbit picture is fed to Mugsy's engine two bytes in.
+</div>
+
+<div class="paragraph"><b>Test 1: Mugsy's engine drawing The Hobbit's pictures</b></div>
+<div class="paragraph">
+Each of the 22 pictures in The Hobbit was drawn twice in the simulator, once by The Hobbit's own routine ($8985) and once by #R31247 with the picture data copied into Mugsy's memory. Mugsy's engine draws the picture 48 rows lower (its y is 175-E where The Hobbit's is 127-E), so the two screens were compared band against band. The Hobbit's fills use the top edge of its 128-row picture area as a boundary; on Mugsy's taller screen that edge is open, so the fills leak upwards. With a solid line along the top edge of the band, which stands in for the edge, <b>all 22 pictures matched exactly: 0 differing pixels out of about 242,000.</b> Without it 12 matched and the others were swamped by leaking fills.
+</div>
+<div class="paragraph"><img src="images/hobbit_vs_mugsy_engine.png" alt="The Hobbit's engine (left) and Mugsy's engine (right) drawing the same Hobbit pictures"></div>
+<div class="paragraph">
+Left: The Hobbit's own engine. Right: Mugsy's engine, drawing the same picture data. Rooms 1, 24 and 11. All 22 pictures as drawn by Mugsy's engine:
+</div>
+<div class="paragraph"><img src="images/hobbit22.png" alt="All 22 Hobbit pictures drawn by Mugsy's engine"></div>
+<div class="paragraph">
+Mugsy's engine is also much quicker: on the same pictures it needed between a third and a ninth as many frames as The Hobbit's (38 against 337 for the first one), mostly because of the whole-byte fast path in the fill.
+</div>
+
+<div class="paragraph"><b>Test 2: The Hobbit's engine drawing Mugsy's pictures</b></div>
+<div class="paragraph">
+This does not work. Mugsy's pictures use the full 176 rows, and The Hobbit's engine has only 128, so coordinates above that wrap. Five of Mugsy's seven command-list pictures also use the bitmap-block command, which The Hobbit's engine does not know: it skips the command byte and then reads the bitmap data as drawing commands. Six of the seven had not finished after 4000 frames (about 80 seconds of Spectrum time, against 55-86 frames in Mugsy); whether they are stuck or merely very slow was not established. The seventh finished but differed in 28% of its pixels. So The Hobbit's format is a subset of Mugsy's, not the other way round.
+</div>
+
+<div class="paragraph"><b>Other shared code</b></div>
+<div class="paragraph">
+A whole-program match of the two games, ignoring addresses, found a few more long runs of identical instructions outside the picture code, all of them in text handling and random numbers. These matches are by instruction pattern only; the routines have not been read side by side:
+</div>
+<table class="boxed">
+<tr><th>Job</th><th>The Hobbit</th><th>Mugsy</th></tr>
+<tr><td>Message interpreter (bytecode text with dictionary references)</td><td>$72D4</td><td>around #R29458-#R29592</td></tr>
+<tr><td>Print an abbreviated dictionary word</td><td>$748A</td><td>around #R29907</td></tr>
+<tr><td>Print a dictionary word</td><td>$74B8</td><td>around #R29928-#R30008</td></tr>
+<tr><td>Random number in a range</td><td>$9BFD</td><td>#R30026</td></tr>
+</table>
+<div class="paragraph">
+Mugsy's other picture format (the compressed bit-stream pictures drawn by #R32126), its bytecode VM and its game logic have nothing corresponding in The Hobbit.
+</div>
+<div class="paragraph">
+The test scripts are in the tools folder: hobbit_cmp.py (routine comparison), hobbit_ngram.py (whole-program matching), hobbit_behav.py (the simulator harness), hobbit_test_mugsy_engine.py and hobbit_test_hobbit_engine.py. They need a Hobbit disassembly assembled to a binary at /tmp/hob/hobbit.bin, which is not part of this package.
+</div>
+
+[Page:Economics]
+PageContent=#INCLUDE(Economics)
+
+[PageHeader:Economics]
+The economics of Mugsy
+
+[Economics]
+<div class="paragraph">
+This page describes the game's economic model exactly as the VM script at #R24652 implements it, what each of
+your answers actually does, and the strategy that does best. Everything here was worked out from the bytecode and
+then checked by running a Python reimplementation of the VM (verified to give results identical to the Z80 code)
+over hundreds of thousands of simulated games.
+</div>
+<div class="paragraph">
+Conventions: all quantities of money are in thousands of dollars ("grand"). Variables are written with the names used
+on the #LINK(Variables)(variables page): <i>Hoods</i> is the number of hoods, <i>Clients</i> the number of clients,
+<i>Dough</i> the money in the safe, <i>Blunders</i> the running blunder count (v11), <i>Recruits</i> the hoods recruited,
+<i>Killed</i> the hoods rubbed out, <i>Kickback</i> the money given to the cops, <i>Ammo</i> the money spent on artillery
+and ammo, <i>Handout</i> the money paid to the hoods, <i>Loan</i> the loan from Nick the Greek, <i>Price</i> the
+protection price and <i>Takings</i> the protection takings. Three more names are used only on this page:
+<i>Random</i> is a random number between 0 and 1, <i>AmmoPerHood</i> is (<i>Ammo</i> / <i>Hoods</i>), and
+<i>NextTakings</i> and <i>NextPrice</i> are the takings and protection price for next year. Every formula is fully
+bracketed, with &times; for multiplication and / for division, so that nothing depends on the order of evaluation.
+INT means "drop the fractional part". The game's <i>Random</i> is not uniform: values from 0.01 to 0.27 are twice as likely as
+the others, so its average is 0.42 rather than 0.5.
+</div>
+
+<h2>The year, step by step</h2>
+<div class="paragraph">
+Each year the script runs through the following steps in this order. The questions you are asked are in
+<b>bold</b>.
+</div>
+<div class="paragraph">
+#TABLE(default,centre,:w,:w)
+{ =h # | =h Step | =h What happens }
+{ 1 | Report | Louey reports last year's losses and recruits. If the feds flag was set last year (see step 16: the flag is one of the VM's flag bytes, at #R33888, and is 1 normally or 2 when the feds have been tipped off) and you recruited at least one hood, some recruits were undercover agents: INT((<i>Recruits</i> / 2) + ((10 &times; <i>Random</i> &times; <i>Recruits</i>) / <i>Hoods</i>)) hoods die in a shootout, and the flag goes back to 1. The mob is then described as "loyal"; the word "scared" is only used if the flag is still 2, which can only happen when there were no recruits at all. }
+{ 2 | Mob check | If the mob has 9 or fewer hoods, they walk out: game over. }
+{ 3 | Takings | <i>Takings</i> = INT((<i>Squeezed</i> &times; <i>Price</i>) + 0.5), where <i>Squeezed</i> is the number of clients squeezed last year. The price was set at the end of last year: (1.5 + (3.5 &times; <i>Random</i>)), average 2.98 grand per client. If Rocco was "uppity" last year and was not paid off, his mob takes half (when the takings exceed 3). }
+{ 4 | Police raid | If a raid was set up last year (see step 15) the cops take that amount, but always leave at least 10 grand in the safe. }
+{ 5 | Nick the Greek | If you borrowed last year, the loan plus interest is repaid now. If you cannot pay, Nick takes over (game over). }
+{ 6 | Ammo check | If last year's ammo was inadequate (and was not forgiven in step 13, which happens about 61% of the time), cousin Abe muscles in: game over. Never happens in year 1. }
+{ 7 | Blunders | The running blunder count is added to the total. If it is more than 2 it is reset to 0, the boys start talking about a contract, and you are asked <b>how many grand to pay as a handout</b>. The hit man will come at the end of the year whatever you pay (see step 13). }
+{ 8 | Rocco | Rocco gets uppity if (6 &times; <i>Random</i>) + 1 is more than 5. That is meant to be a 1 in 3 chance, but because the random routine is uneven it happens about 27% of the time (68 of the 256 raw random values). If your safe holds more than ((2 &times; <i>Hoods</i>) + <i>Clients</i> + <i>Loan</i> + 100) grand you are asked <b>how much to pay him</b>: any amount of at least 1 grand (leaving more than 5) buys him off. If you are not asked, or pay nothing, he will take half of next year's takings. }
+{ 9 | Clients | The price of a client is INT(11 + (10 &times; <i>Random</i>)) in the first year (11-21 grand) and INT(13 + (6 &times; <i>Random</i>)) after that (13-19). You are asked <b>how many to buy</b>; if none, <b>how many to sell</b>. You must keep at least as many clients as hoods. If this leaves the safe empty: game over. }
+{ 10 | Ammo | You are asked <b>how many grand to spend on artillery and ammo</b>. Less than half a grand per hood (or nothing) is "inadequate" (see step 6). Because of a bug every answer counts as a blunder (see #LINK(Bugs#ammo)(Every ammo answer is a blunder)). }
+{ 11 | Squeeze | (<i>Clients</i> &minus; <i>Hoods</i>) clients are available (each hood keeps one for himself). You are asked <b>how many to squeeze</b>. Each costs 1 grand now and pays the protection price next year. Squeezing a third or fewer is a blunder. Asking for more than you can afford makes Louey arrange a loan from Nick the Greek for the shortfall (20-799 grand) at INT(40 + (60 &times; <i>Random</i>))% interest, also a blunder. Asking for (40 &times; <i>Hoods</i>) or more triggers "the boys aint gonna like workin' that hard": (50 &times; <i>Hoods</i>) clients are squeezed and the difference is added to (or taken from) the ammo. }
+{ 12 | Kickback | You are asked <b>how much to give the cops as a kickback</b>. }
+{ 13 | Hit man | If there is a contract, the arcade shootout is played. Mugsy can take between 1 and 8 hits, decided by the handout (see below); the hit man always takes 4. If he wins, game over; if Mugsy wins but bystanders are hit, the cops want INT((20 + (40 &times; <i>Random</i>))% of the safe). Then, if the ammo was inadequate, it may be forgiven (the inadequate-ammo flag is reset) if a random number is above 0.50. That looks like a coin toss, but because the random routine is uneven it happens only about 39% of the time (100 of the 256 raw random values); otherwise it stays set, which doubles this year's recruits (step 16) but also ends the game at next year's step 6. }
+{ 14 | Next year's price | The protection price for next year's takings is set to (1.5 + (3.5 &times; <i>Random</i>)). }
+{ 15 | Next year's raid | <i>Raided</i> = INT(((<i>Dough</i>&sup2;) / (<i>Dough</i> + <i>Kickback</i> + 1)) &minus; (<i>Random</i> &times; <i>Kickback</i>) + ((<i>NextTakings</i> &minus; (8 &times; <i>Kickback</i>)) / (10 &minus; <i>NextPrice</i> &minus; <i>Blunders</i>))), where <i>Dough</i> is the dough left after the kickback. There is no raid unless this comes to more than 20. }
+{ 16 | Recruits | <i>Recruits</i> = INT((((&radic;(<i>Ammo</i> + <i>Kickback</i>)) &times; <i>Clients</i>) / (<i>Hoods</i><sup>1.5</sup>)) &minus; (6 &times; <i>Blunders</i>)), doubled if the ammo was inadequate and not forgiven (see step 13), limited to 0-99. The doubling is a dead end: the flag that triggers it is still set when next year's report reaches step 6, so cousin Abe ends the game straight away, and that check comes before the end-of-game test, so even a last year is not exempt. The doubled recruits appear in that report and are then never used. The feds flag for next year's report is also set here: it becomes 2 if a random number is 0.80 or more (a 16% chance: 42 of the 256 raw random values) and is 1 otherwise. }
+{ 17 | Losses | <i>Killed</i> = INT(((<i>Hoods</i>&sup2;) / ((2 &times; <i>Ammo</i>) + 1)) + (10 &times; <i>Random</i> &times; <i>Blunders</i>) &minus; ((20 &times; <i>Kickback</i>) / (<i>Dough</i> + 1))), limited to 0-99. If that would wipe out the whole mob, <i>Killed</i> = INT(((<i>Blunders</i> + 6) / (<i>Random</i> + <i>Blunders</i> + 5)) &times; (<i>Hoods</i> + 1)) instead, halved if the ammo was at least 6 grand per hood. Then <i>Hoods</i> = ((<i>Hoods</i> &minus; <i>Killed</i>) + <i>Recruits</i>). }
+TABLE#
+</div>
+
+<h2>What your answers really do</h2>
+<div class="paragraph">
+<b>Squeeze.</b> A squeezed client costs 1 grand and returns 1.5-5 grand (2.98 on average) next year, so squeezing
+is always profitable. Squeeze every available client you can afford. The "working too hard" rule at 40 hoods' worth
+can even give you up to a quarter more squeezes for nothing, at the cost of some ammo.
+</div>
+<div class="paragraph">
+<b>Ammo.</b> Losses are roughly (<i>Hoods</i> / (2 &times; <i>AmmoPerHood</i>)) a year when you spend <i>AmmoPerHood</i> grand per hood, so 1 grand
+per hood loses half the mob, 2 grand per hood a quarter, and so on. Ammo also feeds recruitment through
+(&radic;(<i>Ammo</i> + <i>Kickback</i>)). Below half a grand per hood you risk cousin Abe. Whatever you answer, Louey counts it as a
+blunder.
+</div>
+<div class="paragraph">
+<b>Kickback.</b> This is the most powerful lever in the game. In the losses formula it subtracts ((20 &times; <i>Kickback</i>) / (<i>Dough</i> + 1)),
+where <i>Dough</i> is what is left in the safe <i>after</i> the kickback, so paying away most of the safe wipes out the
+year's losses entirely. In the raid formula it cuts the raid three ways (the (<i>Dough</i>&sup2;) / (<i>Dough</i> + <i>Kickback</i> + 1) term,
+the &minus;(<i>Random</i> &times; <i>Kickback</i>) term and the &minus;(8 &times; <i>Kickback</i>) term). It also boosts recruitment.
+</div>
+<div class="paragraph">
+<b>Money in the safe</b> is worth nothing at the end: the final score does not look at it at all. Worse, a full safe
+attracts raids (the <i>Dough</i>&sup2; term means the cops take most of an unprotected safe) and offers no protection
+against losses. Spend it.
+</div>
+<div class="paragraph">
+<b>Buying clients</b> costs 13-19 grand. A squeezed client nets about 2 grand a year, so a purchase pays for itself
+in seven or eight years, but clients also feed recruitment (<i>Clients</i> / (<i>Hoods</i><sup>1.5</sup>)) and three of the score
+terms. Selling is never worthwhile.
+</div>
+<div class="paragraph">
+<b>Rocco.</b> If you are asked, pay him exactly 1 grand: any amount buys him off.
+</div>
+<div class="paragraph">
+<b>The handout</b> does not keep the boys faithful at all: the hit man comes regardless. What it does, through a
+quirk of the fixed-point arithmetic, is set <i>Mugsy's</i> hit points for the shootout: (low 3 bits of
+((100 &times; ((<i>Handout</i> / <i>Hoods</i>) / 3)) + 100), in hundredths) + 1, or 8 if (<i>Handout</i> / <i>Hoods</i>) &ge; 4.68. Paying nothing gives
+Mugsy 5 hit points, and each extra grand moves the value up one step, so the useful amounts are the small ones that
+land on 8; paying a little more wraps round to 1, which is the worst result. The hit man always has 4. (The code settles which is which: the keys move the figure whose death is reported as "Mugsy killed", and that
+figure is the one whose hit points the handout sets.)
+</div>
+<div class="paragraph">
+#TABLE(default,centre,:w,centre)
+{ =h Hoods | =h Smallest handouts giving Mugsy 8 hit points | =h Hit points if you pay nothing }
+{ 20 | 2, 7, 21, 26 | 5 }
+{ 25 | 117, 118, 119, 120 | 5 }
+{ 30 | 3, 10, 25, 32 | 5 }
+{ 40 | 4, 14, 23, 33 | 5 }
+{ 50 | 5, 17, 29, 41 | 5 }
+{ 60 | 6, 7, 20, 21 | 5 }
+{ 70 | 7, 8, 24, 25 | 5 }
+{ 80 | 8, 9, 27, 28 | 5 }
+{ 100 | 9, 10, 11, 33 | 5 }
+{ 150 | 14, 15, 16, 17 | 5 }
+TABLE#
+</div>
+<div class="paragraph">
+The 25-hoods row is not a misprint. Of every mob size from 10 to 200 it is the only one where no small handout gives 8 hit points: (100 &times; ((<i>Handout</i> / 25) / 3)) works out to 4/3 of the handout, rounded down, and that sequence steps over the one value that would land on 8. Only the "4.68 grand per hood or more" rule gets there, which for 25 hoods means 117 grand.
+</div>
+<div class="paragraph">
+<b>Loans</b> from Nick the Greek are a blunder, cost 40-100% interest and can end the game, and the search below
+found no strategy that benefits from them.
+</div>
+
+<h2>How the score works</h2>
+<div class="paragraph">
+The final score (#R24652, from #R26469) is the sum of these terms, capped at 100 and never less than 0. Money in the safe plays no part. The mob, clients and profit terms are floored at the constants &minus;0.05 and &minus;0.10 rather than at 0, so a shrinking mob or client list costs a small fraction of a point instead of nothing; this looks like a slip, since every other floor and ceiling is a whole number.
+#TABLE(default,centre,:w,centre)
+{ =h Term | =h How it is worked out | =h Range }
+{ Base | Always (added as 10 and 35) | 45 }
+{ Surviving | Only if the game ended on time (see #LINK(Bugs#years)(The game almost never ends on time)) | 0 or 10 }
+{ Years | (&minus;3) &times; (<i>Years</i> &minus; <i>Year</i>), at most &minus;12 but with no upper limit: every year beyond <i>Years</i> (v36) adds 3, where <i>Year</i> is the year reached | &minus;12 upwards }
+{ Mob | INT(<i>HoodGrowth</i> / 10), where <i>HoodGrowth</i> = (((<i>Hoods</i> &minus; 40) &times; 100) / 40) | &minus;0.05 to 15 }
+{ Takings | INT(2 &times; ((<i>TotalTakings</i> / <i>HoodYears</i>) &minus; 25)) | 0 to 10 }
+{ Clients | INT(<i>ClientGrowth</i> / 4), where <i>ClientGrowth</i> = (((<i>Clients</i> &minus; <i>StartClients</i>) &times; 100) / <i>StartClients</i>) | &minus;0.10 to 17 }
+{ Profit | INT(20 &times; ((<i>TotalProfit</i> / <i>ClientYears</i>) &minus; 2.5)) | &minus;0.10 to 10 }
+{ Blunders | &minus;<i>TotalBlunders</i> | unlimited }
+{ Killed | &minus;INT(<i>TotalKilled</i> / 4) | 0 to &minus;20 }
+TABLE#
+</div>
+<div class="paragraph">
+Two things dominate. Because every ammo answer is a blunder and the running count is added to the total every year,
+blunders cost about 2 points a year whatever you do. And because the game almost never ends on time, every year you
+survive beyond <i>Years</i> is worth 3 points. So a long game gains about 1 point a year once the other terms have settled.
+In practice the "killed" term hits its &minus;20 limit within a few years, the clients term reaches its maximum of 17
+once you have about 670 clients, and the mob and profit terms contribute little: with an average protection price of
+2.98 grand, a profit of 3 grand per client-year is out of reach.
+</div>
+<div class="paragraph">
+Note that dying does not cost anything beyond ending the game: the score is worked out in exactly the same way
+whether Mugsy is shot, his mob walks out or you lose to Nick the Greek. The only way to end the game on purpose is to
+lose a shootout, and the hit man comes every third year (sooner if you make extra blunders), so once your score is
+where you want it, simply stand still the next time he arrives.
+</div>
+
+<h2>The best strategy</h2>
+<div class="paragraph">
+To find the best strategy, a parameterised player (ammo per hood, target clients per hood, share of spare cash
+spent on clients, share of available clients squeezed, share of the remaining safe paid as a kickback, cash kept
+back, use of loans) was optimised by random search and then coordinate-by-coordinate refinement, scoring each
+candidate on the same few hundred simulated games and testing the winner on 400 fresh ones. The handout was always
+the cheapest amount that gives Mugsy 8 hit points (it makes no difference to the score) and Rocco always got 1 grand. Unless stated otherwise the player is assumed to win every
+shootout.
+</div>
+<div class="paragraph">
+#TABLE(default,centre,:w,centre,centre)
+{ =h Rules | =h Length of game | =h Best average score | =h Notes }
+{ Actual game | Random answers | about 24% | Typical of the simulated random games; most end in year 2 }
+{ Actual game | 12 years | 48% | Ammo 1.5/hood, buy with 73% of spare cash, kickback 74% of the remainder }
+{ Actual game | 20 years | 53% | Ammo 1.5/hood, buy with 58% of spare cash, kickback 44% of the remainder }
+{ Actual game | 40 years | 71% | Ammo 1.5/hood, buy with 28% of spare cash, kickback 44% of the remainder }
+{ Actual game | Until 100% | 100% in 74% of games | Median year 62, earliest year 50; the other 26% of games end earlier when the mob walks out }
+{ As intended (whole-number game length, 7-11 years) | Ends on time | 52% | Ammo 1.2/hood, buy with 79% of spare cash, kickback 79% }
+TABLE#
+</div>
+<div class="paragraph">
+<b>In words</b>, for a game of about 20 years:
+</div>
+<ul>
+<li><b>Handout</b>: the smallest amount from the table above that gives Mugsy 8 hit points (about 0.1 grand per hood).</li>
+<li><b>Rocco</b>: 1 grand.</li>
+<li><b>Buy clients</b>: work out what this year will cost (1.5 grand per hood for ammo plus 1 grand per available client
+for the squeeze, plus 5), and spend about 60% of the rest on clients, until you have about 30-40 clients per hood. Spend
+more (about 75%) if you plan a short game and less (about 30%) if you plan a very long one.</li>
+<li><b>Sell</b>: never.</li>
+<li><b>Ammo</b>: 1.5 grand per hood, rounded up.</li>
+<li><b>Squeeze</b>: every available client.</li>
+<li><b>Kickback</b>: about 45% of what is left, keeping nothing back for next year.</li>
+<li><b>Never</b> let ammo + kickback come to 156, 1407, 2499, 2501, 3905 or one of the larger values listed under #LINK(Bugs#sqrt)(Some numbers freeze the game) (the game freezes), and never borrow from Nick.</li>
+</ul>
+
+<h2>What difference each answer makes</h2>
+<div class="paragraph">
+Starting from the 20-year strategy, one answer at a time was changed and the same 200 games were replayed for 20
+years. "Ended early" is the share of games that ended before year 20 (the mob walking out, cousin Abe, an empty safe
+and so on).
+#TABLE(default,centre,centre,centre,centre)
+{ =h Ammo per hood | =h Score | =h Ended early | =h Median hoods at the end }
+{ 0.5 | 27.8 | 94% | 5 }
+{ 0.75 | 42.9 | 54% | 9 }
+{ 1.0 | 49.0 | 28% | 44 }
+{ <b>1.5</b> | <b>54.6</b> | 8% | 62 }
+{ 2.0 | 53.8 | 5% | 71 }
+{ 3.0 | 47.8 | 10% | 74 }
+{ 4.0 | 31.3 | 55% | 5 }
+{ 6.0 | 14.1 | 100% | 2 }
+TABLE#
+#TABLE(default,centre,centre,centre,centre)
+{ =h Kickback (share of the rest) | =h Score | =h Ended early | =h Median hoods at the end }
+{ 0 | 33.2 | 85% | 7 }
+{ 0.2 | 44.1 | 42% | 37 }
+{ <b>0.44</b> | <b>54.5</b> | 8% | 63 }
+{ 0.6 | 51.8 | 10% | 80 }
+{ 0.8 | 40.8 | 49% | 26 }
+{ 1.0 (everything) | 28.2 | 80% | 5 }
+TABLE#
+#TABLE(default,centre,centre,centre,centre)
+{ =h Cash kept back from the kickback | =h Score | =h Ended early | =h Median hoods at the end }
+{ <b>0</b> | <b>54.6</b> | 8% | 64 }
+{ 50 | 46.5 | 36% | 46 }
+{ 150 | 38.6 | 60% | 9 }
+{ 300 | 33.7 | 82% | 7 }
+TABLE#
+#TABLE(default,centre,centre,centre,centre)
+{ =h Share of spare cash spent on clients | =h Score | =h Ended early | =h Median clients at the end }
+{ 0 | 28.0 | 6% | 400 }
+{ 0.25 | 45.6 | 5% | 630 }
+{ <b>0.58</b> | <b>54.6</b> | 8% | 947 }
+{ 0.8 | 52.5 | 18% | 949 }
+{ 1.0 | 39.0 | 70% | 584 }
+TABLE#
+#TABLE(default,centre,centre,centre,centre)
+{ =h Share of available clients squeezed | =h Score | =h Ended early | =h Median clients at the end }
+{ 0.4 | 39.9 | 6% | 618 }
+{ 0.6 | 45.1 | 6% | 721 }
+{ 0.8 | 47.8 | 6% | 824 }
+{ <b>1.0</b> | <b>54.6</b> | 8% | 953 }
+TABLE#
+#TABLE(default,centre,centre,centre)
+{ =h Chance of winning each shootout | =h Score | =h Ended early }
+{ 100% | 54.6 | 8% }
+{ 90% | 45.7 | 52% }
+{ 75% | 36.9 | 88% }
+{ 50% | 31.6 | 100% }
+TABLE#
+</div>
+<div class="paragraph">
+Borrowing from Nick the Greek whenever possible lowered the score from 54.6 to 51.6, and deliberately squeezing
+40 hoods' worth or more (to get the 50-hood allowance) made no difference.
+</div>
+<div class="paragraph">
+The reasons:
+</div>
+<ul>
+<li><b>Too little ammo</b> lets losses ((<i>Hoods</i>&sup2;) / ((2 &times; <i>Ammo</i>) + 1)) outrun recruitment and the mob walks out;
+<b>too much</b> costs more than the hoods are worth, starving the squeeze and the kickback, and the mob collapses
+the same way.</li>
+<li><b>Too small a kickback</b> leaves losses and raids unchecked; <b>too large</b> a kickback triggers the INT sign
+bug, so the cops raid you anyway and take next year's takings.</li>
+<li><b>Cash kept in the safe</b> both invites raids (the <i>Dough</i>&sup2; term) and weakens the kickback's protection
+against losses (&minus;((20 &times; <i>Kickback</i>) / (<i>Dough</i> + 1))).</li>
+<li><b>Buying clients</b> drives the clients term (up to 17 points), the takings and recruitment (which grows with
+clients per hood); spending everything on them leaves too little for ammo and the kickback.</li>
+<li><b>The shootout</b> comes every third year, so even a 90% success rate means that half of all games end before
+year 20, which is why the 8-hit-point handout matters.</li>
+</ul>
+<div class="paragraph">
+The Python reimplementation of the VM, the strategy code and the optimiser are included with this disassembly (in
+the tools folder: pyvm.py, policy.py, optimise.py, refine.py, sensitivity.py). The VM was checked against the Z80
+code by recording the random numbers and answers from long simulated games and replaying them: every variable and
+flag matched.
+</div>
+<div class="paragraph">
+A caveat: all the figures on this page assume the questions are answered sensibly. The client-buying question can be made to overflow and pay you millions of grand (see #LINK(Bugs#buyoverflow)(Buying clients: the cost can overflow and pay you)); since money does not enter the score and the score terms are capped, this does not appear to help.
+</div>
+
+[Bug:noquit:Saying "nope" locks up the machine]
+<div class="paragraph">
+When the game asks "Hows about another game, Mugsy?" and you answer "nope", the VM script sets the game status flag
+to 1 (#R26730), the main loop returns (#R24606) and the start-up routine falls into <code>JR 24587</code> (#R24587),
+a jump to itself with interrupts disabled. There is no exit message; the Spectrum has to be reset.
+</div>
+
+[Bug:preshift:Executing a sprite as code]
+<div class="paragraph">
+#R34135 prepares a masked, pre-shifted copy of a 32x32 sprite. It begins with <code>PUSH DE</code> and then
+<code>POP HL / PUSH HL</code>, which leaves the buffer address on the stack on top of the return address. When the shift
+count is non-zero the routine ends with <code>POP HL / RET</code> and all is well, but when it is zero the
+<code>RET Z</code> at #R34164 pops the buffer address instead, so the CPU jumps into the sprite buffer (24192 or 24384) and
+executes the graphic data as Z80 code.
+</div>
+<div class="paragraph">
+It gets away with it by luck. The buffer contains rows of four graphic bytes followed by 255 (<code>RST 56</code>, the
+harmless ROM interrupt routine) and 0 (<code>NOP</code>), and the first sprite happens to contain conditional
+returns (<code>RET PO</code> at 24195, <code>RET M</code> at 24234 and so on) that eventually pop the real return
+address. This was confirmed in the simulator: every recorded game executes 24192-24234 and 24384-24405.
+</div>
+
+[Bug:terrific:"Terrific" is not terminated]
+<div class="paragraph">
+The last of the twelve rating words used by #R26740, "terrific" at #R53351, has no end code. It is the dictionary word
+"terr" followed by the literal letters "FIC", and the next bytes are leftover assembler source text
+(<code>LD (HL),3</code>, <code>LD (REGENFL),A</code> ...), so the renderer carries on through the source,
+including a stray control code 11 that repeats part of an unrelated message, until it happens to reach an end marker.
+</div>
+<div class="paragraph">
+From the script, rating 12 is chosen for a score of 100% (score/10+2 = 12). It is also chosen for a score of 0% or
+less: in that case the script jumps from #R26688 straight to #R26714, skipping the calculation of v33, so #R26740 works
+with a stale value of v33 (a multiple of 1.00 between -0.10 and 10.00). Its low byte is never 1-11, so the 12th word is
+picked. In other words, the very worst players are told that they were "terrific", followed by garbage. This was
+confirmed by running the real Z80 code with a 0% score:
+</div>
+<div class="paragraph">
+<img src="../images/terrific.png" alt="You were TERRIFICLD(HL),3 +LD(REGENFL),A..." />
+</div>
+
+[Bug:jnz:SAY flags and the VM stream]
+<div class="paragraph">
+Message control codes 1, 4 and 5 fetch their operands from the <i>VM</i> byte stream, not from the message. A
+message that contains a random choice (control code 10) whose alternatives used different numbers of placeholders
+would therefore make the VM lose its place. The game is careful to avoid this: the only such message (#R52074) uses
+one variable in each alternative.
+</div>
+
+[Fact:pickone:Pick-one messages]
+<div class="paragraph">
+Most of Louey's "pick one of these" lines are not stored as a bracketed list inside one message. The message the script says (for example #R53164) is only a few bytes long: a random choice (control code 10) between back-references (control code 11), each pointing at a complete message of its own just before it (#R53008 and #R53097). That is why the message at #R53164 looks like a single 290-character reply in the listing, when what you actually get is one of the two, 160 or 127 characters long. Of the 118 messages, 27 are reached only this way. Even so, the two hush-money replies are among the longest in the game: they fill speech bubbles of 11 and 10 lines (the bubble routine pairs up lines, so the nine widths in the table at #R28728 cover bubbles of up to 18 lines). The longest line of all is the contract warning at #R50687, about 200 characters.
+</div>
+
+[Fact:louey:Louey]
+<div class="paragraph">
+Louey has 118 messages (plus a dozen rating words) and they are among the most heavily compressed text in any Spectrum
+game of the time: most words take one or two bytes, and repeated phrases are reused with a back-reference
+(control code 11).
+</div>
+
+[Fact:source:Leftover source code]
+<div class="paragraph">
+The area at #R53353-53792 holds fragments of the game's original assembler source, left there by the assembler in the
+memory image that was saved to tape. Readable labels include REGENFL, HITST, HTSTAT, HITOK and COMEBK (and the tail end of another, ending in HAPE3, whose first letter has been overwritten), with
+tab-separated mnemonics such as <code>LD A,(HITST)</code> and <code>AND A</code>. The interrupt jump at #R53456 and the
+IM2 vector table at #R53504 are written over parts of it.
+</div>
+
+[Fact:constants:Constants that aren't]
+<div class="paragraph">
+The VM has no immediate operands, so every number the script needs is held in a variable. Variables 37-64 are true
+constants, but the most frequently used ones (0, 1, 2.5, 10 and 40) are v72, v71, v70, v69 and v68, which are actually
+entries of the table of initial values copied into v0-v18 at the start of each game (#R33937).
+</div>
+
+[Fact:random:Random numbers from the program itself]
+<div class="paragraph">
+The random number generator (#R30026) has no seed in the usual sense. It walks a pointer through memory 256 bytes at a
+time (starting at 20480, in the display file), adds and XORs the bytes it finds there, and rejects a result equal to the
+previous one. So the "random" numbers depend partly on what is on the screen.
+</div>
+
+[Bug:years:The game almost never ends on time]
+<div class="paragraph">
+The length of the game is chosen at the start (#R33937): v36 = 7 + 4<i>U</i>, where <i>U</i> is a random number
+between 0 and 1.00 in steps of 0.01. The result (7.00 to 11.00 in steps of 0.04) is never rounded, but the script ends
+the game on time only when IFEQ v36,v6 at #R25020 finds it equal to the year number, which needs a whole number. That
+happens with probability 12/256 (under 5%). In every other game there is no time limit at all: the game goes on until
+Mugsy is killed, cousin Abe moves in, the mob walks out, Nick the Greek takes over or the safe is empty.
+</div>
+<div class="paragraph">
+Because the random number generator depends only on the contents of memory, the first game after loading always gets
+v36 = 10.60, so the first game can never end on time. Running the real Z80 code in a simulator with the hit man
+always beaten, a game was still going in year 19.
+</div>
+<div class="paragraph">
+This has a large effect on the score: the end-of-game calculation charges 3 points for each year short of v36 (at
+most 4), but there is no limit in the other direction, so every year survived beyond v36 is worth 3 points. See the
+#LINK(Economics)(economics page).
+</div>
+
+[Bug:ammo:Every ammo answer is a blunder]
+<div class="paragraph">
+After asking how much to spend on artillery and ammo, the script at #R25641 (which handles answers above the number of hoods) first counts a blunder for anything under twice the number of hoods ("Yeah, Boss, keep'em scared, eh!"). Anything from twice the hoods upwards should then be accepted if it is under five times the number of hoods, and scolded ("Cripes, Boss, they could fight a war with the hardware that'll buy.") if it is more. The second test is written IFGT v3,v23 (hoods &gt; ammo) instead of
+IFGT v33,v23 (5*hoods &gt; ammo); since the ammo is already known to be at least twice the hoods, it can never succeed,
+so there is no answer that Louey accepts without counting a blunder.
+</div>
+<div class="paragraph">
+The consequences are serious. The blunder count v11 is only reset when it exceeds 2, so with one blunder a year it
+runs 1, 2, 3, 1, 2, 3... and the hit man from Detroit is sent every third year whatever you do. The total blunder count
+(which is deducted from the final score) grows by the running count each year, i.e. by 2 points a year.
+</div>
+
+[Bug:halfway:The half-way contract check never fires]
+<div class="paragraph">
+At #R25037 the script works out INT(v36/2), the half-way year, and stores it in v33, but the test that follows is
+IFNE v36,v6 instead of IFNE v33,v6. v36 has just been found not to be equal to v6 (at #R25020), so the jump is always
+taken and the half-way talk of a contract never happens.
+</div>
+
+[Bug:sqrt:Some numbers freeze the game]
+<div class="paragraph">
+The square root routine (#R30511) uses Newton's method on the fixed-point numbers and stops when an estimate equals the
+previous one. For some numbers the estimates alternate between two values for ever. Checking every whole number up to
+20,000, this happens for 156, 1407, 2499, 2501, 3905, 7658, 9998, 10,002, 12,654 and 18,909.
+</div>
+<div class="paragraph">
+At the end of each year the script takes the square root of the number of hoods and of ammo + kickback. So if you
+spend, say, 100 grand on ammo and 56 on the kickback, or if your mob happens to number exactly 156 hoods at the end of
+a year, the Spectrum hangs. The routine was tested directly in the simulator for every value from 0 to 399.99, and the
+ammo + kickback case was reproduced in a full game.
+</div>
+
+[Bug:raidsign:A big kickback can cause a police raid]
+<div class="paragraph">
+The INT operation (#R30580) shares the sign handling of the multiply and divide routines, which work out the sign of
+the result from the signs of <i>both</i> operands. INT only has one operand, so its result has the wrong sign whenever
+the second register (BC'DE') happens to hold a negative number. In the raid calculation at #R26163-26174 the last value
+added is (next year's takings - 8*kickback)/(10 - price - blunders), which is negative when the kickback is large. If
+the total is also negative (meaning no raid), INT turns it into a positive number, and the cops raid you anyway.
+</div>
+
+[Bug:buyoverflow:Buying clients: the cost can overflow and pay you]
+<div class="paragraph">
+When you buy clients from the syndicate the script (#R25380-25402) works out the cost as <i>n</i> times the price with the VM's MUL, stores it, subtracts it from the safe and accepts the purchase if what is left is zero or more. All of these are signed 32-bit counts of hundredths, and nothing checks for overflow. So if the cost comes out above 21,474,836.48 grand it wraps round to a <i>negative</i> number, the "left in the safe" figure goes up instead of down, and the game cheerfully says nothing about it. With a price of <i>P</i> grand per client, any number of clients <i>n</i> for which <i>n</i> &times; <i>P</i> lies between 21,474,837 and 42,949,672 does it (the answer line has room for ten digits, so numbers up to 21,474,836 can be typed): you receive <i>n</i> clients <i>and</i> a cheque for 42,949,672.96 &minus; <i>n</i> &times; <i>P</i> grand.
+</div>
+<div class="paragraph">
+Checked on the real Z80 code in the simulator: in year 1 with the price at 18 grand, answering 2,000,000 to "How many do we buy from the syndicate this year?" took the safe from 675 grand to 6,950,348 grand and the client count from 400 to 2,000,400. Using the formula to aim for a cheque of exactly 1,000,000 grand (2,330,537 clients at 18 grand) left 1,000,680 grand in the safe, the 675 from before plus the cheque, give or take the rounding of the client count. (Aim for a cost that wraps to about &minus;1,000,000,000 hundredths, i.e. <i>n</i> &times; <i>P</i> &asymp; 32,950,000; if the cost wraps to nearly &minus;21 million grand the sum of that and your old balance overflows again and the game rejects the purchase.)
+</div>
+<div class="paragraph">
+What it is worth is another matter. Money plays no part in the final score and most of the score terms are capped (see the #LINK(Economics)(economics page)), so a few million clients and a few million grand do not buy a higher score by themselves. In simulations of the strategies from the economics page with a year-1 overflow purchase the games ended after about three years, with death scores of roughly 40-50, and the 12-year average came out lower than without it (35-41 against 50). A coordinate search over the strategy parameters and the size of the windfall (tools/exploit_refine.py, 12-year games, 80 seeds), starting from the optimised strategy, found no windfall that beat not taking one.
+</div>
+<div class="paragraph">
+Tracing those games shows why, and it is three separate traps. (1) The windfall is a fortune in the safe, and the optimised strategy's kickback (about 74% of what is left) then comes to hundreds of thousands of grand, which sets off the INT sign bug (see #LINK(Bugs#raidsign)(A big kickback can cause a police raid)): in the traced game a kickback of 739,478 grand produced a raid of 1,276,281, the safe was emptied to the 10-grand floor, the next year's ammo was 9 grand, and the formula for the number rubbed out (hoods&sup2;/(2&times;ammo+1) plus the blunder term) killed 37 of the 40 hoods. (2) With the kickback held to just under an eighth of next year's takings (the point at which the sign bug starts), so that the bug is avoided, and almost all the cash spent on ammo, the hoods stop dying, but they also stop being recruited: the recruiting formula multiplies the number of clients by itself, and with millions of clients the product wraps round the 21,474,836.47 limit, so the number of recruits comes out as zero or less every year (the mob stayed at exactly 40 for the first eight years of the test game). (3) Each overflow purchase adds a couple of million clients, and at about 21 million clients the client count itself wraps negative (year 8 in the test), after which the ammo and recruiting arithmetic produces nonsense and the mob is cut down (26 of 40 hoods in the year after, in the test game). Buying every year with this sensible spending gave games of about eleven years but an average score of only 33 (20 games each), against 48-54 for honest play (tools/exploit_rich.py).
+</div>
+<div class="paragraph">
+Two side notes from the same experiments. Selling clients to the syndicate pays the price per client in full, so a player with two million clients can sell half of them for about 18.8 million grand in the next year (selling all of them was turned down); the money is real but, again, worthless for the score. And negative numbers do not work as a loophole: a negative answer to the handout, ammo, squeeze, kickback or buy question is simply turned down and asked again. Only the buying and selling questions multiply your answer by something, which is why only they can overflow.
+</div>
+
+[Bug:backspace:Control code 8 (backspace) crashes]
+<div class="paragraph">
+Message control code 8 was meant to be a backspace, but its handler (#R29897) begins with a stray <code>PUSH HL</code> that nothing pops. The dispatcher (#R29544) has just put the handler's own address in HL, so the final <code>RET</code> returns to the start of the handler, which runs a second time and then returns to 23807, one byte before the text buffer, and runs whatever it finds there as code. Run in the simulator on a message containing code 8, the buffer pointer dropped by two and the routine never returned. None of the messages decoded from the script uses code 8, so the game never triggers it.
+</div>
+
+[Bug:nick:Exactly ten grand]
+<div class="paragraph">
+After repaying Nick the Greek, the script at #R24970 says "So ya aint got the dough ta buy rods and bullets so da boys can
+defend theirselves. Sorry, Boss,- you're goin' for a ride." and ends the game if what is left is exactly 10 grand (IFNE
+v69,v33). Presumably "less than 10 grand" was intended; with 9 grand left you are fine.
+</div>
+
+[Fact:selfmod:Self-modifying music]
+<div class="paragraph">
+The tune player (#R32866) changes its own code for each note: it writes the border/speaker value into the operand of
+the <code>LD A,16</code> at #R32999 and the length of a delay into the <code>LD B,4</code> at #R32929. It also mixes the
+Z80's refresh register (<code>LD A,R</code>) into the note timing for a slightly rough sound.
+</div>
+
+[Fact:hush:Jack Benny]
+<div class="paragraph">
+Every silly answer costs a blunder first, and then Louey offers to keep quiet about it (#R28304). With 19 grand or more in the safe the price is one grand, and one of the two lines he may say is: "If your boys heard about it you wud get more laughs than Jack Benny." With 3 to 18 grand he charges a tenth of what you have, rounded down (so nothing at all below 10 grand), and with less than 3 he cannot help at all and you take a second blunder. So the hush money never removes the blunder itself; it only costs you the money.
+</div>
+
+[Fact:loader:Two loaders]
+<div class="paragraph">
+The BASIC loaders in the TAP and TZX images differ slightly: the TAP version uses PAPER 1: INK 1 and waits for a
+key (PAUSE 0) before starting the game, while the TZX version uses PAPER 0: INK 0 and starts straight away. The
+loading screen header says CODE 32768,6912 but the loader loads it at 16384.
+</div>
+
+[Fact:scheduler:The shootout is a tiny multitasking system]
+<div class="paragraph">
+The shootout (#R42112) is not a single game loop. Each moving thing (the two diners who are the bystanders, Mugsy, the hit man and
+the two bullets) is a "figure" with a 39-byte record, a timer and a handler. A custom interrupt routine (#R48539) runs fifty
+times a second: for each figure whose timer is 0 it counts down a delay and, when the delay ends, sets the stack
+pointer to the figure's record and uses <code>POP</code> to load HL, DE, BC and IY straight from it, then jumps to IY,
+a sprite routine that draws the figure with its registers already set up. When the drawing finishes it marks the
+figure as ready; the main loop (#R42977) notices, and runs the figure's handler, which reads the next byte of its
+route script (or the keyboard, for Mugsy) and decides the next move. The diners follow fixed scripts of a couple of
+hundred steps (#R46645, #R46825); the hit man picks one of six eight-byte fragments (#R47034) according to where
+Mugsy is, and fires when they are on the same row.
+</div>
+<div class="paragraph">
+<img src="../images/shootout.png" alt="The restaurant in the shootout" />
+</div>
+
+[Fact:handouttrap:The handout is a lottery ticket]
+<div class="paragraph">
+The question "how many grand do you give the boys?" sounds like loyalty money, but the only thing the game does with
+the answer is turn it into Mugsy's hit points for the shootout (#R28358, #R42112). Because the conversion keeps only
+the low three bits of a fixed-point number, the hit points cycle 5, 6, 7, 8, 1, 2, 3, 4, 5 &hellip; as the handout
+grows: giving the boys a little more can leave Mugsy as fragile as possible. With nobody pressing a key, a Mugsy with 1
+hit point lasts about 14 seconds from the moment the shootout routine starts, one with 4 about 18 and one with 8 about 20 (measured by
+running the shootout routine in the Z80 simulator: 719, 921 and 1019 frames at 50 per second).
+</div>
+
+[Fact:romcall:The shootout borrows the ROM]
+<div class="paragraph">
+The restaurant walls are drawn with the Spectrum ROM's pixel-address routine: #R46428 calls 8880 ($22B0), the
+second half of PIXEL-ADD, skipping its range check, and relies on it to turn a (y, x) pair into a display file address
+and bit position.
+</div>
+
+[Fact:overflow:Number entry: quirks and overflow]
+<div class="paragraph">
+The number-entry routine (#R27790, parsing in #R27869) accepts an optional sign followed by digits. A lone &quot;-&quot; or &quot;+&quot; is accepted as zero, leading zeros are harmless, and anything with a decimal point is turned away with a complaint about fractions (and counted as a blunder), so every answer has to be a whole number. &quot;-5&quot; is read as 5 but flagged as negative, which every question in the script refuses.
+</div>
+<div class="paragraph">
+Numbers typed in answer to a question are held as 32-bit signed counts of hundredths, and the digit-by-digit conversion at #R27869 never checks for overflow, so the largest number you can really enter is 21,474,836.47. Typing 21474837 wraps round to a negative number and is treated like any other negative answer. Typing 42949672 comes out as -0.96; typing 42949673 comes out as +0.04 and 42949696 as 23.04, and 4294967296 (ten digits) comes out as exactly zero. In other words, a figure of 43 million or more is silently taken modulo 42,949,672.96. (Measured by typing these numbers into the number-entry routine at #R27790 in the Z80 simulator; the answer line has room for only about ten digits, which is still plenty to wrap round.)
+</div>
+
+[Fact:yeargoesby:The end-of-year animation is a weighted coin toss]
+<div class="paragraph">
+At the end of every year the "A year goes by" routine (#R33994) plays one of two animations: the hoods filing through the Partridge Club, or the getaway car driving past. Nothing in the game chooses between them. It is not the year, the size of the mob, the cash in the safe or anything that happened during the year. The routine makes one call to the random routine (#R30014, limit 100) and plays the bar room if the result is below 50.
+</div>
+<div class="paragraph">
+It is not a fair toss. The random routine is not uniform (see the #LINK(Facts#random)(random numbers entry)), and for this limit 154 of its 256 raw values give a result below 50 and 102 give 50 or more. So the Partridge Club comes up about 60% of the time and the getaway car about 40%. This comes from reading the routine and counting its raw values, not from playing the game thousands of times, so treat the percentages as approximate.
+</div>
+
+[Fact:backgrounds:Which background you get]
+<div class="paragraph">
+The backgrounds behind Louey's speech bubbles are random too, in two stages, and neither stage is an even split. At the start of each year the game rolls once (#R24614): below 50 selects the first table of three pictures, otherwise the second (about 60% and 40%, because of the uneven random routine; see the #LINK(Facts#random)(random numbers entry)). Then, every time Louey speaks without asking for a particular placement, the SAY routine (#R28549) rolls again and takes the first picture in that year's table whose chance value is above the roll. If that is the picture already on screen it rolls again, so the background always changes between lines. Messages that ask for the fixed answer bubble always show the close-up of the hood (#R64646), and some messages keep whatever is on screen.
+</div>
+<table class="boxed">
+<tr><th>Table (this year)</th><th>Picture</th><th>Chance of a roll within the table</th><th>Overall</th></tr>
+<tr><td>First (about 60%)</td><td>A figure in a doorway between headlights (#R58673)</td><td>44.5%</td><td>26.8%</td></tr>
+<tr><td>First</td><td>Two hoods at a table (#R59397)</td><td>31.2%</td><td>18.8%</td></tr>
+<tr><td>First</td><td>A man in a hat at a table (#R57583)</td><td>24.2%</td><td>14.6%</td></tr>
+<tr><td>Second (about 40%)</td><td>Hoods and a car in the city (#R63601)</td><td>46.9%</td><td>18.7%</td></tr>
+<tr><td>Second</td><td>Two figures at the waterfront (#R61625)</td><td>27.3%</td><td>10.9%</td></tr>
+<tr><td>Second</td><td>The getaway car from above (#R60526)</td><td>25.8%</td><td>10.3%</td></tr>
+</table>
+<div class="paragraph">
+So the waterfront and the getaway car are the rarest backgrounds, each shown only about one line in ten, and a year that uses the second table never shows the two table scenes or the doorway. The percentages come from counting the random routine's 256 raw values (the same method as #LINK(Facts#yeargoesby)(the animation entry)) and ignore the "never the same twice" re-roll, which shifts the odds a little depending on what is on screen. They are not measured from play.
+</div>
+
+[Fact:im2:Interrupt mode 2 and the 257-byte table]
+<div class="paragraph">
+The Z80 can answer the Spectrum's 50-times-a-second screen interrupt in three ways. In mode 1, the Spectrum's normal mode, it jumps to the ROM, which scans the keyboard and counts frames. In mode 2 (IM 2) the CPU builds an address from the I register (the high byte) and a byte that the hardware puts on the bus (the low byte), reads a 16-bit vector from that address and jumps to it. The Spectrum puts no reliable byte on the bus, so the low byte is effectively random, and programs get round that with a 257-byte table in which every byte is the same.
+</div>
+<div class="paragraph">
+Mugsy does exactly that. The table at #R53504 is filled with 208, so whatever the low byte is, the vector read is 208 &times; 257 = 53456 ($D0D0), and a <code>JP</code> sits there (#R53456). The code that starts an animation or the shootout (#R33994, #R42112) patches the address in that jump to its own interrupt routine (#R34069 for the animations, #R48539 for the shootout), sets I to 209 (the table's high byte, $D1), selects IM 2 and enables interrupts. From then on the routine runs fifty times a second without the main program doing anything: for the animations it counts down a timer and sets a "tick" flag that the animation steps wait for, which keeps the speed steady, and the shootout uses it to run its cooperative scheduler (see #LINK(Facts#scheduler)(the shootout is a tiny multitasking system)). When it has finished, the game puts I back to 63 (the ROM's normal value) and returns to mode 1 so the ROM keyboard routines work again.
+</div>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45515</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45479.html">45479</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45515">Map</a></td>
+<td class="next">
+Next: <a href="45626.html">45626</a>
+</td>
+</tr>
+</table>
+<div class="description">45515: Shootout: move down one pixel row (unless at the bottom limit)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45515"></span>45515</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45516"></span>45516</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45517"></span>45517</td>
+<td class="instruction">LD L,D</td>
+<td class="comment-1" rowspan="1">L=the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45518"></span>45518</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45519"></span>45519</td>
+<td class="instruction">LD HL,20576</td>
+<td class="comment-1" rowspan="1">HL=the lower limit (20576)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45522"></span>45522</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45523"></span>45523</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Compare</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45525"></span>45525</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45526"></span>45526</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45527"></span>45527</td>
+<td class="instruction">JR NZ,<a href="45515.html#45530">45530</a></td>
+<td class="comment-1" rowspan="1">Not at the limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45529"></span>45529</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">At the bottom: no move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45530"></span>45530</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down a pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45531"></span>45531</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">Fix up across character boundaries</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45534"></span>45534</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45535"></span>45535</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">Fix up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45538"></span>45538</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45539"></span>45539</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">Fix up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45542"></span>45542</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45543"></span>45543</td>
+<td class="instruction">CALL <a href="45651.html">45651</a></td>
+<td class="comment-1" rowspan="1">Fix up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45546"></span>45546</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45547"></span>45547</td>
+<td class="instruction">CP 128</td>
+<td class="comment-1" rowspan="1">Up and left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45549"></span>45549</td>
+<td class="instruction">JR NZ,<a href="45515.html#45567">45567</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45551"></span>45551</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45552"></span>45552</td>
+<td class="instruction">LD (42322),A</td>
+<td class="comment-1" rowspan="1">Clear the "could not move" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45555"></span>45555</td>
+<td class="instruction">CALL <a href="45458.html">45458</a></td>
+<td class="comment-1" rowspan="1">Move left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45558"></span>45558</td>
+<td class="instruction">LD A,(42322)</td>
+<td class="comment-1" rowspan="1">A=the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45561"></span>45561</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45562"></span>45562</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Could not move: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45563"></span>45563</td>
+<td class="instruction">CALL <a href="45479.html">45479</a></td>
+<td class="comment-1" rowspan="1">Move up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45566"></span>45566</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45567"></span>45567</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Up and right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45569"></span>45569</td>
+<td class="instruction">JR NZ,<a href="45515.html#45587">45587</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45571"></span>45571</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45572"></span>45572</td>
+<td class="instruction">LD (42322),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45575"></span>45575</td>
+<td class="instruction">CALL <a href="45438.html">45438</a></td>
+<td class="comment-1" rowspan="1">Move right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45578"></span>45578</td>
+<td class="instruction">LD A,(42322)</td>
+<td class="comment-1" rowspan="1">A=the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45581"></span>45581</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45582"></span>45582</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Could not move: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45583"></span>45583</td>
+<td class="instruction">CALL <a href="45479.html">45479</a></td>
+<td class="comment-1" rowspan="1">Move up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45586"></span>45586</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45587"></span>45587</td>
+<td class="instruction">CP 32</td>
+<td class="comment-1" rowspan="1">Down and left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45589"></span>45589</td>
+<td class="instruction">JR NZ,<a href="45515.html#45607">45607</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45591"></span>45591</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45592"></span>45592</td>
+<td class="instruction">LD (42322),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45595"></span>45595</td>
+<td class="instruction">CALL <a href="45458.html">45458</a></td>
+<td class="comment-1" rowspan="1">Move left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45598"></span>45598</td>
+<td class="instruction">LD A,(42322)</td>
+<td class="comment-1" rowspan="1">A=the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45601"></span>45601</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45602"></span>45602</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Could not move: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45603"></span>45603</td>
+<td class="instruction">CALL <a href="45515.html#45515">45515</a></td>
+<td class="comment-1" rowspan="1">Move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45606"></span>45606</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45607"></span>45607</td>
+<td class="instruction">CP 8</td>
+<td class="comment-1" rowspan="1">Down and right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45609"></span>45609</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">No: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45610"></span>45610</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45611"></span>45611</td>
+<td class="instruction">LD (42322),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45614"></span>45614</td>
+<td class="instruction">CALL <a href="45438.html">45438</a></td>
+<td class="comment-1" rowspan="1">Move right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45617"></span>45617</td>
+<td class="instruction">LD A,(42322)</td>
+<td class="comment-1" rowspan="1">A=the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45620"></span>45620</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45621"></span>45621</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Could not move: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45622"></span>45622</td>
+<td class="instruction">CALL <a href="45515.html#45515">45515</a></td>
+<td class="comment-1" rowspan="1">Move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45625"></span>45625</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45479.html">45479</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45515">Map</a></td>
+<td class="next">
+Next: <a href="45626.html">45626</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

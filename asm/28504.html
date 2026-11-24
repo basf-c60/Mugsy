@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28504</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28468.html">28468</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28504">Map</a></td>
+<td class="next">
+Next: <a href="28530.html">28530</a>
+</td>
+</tr>
+</table>
+<div class="description">28504: Print the second status line</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Prints "DOUGH IN DA SAFE $nnn" using the value of v7.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28504"></span>28504</td>
+<td class="instruction">LD HL,28454</td>
+<td class="comment-1" rowspan="1">HL=the template for the money in the safe</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28507"></span>28507</td>
+<td class="instruction">LD A,7</td>
+<td class="comment-1" rowspan="1">A=7: the field is seven characters wide</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28509"></span>28509</td>
+<td class="instruction">LD D,7</td>
+<td class="comment-1" rowspan="1">D=7: variable 7 holds the money in the safe</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28511"></span>28511</td>
+<td class="instruction">CALL <a href="28530.html">28530</a></td>
+<td class="comment-1" rowspan="1">Format it into the template</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28514"></span>28514</td>
+<td class="instruction">LD B,32</td>
+<td class="comment-1" rowspan="1">B=32: the whole line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28516"></span>28516</td>
+<td class="instruction">LD DE,28436</td>
+<td class="comment-1" rowspan="1">DE=the text of the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28519"></span>28519</td>
+<td class="instruction">LD HL,20704</td>
+<td class="comment-1" rowspan="1">HL=the last character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28522"></span>28522</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28523"></span>28523</td>
+<td class="instruction">CALL <a href="27724.html">27724</a></td>
+<td class="comment-1" rowspan="1">Print it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28526"></span>28526</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28527"></span>28527</td>
+<td class="instruction">DJNZ <a href="28504.html#28522">28522</a></td>
+<td class="comment-1" rowspan="1">Loop for the whole line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28529"></span>28529</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28468.html">28468</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28504">Map</a></td>
+<td class="next">
+Next: <a href="28530.html">28530</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

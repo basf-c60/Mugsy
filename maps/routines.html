@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routines</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="RoutinesMap">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<div class="map-intro"></div>
+<table class="map">
+<tr>
+<th>Address</th>
+<th>Description</th>
+</tr>
+<tr>
+<td class="map-c"><span id="24576"></span><a href="../asm/24576.html">24576</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/24576.html">Start the game</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="24589"></span><a href="../asm/24589.html">24589</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/24589.html">Main loop: play one game</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="24614"></span><a href="../asm/24614.html">24614</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/24614.html">Play one year</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26740"></span><a href="../asm/26740.html">26740</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26740.html">VM native: choose the end-of-game rating</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26753"></span><a href="../asm/26753.html">26753</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26753.html">Get the address of a rating word</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26812"></span><a href="../asm/26812.html">26812</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26812.html">Draw the picture for a speech bubble layout</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26876"></span><a href="../asm/26876.html">26876</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26876.html">Wait for a key to be pressed or for a timeout</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26898"></span><a href="../asm/26898.html">26898</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26898.html">Wait for a keypress with a timeout (one period)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26907"></span><a href="../asm/26907.html">26907</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26907.html">Wait for a keypress for up to BC iterations</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26921"></span><a href="../asm/26921.html">26921</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26921.html">Get the address of a character in the font</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="26940"></span><a href="../asm/26940.html">26940</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/26940.html">Print a character in the proportional font</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27020"></span><a href="../asm/27020.html">27020</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27020.html">Print one pixel row of a glyph (from DE)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27021"></span><a href="../asm/27021.html">27021</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27021.html">Print one pixel row of a glyph</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27060"></span><a href="../asm/27060.html">27060</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27060.html">Clear a character cell and set its attribute</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27724"></span><a href="../asm/27724.html">27724</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27724.html">Print a character using the ROM font</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27753"></span><a href="../asm/27753.html">27753</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27753.html">VM native: get a yes/no answer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27790"></span><a href="../asm/27790.html">27790</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27790.html">VM native: get a number from the player</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27817"></span><a href="../asm/27817.html">27817</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27817.html">Complain about a fraction and try again</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27835"></span><a href="../asm/27835.html">27835</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27835.html">Classify the number entered</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="27869"></span><a href="../asm/27869.html">27869</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/27869.html">Parse the input buffer as a number</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28017"></span><a href="../asm/28017.html">28017</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28017.html">Set the "decimal point" result</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28021"></span><a href="../asm/28021.html">28021</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28021.html">Check whether A is a digit</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28030"></span><a href="../asm/28030.html">28030</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28030.html">Clear a row of character cells</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28037"></span><a href="../asm/28037.html">28037</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28037.html">Read a line of input in the answer bubble</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28221"></span><a href="../asm/28221.html">28221</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28221.html">Wait for a key, flashing the cursor</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28266"></span><a href="../asm/28266.html">28266</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28266.html">Wait one frame and read the keyboard</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28297"></span><a href="../asm/28297.html">28297</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28297.html">VM native: Louey charges hush money for a blunder</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28358"></span><a href="../asm/28358.html">28358</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28358.html">VM native: shootout with the hit man from Detroit</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28468"></span><a href="../asm/28468.html">28468</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28468.html">Print the first status line</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28504"></span><a href="../asm/28504.html">28504</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28504.html">Print the second status line</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28530"></span><a href="../asm/28530.html">28530</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28530.html">Print a VM variable into a status line template</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28549"></span><a href="../asm/28549.html">28549</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28549.html">Show a message in a speech bubble</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28652"></span><a href="../asm/28652.html">28652</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28652.html">Check whether the bubble layout has changed</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28671"></span><a href="../asm/28671.html">28671</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28671.html">Measure the words in the text buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28698"></span><a href="../asm/28698.html">28698</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28698.html">Measure one word</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28757"></span><a href="../asm/28757.html">28757</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28757.html">Print the text buffer into a speech bubble</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28879"></span><a href="../asm/28879.html">28879</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28879.html">Add the bubble margin for the current line</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28885"></span><a href="../asm/28885.html">28885</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28885.html">Move HL down one character row</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28895"></span><a href="../asm/28895.html">28895</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28895.html">Move HL up one character row</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="28905"></span><a href="../asm/28905.html">28905</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/28905.html">Draw the outline of a speech bubble</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29006"></span><a href="../asm/29006.html">29006</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29006.html">Fill part of a bubble line with white cells</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29029"></span><a href="../asm/29029.html">29029</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29029.html">Print one line of text in a bubble</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29161"></span><a href="../asm/29161.html">29161</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29161.html">Work out the bubble shape for the text</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29236"></span><a href="../asm/29236.html">29236</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29236.html">Compare IX and IY</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29294"></span><a href="../asm/29294.html">29294</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29294.html">Measure the width of the text buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29320"></span><a href="../asm/29320.html">29320</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29320.html">Render a message into the text buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29452"></span><a href="../asm/29452.html">29452</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29452.html">Render a message</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29458"></span><a href="../asm/29458.html">29458</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29458.html">Render one message item</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29509"></span><a href="../asm/29509.html">29509</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29509.html">Put a character into the text buffer (converting to lower case)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29519"></span><a href="../asm/29519.html">29519</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29519.html">Put a character into the text buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29569"></span><a href="../asm/29569.html">29569</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29569.html">Jump to a control code handler</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29570"></span><a href="../asm/29570.html">29570</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29570.html">Control codes 0, 2, 3, 6, 7, 9 and 12-20 (no-op)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29574"></span><a href="../asm/29574.html">29574</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29574.html">Control code 21: full stop and end</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29594"></span><a href="../asm/29594.html">29594</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29594.html">Control code 22: end</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29596"></span><a href="../asm/29596.html">29596</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29596.html">Control codes 1/4: fetch a variable from the VM stream</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29608"></span><a href="../asm/29608.html">29608</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29608.html">Control code 1: print " $" and a variable</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29621"></span><a href="../asm/29621.html">29621</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29621.html">Control code 4: print " " and a variable</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29630"></span><a href="../asm/29630.html">29630</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29630.html">Print a number</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29752"></span><a href="../asm/29752.html">29752</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29752.html">Print one decimal digit</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29790"></span><a href="../asm/29790.html">29790</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29790.html">Control code 11: repeat earlier text</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29810"></span><a href="../asm/29810.html">29810</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29810.html">Control code 10: random choice</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29873"></span><a href="../asm/29873.html">29873</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29873.html">Control code 5: insert a sub-message</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29907"></span><a href="../asm/29907.html">29907</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29907.html">Expand a common word</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="29928"></span><a href="../asm/29928.html">29928</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/29928.html">Expand a dictionary word</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30014"></span><a href="../asm/30014.html">30014</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30014.html">Get a random number between 0 and n</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30026"></span><a href="../asm/30026.html">30026</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30026.html">Get a random number</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30092"></span><a href="../asm/30092.html">30092</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30092.html">Run a VM script</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30120"></span><a href="../asm/30120.html">30120</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30120.html">VM op 0: END</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30122"></span><a href="../asm/30122.html">30122</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30122.html">Jump to the address in HL</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30193"></span><a href="../asm/30193.html">30193</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30193.html">Compare two variables and fetch a jump address</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30196"></span><a href="../asm/30196.html">30196</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30196.html">Fetch a word from the VM stream</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30211"></span><a href="../asm/30211.html">30211</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30211.html">Fetch a word and then a byte from the VM stream</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30214"></span><a href="../asm/30214.html">30214</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30214.html">Fetch a byte from the VM stream</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30225"></span><a href="../asm/30225.html">30225</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30225.html">VM op 1: SAY</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30231"></span><a href="../asm/30231.html">30231</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30231.html">VM op 2: SETMSG</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30238"></span><a href="../asm/30238.html">30238</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30238.html">VM op 3: IFEQ</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30246"></span><a href="../asm/30246.html">30246</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30246.html">VM op 4: IFNE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30252"></span><a href="../asm/30252.html">30252</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30252.html">VM op 5: IFLE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30258"></span><a href="../asm/30258.html">30258</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30258.html">VM op 6: IFLT</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30265"></span><a href="../asm/30265.html">30265</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30265.html">VM op 7: IFGT</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30271"></span><a href="../asm/30271.html">30271</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30271.html">VM op 8: IFGE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30279"></span><a href="../asm/30279.html">30279</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30279.html">VM op 9: IFPEEKEQ</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30289"></span><a href="../asm/30289.html">30289</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30289.html">VM op 10: IFPEEKNE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30299"></span><a href="../asm/30299.html">30299</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30299.html">VM op 11: POKE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30307"></span><a href="../asm/30307.html">30307</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30307.html">VM op 12: JZ</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30313"></span><a href="../asm/30313.html">30313</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30313.html">VM op 13: GOTO</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30318"></span><a href="../asm/30318.html">30318</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30318.html">VM op 14: CALL</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30335"></span><a href="../asm/30335.html">30335</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30335.html">VM op 15: STORE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30342"></span><a href="../asm/30342.html">30342</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30342.html">Compare BCDE with a variable</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30424"></span><a href="../asm/30424.html">30424</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30424.html">Load two variables</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30427"></span><a href="../asm/30427.html">30427</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30427.html">Load the second operand</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30433"></span><a href="../asm/30433.html">30433</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30433.html">VM op 17: ADD v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30438"></span><a href="../asm/30438.html">30438</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30438.html">VM op 18: ADD v,v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30441"></span><a href="../asm/30441.html">30441</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30441.html">VM op 16: ADD (BCDE=BCDE+BC'DE')</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30456"></span><a href="../asm/30456.html">30456</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30456.html">VM op 20: SUB v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30461"></span><a href="../asm/30461.html">30461</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30461.html">VM op 21: SUB v,v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30464"></span><a href="../asm/30464.html">30464</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30464.html">VM op 19: SUB</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30479"></span><a href="../asm/30479.html">30479</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30479.html">VM op 30: RND v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30482"></span><a href="../asm/30482.html">30482</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30482.html">VM op 29: RND (replace E with a random number 0..E)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30488"></span><a href="../asm/30488.html">30488</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30488.html">VM op 32: HALF v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30491"></span><a href="../asm/30491.html">30491</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30491.html">Halve BCDE (arithmetic shift right)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30508"></span><a href="../asm/30508.html">30508</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30508.html">VM op 34: SQRT v (BCDE=square root of a variable)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30511"></span><a href="../asm/30511.html">30511</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30511.html">VM op 33: SQRT (Newton's method; never terminates for some values; see <a href="../reference/bugs.html#sqrt">the bugs page</a>)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30580"></span><a href="../asm/30580.html">30580</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30580.html">VM op 27: INT</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30634"></span><a href="../asm/30634.html">30634</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30634.html">VM op 31: NEG (BCDE=-BCDE)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30649"></span><a href="../asm/30649.html">30649</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30649.html">VM op 23: MUL v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30654"></span><a href="../asm/30654.html">30654</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30654.html">VM op 24: MUL v,v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30657"></span><a href="../asm/30657.html">30657</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30657.html">VM op 22: MUL (BCDE=BCDE*BC'DE'/100)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30707"></span><a href="../asm/30707.html">30707</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30707.html">VM op 25: DIV v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30712"></span><a href="../asm/30712.html">30712</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30712.html">VM op 26: DIV v,v</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30715"></span><a href="../asm/30715.html">30715</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30715.html">Divide BCDE by BC'DE' (x100)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30782"></span><a href="../asm/30782.html">30782</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30782.html">Multiply BCDE by the value at <a href="../asm/31030.html#31038">31038</a> (64-bit)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30871"></span><a href="../asm/30871.html">30871</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30871.html">Shift an 8-byte number left one bit</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30882"></span><a href="../asm/30882.html">30882</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30882.html">Shift an 8-byte number right one bit (arithmetic)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30893"></span><a href="../asm/30893.html">30893</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30893.html">Subtract the divisor from the dividend (64-bit)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30945"></span><a href="../asm/30945.html">30945</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30945.html">Add the divisor to the dividend (64-bit)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="30993"></span><a href="../asm/30993.html">30993</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/30993.html">Make BCDE and BC'DE' positive</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31055"></span><a href="../asm/31055.html">31055</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31055.html">Divide the 64-bit number at <a href="../asm/31030.html">31030</a> by BCDE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31179"></span><a href="../asm/31179.html">31179</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31179.html">Store BCDE in a variable</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31197"></span><a href="../asm/31197.html">31197</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31197.html">VM op 28: LOAD (load a variable into BCDE)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31201"></span><a href="../asm/31201.html">31201</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31201.html">Load variable L into BCDE</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31218"></span><a href="../asm/31218.html">31218</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31218.html">Clear the screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31247"></span><a href="../asm/31247.html">31247</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31247.html">Draw a picture</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31484"></span><a href="../asm/31484.html">31484</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31484.html">Move HL down one pixel row in the display file (or one row in the attributes)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31511"></span><a href="../asm/31511.html">31511</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31511.html">Put a byte from a bitmap block on the screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31525"></span><a href="../asm/31525.html">31525</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31525.html">Flood fill</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31755"></span><a href="../asm/31755.html">31755</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31755.html">Move up one attribute row (unless at the top)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31772"></span><a href="../asm/31772.html">31772</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31772.html">Move down one attribute row (unless at the bottom of the picture area)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31796"></span><a href="../asm/31796.html">31796</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31796.html">Move left one attribute cell</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31806"></span><a href="../asm/31806.html">31806</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31806.html">Move right one attribute cell</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31823"></span><a href="../asm/31823.html">31823</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31823.html">Move HL up one pixel row</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31851"></span><a href="../asm/31851.html">31851</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31851.html">Move HL down one pixel row</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31887"></span><a href="../asm/31887.html">31887</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31887.html">Move the pixel mask D one pixel right</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31900"></span><a href="../asm/31900.html">31900</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31900.html">Move the pixel mask D one pixel left</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="31917"></span><a href="../asm/31917.html">31917</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/31917.html">Draw a line segment</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32034"></span><a href="../asm/32034.html">32034</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32034.html">Plot the pixel at HL (mask D) and set its attribute</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32045"></span><a href="../asm/32045.html">32045</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32045.html">Set the ink of the attribute for display file address HL</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32066"></span><a href="../asm/32066.html">32066</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32066.html">Get the display file address and mask for pixel (D,E)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32084"></span><a href="../asm/32084.html">32084</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32084.html">Convert a display file address and mask back to coordinates</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32126"></span><a href="../asm/32126.html">32126</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32126.html">Draw a compressed picture</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32294"></span><a href="../asm/32294.html">32294</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32294.html">Draw the next stroke of a compressed picture</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32365"></span><a href="../asm/32365.html">32365</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32365.html">Read the next point (x in C, y in B)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32400"></span><a href="../asm/32400.html">32400</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32400.html">Read an x coordinate (absolute or delta)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32434"></span><a href="../asm/32434.html">32434</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32434.html">Read a y coordinate (absolute or delta)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32468"></span><a href="../asm/32468.html">32468</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32468.html">Read a long x delta</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32502"></span><a href="../asm/32502.html">32502</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32502.html">Read a long y delta</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32539"></span><a href="../asm/32539.html">32539</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32539.html">Read D bits from the picture bit-stream</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32596"></span><a href="../asm/32596.html">32596</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32596.html">Get the pixel address for (C,B)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32612"></span><a href="../asm/32612.html">32612</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32612.html">Draw a line from the last point to (C,B)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32785"></span><a href="../asm/32785.html">32785</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32785.html">Play the theme tune (if A=16)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32803"></span><a href="../asm/32803.html">32803</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32803.html">Play the tune fragments listed at <a href="../asm/32832.html">32832</a></a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32866"></span><a href="../asm/32866.html">32866</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32866.html">Play a tune fragment</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32982"></span><a href="../asm/32982.html">32982</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32982.html">Delay and toggle the speaker</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="32995"></span><a href="../asm/32995.html">32995</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/32995.html">Toggle the speaker with a pulse</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="33032"></span><a href="../asm/33032.html">33032</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/33032.html">Short delay</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="33937"></span><a href="../asm/33937.html">33937</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/33937.html">Initialise the game variables</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="33994"></span><a href="../asm/33994.html">33994</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/33994.html">VM native: "A year goes by ......" animation</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34040"></span><a href="../asm/34040.html">34040</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34040.html">Run the steps of an animation</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34065"></span><a href="../asm/34065.html">34065</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34065.html">Jump to the address in HL</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34069"></span><a href="../asm/34069.html">34069</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34069.html">Interrupt routine for the animations</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34093"></span><a href="../asm/34093.html">34093</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34093.html">Draw a 2-cell-wide sprite (no mask)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34097"></span><a href="../asm/34097.html">34097</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34097.html">Draw a 3-cell-wide sprite (no mask)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34135"></span><a href="../asm/34135.html">34135</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34135.html">Prepare a pre-shifted masked sprite</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34318"></span><a href="../asm/34318.html">34318</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34318.html">Getaway car animation: step 1 (set up)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34440"></span><a href="../asm/34440.html">34440</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34440.html">Getaway car animation: last step</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34455"></span><a href="../asm/34455.html">34455</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34455.html">Getaway step 2</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34481"></span><a href="../asm/34481.html">34481</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34481.html">Getaway step 3</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34513"></span><a href="../asm/34513.html">34513</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34513.html">Getaway step 5</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34537"></span><a href="../asm/34537.html">34537</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34537.html">Getaway step 6</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34558"></span><a href="../asm/34558.html">34558</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34558.html">Getaway step 7</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34579"></span><a href="../asm/34579.html">34579</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34579.html">Getaway step 8</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34600"></span><a href="../asm/34600.html">34600</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34600.html">Getaway step 9</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34611"></span><a href="../asm/34611.html">34611</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34611.html">Getaway car animation: scroll the car and wait</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34643"></span><a href="../asm/34643.html">34643</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34643.html">Getaway car animation: move the first hood</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34707"></span><a href="../asm/34707.html">34707</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34707.html">Getaway car animation: move the second hood</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34759"></span><a href="../asm/34759.html">34759</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34759.html">Restore the background behind the second hood</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34769"></span><a href="../asm/34769.html">34769</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34769.html">Restore the background behind the first hood</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34779"></span><a href="../asm/34779.html">34779</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34779.html">Draw the first hood (masked, pre-shifted)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34798"></span><a href="../asm/34798.html">34798</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34798.html">Draw the second hood (masked, pre-shifted)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34817"></span><a href="../asm/34817.html">34817</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34817.html">Getaway car animation: draw the 5-byte-wide graphic at 18465</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34862"></span><a href="../asm/34862.html">34862</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34862.html">Getaway car animation: draw the next frame of the animation at 21260</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34912"></span><a href="../asm/34912.html">34912</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34912.html">Getaway car animation: draw the car's moving parts (frame depends on 38791)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="34973"></span><a href="../asm/34973.html">34973</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/34973.html">Draw a masked 2x4 tile</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35000"></span><a href="../asm/35000.html">35000</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35000.html">Scroll the car one pixel</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35141"></span><a href="../asm/35141.html">35141</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35141.html">Draw part of the car (clipped)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35192"></span><a href="../asm/35192.html">35192</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35192.html">Getaway car animation: draw the masked graphic at 19299</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35251"></span><a href="../asm/35251.html">35251</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35251.html">Getaway car animation: draw the next frame of the figure at 18838</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35284"></span><a href="../asm/35284.html">35284</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35284.html">Getaway car animation: play a delay sound and animate the figures</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35366"></span><a href="../asm/35366.html">35366</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35366.html">Getaway car animation: draw the next frame of the figure at 17728</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35406"></span><a href="../asm/35406.html">35406</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35406.html">Draw the car (unrolled, clipped at the screen edge)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="35854"></span><a href="../asm/35854.html">35854</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/35854.html">Move H to the next third of the display file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36366"></span><a href="../asm/36366.html">36366</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36366.html">Bar-room animation: step 1 (set up)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36486"></span><a href="../asm/36486.html">36486</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36486.html">Bar-room animation: last step (end the animation)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36495"></span><a href="../asm/36495.html">36495</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36495.html">Bar-room animation: count down the delay</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36508"></span><a href="../asm/36508.html">36508</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36508.html">Bar-room animation: animate and wait for the door to open</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36527"></span><a href="../asm/36527.html">36527</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36527.html">Bar-room animation: the hoods walk in</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36546"></span><a href="../asm/36546.html">36546</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36546.html">Bar-room animation: the hoods cross the room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36566"></span><a href="../asm/36566.html">36566</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36566.html">Bar-room animation: the hoods go out</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36572"></span><a href="../asm/36572.html">36572</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36572.html">Bar-room animation: final pause</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36586"></span><a href="../asm/36586.html">36586</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36586.html">Bar-room animation: update all the animated figures</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36610"></span><a href="../asm/36610.html">36610</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36610.html">Get a random delay</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36617"></span><a href="../asm/36617.html">36617</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36617.html">Bar-room animation: animate the hoods walking through the club</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36664"></span><a href="../asm/36664.html">36664</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36664.html">Bar-room animation: advance along the hoods' route table</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36703"></span><a href="../asm/36703.html">36703</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36703.html">Bar-room animation: animate figure 1 (at 21584)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36752"></span><a href="../asm/36752.html">36752</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36752.html">Bar-room animation: animate figure 2 (at 16769)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36788"></span><a href="../asm/36788.html">36788</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36788.html">Bar-room animation: animate figure 3 (at 16803)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36824"></span><a href="../asm/36824.html">36824</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36824.html">Bar-room animation: animate figure 4 (at 17253)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36861"></span><a href="../asm/36861.html">36861</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36861.html">Bar-room animation: animate figure 5 (at 19576)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36911"></span><a href="../asm/36911.html">36911</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36911.html">Bar-room animation: animate figure 6 (at 19087)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="36961"></span><a href="../asm/36961.html">36961</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/36961.html">Bar-room animation: animate figure 7 (at 18633)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="37032"></span><a href="../asm/37032.html">37032</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/37032.html">Bar-room animation: animate figure 8</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="37095"></span><a href="../asm/37095.html">37095</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/37095.html">Draw a 3-cell-wide sprite at 18536</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41997"></span><a href="../asm/41997.html">41997</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41997.html">Delay for BC units, B times</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42014"></span><a href="../asm/42014.html">42014</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42014.html">Short delay (length at 41995)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42026"></span><a href="../asm/42026.html">42026</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42026.html">Play the shootout sound effect</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42112"></span><a href="../asm/42112.html">42112</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42112.html">Shootout with the hit man from Detroit</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42639"></span><a href="../asm/42639.html">42639</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42639.html">Shootout: set up the restaurant</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42931"></span><a href="../asm/42931.html">42931</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42931.html">Shootout: wait for an interrupt</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42940"></span><a href="../asm/42940.html">42940</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42940.html">Shootout: load a furniture descriptor into the furniture slot</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42957"></span><a href="../asm/42957.html">42957</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42957.html">Shootout: place a piece of furniture (HL=screen address, DE=attribute address)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42970"></span><a href="../asm/42970.html">42970</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42970.html">Shootout: draw a piece of furniture and wait for the interrupt</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42977"></span><a href="../asm/42977.html">42977</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42977.html">Shootout: main loop (the figure dispatcher)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43018"></span><a href="../asm/43018.html">43018</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43018.html">Shootout: handler for bystander 1</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43246"></span><a href="../asm/43246.html">43246</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43246.html">Shootout: handler for bystander 2</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43471"></span><a href="../asm/43471.html">43471</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43471.html">Shootout: handler for Mugsy</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43709"></span><a href="../asm/43709.html">43709</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43709.html">Shootout: place a bullet in front of its owner (B=rows down from the top of the figure)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43814"></span><a href="../asm/43814.html">43814</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43814.html">Shootout: handler for the hit man</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44153"></span><a href="../asm/44153.html">44153</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44153.html">Shootout: check for furniture next to a figure</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44294"></span><a href="../asm/44294.html">44294</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44294.html">Shootout: handler for Mugsy's bullet</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44403"></span><a href="../asm/44403.html">44403</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44403.html">Shootout: get the next byte of a figure's route</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44416"></span><a href="../asm/44416.html">44416</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44416.html">Shootout: handler for the hit man's bullet</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44525"></span><a href="../asm/44525.html">44525</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44525.html">Shootout: look for a bullet touching a figure</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44558"></span><a href="../asm/44558.html">44558</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44558.html">Shootout: start a falling-over animation</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44612"></span><a href="../asm/44612.html">44612</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44612.html">Shootout: work out the left and upper limits for a figure</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44726"></span><a href="../asm/44726.html">44726</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44726.html">Shootout: move and redraw the current figure</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44766"></span><a href="../asm/44766.html">44766</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44766.html">Shootout: deal with Mugsy firing</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44884"></span><a href="../asm/44884.html">44884</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44884.html">Shootout: deal with a hit</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="44953"></span><a href="../asm/44953.html">44953</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/44953.html">Shootout: move a figure</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45044"></span><a href="../asm/45044.html">45044</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45044.html">Shootout: remove the gun flash</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45079"></span><a href="../asm/45079.html">45079</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45079.html">Shootout: update a figure's position</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45122"></span><a href="../asm/45122.html">45122</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45122.html">Shootout: move to the next figure slot</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45155"></span><a href="../asm/45155.html">45155</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45155.html">Shootout: copy the current figure's coordinates</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45182"></span><a href="../asm/45182.html">45182</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45182.html">Shootout: compute a figure's pixel shift</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45201"></span><a href="../asm/45201.html">45201</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45201.html">Shootout: draw a figure (masked)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45276"></span><a href="../asm/45276.html">45276</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45276.html">Shootout: erase a figure</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45353"></span><a href="../asm/45353.html">45353</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45353.html">Shootout: get the next animation frame</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45423"></span><a href="../asm/45423.html">45423</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45423.html">Shootout: step a figure in its current direction</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45438"></span><a href="../asm/45438.html">45438</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45438.html">Shootout: move right one cell (unless at column 28)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45458"></span><a href="../asm/45458.html">45458</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45458.html">Shootout: move left one cell (unless at the left limit)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45479"></span><a href="../asm/45479.html">45479</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45479.html">Shootout: move up one pixel row (unless at the top limit)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45515"></span><a href="../asm/45515.html">45515</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45515.html">Shootout: move down one pixel row (unless at the bottom limit)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45626"></span><a href="../asm/45626.html">45626</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45626.html">Convert a display file address in DE into an attribute address</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45636"></span><a href="../asm/45636.html">45636</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45636.html">Move HL up one pixel row</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45651"></span><a href="../asm/45651.html">45651</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45651.html">Move HL down one pixel row</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45665"></span><a href="../asm/45665.html">45665</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45665.html">Shootout: clear the screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45693"></span><a href="../asm/45693.html">45693</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45693.html">Shootout: copy a figure's 39-byte record into the workspace at <a href="../asm/42336.html">42336</a></a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45702"></span><a href="../asm/45702.html">45702</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45702.html">Shootout: copy the workspace at <a href="../asm/42336.html">42336</a> back into a figure's record</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45965"></span><a href="../asm/45965.html">45965</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45965.html">Shootout: XOR a sprite onto the screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46305"></span><a href="../asm/46305.html">46305</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46305.html">Shootout: draw the walls of the restaurant</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46428"></span><a href="../asm/46428.html">46428</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46428.html">Shootout: plot a pixel</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46454"></span><a href="../asm/46454.html">46454</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46454.html">Shootout: draw a horizontal line</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46460"></span><a href="../asm/46460.html">46460</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46460.html">Shootout: read the controls</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46640"></span><a href="../asm/46640.html">46640</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46640.html">Shootout: no movement</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="48539"></span><a href="../asm/48539.html">48539</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/48539.html">Interrupt routine for the shootout: the sprite scheduler</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53456"></span><a href="../asm/53456.html">53456</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53456.html">Interrupt jump</a></div>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

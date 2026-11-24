@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: The pictures</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="mugsy.css" />
+<script type="text/javascript" src="mugsy.js" defer></script>
+</head>
+<body class="Pictures">
+<header class="site"><div class="bar"><a class="brand" href="index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">The pictures</h1>
+<div class="paragraph">
+Every picture in the game is stored as drawing commands, not as a bitmap. Two formats exist: the compressed format drawn by <a href="asm/32126.html">32126</a> (the full-screen bar and street) and the command-list format drawn by <a href="asm/31247.html">31247</a> (lines, flood fills, attribute paints and copied blocks). These images were produced by running the game's own routines in the Z80 simulator on a cleared screen; nothing was redrawn by hand.
+</div>
+<table class="boxed">
+<tr><th>Picture</th><th>Address</th><th>Format</th></tr>
+<tr><td><img src="images/pic53793.png" width="256" alt="The Partridge Club (bar room)"><br>The Partridge Club (bar room)</td><td><a href="asm/53793.html">53793</a></td><td>compressed</td></tr>
+<tr><td><img src="images/pic55692.png" width="256" alt="The street outside Milton's"><br>The street outside Milton's</td><td><a href="asm/55692.html">55692</a></td><td>compressed</td></tr>
+<tr><td><img src="images/pic57583.png" width="256" alt="A man in a hat at a table"><br>A man in a hat at a table</td><td><a href="asm/57583.html">57583</a></td><td>command list</td></tr>
+<tr><td><img src="images/pic58673.png" width="256" alt="A figure in a doorway between headlights"><br>A figure in a doorway between headlights</td><td><a href="asm/58673.html">58673</a></td><td>command list</td></tr>
+<tr><td><img src="images/pic59397.png" width="256" alt="Two hoods at a table"><br>Two hoods at a table</td><td><a href="asm/59397.html">59397</a></td><td>command list</td></tr>
+<tr><td><img src="images/pic60526.png" width="256" alt="The getaway car from above"><br>The getaway car from above</td><td><a href="asm/60526.html">60526</a></td><td>command list</td></tr>
+<tr><td><img src="images/pic61625.png" width="256" alt="Two figures at the waterfront"><br>Two figures at the waterfront</td><td><a href="asm/61625.html">61625</a></td><td>command list</td></tr>
+<tr><td><img src="images/pic63601.png" width="256" alt="Hoods and a car in the city"><br>Hoods and a car in the city</td><td><a href="asm/63601.html">63601</a></td><td>command list</td></tr>
+<tr><td><img src="images/pic64646.png" width="256" alt="The close-up of a hood"><br>The close-up of a hood</td><td><a href="asm/64646.html">64646</a></td><td>command list</td></tr>
+</table>
+<div class="paragraph">
+The shootout figures are plain 16&times;32 bitmaps, two bytes per row, listed by the frame tables at <a href="asm/42174.html">42174</a>-42237 (see the graphics block at <a href="asm/47082.html">47082</a>):
+</div>
+<div class="paragraph"><img src="images/sprites.png" alt="The shootout figures" /></div>
+
+<div class="paragraph">
+The two "A year goes by" animations (see <a href="asm/33994.html">33994</a>), recorded by running the game's own step routines in the Z80 simulator. In the bar room the customers and waiters blink and the hoods walk in, cross the club and leave; in the street a car drives past and bullet marks appear on the wall.
+</div>
+<div class="paragraph"><img src="images/baranim.gif" alt="The Partridge Club animation" /></div>
+<div class="paragraph"><img src="images/caranim.gif" alt="The getaway car animation" /></div>
+<div class="paragraph">
+The restaurant shootout (<a href="asm/42112.html">42112</a>), recorded by running the real routine in the Z80 simulator with a scripted player who shuffles about and keeps firing. The room, with its tables, chairs and the picture on the wall, is the same in every game; the figures are the sprites shown above.
+</div>
+<div class="paragraph"><img src="images/shootanim.gif" alt="The restaurant shootout" /></div>
+
+
+<div class="paragraph">
+The game's own proportional font (characters 32-122, from <a href="asm/27087.html">27087</a>). Each glyph is six pixels high with a width byte, so the text in the speech bubbles is typeset a pixel at a time; there are no lower-case letters, because codes 97-122 are small capitals.
+</div>
+<div class="paragraph"><img src="images/font.png" alt="The proportional font" /></div>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

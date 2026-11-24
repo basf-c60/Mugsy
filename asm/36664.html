@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 36664</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36663.html">36663</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36664">Map</a></td>
+<td class="next">
+Next: <a href="36701.html">36701</a>
+</td>
+</tr>
+</table>
+<div class="description">36664: Bar-room animation: advance along the hoods' route table</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="36664"></span>36664</td>
+<td class="instruction">LD A,(36663)</td>
+<td class="comment-1" rowspan="1">A=the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36667"></span>36667</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36668"></span>36668</td>
+<td class="instruction">LD (36663),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36671"></span>36671</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Not time for a new entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36672"></span>36672</td>
+<td class="instruction">LD HL,(41152)</td>
+<td class="comment-1" rowspan="1">HL=the route pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36675"></span>36675</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the number of ticks this entry lasts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36676"></span>36676</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36677"></span>36677</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Zero marks the end of the route</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36678"></span>36678</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36679"></span>36679</td>
+<td class="instruction">LD (36663),A</td>
+<td class="comment-1" rowspan="1">Store it as the new counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36682"></span>36682</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36683"></span>36683</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36684"></span>36684</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36685"></span>36685</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36686"></span>36686</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36687"></span>36687</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the sprite address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36688"></span>36688</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36689"></span>36689</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36690"></span>36690</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36691"></span>36691</td>
+<td class="instruction">LD (41152),HL</td>
+<td class="comment-1" rowspan="1">Store the new route pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36694"></span>36694</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36695"></span>36695</td>
+<td class="instruction">CALL <a href="34093.html">34093</a></td>
+<td class="comment-1" rowspan="1">Draw the two-cell-wide sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36698"></span>36698</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Clear the zero flag: the route is not finished</td>
+</tr>
+<tr>
+<td class="address-1"><span id="36700"></span>36700</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="36663.html">36663</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#36664">Map</a></td>
+<td class="next">
+Next: <a href="36701.html">36701</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

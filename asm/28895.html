@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28895</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28885.html">28885</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28895">Map</a></td>
+<td class="next">
+Next: <a href="28905.html">28905</a>
+</td>
+</tr>
+</table>
+<div class="description">28895: Move HL up one character row</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+HL=HL-32, crossing display file thirds as needed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28895"></span>28895</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Move up 32 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28896"></span>28896</td>
+<td class="instruction">SUB 32</td>
+<td class="comment-1" rowspan="1">Subtract 32 to move up one pixel row...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28898"></span>28898</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28899"></span>28899</td>
+<td class="instruction">RET NC</td>
+<td class="comment-1" rowspan="1">Return unless this crossed into the previous third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28900"></span>28900</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28901"></span>28901</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Move to the previous third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28903"></span>28903</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=the previous third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28904"></span>28904</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28885.html">28885</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28895">Map</a></td>
+<td class="next">
+Next: <a href="28905.html">28905</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

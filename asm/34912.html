@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34912</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34862.html">34862</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34912">Map</a></td>
+<td class="next">
+Next: <a href="34973.html">34973</a>
+</td>
+</tr>
+</table>
+<div class="description">34912: Getaway car animation: draw the car's moving parts (frame depends on 38791)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34912"></span>34912</td>
+<td class="instruction">LD DE,39143</td>
+<td class="comment-1" rowspan="1">DE=where the first moving part is drawn (39143)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34915"></span>34915</td>
+<td class="instruction">LD HL,39325</td>
+<td class="comment-1" rowspan="1">HL=its first frame (<a href="37101.html#39325">39325</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34918"></span>34918</td>
+<td class="instruction">LD A,(38791)</td>
+<td class="comment-1" rowspan="1">A=the car's pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34921"></span>34921</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34922"></span>34922</td>
+<td class="instruction">JR Z,<a href="34912.html#34941">34941</a></td>
+<td class="comment-1" rowspan="1">Zero: use the first frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34924"></span>34924</td>
+<td class="instruction">LD HL,39341</td>
+<td class="comment-1" rowspan="1">HL=the second frame (<a href="37101.html#39341">39341</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34927"></span>34927</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Shift 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34929"></span>34929</td>
+<td class="instruction">JR Z,<a href="34912.html#34941">34941</a></td>
+<td class="comment-1" rowspan="1">Yes: use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34931"></span>34931</td>
+<td class="instruction">LD HL,39357</td>
+<td class="comment-1" rowspan="1">HL=the third frame (<a href="37101.html#39357">39357</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34934"></span>34934</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Shift 4?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34936"></span>34936</td>
+<td class="instruction">JR Z,<a href="34912.html#34941">34941</a></td>
+<td class="comment-1" rowspan="1">Yes: use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34938"></span>34938</td>
+<td class="instruction">LD HL,39373</td>
+<td class="comment-1" rowspan="1">HL=the fourth frame (<a href="37101.html#39373">39373</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34941"></span>34941</td>
+<td class="instruction">CALL <a href="34973.html">34973</a></td>
+<td class="comment-1" rowspan="1">Draw the first part</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34944"></span>34944</td>
+<td class="instruction">LD DE,39151</td>
+<td class="comment-1" rowspan="1">DE=where the second moving part is drawn (39151)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34947"></span>34947</td>
+<td class="instruction">LD HL,39389</td>
+<td class="comment-1" rowspan="1">HL=its first frame (<a href="37101.html#39389">39389</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34950"></span>34950</td>
+<td class="instruction">LD A,(38791)</td>
+<td class="comment-1" rowspan="1">A=the car's pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34953"></span>34953</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34954"></span>34954</td>
+<td class="instruction">JR Z,<a href="34973.html">34973</a></td>
+<td class="comment-1" rowspan="1">Zero: draw the first frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34956"></span>34956</td>
+<td class="instruction">LD HL,39405</td>
+<td class="comment-1" rowspan="1">HL=the second frame (<a href="37101.html#39405">39405</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34959"></span>34959</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Shift 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34961"></span>34961</td>
+<td class="instruction">JR Z,<a href="34973.html">34973</a></td>
+<td class="comment-1" rowspan="1">Yes: draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34963"></span>34963</td>
+<td class="instruction">LD HL,39421</td>
+<td class="comment-1" rowspan="1">HL=the third frame (<a href="37101.html#39421">39421</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34966"></span>34966</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Shift 4?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34968"></span>34968</td>
+<td class="instruction">JR Z,<a href="34973.html">34973</a></td>
+<td class="comment-1" rowspan="1">Yes: draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34970"></span>34970</td>
+<td class="instruction">LD HL,39437</td>
+<td class="comment-1" rowspan="1">HL=the fourth frame (<a href="37101.html#39437">39437</a>)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34862.html">34862</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34912">Map</a></td>
+<td class="next">
+Next: <a href="34973.html">34973</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 26753</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26740.html">26740</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26753">Map</a></td>
+<td class="next">
+Next: <a href="26812.html">26812</a>
+</td>
+</tr>
+</table>
+<div class="description">26753: Get the address of a rating word</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns the address of rating word number A (1-11) in the table of words at <a href="49774.html#53301">53301</a>. Any other value, including 0, gives the twelfth word, "terrific", which has no end code (see <a href="../reference/bugs.html#terrific">the bugs page</a>).
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Rating number</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address of the word</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26753"></span>26753</td>
+<td class="instruction">LD HL,53301</td>
+<td class="comment-1" rowspan="1">Rating 1: "lousy"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26756"></span>26756</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26757"></span>26757</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26758"></span>26758</td>
+<td class="instruction">LD HL,53303</td>
+<td class="comment-1" rowspan="1">Rating 2: "real bad"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26761"></span>26761</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26762"></span>26762</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26763"></span>26763</td>
+<td class="instruction">LD HL,53307</td>
+<td class="comment-1" rowspan="1">Rating 3: "terrible"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26766"></span>26766</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26767"></span>26767</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26768"></span>26768</td>
+<td class="instruction">LD HL,53313</td>
+<td class="comment-1" rowspan="1">Rating 4: "ghastly"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26771"></span>26771</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26772"></span>26772</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26773"></span>26773</td>
+<td class="instruction">LD HL,53322</td>
+<td class="comment-1" rowspan="1">Rating 5: "poor"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26776"></span>26776</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26777"></span>26777</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26778"></span>26778</td>
+<td class="instruction">LD HL,53328</td>
+<td class="comment-1" rowspan="1">Rating 6: "so-so"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26781"></span>26781</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26782"></span>26782</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26783"></span>26783</td>
+<td class="instruction">LD HL,53332</td>
+<td class="comment-1" rowspan="1">Rating 7: "fair"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26786"></span>26786</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26787"></span>26787</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26788"></span>26788</td>
+<td class="instruction">LD HL,53338</td>
+<td class="comment-1" rowspan="1">Rating 8: "good"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26791"></span>26791</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26792"></span>26792</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26793"></span>26793</td>
+<td class="instruction">LD HL,53340</td>
+<td class="comment-1" rowspan="1">Rating 9: "okay"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26796"></span>26796</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26797"></span>26797</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26798"></span>26798</td>
+<td class="instruction">LD HL,53342</td>
+<td class="comment-1" rowspan="1">Rating 10: "great"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26801"></span>26801</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26802"></span>26802</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26803"></span>26803</td>
+<td class="instruction">LD HL,53344</td>
+<td class="comment-1" rowspan="1">Rating 11: "swell"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26806"></span>26806</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Count the rating down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26807"></span>26807</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if this is the one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26808"></span>26808</td>
+<td class="instruction">LD HL,53351</td>
+<td class="comment-1" rowspan="1">Anything else (including 0): "terrific" (see <a href="../reference/bugs.html#terrific">the bugs page</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26811"></span>26811</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: HL points at the rating word</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26740.html">26740</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26753">Map</a></td>
+<td class="next">
+Next: <a href="26812.html">26812</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34040</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33994.html">33994</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34040">Map</a></td>
+<td class="next">
+Next: <a href="34065.html">34065</a>
+</td>
+</tr>
+</table>
+<div class="description">34040: Run the steps of an animation</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+IX points at a list of step routine addresses. Once per tick (set by the interrupt routine) the current step is called; while it returns with the zero flag reset it is called again on the next tick, otherwise IX moves on to the next step. The sequence ends when <a href="33993.html">33993</a> is set.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Step table</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34040"></span>34040</td>
+<td class="instruction">LD A,(33993)</td>
+<td class="comment-1" rowspan="1">Has the animation finished?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34043"></span>34043</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34044"></span>34044</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34045"></span>34045</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34046"></span>34046</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Wait for an interrupt</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34047"></span>34047</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">And again, to be sure they are on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34048"></span>34048</td>
+<td class="instruction">LD L,(IX+0)</td>
+<td class="comment-1" rowspan="1">Pick up the address of the current step routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34051"></span>34051</td>
+<td class="instruction">LD H,(IX+1)</td>
+<td class="comment-1" rowspan="1">H=the high byte of the step routine's address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34054"></span>34054</td>
+<td class="instruction">CALL <a href="34065.html">34065</a></td>
+<td class="comment-1" rowspan="1">Call it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34057"></span>34057</td>
+<td class="instruction">JR NZ,<a href="34040.html#34040">34040</a></td>
+<td class="comment-1" rowspan="1">Keep calling it until it returns with the zero flag set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34059"></span>34059</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Then move to the next step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34061"></span>34061</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Next step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34063"></span>34063</td>
+<td class="instruction">JR <a href="34040.html#34040">34040</a></td>
+<td class="comment-1" rowspan="1">Loop back to wait for the interrupt and run the step</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33994.html">33994</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34040">Map</a></td>
+<td class="next">
+Next: <a href="34065.html">34065</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

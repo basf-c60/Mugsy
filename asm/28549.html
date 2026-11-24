@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28549</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28548.html">28548</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28549">Map</a></td>
+<td class="next">
+Next: <a href="28652.html">28652</a>
+</td>
+</tr>
+</table>
+<div class="description">28549: Show a message in a speech bubble</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The handler for VM op 1 (SAY, <a href="30225.html">30225</a>) jumps here. This is the heart of the comic strip display. HL holds the address of a message and A holds a flags byte:
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Bits</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0-1</td>
+<td class="" colspan="1" rowspan="1">Non-zero: wait for a keypress (with timeout) afterwards</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">2-3</td>
+<td class="" colspan="1" rowspan="1">Bubble placement: 0 = random entry from the layout table at <a href="33888.html#33902">33902</a>; 4 (bit 2) = the fixed entry at <a href="33909.html">33909</a> (the answer bubble); 8 (bit 3) = keep the current entry</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">4-6</td>
+<td class="" colspan="1" rowspan="1">16 = play the theme tune (<a href="32785.html">32785</a>)</td>
+</tr>
+</table>
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">The</td>
+<td class="register-desc">message is rendered into the text buffer at 23808 (expanding dictionary words and any variables, which are taken from the VM byte stream after the SAY instruction), the picture is redrawn if the layout has changed, the status lines are printed and the text is word-wrapped into the bubble by <a href="28757.html">28757</a>.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="28549"></span>
+<div class="comments">
+<div class="paragraph">
+Input:A Flags HL Message address
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28549"></span>28549</td>
+<td class="instruction">LD (28548),A</td>
+<td class="comment-1" rowspan="1">Save the SAY flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28552"></span>28552</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the message address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28553"></span>28553</td>
+<td class="instruction">LD IY,33909</td>
+<td class="comment-1" rowspan="1">Point IY at the fixed "answer" bubble layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28557"></span>28557</td>
+<td class="instruction">AND 12</td>
+<td class="comment-1" rowspan="1">Keep bits 2 and 3 of the flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28559"></span>28559</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Bit 2 set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28561"></span>28561</td>
+<td class="instruction">JR Z,<a href="28549.html#28600">28600</a></td>
+<td class="comment-1" rowspan="1">Use the fixed layout if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28563"></span>28563</td>
+<td class="instruction">LD IY,(33904)</td>
+<td class="comment-1" rowspan="1">Otherwise start with the current layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28567"></span>28567</td>
+<td class="instruction">CP 8</td>
+<td class="comment-1" rowspan="1">Bit 3 set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28569"></span>28569</td>
+<td class="instruction">JR Z,<a href="28549.html#28600">28600</a></td>
+<td class="comment-1" rowspan="1">Keep the current layout if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28571"></span>28571</td>
+<td class="instruction">LD IY,(33902)</td>
+<td class="comment-1" rowspan="1">Otherwise pick a layout at random: point IY at this year's layout table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28575"></span>28575</td>
+<td class="instruction">LD A,100</td>
+<td class="comment-1" rowspan="1">A=100: the upper limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28577"></span>28577</td>
+<td class="instruction">CALL <a href="30014.html">30014</a></td>
+<td class="comment-1" rowspan="1">A=random number 0-100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28580"></span>28580</td>
+<td class="instruction">CP (IY+0)</td>
+<td class="comment-1" rowspan="1">Compare it with the entry's chance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28583"></span>28583</td>
+<td class="instruction">JR C,<a href="28549.html#28595">28595</a></td>
+<td class="comment-1" rowspan="1">Use this entry if the number is lower</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28585"></span>28585</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Otherwise move on to the next entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28587"></span>28587</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Four bytes per layout entry...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28589"></span>28589</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28591"></span>28591</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28593"></span>28593</td>
+<td class="instruction">JR <a href="28549.html#28580">28580</a></td>
+<td class="comment-1" rowspan="1">Compare against the next entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28595"></span>28595</td>
+<td class="instruction">CALL <a href="28652.html">28652</a></td>
+<td class="comment-1" rowspan="1">Is it the layout already on screen?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28598"></span>28598</td>
+<td class="instruction">JR Z,<a href="28549.html#28571">28571</a></td>
+<td class="comment-1" rowspan="1">If so pick again (the bubble must move)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28600"></span>28600</td>
+<td class="instruction">CALL <a href="28652.html">28652</a></td>
+<td class="comment-1" rowspan="1">Set A=1 if the layout has changed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28603"></span>28603</td>
+<td class="instruction">LD (33906),A</td>
+<td class="comment-1" rowspan="1">Store the layout-unchanged flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28606"></span>28606</td>
+<td class="instruction">LD (33904),IY</td>
+<td class="comment-1" rowspan="1">Make this the current layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28610"></span>28610</td>
+<td class="instruction">CALL <a href="26812.html">26812</a></td>
+<td class="comment-1" rowspan="1">Draw the picture (or just wipe the old bubble)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28613"></span>28613</td>
+<td class="instruction">CALL <a href="28468.html">28468</a></td>
+<td class="comment-1" rowspan="1">Print the status lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28616"></span>28616</td>
+<td class="instruction">CALL <a href="28504.html">28504</a></td>
+<td class="comment-1" rowspan="1">Print the second status line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28619"></span>28619</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the message address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28620"></span>28620</td>
+<td class="instruction">CALL <a href="29320.html">29320</a></td>
+<td class="comment-1" rowspan="1">Render the message into the text buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28623"></span>28623</td>
+<td class="instruction">LD IX,23808</td>
+<td class="comment-1" rowspan="1">Point IX at the text buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28627"></span>28627</td>
+<td class="instruction">LD HL,16384</td>
+<td class="comment-1" rowspan="1">HL=top of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28630"></span>28630</td>
+<td class="instruction">CALL <a href="28757.html">28757</a></td>
+<td class="comment-1" rowspan="1">Print the text in a bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28633"></span>28633</td>
+<td class="instruction">LD A,(28548)</td>
+<td class="comment-1" rowspan="1">Pick up the SAY flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28636"></span>28636</td>
+<td class="instruction">AND 112</td>
+<td class="comment-1" rowspan="1">Keep bits 4-6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28638"></span>28638</td>
+<td class="instruction">CALL <a href="32785.html">32785</a></td>
+<td class="comment-1" rowspan="1">Play the theme tune if they are 16</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28641"></span>28641</td>
+<td class="instruction">LD A,(28548)</td>
+<td class="comment-1" rowspan="1">Pick up the SAY flags again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28644"></span>28644</td>
+<td class="instruction">AND 3</td>
+<td class="comment-1" rowspan="1">Keep bits 0-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28646"></span>28646</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return unless they ask for a pause</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28647"></span>28647</td>
+<td class="instruction">LD A,8</td>
+<td class="comment-1" rowspan="1">Wait up to 8 periods...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28649"></span>28649</td>
+<td class="instruction">JP <a href="26876.html">26876</a></td>
+<td class="comment-1" rowspan="1">...or until a key is pressed</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28548.html">28548</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28549">Map</a></td>
+<td class="next">
+Next: <a href="28652.html">28652</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

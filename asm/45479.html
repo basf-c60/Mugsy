@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45479</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45458.html">45458</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45479">Map</a></td>
+<td class="next">
+Next: <a href="45515.html">45515</a>
+</td>
+</tr>
+</table>
+<div class="description">45479: Shootout: move up one pixel row (unless at the top limit)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45479"></span>45479</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45480"></span>45480</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45481"></span>45481</td>
+<td class="instruction">LD L,D</td>
+<td class="comment-1" rowspan="1">L=the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45482"></span>45482</td>
+<td class="instruction">LD DE,(42298)</td>
+<td class="comment-1" rowspan="1">DE=the upper limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45486"></span>45486</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45487"></span>45487</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Compare with the limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45489"></span>45489</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45490"></span>45490</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45491"></span>45491</td>
+<td class="instruction">JR NZ,<a href="45479.html#45494">45494</a></td>
+<td class="comment-1" rowspan="1">Not at the limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45493"></span>45493</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">At the top: no move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45494"></span>45494</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Up a pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45495"></span>45495</td>
+<td class="instruction">CALL <a href="45636.html">45636</a></td>
+<td class="comment-1" rowspan="1">Fix up across character boundaries</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45498"></span>45498</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Up another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45499"></span>45499</td>
+<td class="instruction">CALL <a href="45636.html">45636</a></td>
+<td class="comment-1" rowspan="1">Fix up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45502"></span>45502</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Up another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45503"></span>45503</td>
+<td class="instruction">CALL <a href="45636.html">45636</a></td>
+<td class="comment-1" rowspan="1">Fix up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45506"></span>45506</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Up another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45507"></span>45507</td>
+<td class="instruction">CALL <a href="45636.html">45636</a></td>
+<td class="comment-1" rowspan="1">Fix up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45510"></span>45510</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45511"></span>45511</td>
+<td class="instruction">CP 16</td>
+<td class="comment-1" rowspan="1">Down?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45513"></span>45513</td>
+<td class="instruction">JR NZ,<a href="45515.html#45547">45547</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45458.html">45458</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45479">Map</a></td>
+<td class="next">
+Next: <a href="45515.html">45515</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

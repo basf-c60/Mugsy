@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Mugsy and The Hobbit</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="mugsy.css" />
+<script type="text/javascript" src="mugsy.js" defer></script>
+</head>
+<body class="Hobbit">
+<header class="site"><div class="bar"><a class="brand" href="index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Mugsy and The Hobbit</h1>
+<div class="paragraph">
+Mugsy's picture engine is not new. It is a modified copy of the one in <i>The Hobbit</i> (Melbourne House, 1982), written two years earlier. This page records how the two compare, from a routine-by-routine comparison of the code and from running each game's drawing routines on the other's picture data in the Z80 simulator. The Hobbit side comes from a separate disassembly of that game (its routine addresses are written in hex below and are not linked from here).
+</div>
+<div class="paragraph">
+In short: the command format, the interpreter, the line drawer, the attribute painting and the flood fill are the same code, adapted. All 22 of The Hobbit's pictures draw pixel for pixel identically in Mugsy's engine. The reverse does not work, because Mugsy added a command and a bigger drawing area.
+</div>
+
+<div class="paragraph"><b>Routine by routine</b></div>
+<table class="boxed">
+<tr><th>Job</th><th>The Hobbit</th><th>Mugsy</th><th>Instructions the same</th><th>Notes</th></tr>
+<tr><td>Picture interpreter</td><td>$8985</td><td><a href="asm/31247.html">31247</a></td><td>97% of The Hobbit's, 84% of Mugsy's</td><td>Same registers and same order of tests. Mugsy adds command 16 and drops the header and the dark-room check.</td></tr>
+<tr><td>Line drawer</td><td>$8B2F</td><td><a href="asm/31917.html">31917</a></td><td>89% / 74%</td><td>Same stepped-slope algorithm. Mugsy swaps the saves of HL and BC for calls into its own pixel code.</td></tr>
+<tr><td>Attribute-cell movers</td><td>$8AD3-$8B08</td><td><a href="asm/31755.html">31755</a>-<a href="asm/31806.html#31822">31822</a></td><td>100% / 83%</td><td>Move one cell up, down, left or right in the attribute file. Mugsy adds range checks.</td></tr>
+<tr><td>Attribute-paint command</td><td>inside $8985</td><td>inside <a href="asm/31247.html">31247</a></td><td>essentially identical</td><td>Including the trick of flipping the ink with XOR 56 when it would equal the new paper.</td></tr>
+<tr><td>Flood fill</td><td>$8A4F</td><td><a href="asm/31525.html">31525</a></td><td>75% / 34%</td><td>Same scan-line algorithm with seeds on the stack and above/below flags. Mugsy adds a fast path that fills a whole empty byte at once.</td></tr>
+<tr><td>Plot a pixel with ink</td><td>$8B93</td><td><a href="asm/32034.html">32034</a></td><td>53% / 68%</td><td>Same idea (set the pixel, then set the cell's ink). The Hobbit keeps only the paper and swaps the ink if it equals the paper; Mugsy keeps paper, bright and flash and ORs the ink in.</td></tr>
+<tr><td>Coordinates to screen address</td><td>$8BBC</td><td><a href="asm/32066.html">32066</a></td><td>23% / 17%</td><td>Different. The Hobbit computes the address by hand from 127-y; Mugsy uses 175-y and the ROM's PIXEL-ADD routine, and also has an inverse routine at <a href="asm/32084.html">32084</a>.</td></tr>
+<tr><td>Start a picture</td><td>$8BE9</td><td><a href="asm/31218.html">31218</a></td><td>different</td><td>The Hobbit clears the top 128 rows and fills the attributes from two header bytes; Mugsy clears the whole screen and its pictures have no header.</td></tr>
+</table>
+
+<div class="paragraph"><b>The command format</b></div>
+<div class="paragraph">
+Both engines start with the pen at (127,63), with D as x and E as y measured upwards from the bottom, and both read the same commands:
+</div>
+<table class="boxed">
+<tr><th>Command byte</th><th>Meaning</th><th>In The Hobbit</th><th>In Mugsy</th></tr>
+<tr><td>0</td><td>end of picture</td><td>yes</td><td>yes</td></tr>
+<tr><td>8, x, y</td><td>move the pen</td><td>yes</td><td>yes</td></tr>
+<tr><td>16, ...</td><td>bitmap block</td><td>no</td><td>yes (Mugsy's addition)</td></tr>
+<tr><td>bit 7 set</td><td>line: direction, slope and length in two bytes</td><td>yes</td><td>yes, same decoding</td></tr>
+<tr><td>%01000ccc, x, y</td><td>flood fill with ink ccc</td><td>yes</td><td>yes</td></tr>
+<tr><td>%00100ccc, address, runs, 255</td><td>paint attribute cells with paper ccc</td><td>yes</td><td>yes</td></tr>
+</table>
+<div class="paragraph">
+Anything else is ignored by both. The Hobbit's pictures also start with two bytes (border colour and the picture area's colours), which its engine consumes and Mugsy's does not, so a Hobbit picture is fed to Mugsy's engine two bytes in.
+</div>
+
+<div class="paragraph"><b>Test 1: Mugsy's engine drawing The Hobbit's pictures</b></div>
+<div class="paragraph">
+Each of the 22 pictures in The Hobbit was drawn twice in the simulator, once by The Hobbit's own routine ($8985) and once by <a href="asm/31247.html">31247</a> with the picture data copied into Mugsy's memory. Mugsy's engine draws the picture 48 rows lower (its y is 175-E where The Hobbit's is 127-E), so the two screens were compared band against band. The Hobbit's fills use the top edge of its 128-row picture area as a boundary; on Mugsy's taller screen that edge is open, so the fills leak upwards. With a solid line along the top edge of the band, which stands in for the edge, <b>all 22 pictures matched exactly: 0 differing pixels out of about 242,000.</b> Without it 12 matched and the others were swamped by leaking fills.
+</div>
+<div class="paragraph"><img src="images/hobbit_vs_mugsy_engine.png" alt="The Hobbit's engine (left) and Mugsy's engine (right) drawing the same Hobbit pictures"></div>
+<div class="paragraph">
+Left: The Hobbit's own engine. Right: Mugsy's engine, drawing the same picture data. Rooms 1, 24 and 11. All 22 pictures as drawn by Mugsy's engine:
+</div>
+<div class="paragraph"><img src="images/hobbit22.png" alt="All 22 Hobbit pictures drawn by Mugsy's engine"></div>
+<div class="paragraph">
+Mugsy's engine is also much quicker: on the same pictures it needed between a third and a ninth as many frames as The Hobbit's (38 against 337 for the first one), mostly because of the whole-byte fast path in the fill.
+</div>
+
+<div class="paragraph"><b>Test 2: The Hobbit's engine drawing Mugsy's pictures</b></div>
+<div class="paragraph">
+This does not work. Mugsy's pictures use the full 176 rows, and The Hobbit's engine has only 128, so coordinates above that wrap. Five of Mugsy's seven command-list pictures also use the bitmap-block command, which The Hobbit's engine does not know: it skips the command byte and then reads the bitmap data as drawing commands. Six of the seven had not finished after 4000 frames (about 80 seconds of Spectrum time, against 55-86 frames in Mugsy); whether they are stuck or merely very slow was not established. The seventh finished but differed in 28% of its pixels. So The Hobbit's format is a subset of Mugsy's, not the other way round.
+</div>
+
+<div class="paragraph"><b>Other shared code</b></div>
+<div class="paragraph">
+A whole-program match of the two games, ignoring addresses, found a few more long runs of identical instructions outside the picture code, all of them in text handling and random numbers. These matches are by instruction pattern only; the routines have not been read side by side:
+</div>
+<table class="boxed">
+<tr><th>Job</th><th>The Hobbit</th><th>Mugsy</th></tr>
+<tr><td>Message interpreter (bytecode text with dictionary references)</td><td>$72D4</td><td>around <a href="asm/29458.html">29458</a>-<a href="asm/29574.html#29592">29592</a></td></tr>
+<tr><td>Print an abbreviated dictionary word</td><td>$748A</td><td>around <a href="asm/29907.html">29907</a></td></tr>
+<tr><td>Print a dictionary word</td><td>$74B8</td><td>around <a href="asm/29928.html">29928</a>-<a href="asm/29928.html#30008">30008</a></td></tr>
+<tr><td>Random number in a range</td><td>$9BFD</td><td><a href="asm/30026.html">30026</a></td></tr>
+</table>
+<div class="paragraph">
+Mugsy's other picture format (the compressed bit-stream pictures drawn by <a href="asm/32126.html">32126</a>), its bytecode VM and its game logic have nothing corresponding in The Hobbit.
+</div>
+<div class="paragraph">
+The test scripts are in the tools folder: hobbit_cmp.py (routine comparison), hobbit_ngram.py (whole-program matching), hobbit_behav.py (the simulator harness), hobbit_test_mugsy_engine.py and hobbit_test_hobbit_engine.py. They need a Hobbit disassembly assembled to a binary at /tmp/hob/hobbit.bin, which is not part of this package.
+</div>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

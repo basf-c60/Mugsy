@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44416</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44403.html">44403</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44416">Map</a></td>
+<td class="next">
+Next: <a href="44525.html">44525</a>
+</td>
+</tr>
+</table>
+<div class="description">44416: Shootout: handler for the hit man's bullet</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44416"></span>44416</td>
+<td class="instruction">LD A,(42321)</td>
+<td class="comment-1" rowspan="1">Handler for slot 5 (the hit man's bullet): was a bullet just cancelled?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44419"></span>44419</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44420"></span>44420</td>
+<td class="instruction">JR Z,<a href="44416.html#44434">44434</a></td>
+<td class="comment-1" rowspan="1">No: carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44422"></span>44422</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44423"></span>44423</td>
+<td class="instruction">LD (42321),A</td>
+<td class="comment-1" rowspan="1">Clear the flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44426"></span>44426</td>
+<td class="instruction">LD HL,42255</td>
+<td class="comment-1" rowspan="1">HL=the bullet's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44429"></span>44429</td>
+<td class="instruction">LD (HL),3</td>
+<td class="comment-1" rowspan="1">Park it at 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44431"></span>44431</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44434"></span>44434</td>
+<td class="instruction">LD HL,42570</td>
+<td class="comment-1" rowspan="1">HL=the bullet's record (42570)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44437"></span>44437</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44438"></span>44438</td>
+<td class="instruction">CALL <a href="45693.html">45693</a></td>
+<td class="comment-1" rowspan="1">Copy it to the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44441"></span>44441</td>
+<td class="instruction">LD HL,42320</td>
+<td class="comment-1" rowspan="1">HL=the bullet's remaining flight</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44444"></span>44444</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One step less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44445"></span>44445</td>
+<td class="instruction">JP Z,<a href="44416.html#44498">44498</a></td>
+<td class="comment-1" rowspan="1">Used up: remove it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44448"></span>44448</td>
+<td class="instruction">LD A,14</td>
+<td class="comment-1" rowspan="1">A=14</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44450"></span>44450</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">Is this the first step?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44451"></span>44451</td>
+<td class="instruction">JR Z,<a href="44416.html#44486">44486</a></td>
+<td class="comment-1" rowspan="1">Yes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44453"></span>44453</td>
+<td class="instruction">CALL <a href="45155.html">45155</a></td>
+<td class="comment-1" rowspan="1">Copy its coordinates</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44456"></span>44456</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44457"></span>44457</td>
+<td class="instruction">CALL <a href="45423.html">45423</a></td>
+<td class="comment-1" rowspan="1">Move it a cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44460"></span>44460</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=new address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44461"></span>44461</td>
+<td class="instruction">CALL <a href="44403.html">44403</a></td>
+<td class="comment-1" rowspan="1">Get the next route byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44464"></span>44464</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44465"></span>44465</td>
+<td class="instruction">JR Z,<a href="44416.html#44475">44475</a></td>
+<td class="comment-1" rowspan="1">Nothing in the way</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44467"></span>44467</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44469"></span>44469</td>
+<td class="instruction">LD (42320),A</td>
+<td class="comment-1" rowspan="1">The bullet has hit something</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44472"></span>44472</td>
+<td class="instruction">LD (42332),A</td>
+<td class="comment-1" rowspan="1">Tell the hit tests that the hit man's bullet has landed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44475"></span>44475</td>
+<td class="instruction">LD (42353),DE</td>
+<td class="comment-1" rowspan="1">Store the new position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44479"></span>44479</td>
+<td class="instruction">CALL <a href="45626.html">45626</a></td>
+<td class="comment-1" rowspan="1">Convert to an attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44482"></span>44482</td>
+<td class="instruction">LD (42365),DE</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44486"></span>44486</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44487"></span>44487</td>
+<td class="instruction">CALL <a href="45702.html">45702</a></td>
+<td class="comment-1" rowspan="1">Copy back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44490"></span>44490</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44492"></span>44492</td>
+<td class="instruction">LD (42286),A</td>
+<td class="comment-1" rowspan="1">Redraw at the next tick</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44495"></span>44495</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44498"></span>44498</td>
+<td class="instruction">CALL <a href="45155.html">45155</a></td>
+<td class="comment-1" rowspan="1">Copy the coordinates</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44501"></span>44501</td>
+<td class="instruction">LD HL,1000</td>
+<td class="comment-1" rowspan="1">HL=1000: off the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44504"></span>44504</td>
+<td class="instruction">LD (42353),HL</td>
+<td class="comment-1" rowspan="1">Move the bullet off the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44507"></span>44507</td>
+<td class="instruction">LD (42365),HL</td>
+<td class="comment-1" rowspan="1">And its attributes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44510"></span>44510</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44511"></span>44511</td>
+<td class="instruction">CALL <a href="45702.html">45702</a></td>
+<td class="comment-1" rowspan="1">Copy back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44514"></span>44514</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44516"></span>44516</td>
+<td class="instruction">LD (42286),A</td>
+<td class="comment-1" rowspan="1">Redraw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44519"></span>44519</td>
+<td class="instruction">LD (42321),A</td>
+<td class="comment-1" rowspan="1">Flag the bullet as cancelled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44522"></span>44522</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44403.html">44403</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44416">Map</a></td>
+<td class="next">
+Next: <a href="44525.html">44525</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

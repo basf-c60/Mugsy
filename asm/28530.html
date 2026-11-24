@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28530</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28504.html">28504</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28530">Map</a></td>
+<td class="next">
+Next: <a href="28548.html">28548</a>
+</td>
+</tr>
+</table>
+<div class="description">28530: Print a VM variable into a status line template</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Formats variable D into the template at HL (A characters long) via <a href="29630.html">29630</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Field width</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Variable number</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Template address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28530"></span>28530</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the template address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28531"></span>28531</td>
+<td class="instruction">LD L,D</td>
+<td class="comment-1" rowspan="1">L=the variable number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28532"></span>28532</td>
+<td class="instruction">CALL <a href="31201.html">31201</a></td>
+<td class="comment-1" rowspan="1">BCDE=its value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28535"></span>28535</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the template address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28536"></span>28536</td>
+<td class="instruction">LD (29926),HL</td>
+<td class="comment-1" rowspan="1">Remember where the number goes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28539"></span>28539</td>
+<td class="instruction">LD (HL),32</td>
+<td class="comment-1" rowspan="1">Blank the field with spaces</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28541"></span>28541</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next character of the field</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28542"></span>28542</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One fewer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28543"></span>28543</td>
+<td class="instruction">JR NZ,<a href="28530.html#28539">28539</a></td>
+<td class="comment-1" rowspan="1">Loop until the field is blank</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28545"></span>28545</td>
+<td class="instruction">JP <a href="29630.html">29630</a></td>
+<td class="comment-1" rowspan="1">Print the value into the field</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28504.html">28504</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28530">Map</a></td>
+<td class="next">
+Next: <a href="28548.html">28548</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

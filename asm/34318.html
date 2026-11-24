@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34318</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34298.html">34298</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34318">Map</a></td>
+<td class="next">
+Next: <a href="34440.html">34440</a>
+</td>
+</tr>
+</table>
+<div class="description">34318: Getaway car animation: step 1 (set up)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Draws the street picture at <a href="55692.html">55692</a> and initialises the positions and timers of the car and the hoods.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34318"></span>34318</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34319"></span>34319</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Black border</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34321"></span>34321</td>
+<td class="instruction">LD HL,55692</td>
+<td class="comment-1" rowspan="1">HL=the compressed picture of the street</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34324"></span>34324</td>
+<td class="instruction">CALL <a href="32126.html">32126</a></td>
+<td class="comment-1" rowspan="1">Draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34327"></span>34327</td>
+<td class="instruction">LD HL,19482</td>
+<td class="comment-1" rowspan="1">HL=the screen address of the first hood's start position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34330"></span>34330</td>
+<td class="instruction">LD (37101),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34333"></span>34333</td>
+<td class="instruction">LD HL,18465</td>
+<td class="comment-1" rowspan="1">HL=the screen address of the second hood's start position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34336"></span>34336</td>
+<td class="instruction">LD (37933),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34339"></span>34339</td>
+<td class="instruction">LD HL,37109</td>
+<td class="comment-1" rowspan="1">HL=the first hood's frame list (<a href="37101.html#37109">37109</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34342"></span>34342</td>
+<td class="instruction">LD (37107),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34345"></span>34345</td>
+<td class="instruction">LD HL,37941</td>
+<td class="comment-1" rowspan="1">HL=the second hood's frame list (<a href="37101.html#37941">37941</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34348"></span>34348</td>
+<td class="instruction">LD (37939),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34351"></span>34351</td>
+<td class="instruction">LD HL,52311</td>
+<td class="comment-1" rowspan="1">HL=the screen address where the car starts (52311, with the left-clip flag in bit 7 of H)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34354"></span>34354</td>
+<td class="instruction">LD (38789),HL</td>
+<td class="comment-1" rowspan="1">Store it as the car's position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34357"></span>34357</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34358"></span>34358</td>
+<td class="instruction">LD (37105),A</td>
+<td class="comment-1" rowspan="1">The first hood's pixel shift is 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34361"></span>34361</td>
+<td class="instruction">LD (37937),A</td>
+<td class="comment-1" rowspan="1">The second hood's pixel shift is 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34364"></span>34364</td>
+<td class="instruction">LD (38791),A</td>
+<td class="comment-1" rowspan="1">The car's pixel shift is 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34367"></span>34367</td>
+<td class="instruction">LD A,10</td>
+<td class="comment-1" rowspan="1">A=10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34369"></span>34369</td>
+<td class="instruction">LD (34292),A</td>
+<td class="comment-1" rowspan="1">The first hood waits 10 steps before moving</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34372"></span>34372</td>
+<td class="instruction">LD (34067),A</td>
+<td class="comment-1" rowspan="1">Set the reload value of the interrupt countdown (one tick every 10 interrupts)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34375"></span>34375</td>
+<td class="instruction">LD (34066),A</td>
+<td class="comment-1" rowspan="1">Set the countdown</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34378"></span>34378</td>
+<td class="instruction">LD (34295),A</td>
+<td class="comment-1" rowspan="1">Figure counter 34295 starts at 10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34381"></span>34381</td>
+<td class="instruction">LD A,9</td>
+<td class="comment-1" rowspan="1">A=9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34383"></span>34383</td>
+<td class="instruction">LD (34291),A</td>
+<td class="comment-1" rowspan="1">The first hood moves every 9 ticks</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34386"></span>34386</td>
+<td class="instruction">LD A,13</td>
+<td class="comment-1" rowspan="1">A=13</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34388"></span>34388</td>
+<td class="instruction">LD (34293),A</td>
+<td class="comment-1" rowspan="1">The second hood moves every 13 ticks</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34391"></span>34391</td>
+<td class="instruction">LD A,8</td>
+<td class="comment-1" rowspan="1">A=8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34393"></span>34393</td>
+<td class="instruction">LD (34296),A</td>
+<td class="comment-1" rowspan="1">Counter for the figure at 17728</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34396"></span>34396</td>
+<td class="instruction">LD (34297),A</td>
+<td class="comment-1" rowspan="1">Counter for the figure's delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34399"></span>34399</td>
+<td class="instruction">LD A,3</td>
+<td class="comment-1" rowspan="1">A=3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34401"></span>34401</td>
+<td class="instruction">LD (34294),A</td>
+<td class="comment-1" rowspan="1">Step counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34404"></span>34404</td>
+<td class="instruction">LD HL,(37107)</td>
+<td class="comment-1" rowspan="1">HL=the first hood's frame list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34407"></span>34407</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip the first entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34408"></span>34408</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34409"></span>34409</td>
+<td class="instruction">LD A,(37105)</td>
+<td class="comment-1" rowspan="1">A=the first hood's pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34412"></span>34412</td>
+<td class="instruction">LD DE,24384</td>
+<td class="comment-1" rowspan="1">DE=the first hood's sprite buffer (24384)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34415"></span>34415</td>
+<td class="instruction">CALL <a href="34135.html">34135</a></td>
+<td class="comment-1" rowspan="1">Prepare the shifted sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34418"></span>34418</td>
+<td class="instruction">CALL <a href="34779.html">34779</a></td>
+<td class="comment-1" rowspan="1">Draw the first hood</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34421"></span>34421</td>
+<td class="instruction">LD HL,(37939)</td>
+<td class="comment-1" rowspan="1">HL=the second hood's frame list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34424"></span>34424</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip the first entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34425"></span>34425</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34426"></span>34426</td>
+<td class="instruction">LD A,(37937)</td>
+<td class="comment-1" rowspan="1">A=the second hood's pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34429"></span>34429</td>
+<td class="instruction">LD DE,24192</td>
+<td class="comment-1" rowspan="1">DE=the second hood's sprite buffer (24192)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34432"></span>34432</td>
+<td class="instruction">CALL <a href="34135.html">34135</a></td>
+<td class="comment-1" rowspan="1">Prepare the shifted sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34435"></span>34435</td>
+<td class="instruction">CALL <a href="34798.html">34798</a></td>
+<td class="comment-1" rowspan="1">Draw the second hood</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34438"></span>34438</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0: this step is complete</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34439"></span>34439</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34298.html">34298</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34318">Map</a></td>
+<td class="next">
+Next: <a href="34440.html">34440</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

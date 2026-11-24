@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42639</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42375.html">42375</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42639">Map</a></td>
+<td class="next">
+Next: <a href="42931.html">42931</a>
+</td>
+</tr>
+</table>
+<div class="description">42639: Shootout: set up the restaurant</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42639"></span>42639</td>
+<td class="instruction">CALL <a href="46305.html">46305</a></td>
+<td class="comment-1" rowspan="1">Clear the screen and draw the walls, door and window</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42642"></span>42642</td>
+<td class="instruction">LD HL,42303</td>
+<td class="comment-1" rowspan="1">HL=start of the flag area (42303-42335)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42645"></span>42645</td>
+<td class="instruction">LD B,33</td>
+<td class="comment-1" rowspan="1">B=33 bytes to clear</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42647"></span>42647</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42648"></span>42648</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Clear a flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42649"></span>42649</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42650"></span>42650</td>
+<td class="instruction">DJNZ <a href="42639.html#42648">42648</a></td>
+<td class="comment-1" rowspan="1">Loop for all 33 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42652"></span>42652</td>
+<td class="instruction">LD HL,42250</td>
+<td class="comment-1" rowspan="1">HL=the figure timers (one byte per figure, from <a href="42250.html">42250</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42655"></span>42655</td>
+<td class="instruction">LD B,7</td>
+<td class="comment-1" rowspan="1">B=7 timers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42657"></span>42657</td>
+<td class="instruction">LD (HL),3</td>
+<td class="comment-1" rowspan="1">Set a timer to 3: "idle" (1 means ready for orders, 0 means a countdown is running)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42659"></span>42659</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42660"></span>42660</td>
+<td class="instruction">DJNZ <a href="42639.html#42657">42657</a></td>
+<td class="comment-1" rowspan="1">Loop for all seven</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42662"></span>42662</td>
+<td class="instruction">LD BC,405</td>
+<td class="comment-1" rowspan="1">BC=405</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42665"></span>42665</td>
+<td class="instruction">LD HL,24575</td>
+<td class="comment-1" rowspan="1">HL=24575, the top of a work area below the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42668"></span>42668</td>
+<td class="instruction">LD DE,24574</td>
+<td class="comment-1" rowspan="1">DE=24574</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42671"></span>42671</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42672"></span>42672</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Clear the first byte of the work area</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42673"></span>42673</td>
+<td class="instruction">LDDR</td>
+<td class="comment-1" rowspan="1">Clear 405 more, working backwards (24170-24575): the sprite frame buffers are cleaned out</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42675"></span>42675</td>
+<td class="instruction">LD BC,60</td>
+<td class="comment-1" rowspan="1">BC=60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42678"></span>42678</td>
+<td class="instruction">LD HL,24115</td>
+<td class="comment-1" rowspan="1">HL=24115</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42681"></span>42681</td>
+<td class="instruction">LD DE,24114</td>
+<td class="comment-1" rowspan="1">DE=24114</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42684"></span>42684</td>
+<td class="instruction">LD A,56</td>
+<td class="comment-1" rowspan="1">A=56: white paper, black ink</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42686"></span>42686</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store the first attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42687"></span>42687</td>
+<td class="instruction">LDDR</td>
+<td class="comment-1" rowspan="1">Fill 60 attribute bytes (24055-24115) with white paper</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42689"></span>42689</td>
+<td class="instruction">LD A,(42300)</td>
+<td class="comment-1" rowspan="1">A=has the walls graphic been inverted already? (<a href="42292.html#42300">42300</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42692"></span>42692</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42693"></span>42693</td>
+<td class="instruction">JR NZ,<a href="42639.html#42715">42715</a></td>
+<td class="comment-1" rowspan="1">Skip the inversion if it has</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42695"></span>42695</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42697"></span>42697</td>
+<td class="instruction">LD (42300),A</td>
+<td class="comment-1" rowspan="1">Mark the sprite data as inverted (it is stored inverted in the file and flipped once, on first use)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42700"></span>42700</td>
+<td class="instruction">LD HL,47082</td>
+<td class="comment-1" rowspan="1">HL=start of the sprite data (<a href="47082.html">47082</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42703"></span>42703</td>
+<td class="instruction">LD BC,1326</td>
+<td class="comment-1" rowspan="1">BC=1326 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42706"></span>42706</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Fetch a byte of sprite data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42707"></span>42707</td>
+<td class="instruction">CPL</td>
+<td class="comment-1" rowspan="1">Invert it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42708"></span>42708</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42709"></span>42709</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42710"></span>42710</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Count down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42711"></span>42711</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42712"></span>42712</td>
+<td class="instruction">OR B</td>
+<td class="comment-1" rowspan="1">Combine with B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42713"></span>42713</td>
+<td class="instruction">JR NZ,<a href="42639.html#42706">42706</a></td>
+<td class="comment-1" rowspan="1">Loop until all 1326 bytes are done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42715"></span>42715</td>
+<td class="instruction">LD A,7</td>
+<td class="comment-1" rowspan="1">A=7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42717"></span>42717</td>
+<td class="instruction">LD (42311),A</td>
+<td class="comment-1" rowspan="1">Seven figure slots to service while the furniture is drawn (the seventh draws furniture)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42720"></span>42720</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42722"></span>42722</td>
+<td class="instruction">LD (42289),A</td>
+<td class="comment-1" rowspan="1">Make the furniture slot's timer expire at once</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42725"></span>42725</td>
+<td class="instruction">LD HL,45711</td>
+<td class="comment-1" rowspan="1">HL=first furniture descriptor (<a href="45711.html">45711</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42728"></span>42728</td>
+<td class="instruction">CALL <a href="42940.html">42940</a></td>
+<td class="comment-1" rowspan="1">Load it into the furniture slot's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42731"></span>42731</td>
+<td class="instruction">CALL <a href="42931.html">42931</a></td>
+<td class="comment-1" rowspan="1">Wait for the interrupt routine to draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42734"></span>42734</td>
+<td class="instruction">LD HL,18633</td>
+<td class="comment-1" rowspan="1">HL=screen address of the next piece</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42737"></span>42737</td>
+<td class="instruction">LD DE,22985</td>
+<td class="comment-1" rowspan="1">DE=its attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42740"></span>42740</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Request a redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42743"></span>42743</td>
+<td class="instruction">LD HL,20564</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42746"></span>42746</td>
+<td class="instruction">LD DE,23124</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42749"></span>42749</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Request a redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42752"></span>42752</td>
+<td class="instruction">LD HL,18653</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42755"></span>42755</td>
+<td class="instruction">LD DE,23005</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42758"></span>42758</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Request a redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42761"></span>42761</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42763"></span>42763</td>
+<td class="instruction">LD (42289),A</td>
+<td class="comment-1" rowspan="1">Re-arm the furniture slot's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42766"></span>42766</td>
+<td class="instruction">LD HL,45721</td>
+<td class="comment-1" rowspan="1">HL=second furniture descriptor (45721)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42769"></span>42769</td>
+<td class="instruction">CALL <a href="42940.html">42940</a></td>
+<td class="comment-1" rowspan="1">Load it into the furniture slot's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42772"></span>42772</td>
+<td class="instruction">CALL <a href="42931.html">42931</a></td>
+<td class="comment-1" rowspan="1">Wait for the interrupt routine to draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42775"></span>42775</td>
+<td class="instruction">LD HL,18599</td>
+<td class="comment-1" rowspan="1">HL=screen address of a copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42778"></span>42778</td>
+<td class="instruction">LD DE,22951</td>
+<td class="comment-1" rowspan="1">DE=its attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42781"></span>42781</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42784"></span>42784</td>
+<td class="instruction">LD HL,20530</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42787"></span>42787</td>
+<td class="instruction">LD DE,23090</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42790"></span>42790</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42793"></span>42793</td>
+<td class="instruction">LD HL,18619</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42796"></span>42796</td>
+<td class="instruction">LD DE,22971</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42799"></span>42799</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42802"></span>42802</td>
+<td class="instruction">LD HL,48354</td>
+<td class="comment-1" rowspan="1">HL=address of the third furniture graphic (<a href="47082.html#48354">48354</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42805"></span>42805</td>
+<td class="instruction">LD (42625),HL</td>
+<td class="comment-1" rowspan="1">Patch it into the furniture slot's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42808"></span>42808</td>
+<td class="instruction">LD HL,18455</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42811"></span>42811</td>
+<td class="instruction">LD DE,22807</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42814"></span>42814</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42817"></span>42817</td>
+<td class="instruction">LD HL,18603</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42820"></span>42820</td>
+<td class="instruction">LD DE,22955</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42823"></span>42823</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42826"></span>42826</td>
+<td class="instruction">LD HL,20534</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42829"></span>42829</td>
+<td class="instruction">LD DE,23094</td>
+<td class="comment-1" rowspan="1">DE=attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42832"></span>42832</td>
+<td class="instruction">CALL <a href="42970.html">42970</a></td>
+<td class="comment-1" rowspan="1">Redraw and wait</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42835"></span>42835</td>
+<td class="instruction">LD HL,45731</td>
+<td class="comment-1" rowspan="1">HL=initial records of the six real figures (<a href="45731.html">45731</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42838"></span>42838</td>
+<td class="instruction">LD DE,42375</td>
+<td class="comment-1" rowspan="1">DE=the first figure's record (<a href="42375.html">42375</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42841"></span>42841</td>
+<td class="instruction">LD BC,234</td>
+<td class="comment-1" rowspan="1">BC=234 bytes (6 records of 39)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42844"></span>42844</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy the figure records into place</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42846"></span>42846</td>
+<td class="instruction">LD A,6</td>
+<td class="comment-1" rowspan="1">A=6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42848"></span>42848</td>
+<td class="instruction">LD (42311),A</td>
+<td class="comment-1" rowspan="1">From now on only six slots are serviced (the furniture slot is retired)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42851"></span>42851</td>
+<td class="instruction">LD HL,23875</td>
+<td class="comment-1" rowspan="1">HL=23875: a sprite frame buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42854"></span>42854</td>
+<td class="instruction">LD (42307),HL</td>
+<td class="comment-1" rowspan="1">Use it for the next figure drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42857"></span>42857</td>
+<td class="instruction">LD HL,42492</td>
+<td class="comment-1" rowspan="1">HL=42492: the hit man's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42860"></span>42860</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42861"></span>42861</td>
+<td class="instruction">CALL <a href="45693.html">45693</a></td>
+<td class="comment-1" rowspan="1">Copy the record into the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42864"></span>42864</td>
+<td class="instruction">CALL <a href="45079.html">45079</a></td>
+<td class="comment-1" rowspan="1">Work out where to draw him</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42867"></span>42867</td>
+<td class="instruction">CALL <a href="45201.html">45201</a></td>
+<td class="comment-1" rowspan="1">Draw him</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42870"></span>42870</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the record again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42871"></span>42871</td>
+<td class="instruction">CALL <a href="45702.html">45702</a></td>
+<td class="comment-1" rowspan="1">Copy the workspace back into the record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42874"></span>42874</td>
+<td class="instruction">LD HL,42253</td>
+<td class="comment-1" rowspan="1">HL=42253: the timer for figure 3 (the hit man)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42877"></span>42877</td>
+<td class="instruction">LD (HL),0</td>
+<td class="comment-1" rowspan="1">Set it to 0: his countdown starts running</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42879"></span>42879</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42881"></span>42881</td>
+<td class="instruction">LD (42280),A</td>
+<td class="comment-1" rowspan="1">The hit man waits one tick before first acting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42884"></span>42884</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42885"></span>42885</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="1">Let one interrupt happen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42886"></span>42886</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Disable interrupts again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42887"></span>42887</td>
+<td class="instruction">LD HL,42527</td>
+<td class="comment-1" rowspan="1">HL=42527: the hit man's record, byte +35</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42890"></span>42890</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Set it to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42892"></span>42892</td>
+<td class="instruction">LD HL,42253</td>
+<td class="comment-1" rowspan="1">HL=42253 (the hit man's timer)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42895"></span>42895</td>
+<td class="instruction">LD (HL),3</td>
+<td class="comment-1" rowspan="1">Set it to 3: idle</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42897"></span>42897</td>
+<td class="instruction">LD HL,42250</td>
+<td class="comment-1" rowspan="1">HL=42250: the timers again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42900"></span>42900</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Set the first timer to 1: bystander 1 may act at once</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42902"></span>42902</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42903"></span>42903</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Set the second timer to 1: bystander 2 may act at once</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42905"></span>42905</td>
+<td class="instruction">LD HL,46645</td>
+<td class="comment-1" rowspan="1">HL=bystander 1's route script (<a href="46645.html">46645</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42908"></span>42908</td>
+<td class="instruction">LD (42292),HL</td>
+<td class="comment-1" rowspan="1">Store it as that figure's script pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42911"></span>42911</td>
+<td class="instruction">LD HL,46825</td>
+<td class="comment-1" rowspan="1">HL=bystander 2's route script (<a href="46825.html">46825</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42914"></span>42914</td>
+<td class="instruction">LD (42294),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42917"></span>42917</td>
+<td class="instruction">LD HL,47058</td>
+<td class="comment-1" rowspan="1">HL=the hit man's route script (<a href="47034.html#47058">47058</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42920"></span>42920</td>
+<td class="instruction">LD (42296),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42923"></span>42923</td>
+<td class="instruction">LD HL,16512</td>
+<td class="comment-1" rowspan="1">HL=16512: the top row of the playing area on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42926"></span>42926</td>
+<td class="instruction">LD (42298),HL</td>
+<td class="comment-1" rowspan="1">Store it as the upper limit for Mugsy and the hit man</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42929"></span>42929</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts: the shootout is live</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42930"></span>42930</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42375.html">42375</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42639">Map</a></td>
+<td class="next">
+Next: <a href="42931.html">42931</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

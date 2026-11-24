@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 26740</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24652.html">24652</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26740">Map</a></td>
+<td class="next">
+Next: <a href="26753.html">26753</a>
+</td>
+</tr>
+</table>
+<div class="description">26740: VM native: choose the end-of-game rating</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Called from the VM script at <a href="24652.html#26714">26714</a>. Uses the value in v33 (the score divided into bands) to pick one of the rating words ("lousy", "ghastly", "swell" and so on) from the table at <a href="49774.html#53301">53301</a>, and stores its address as the default sub-message (<a href="33888.html#33898">33898</a>) for the "You were ..." message.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26740"></span>26740</td>
+<td class="instruction">LD L,33</td>
+<td class="comment-1" rowspan="1">L=33 (v33: the rating number worked out by the script)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26742"></span>26742</td>
+<td class="instruction">CALL <a href="31201.html">31201</a></td>
+<td class="comment-1" rowspan="1">Load it into BCDE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26745"></span>26745</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26746"></span>26746</td>
+<td class="instruction">CALL <a href="26753.html">26753</a></td>
+<td class="comment-1" rowspan="1">Get the address of the rating word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26749"></span>26749</td>
+<td class="instruction">LD (33898),HL</td>
+<td class="comment-1" rowspan="1">Make it the default sub-message for the "You were ..." message</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26752"></span>26752</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: HL points at the rating word</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24652.html">24652</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26740">Map</a></td>
+<td class="next">
+Next: <a href="26753.html">26753</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32596</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32539.html">32539</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32596">Map</a></td>
+<td class="next">
+Next: <a href="32610.html">32610</a>
+</td>
+</tr>
+</table>
+<div class="description">32596: Get the pixel address for (C,B)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Uses ROM PIXEL-ADD.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32596"></span>32596</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32597"></span>32597</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">B=y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32598"></span>32598</td>
+<td class="instruction">CALL 8880</td>
+<td class="comment-1" rowspan="1">Use the ROM's PIXEL-ADD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32601"></span>32601</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">B=the bit position plus one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32602"></span>32602</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32603"></span>32603</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">Turn the bit position into a mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32605"></span>32605</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate the mask right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32606"></span>32606</td>
+<td class="instruction">DJNZ <a href="32596.html#32605">32605</a></td>
+<td class="comment-1" rowspan="1">Rotate the mask once for each bit position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32608"></span>32608</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32609"></span>32609</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32539.html">32539</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32596">Map</a></td>
+<td class="next">
+Next: <a href="32610.html">32610</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

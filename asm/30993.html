@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30993</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30945.html">30945</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30993">Map</a></td>
+<td class="next">
+Next: <a href="31030.html">31030</a>
+</td>
+</tr>
+</table>
+<div class="description">30993: Make BCDE and BC'DE' positive</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Records in <a href="31030.html#31054">31054</a> whether the result must be negated.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30993"></span>30993</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Clear the sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30994"></span>30994</td>
+<td class="instruction">LD (31054),A</td>
+<td class="comment-1" rowspan="1">Store 0: the result is positive so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30997"></span>30997</td>
+<td class="instruction">BIT 7,B</td>
+<td class="comment-1" rowspan="1">Is BCDE negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30999"></span>30999</td>
+<td class="instruction">JR Z,<a href="30993.html#31012">31012</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31001"></span>31001</td>
+<td class="instruction">CALL <a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Make it positive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31004"></span>31004</td>
+<td class="instruction">LD A,(31054)</td>
+<td class="comment-1" rowspan="1">Flip the sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31007"></span>31007</td>
+<td class="instruction">XOR 1</td>
+<td class="comment-1" rowspan="1">Flip the sign flag...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31009"></span>31009</td>
+<td class="instruction">LD (31054),A</td>
+<td class="comment-1" rowspan="1">...and store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31012"></span>31012</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Now look at BC'DE'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31013"></span>31013</td>
+<td class="instruction">BIT 7,B</td>
+<td class="comment-1" rowspan="1">Is it negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31015"></span>31015</td>
+<td class="instruction">JR Z,<a href="30993.html#31028">31028</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31017"></span>31017</td>
+<td class="instruction">CALL <a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Make it positive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31020"></span>31020</td>
+<td class="instruction">LD A,(31054)</td>
+<td class="comment-1" rowspan="1">Flip the sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31023"></span>31023</td>
+<td class="instruction">XOR 1</td>
+<td class="comment-1" rowspan="1">Flip the sign flag...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31025"></span>31025</td>
+<td class="instruction">LD (31054),A</td>
+<td class="comment-1" rowspan="1">...and store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31028"></span>31028</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31029"></span>31029</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: both operands positive, <a href="31030.html#31054">31054</a> holds the sign of the result</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30945.html">30945</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30993">Map</a></td>
+<td class="next">
+Next: <a href="31030.html">31030</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

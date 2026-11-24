@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 33909</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33888.html">33888</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33909">Map</a></td>
+<td class="next">
+Next: <a href="33937.html">33937</a>
+</td>
+</tr>
+</table>
+<div class="description">33909: Speech bubble layouts</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Each entry is 4 bytes: a chance value (compared with a random number from 0 to 100), the address of the picture, and a byte that is always 0. <a href="33909.html">33909</a> is the fixed "answer" layout. <a href="33909.html#33913">33913</a> and <a href="33909.html#33925">33925</a> start the two tables, one of which <a href="24614.html">24614</a> picks at random each year; the SAY routine (<a href="28549.html">28549</a>) then takes the first entry in that table whose chance value is above a new random number. See <a href="../reference/facts.html#backgrounds">Which background you get</a> on the trivia page for the resulting odds.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33909"></span>33909</td>
+<td class="instruction">DEFB 0,134,252,0</td>
+<td class="comment-1" rowspan="1">Fixed "answer" layout: picture <a href="64646.html">64646</a> (close-up of a hood)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33913"></span>33913</td>
+<td class="instruction">DEFB 30,49,229,0</td>
+<td class="comment-1" rowspan="1">First table, below 30: picture <a href="58673.html">58673</a> (a figure in a doorway)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33917"></span>33917</td>
+<td class="instruction">DEFB 70,5,232,0</td>
+<td class="comment-1" rowspan="1">First table, below 70: picture <a href="59397.html">59397</a> (two hoods at a table)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33921"></span>33921</td>
+<td class="instruction">DEFB 101,239,224,0</td>
+<td class="comment-1" rowspan="1">First table, otherwise: picture <a href="57583.html">57583</a> (a man in a hat at a table)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33925"></span>33925</td>
+<td class="instruction">DEFB 33,113,248,0</td>
+<td class="comment-1" rowspan="1">Second table, below 33: picture <a href="63601.html">63601</a> (hoods and a car in the city)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33929"></span>33929</td>
+<td class="instruction">DEFB 66,110,236,0</td>
+<td class="comment-1" rowspan="1">Second table, below 66: picture <a href="60526.html">60526</a> (the getaway car from above)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33933"></span>33933</td>
+<td class="instruction">DEFB 101,185,240,0</td>
+<td class="comment-1" rowspan="1">Second table, otherwise: picture <a href="61625.html">61625</a> (two figures at the waterfront)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33888.html">33888</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33909">Map</a></td>
+<td class="next">
+Next: <a href="33937.html">33937</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

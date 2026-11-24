@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 42292</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42271.html">42271</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42292">Map</a></td>
+<td class="next">
+Next: <a href="42336.html">42336</a>
+</td>
+</tr>
+</table>
+<div class="description">42292: Shootout: variables</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Address</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="42292.html">42292</a>-42297</td>
+<td class="" colspan="1" rowspan="1">Route script pointers for bystander 1, bystander 2 and the hit man</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42298</td>
+<td class="" colspan="1" rowspan="1">Upper limit on the screen for Mugsy and the hit man</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="42292.html#42300">42300</a></td>
+<td class="" colspan="1" rowspan="1">Set once the sprite graphics have been inverted</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42301</td>
+<td class="" colspan="1" rowspan="1">Mugsy's remaining hit points (from the handout)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42302</td>
+<td class="" colspan="1" rowspan="1">The hit man's remaining hit points (4)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42303-42306</td>
+<td class="" colspan="1" rowspan="1">Saved stack pointer and temporary</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42307</td>
+<td class="" colspan="1" rowspan="1">Frame buffer address</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42309</td>
+<td class="" colspan="1" rowspan="1">Frame table address</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42311</td>
+<td class="" colspan="1" rowspan="1">Number of figure slots in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42312-42313</td>
+<td class="" colspan="1" rowspan="1">Number of frames in the current animation and delay between frames</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42314</td>
+<td class="" colspan="1" rowspan="1">Left limit for the current figure</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42315</td>
+<td class="" colspan="1" rowspan="1">Direction code from the keyboard</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="42292.html#42316">42316</a>-42317</td>
+<td class="" colspan="1" rowspan="1">Firing state of Mugsy and the hit man</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42318-42321</td>
+<td class="" colspan="1" rowspan="1">Steps left for the two bullets and bullet cancel flags</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42322</td>
+<td class="" colspan="1" rowspan="1">Set when a figure could not move</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42323-42326</td>
+<td class="" colspan="1" rowspan="1">Bystander 1, bystander 2, Mugsy and the hit man have gone down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42327-42328</td>
+<td class="" colspan="1" rowspan="1">A bullet touches bystander 1 or bystander 2</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42329-42330</td>
+<td class="" colspan="1" rowspan="1">Mugsy or the hit man has run out of hit points</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42331-42332</td>
+<td class="" colspan="1" rowspan="1">Mugsy's or the hit man's bullet has landed</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42333</td>
+<td class="" colspan="1" rowspan="1">Somebody has gone down in this pass of the main loop</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42334</td>
+<td class="" colspan="1" rowspan="1">The result: bit 0 Mugsy killed, bit 1 hit man killed, bits 2-3 bystanders hit</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">42335</td>
+<td class="" colspan="1" rowspan="1">The shootout is over</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42292"></span>42292</td>
+<td class="instruction">DEFB 53,182,233,182,186,183,128,64</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42300"></span>42300</td>
+<td class="instruction">DEFB 0,0,4,0,0,0,0,0</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42308"></span>42308</td>
+<td class="instruction">DEFB 0,0,0,0,0,0,0,0</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42316"></span>42316</td>
+<td class="instruction">DEFB 0,0,0,0,0,0,0,0</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42324"></span>42324</td>
+<td class="instruction">DEFB 0,0,0,0,0,0,0,0</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42332"></span>42332</td>
+<td class="instruction">DEFB 0,0,0,0</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42271.html">42271</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42292">Map</a></td>
+<td class="next">
+Next: <a href="42336.html">42336</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

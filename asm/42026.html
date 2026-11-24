@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42026</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42014.html">42014</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42026">Map</a></td>
+<td class="next">
+Next: <a href="42057.html">42057</a>
+</td>
+</tr>
+</table>
+<div class="description">42026: Play the shootout sound effect</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Plays the bit pattern at <a href="42057.html">42057</a> through the speaker.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42026"></span>42026</td>
+<td class="instruction">LD HL,42057</td>
+<td class="comment-1" rowspan="1">HL=the sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42029"></span>42029</td>
+<td class="instruction">LD DE,40</td>
+<td class="comment-1" rowspan="1">DE=40: the number of bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42032"></span>42032</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1">C=the next byte of the pattern</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42033"></span>42033</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1">B=8 bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42035"></span>42035</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: the speaker and border low</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42037"></span>42037</td>
+<td class="instruction">RLC C</td>
+<td class="comment-1" rowspan="1">Rotate the next bit out</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42039"></span>42039</td>
+<td class="instruction">JR NC,<a href="42026.html#42043">42043</a></td>
+<td class="comment-1" rowspan="1">Zero: leave the speaker low</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42041"></span>42041</td>
+<td class="instruction">LD A,24</td>
+<td class="comment-1" rowspan="1">A=24: speaker on (bit 4) and MIC (bit 3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42043"></span>42043</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Output it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42045"></span>42045</td>
+<td class="instruction">CALL <a href="42014.html">42014</a></td>
+<td class="comment-1" rowspan="1">Wait a short time</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42048"></span>42048</td>
+<td class="instruction">DJNZ <a href="42026.html#42035">42035</a></td>
+<td class="comment-1" rowspan="1">Next bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42050"></span>42050</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42051"></span>42051</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">One fewer left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42052"></span>42052</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">Test DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42053"></span>42053</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">...for zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42054"></span>42054</td>
+<td class="instruction">JR NZ,<a href="42026.html#42032">42032</a></td>
+<td class="comment-1" rowspan="1">Loop until all are played</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42056"></span>42056</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42014.html">42014</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42026">Map</a></td>
+<td class="next">
+Next: <a href="42057.html">42057</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

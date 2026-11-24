@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28698</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28671.html">28671</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28698">Map</a></td>
+<td class="next">
+Next: <a href="28728.html">28728</a>
+</td>
+</tr>
+</table>
+<div class="description">28698: Measure one word</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Adds up the widths (+1 pixel spacing) of the characters at IX up to the next space.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Text</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Width in pixels</td>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Next word</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28698"></span>28698</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28699"></span>28699</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28700"></span>28700</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C will accumulate the width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28702"></span>28702</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Pick up a character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28705"></span>28705</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">End of the text?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28706"></span>28706</td>
+<td class="instruction">JR Z,<a href="28698.html#28724">28724</a></td>
+<td class="comment-1" rowspan="1">Finish if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28708"></span>28708</td>
+<td class="instruction">CALL <a href="26921.html">26921</a></td>
+<td class="comment-1" rowspan="1">Get the address of its glyph</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28711"></span>28711</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=width of the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28712"></span>28712</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">+1 pixel of spacing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28713"></span>28713</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1">Add the character's width to the total</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28714"></span>28714</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">Add it to the total</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28715"></span>28715</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Pick up the character again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28718"></span>28718</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Move on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28720"></span>28720</td>
+<td class="instruction">CP 32</td>
+<td class="comment-1" rowspan="1">Was it a space?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28722"></span>28722</td>
+<td class="instruction">JR NZ,<a href="28698.html#28702">28702</a></td>
+<td class="comment-1" rowspan="1">Carry on until the end of the word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28724"></span>28724</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28725"></span>28725</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=width of the word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28726"></span>28726</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28727"></span>28727</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: A=the width of the word in pixels</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28671.html">28671</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28698">Map</a></td>
+<td class="next">
+Next: <a href="28728.html">28728</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

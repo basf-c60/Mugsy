@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45079</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45044.html">45044</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45079">Map</a></td>
+<td class="next">
+Next: <a href="45122.html">45122</a>
+</td>
+</tr>
+</table>
+<div class="description">45079: Shootout: update a figure's position</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45079"></span>45079</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45080"></span>45080</td>
+<td class="instruction">LD HL,(42369)</td>
+<td class="comment-1" rowspan="1">HL=the frame table position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45083"></span>45083</td>
+<td class="instruction">LD A,(42336)</td>
+<td class="comment-1" rowspan="1">A=the state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45086"></span>45086</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45087"></span>45087</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45089"></span>45089</td>
+<td class="instruction">JR NZ,<a href="45079.html#45099">45099</a></td>
+<td class="comment-1" rowspan="1">Yes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45091"></span>45091</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the old state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45092"></span>45092</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45094"></span>45094</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Store the new state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45095"></span>45095</td>
+<td class="instruction">JR NZ,<a href="45079.html#45105">45105</a></td>
+<td class="comment-1" rowspan="1">It was facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45097"></span>45097</td>
+<td class="instruction">JR <a href="45079.html#45111">45111</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45099"></span>45099</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the old state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45100"></span>45100</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45102"></span>45102</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Store the new state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45103"></span>45103</td>
+<td class="instruction">JR NZ,<a href="45079.html#45111">45111</a></td>
+<td class="comment-1" rowspan="1">Same direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45105"></span>45105</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45106"></span>45106</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the frame count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45107"></span>45107</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Back to the first byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45108"></span>45108</td>
+<td class="instruction">CALL <a href="45353.html">45353</a></td>
+<td class="comment-1" rowspan="1">Move to the next frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45111"></span>45111</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45112"></span>45112</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">And another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45113"></span>45113</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=graphic address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45114"></span>45114</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45115"></span>45115</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45116"></span>45116</td>
+<td class="instruction">LD (42355),DE</td>
+<td class="comment-1" rowspan="1">Store the graphic address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45120"></span>45120</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45121"></span>45121</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45044.html">45044</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45079">Map</a></td>
+<td class="next">
+Next: <a href="45122.html">45122</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

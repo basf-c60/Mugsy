@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31511</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31484.html">31484</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31511">Map</a></td>
+<td class="next">
+Next: <a href="31522.html">31522</a>
+</td>
+</tr>
+</table>
+<div class="description">31511: Put a byte from a bitmap block on the screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+ORs the byte at IY into the display file, or writes it if HL is in the attribute file.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31511"></span>31511</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Is HL in the attribute file?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31512"></span>31512</td>
+<td class="instruction">CP 88</td>
+<td class="comment-1" rowspan="1">Is the address 88 or more (attribute file)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31514"></span>31514</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">Pick up the data byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31517"></span>31517</td>
+<td class="instruction">JR NC,<a href="31511.html#31520">31520</a></td>
+<td class="comment-1" rowspan="1">Jump if so: store it as it is</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31519"></span>31519</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Otherwise merge it with the picture</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31520"></span>31520</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store the byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31521"></span>31521</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31484.html">31484</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31511">Map</a></td>
+<td class="next">
+Next: <a href="31522.html">31522</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

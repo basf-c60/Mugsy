@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34440</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34318.html">34318</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34440">Map</a></td>
+<td class="next">
+Next: <a href="34455.html">34455</a>
+</td>
+</tr>
+</table>
+<div class="description">34440: Getaway car animation: last step</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Sets <a href="33993.html">33993</a> to end the animation, then keeps scrolling the car off the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34440"></span>34440</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34442"></span>34442</td>
+<td class="instruction">LD (33993),A</td>
+<td class="comment-1" rowspan="1">Mark the animation as finished</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34445"></span>34445</td>
+<td class="instruction">LD A,(38791)</td>
+<td class="comment-1" rowspan="1">A=the car's pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34448"></span>34448</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34449"></span>34449</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Done if it is at a byte boundary</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34450"></span>34450</td>
+<td class="instruction">CALL <a href="35000.html">35000</a></td>
+<td class="comment-1" rowspan="1">Otherwise keep scrolling the car</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34453"></span>34453</td>
+<td class="instruction">JR <a href="34440.html#34440">34440</a></td>
+<td class="comment-1" rowspan="1">Check again</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34318.html">34318</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34440">Map</a></td>
+<td class="next">
+Next: <a href="34455.html">34455</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

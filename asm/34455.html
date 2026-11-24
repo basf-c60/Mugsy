@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34455</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34440.html">34440</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34455">Map</a></td>
+<td class="next">
+Next: <a href="34481.html">34481</a>
+</td>
+</tr>
+</table>
+<div class="description">34455: Getaway step 2</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34455"></span>34455</td>
+<td class="instruction">CALL <a href="34862.html">34862</a></td>
+<td class="comment-1" rowspan="1">Draw the next frame of the street animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34458"></span>34458</td>
+<td class="instruction">CALL <a href="34759.html">34759</a></td>
+<td class="comment-1" rowspan="1">Restore the background behind the second hood</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34461"></span>34461</td>
+<td class="instruction">CALL <a href="34798.html">34798</a></td>
+<td class="comment-1" rowspan="1">Draw the second hood</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34464"></span>34464</td>
+<td class="instruction">CALL <a href="34817.html">34817</a></td>
+<td class="comment-1" rowspan="1">Draw the five-byte-wide graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34467"></span>34467</td>
+<td class="instruction">CALL <a href="34707.html">34707</a></td>
+<td class="comment-1" rowspan="1">Move the second hood on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34470"></span>34470</td>
+<td class="instruction">LD A,(37933)</td>
+<td class="comment-1" rowspan="1">A=the second hood's screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34473"></span>34473</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34475"></span>34475</td>
+<td class="instruction">CP 18</td>
+<td class="comment-1" rowspan="1">Column 18?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34477"></span>34477</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Yes: this step is not finished (Z set)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34478"></span>34478</td>
+<td class="instruction">CP 30</td>
+<td class="comment-1" rowspan="1">Column 30?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34480"></span>34480</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return (Z set when the hood has reached column 30)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34440.html">34440</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34455">Map</a></td>
+<td class="next">
+Next: <a href="34481.html">34481</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

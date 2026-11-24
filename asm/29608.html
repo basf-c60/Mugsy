@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29608</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29596.html">29596</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29608">Map</a></td>
+<td class="next">
+Next: <a href="29621.html">29621</a>
+</td>
+</tr>
+</table>
+<div class="description">29608: Control code 1: print " $" and a variable</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29608"></span>29608</td>
+<td class="instruction">CALL <a href="29596.html">29596</a></td>
+<td class="comment-1" rowspan="1">Fetch the variable and put a space in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29611"></span>29611</td>
+<td class="instruction">LD A,36</td>
+<td class="comment-1" rowspan="1">A="$"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29613"></span>29613</td>
+<td class="instruction">CALL <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Put it in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29616"></span>29616</td>
+<td class="instruction">CALL <a href="29630.html">29630</a></td>
+<td class="comment-1" rowspan="1">Print the number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29619"></span>29619</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set the zero flag: control code done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29620"></span>29620</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29596.html">29596</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29608">Map</a></td>
+<td class="next">
+Next: <a href="29621.html">29621</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

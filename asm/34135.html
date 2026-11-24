@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34135</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34097.html">34097</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34135">Map</a></td>
+<td class="next">
+Next: <a href="34291.html">34291</a>
+</td>
+</tr>
+</table>
+<div class="description">34135: Prepare a pre-shifted masked sprite</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Copies the 32x32 sprite whose address is at HL into the buffer at DE, giving each row of 4 graphic bytes a mask byte of 255 and a spare 0 byte, then shifts the whole buffer right A pixels.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">This</td>
+<td class="register-desc">routine has a serious bug: it leaves the buffer address on the stack (PUSH DE ... POP HL; PUSH HL) and so, when A is 0, the RET Z at <a href="34135.html#34164">34164</a> "returns" into the sprite buffer and the CPU executes the graphic data. See the <a href="../reference/bugs.html#preshift">bugs page</a>.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="34135"></span>
+<div class="comments">
+<div class="paragraph">
+Input:A Shift (0-7) DE Buffer (24192 or 24384) HL Pointer to the sprite address
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34135"></span>34135</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Push the buffer address (this is the problem)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34136"></span>34136</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">Pick up the address of the sprite graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34137"></span>34137</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34138"></span>34138</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=the high byte of the sprite's graphic address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34139"></span>34139</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=buffer address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34140"></span>34140</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Leave it on the stack (above the return address)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34141"></span>34141</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=graphic, DE=buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34142"></span>34142</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the shift count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34143"></span>34143</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34144"></span>34144</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34145"></span>34145</td>
+<td class="instruction">LD B,32</td>
+<td class="comment-1" rowspan="1">32 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34147"></span>34147</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34148"></span>34148</td>
+<td class="instruction">LD BC,4</td>
+<td class="comment-1" rowspan="1">Copy the 4 graphic bytes of this row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34151"></span>34151</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy the four graphic bytes of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34153"></span>34153</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">A=255</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34154"></span>34154</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Add a mask byte of 255</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34155"></span>34155</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34156"></span>34156</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34157"></span>34157</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Add a spare byte of 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34158"></span>34158</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34159"></span>34159</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers (for the row counter)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34160"></span>34160</td>
+<td class="instruction">DJNZ <a href="34135.html#34147">34147</a></td>
+<td class="comment-1" rowspan="1">Next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34162"></span>34162</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the shift count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34163"></span>34163</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is it zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34164"></span>34164</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">BUG: return to the buffer address left on the stack if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34165"></span>34165</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=shift count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34166"></span>34166</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34167"></span>34167</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the buffer address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34168"></span>34168</td>
+<td class="instruction">LD B,32</td>
+<td class="comment-1" rowspan="1">32 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34170"></span>34170</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">Rotate a 1 into the mask...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34171"></span>34171</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift the mask byte right (the carry brings in a 1)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34173"></span>34173</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip to the next mask byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34174"></span>34174</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">(rows are 6 bytes long)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34175"></span>34175</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift the second mask byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34177"></span>34177</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34178"></span>34178</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34179"></span>34179</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift the third mask byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34181"></span>34181</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Back to the first graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34182"></span>34182</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34183"></span>34183</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34184"></span>34184</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">...and a 0 into the graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34185"></span>34185</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift the first graphic byte (a 0 comes in)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34187"></span>34187</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34188"></span>34188</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34189"></span>34189</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift the second graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34191"></span>34191</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34192"></span>34192</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34193"></span>34193</td>
+<td class="instruction">RR (HL)</td>
+<td class="comment-1" rowspan="1">Shift the third graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34195"></span>34195</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34196"></span>34196</td>
+<td class="instruction">DJNZ <a href="34135.html#34170">34170</a></td>
+<td class="comment-1" rowspan="1">Next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34198"></span>34198</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One pixel of shift less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34199"></span>34199</td>
+<td class="instruction">JR NZ,<a href="34135.html#34166">34166</a></td>
+<td class="comment-1" rowspan="1">Repeat for each pixel of the shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34201"></span>34201</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Drop the buffer address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34202"></span>34202</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return properly</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34203"></span>34203</td>
+<td class="instruction">LD C,32</td>
+<td class="comment-1" rowspan="1">C=32 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34205"></span>34205</td>
+<td class="instruction">LD B,3</td>
+<td class="comment-1" rowspan="1">B=3 bytes per row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34207"></span>34207</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the screen byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34208"></span>34208</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34209"></span>34209</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Save it in the background store</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34210"></span>34210</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next store byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34211"></span>34211</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34212"></span>34212</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">AND with the mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34213"></span>34213</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte of the sprite buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34214"></span>34214</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34215"></span>34215</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Save the result in A'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34216"></span>34216</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=the screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34217"></span>34217</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34219"></span>34219</td>
+<td class="instruction">CP 30</td>
+<td class="comment-1" rowspan="1">Is it column 30 or more?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34221"></span>34221</td>
+<td class="instruction">JR NC,<a href="34135.html#34225">34225</a></td>
+<td class="comment-1" rowspan="1">Yes: do not draw (off the right of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34223"></span>34223</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Get the result back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34224"></span>34224</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34225"></span>34225</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next sprite buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34226"></span>34226</td>
+<td class="instruction">INC E</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34227"></span>34227</td>
+<td class="instruction">DJNZ <a href="34135.html#34207">34207</a></td>
+<td class="comment-1" rowspan="1">Loop for three bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34229"></span>34229</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">Back to the first column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34230"></span>34230</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34231"></span>34231</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34232"></span>34232</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Down one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34233"></span>34233</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34234"></span>34234</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Crossed into the next character row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34236"></span>34236</td>
+<td class="instruction">JR Z,<a href="34135.html#34242">34242</a></td>
+<td class="comment-1" rowspan="1">Yes: adjust</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34238"></span>34238</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34239"></span>34239</td>
+<td class="instruction">JR NZ,<a href="34135.html#34205">34205</a></td>
+<td class="comment-1" rowspan="1">Loop for every row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34241"></span>34241</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34242"></span>34242</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34243"></span>34243</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34245"></span>34245</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34246"></span>34246</td>
+<td class="instruction">JR C,<a href="34135.html#34238">34238</a></td>
+<td class="comment-1" rowspan="1">Carry: next third (D is right)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34248"></span>34248</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34249"></span>34249</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34251"></span>34251</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34252"></span>34252</td>
+<td class="instruction">JP <a href="34135.html#34238">34238</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34255"></span>34255</td>
+<td class="instruction">LD C,32</td>
+<td class="comment-1" rowspan="1">C=32 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34257"></span>34257</td>
+<td class="instruction">LD B,3</td>
+<td class="comment-1" rowspan="1">B=3 bytes per row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34259"></span>34259</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=a saved background byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34260"></span>34260</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Put it back on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34261"></span>34261</td>
+<td class="instruction">INC E</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34262"></span>34262</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next saved byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34263"></span>34263</td>
+<td class="instruction">DJNZ <a href="34135.html#34259">34259</a></td>
+<td class="comment-1" rowspan="1">Loop for three bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34265"></span>34265</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">Back to the first column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34266"></span>34266</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34267"></span>34267</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34268"></span>34268</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Down one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34269"></span>34269</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34270"></span>34270</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Crossed into the next character row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34272"></span>34272</td>
+<td class="instruction">JR Z,<a href="34135.html#34278">34278</a></td>
+<td class="comment-1" rowspan="1">Yes: adjust</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34274"></span>34274</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34275"></span>34275</td>
+<td class="instruction">JR NZ,<a href="34135.html#34257">34257</a></td>
+<td class="comment-1" rowspan="1">Loop for every row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34277"></span>34277</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34278"></span>34278</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34279"></span>34279</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34281"></span>34281</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34282"></span>34282</td>
+<td class="instruction">JR C,<a href="34135.html#34274">34274</a></td>
+<td class="comment-1" rowspan="1">Carry: next third</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34284"></span>34284</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34285"></span>34285</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34287"></span>34287</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34288"></span>34288</td>
+<td class="instruction">JP <a href="34135.html#34274">34274</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34097.html">34097</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34135">Map</a></td>
+<td class="next">
+Next: <a href="34291.html">34291</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

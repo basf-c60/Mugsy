@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34611</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34600.html">34600</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34611">Map</a></td>
+<td class="next">
+Next: <a href="34643.html">34643</a>
+</td>
+</tr>
+</table>
+<div class="description">34611: Getaway car animation: scroll the car and wait</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34611"></span>34611</td>
+<td class="instruction">CALL <a href="35000.html">35000</a></td>
+<td class="comment-1" rowspan="1">Scroll the car two pixels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34614"></span>34614</td>
+<td class="instruction">CALL <a href="34912.html">34912</a></td>
+<td class="comment-1" rowspan="1">Draw the car's moving parts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34617"></span>34617</td>
+<td class="instruction">LD BC,440</td>
+<td class="comment-1" rowspan="1">BC=440: a long delay when the car is at a byte boundary</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34620"></span>34620</td>
+<td class="instruction">LD A,(38791)</td>
+<td class="comment-1" rowspan="1">A=the car's pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34623"></span>34623</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34624"></span>34624</td>
+<td class="instruction">JR NZ,<a href="34611.html#34629">34629</a></td>
+<td class="comment-1" rowspan="1">At a boundary: use the long delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34626"></span>34626</td>
+<td class="instruction">LD BC,60</td>
+<td class="comment-1" rowspan="1">BC=60: a short delay between pixels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34629"></span>34629</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Count BC down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34630"></span>34630</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34631"></span>34631</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine with C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34632"></span>34632</td>
+<td class="instruction">JR NZ,<a href="34611.html#34629">34629</a></td>
+<td class="comment-1" rowspan="1">Loop until it reaches zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34634"></span>34634</td>
+<td class="instruction">CALL <a href="35406.html">35406</a></td>
+<td class="comment-1" rowspan="1">Draw the car, clipped to the scene</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34637"></span>34637</td>
+<td class="instruction">CALL <a href="35192.html">35192</a></td>
+<td class="comment-1" rowspan="1">Draw the masked graphic at 19299</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34640"></span>34640</td>
+<td class="instruction">JP <a href="35000.html#35111">35111</a></td>
+<td class="comment-1" rowspan="1">Draw the car's lower parts</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34600.html">34600</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34611">Map</a></td>
+<td class="next">
+Next: <a href="34643.html">34643</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44884</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44766.html">44766</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44884">Map</a></td>
+<td class="next">
+Next: <a href="44953.html">44953</a>
+</td>
+</tr>
+</table>
+<div class="description">44884: Shootout: deal with a hit</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44884"></span>44884</td>
+<td class="instruction">LD A,(42323)</td>
+<td class="comment-1" rowspan="1">A=has bystander 1 gone down?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44887"></span>44887</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44888"></span>44888</td>
+<td class="instruction">JP NZ,<a href="44884.html#44909">44909</a></td>
+<td class="comment-1" rowspan="1">Yes: look at bystander 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44891"></span>44891</td>
+<td class="instruction">LD A,(42333)</td>
+<td class="comment-1" rowspan="1">A=the "somebody is down" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44894"></span>44894</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44895"></span>44895</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44896"></span>44896</td>
+<td class="instruction">LD HL,(42292)</td>
+<td class="comment-1" rowspan="1">HL=his script pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44899"></span>44899</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44900"></span>44900</td>
+<td class="instruction">LD (42292),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44903"></span>44903</td>
+<td class="instruction">LD HL,42250</td>
+<td class="comment-1" rowspan="1">HL=his timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44906"></span>44906</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Make him ready</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44908"></span>44908</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44909"></span>44909</td>
+<td class="instruction">LD A,(42324)</td>
+<td class="comment-1" rowspan="1">A=has bystander 2 gone down?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44912"></span>44912</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44913"></span>44913</td>
+<td class="instruction">JP NZ,<a href="44884.html#44934">44934</a></td>
+<td class="comment-1" rowspan="1">Yes: look at the main figures</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44916"></span>44916</td>
+<td class="instruction">LD A,(42333)</td>
+<td class="comment-1" rowspan="1">A=the "somebody is down" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44919"></span>44919</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44920"></span>44920</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44921"></span>44921</td>
+<td class="instruction">LD HL,(42294)</td>
+<td class="comment-1" rowspan="1">HL=his script pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44924"></span>44924</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44925"></span>44925</td>
+<td class="instruction">LD (42294),HL</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44928"></span>44928</td>
+<td class="instruction">LD HL,42251</td>
+<td class="comment-1" rowspan="1">HL=his timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44931"></span>44931</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Make him ready</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44933"></span>44933</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44934"></span>44934</td>
+<td class="instruction">LD A,(42325)</td>
+<td class="comment-1" rowspan="1">A=has Mugsy been killed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44937"></span>44937</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44938"></span>44938</td>
+<td class="instruction">JR Z,<a href="44884.html#44944">44944</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44940"></span>44940</td>
+<td class="instruction">LD (42335),A</td>
+<td class="comment-1" rowspan="1">Set the "shootout over" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44943"></span>44943</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44944"></span>44944</td>
+<td class="instruction">LD A,(42326)</td>
+<td class="comment-1" rowspan="1">A=has the hit man been killed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44947"></span>44947</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44948"></span>44948</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">No: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44949"></span>44949</td>
+<td class="instruction">LD (42335),A</td>
+<td class="comment-1" rowspan="1">Set the "shootout over" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44952"></span>44952</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44766.html">44766</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44884">Map</a></td>
+<td class="next">
+Next: <a href="44953.html">44953</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31772</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31755.html">31755</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31772">Map</a></td>
+<td class="next">
+Next: <a href="31796.html">31796</a>
+</td>
+</tr>
+</table>
+<div class="description">31772: Move down one attribute row (unless at the bottom of the picture area)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31772"></span>31772</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31773"></span>31773</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31774"></span>31774</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Move down one attribute row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31777"></span>31777</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add 32 to the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31778"></span>31778</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Into the status lines (row 22)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31779"></span>31779</td>
+<td class="instruction">CP 90</td>
+<td class="comment-1" rowspan="1">Is the high byte 90 (attribute rows 16-23)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31781"></span>31781</td>
+<td class="instruction">JR NZ,<a href="31772.html#31793">31793</a></td>
+<td class="comment-1" rowspan="1">No: the move is fine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31783"></span>31783</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31784"></span>31784</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Keep the row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31786"></span>31786</td>
+<td class="instruction">CP 192</td>
+<td class="comment-1" rowspan="1">Is it row 22 or 23 (the status lines)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31788"></span>31788</td>
+<td class="instruction">JR NZ,<a href="31772.html#31793">31793</a></td>
+<td class="comment-1" rowspan="1">No: the move is fine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31790"></span>31790</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31791"></span>31791</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Undo the move if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31793"></span>31793</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31794"></span>31794</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31795"></span>31795</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31755.html">31755</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31772">Map</a></td>
+<td class="next">
+Next: <a href="31796.html">31796</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

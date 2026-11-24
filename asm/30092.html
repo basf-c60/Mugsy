@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30092</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30090.html">30090</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30092">Map</a></td>
+<td class="next">
+Next: <a href="30120.html">30120</a>
+</td>
+</tr>
+</table>
+<div class="description">30092: Run a VM script</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The game logic is written in a compact interpreted language. IY points at the first instruction; instructions are executed until op 0 (END). See the <a href="../VM.html">VM reference</a> page for the full instruction set. The flags returned by each instruction are preserved (PUSH AF/POP AF) so that op 12 (JZ) can test the result of a native routine called by op 14.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Script address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30092"></span>30092</td>
+<td class="instruction">LD (30090),IY</td>
+<td class="comment-1" rowspan="1">Set the VM program counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30096"></span>30096</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the flags from the previous instruction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30097"></span>30097</td>
+<td class="instruction">CALL <a href="30214.html">30214</a></td>
+<td class="comment-1" rowspan="1">Fetch the opcode</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30100"></span>30100</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1">Double it for the jump table at <a href="30123.html">30123</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="30101"></span>30101</td>
+<td class="instruction">LD HL,30123</td>
+<td class="comment-1" rowspan="1">HL=start of the VM jump table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30104"></span>30104</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="1">Add the doubled opcode to L...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30105"></span>30105</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the low byte of the entry address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30106"></span>30106</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">Prepare to add the carry to H...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30108"></span>30108</td>
+<td class="instruction">ADC A,H</td>
+<td class="comment-1" rowspan="1">...A=H+carry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30109"></span>30109</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">HL=entry in the jump table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30110"></span>30110</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Pick up the handler address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30111"></span>30111</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte of the entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30112"></span>30112</td>
+<td class="instruction">LD H,(HL)</td>
+<td class="comment-1" rowspan="1">H=high byte of the handler address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30113"></span>30113</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=low byte: HL=handler</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30114"></span>30114</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the flags from the previous instruction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30115"></span>30115</td>
+<td class="instruction">CALL <a href="30122.html">30122</a></td>
+<td class="comment-1" rowspan="1">Execute the instruction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30118"></span>30118</td>
+<td class="instruction">JR <a href="30092.html#30096">30096</a></td>
+<td class="comment-1" rowspan="1">Back for the next one</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30090.html">30090</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30092">Map</a></td>
+<td class="next">
+Next: <a href="30120.html">30120</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

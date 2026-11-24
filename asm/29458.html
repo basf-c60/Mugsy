@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29458</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29452.html">29452</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29458">Map</a></td>
+<td class="next">
+Next: <a href="29509.html">29509</a>
+</td>
+</tr>
+</table>
+<div class="description">29458: Render one message item</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+A message is a sequence of items:
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte(s)</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0-31</td>
+<td class="" colspan="1" rowspan="1">Control code (see the table at <a href="29248.html">29248</a>)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">32-95</td>
+<td class="" colspan="1" rowspan="1">Literal character (letters are converted to lower case)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">96-127</td>
+<td class="" colspan="1" rowspan="1">Common word: index into the table at <a href="49710.html">49710</a></td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">128-255, n</td>
+<td class="" colspan="1" rowspan="1">Dictionary word at 48640+((b AND 15)*256)+n; bits 4-6 of b: 7 = capitalise, 2 or 6 = last word, 3 = last word plus a full stop</td>
+</tr>
+</table>
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">Returns</td>
+<td class="register-desc">with the zero flag set at the end of the message.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="29458"></span>
+<div class="comments">
+<div class="paragraph">
+Input:IX Item Output:IX Next item
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29458"></span>29458</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Pick up the first byte of the item</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29461"></span>29461</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="1">Is it a two-byte dictionary reference?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29463"></span>29463</td>
+<td class="instruction">JR Z,<a href="29458.html#29495">29495</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29465"></span>29465</td>
+<td class="instruction">AND 127</td>
+<td class="comment-1" rowspan="1">D=first byte without bit 7 (bits 0-3: page; bits 4-6: type)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29467"></span>29467</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the type and page</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29468"></span>29468</td>
+<td class="instruction">LD E,(IX+1)</td>
+<td class="comment-1" rowspan="1">E=offset into the page</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29471"></span>29471</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point IX at the second byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29473"></span>29473</td>
+<td class="instruction">AND 240</td>
+<td class="comment-1" rowspan="1">Keep the type bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29475"></span>29475</td>
+<td class="instruction">CP 48</td>
+<td class="comment-1" rowspan="1">Type 3 (last word plus full stop)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29477"></span>29477</td>
+<td class="instruction">JR Z,<a href="29574.html#29578">29578</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29479"></span>29479</td>
+<td class="instruction">CP 32</td>
+<td class="comment-1" rowspan="1">Type 2 (last word)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29481"></span>29481</td>
+<td class="instruction">JR Z,<a href="29574.html#29578">29578</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29483"></span>29483</td>
+<td class="instruction">CP 96</td>
+<td class="comment-1" rowspan="1">Type 6 (last word)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29485"></span>29485</td>
+<td class="instruction">JR Z,<a href="29574.html#29578">29578</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29487"></span>29487</td>
+<td class="instruction">CALL <a href="29928.html">29928</a></td>
+<td class="comment-1" rowspan="1">Print the dictionary word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29490"></span>29490</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Move IX to the next item</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29492"></span>29492</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Reset the zero flag: the message continues</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29494"></span>29494</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: NZ means the message goes on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29495"></span>29495</td>
+<td class="instruction">CP 32</td>
+<td class="comment-1" rowspan="1">Is it a control code (0-31)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29497"></span>29497</td>
+<td class="instruction">JR C,<a href="29519.html#29544">29544</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29499"></span>29499</td>
+<td class="instruction">CP 96</td>
+<td class="comment-1" rowspan="1">Is it a common word (96-127)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29501"></span>29501</td>
+<td class="instruction">JP NC,<a href="29907.html">29907</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29504"></span>29504</td>
+<td class="instruction">CALL <a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Otherwise it is a literal character: put it in the buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29507"></span>29507</td>
+<td class="instruction">JR <a href="29458.html#29490">29490</a></td>
+<td class="comment-1" rowspan="1">And move on</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29452.html">29452</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29458">Map</a></td>
+<td class="next">
+Next: <a href="29509.html">29509</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

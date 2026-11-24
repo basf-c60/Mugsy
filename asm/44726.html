@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44726</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44612.html">44612</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44726">Map</a></td>
+<td class="next">
+Next: <a href="44766.html">44766</a>
+</td>
+</tr>
+</table>
+<div class="description">44726: Shootout: move and redraw the current figure</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44726"></span>44726</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the record address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44727"></span>44727</td>
+<td class="instruction">CALL <a href="45693.html">45693</a></td>
+<td class="comment-1" rowspan="1">Copy it to the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44730"></span>44730</td>
+<td class="instruction">CALL <a href="45155.html">45155</a></td>
+<td class="comment-1" rowspan="1">Copy the coordinates</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44733"></span>44733</td>
+<td class="instruction">LD HL,(42309)</td>
+<td class="comment-1" rowspan="1">HL=the frame table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44736"></span>44736</td>
+<td class="instruction">LD (42369),HL</td>
+<td class="comment-1" rowspan="1">Store it in the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44739"></span>44739</td>
+<td class="instruction">CALL <a href="45079.html">45079</a></td>
+<td class="comment-1" rowspan="1">Update the figure's position and animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44742"></span>44742</td>
+<td class="instruction">LD (42353),DE</td>
+<td class="comment-1" rowspan="1">Store the new screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44746"></span>44746</td>
+<td class="instruction">LD A,(42336)</td>
+<td class="comment-1" rowspan="1">A=the state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44749"></span>44749</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44751"></span>44751</td>
+<td class="instruction">JR NZ,<a href="44726.html#44758">44758</a></td>
+<td class="comment-1" rowspan="1">Yes: erase and redraw leftwards</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44753"></span>44753</td>
+<td class="instruction">CALL <a href="45201.html">45201</a></td>
+<td class="comment-1" rowspan="1">Draw facing right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44756"></span>44756</td>
+<td class="instruction">JR <a href="44726.html#44761">44761</a></td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44758"></span>44758</td>
+<td class="instruction">CALL <a href="45276.html">45276</a></td>
+<td class="comment-1" rowspan="1">Draw facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44761"></span>44761</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44762"></span>44762</td>
+<td class="instruction">CALL <a href="45702.html">45702</a></td>
+<td class="comment-1" rowspan="1">Copy the workspace back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44765"></span>44765</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44612.html">44612</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44726">Map</a></td>
+<td class="next">
+Next: <a href="44766.html">44766</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

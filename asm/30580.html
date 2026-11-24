@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30580</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30511.html">30511</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30580">Map</a></td>
+<td class="next">
+Next: <a href="30634.html">30634</a>
+</td>
+</tr>
+</table>
+<div class="description">30580: VM op 27: INT</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30580"></span>30580</td>
+<td class="instruction">CALL <a href="30993.html">30993</a></td>
+<td class="comment-1" rowspan="1">Make the operands positive, noting the sign of the result (from BCDE and, wrongly, BC'DE')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30583"></span>30583</td>
+<td class="instruction">LD (31030),DE</td>
+<td class="comment-1" rowspan="1">Copy BCDE into the 64-bit dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30587"></span>30587</td>
+<td class="instruction">LD (31032),BC</td>
+<td class="comment-1" rowspan="1">Store the top word of the value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30591"></span>30591</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">Clear the upper words...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30594"></span>30594</td>
+<td class="instruction">LD (31034),HL</td>
+<td class="comment-1" rowspan="1">...bytes 4-5...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30597"></span>30597</td>
+<td class="instruction">LD (31036),HL</td>
+<td class="comment-1" rowspan="1">...and bytes 6-7 of the 64-bit dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30600"></span>30600</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Divide by 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30603"></span>30603</td>
+<td class="instruction">LD DE,100</td>
+<td class="comment-1" rowspan="1">DE=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30606"></span>30606</td>
+<td class="instruction">CALL <a href="31055.html">31055</a></td>
+<td class="comment-1" rowspan="1">Divide by 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30609"></span>30609</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Multiply by 100 (dropping the fractional part)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30612"></span>30612</td>
+<td class="instruction">LD DE,100</td>
+<td class="comment-1" rowspan="1">DE=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30615"></span>30615</td>
+<td class="instruction">CALL <a href="30782.html">30782</a></td>
+<td class="comment-1" rowspan="1">Multiply by 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30618"></span>30618</td>
+<td class="instruction">LD DE,(31030)</td>
+<td class="comment-1" rowspan="1">BCDE=result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30622"></span>30622</td>
+<td class="instruction">LD BC,(31032)</td>
+<td class="comment-1" rowspan="1">BC=the top word of the result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30626"></span>30626</td>
+<td class="instruction">LD A,(31054)</td>
+<td class="comment-1" rowspan="1">Should it be negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30629"></span>30629</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30630"></span>30630</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30631"></span>30631</td>
+<td class="instruction">JP <a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Negate it</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30511.html">30511</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30580">Map</a></td>
+<td class="next">
+Next: <a href="30634.html">30634</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

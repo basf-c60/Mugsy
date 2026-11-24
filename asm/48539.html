@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 48539</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47082.html">47082</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#48539">Map</a></td>
+<td class="next">
+Next: <a href="48639.html">48639</a>
+</td>
+</tr>
+</table>
+<div class="description">48539: Interrupt routine for the shootout: the sprite scheduler</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Runs fifty times a second. For each figure whose timer is 0 it counts down the figure's countdown; when that reaches zero it points SP at the figure's record and uses POP to load HL, DE, BC and IY from it, then jumps to IY: a sprite drawing routine (<a href="45965.html">45965</a>, <a href="45965.html#46031">46031</a>, <a href="45965.html#46119">46119</a> or <a href="45965.html#46196">46196</a>) that draws the figure with the registers already set up. The drawing routines pass control on through <a href="48539.html#48601">48601</a> and finish at <a href="48539.html#48617">48617</a>, which restores the real stack and sets the timer to 1. The routine ends by reading the keyboard.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48539"></span>48539</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48540"></span>48540</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48541"></span>48541</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48542"></span>48542</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48543"></span>48543</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48545"></span>48545</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48547"></span>48547</td>
+<td class="instruction">LD HL,42250</td>
+<td class="comment-1" rowspan="1">HL=the figure timers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48550"></span>48550</td>
+<td class="instruction">LD A,(42311)</td>
+<td class="comment-1" rowspan="1">A=the number of figures in use</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48553"></span>48553</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48554"></span>48554</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=0: the figure number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48556"></span>48556</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=this figure's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48557"></span>48557</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48558"></span>48558</td>
+<td class="instruction">JR NZ,<a href="48539.html#48622">48622</a></td>
+<td class="comment-1" rowspan="1">Not zero: the figure is idle or waiting for orders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48560"></span>48560</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the counters</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48561"></span>48561</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the timer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48562"></span>48562</td>
+<td class="instruction">LD HL,42257</td>
+<td class="comment-1" rowspan="1">HL=the table of countdown pointers (<a href="42257.html">42257</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48565"></span>48565</td>
+<td class="instruction">LD B,0</td>
+<td class="comment-1" rowspan="1">B=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48567"></span>48567</td>
+<td class="instruction">RL C</td>
+<td class="comment-1" rowspan="1">C=the figure number*2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48569"></span>48569</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">HL=its entry</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48570"></span>48570</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the countdown address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48571"></span>48571</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48572"></span>48572</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48573"></span>48573</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the countdown address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48574"></span>48574</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48575"></span>48575</td>
+<td class="instruction">JR Z,<a href="48539.html#48582">48582</a></td>
+<td class="comment-1" rowspan="1">Reached zero: draw the figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48577"></span>48577</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the timer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48578"></span>48578</td>
+<td class="instruction">LD (HL),255</td>
+<td class="comment-1" rowspan="1">Set the timer to 255 so that the INC below leaves it at 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48580"></span>48580</td>
+<td class="instruction">JR <a href="48539.html#48620">48620</a></td>
+<td class="comment-1" rowspan="1">Next figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48582"></span>48582</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte: the sprite job pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48583"></span>48583</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48584"></span>48584</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48585"></span>48585</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48586"></span>48586</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the sprite job (a block of register values)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48587"></span>48587</td>
+<td class="instruction">LD IX,0</td>
+<td class="comment-1" rowspan="1">IX=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48591"></span>48591</td>
+<td class="instruction">ADD IX,SP</td>
+<td class="comment-1" rowspan="1">IX=the stack pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48593"></span>48593</td>
+<td class="instruction">LD SP,HL</td>
+<td class="comment-1" rowspan="1">SP=the sprite job</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48594"></span>48594</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the first register pair from the job</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48595"></span>48595</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the second pair</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48596"></span>48596</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">BC=the third pair</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48597"></span>48597</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">IY=the address of the drawing routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48599"></span>48599</td>
+<td class="instruction">JP (IY)</td>
+<td class="comment-1" rowspan="1">Run the drawing routine (it finishes with a jump to <a href="48539.html#48601">48601</a> or <a href="48539.html#48617">48617</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48601"></span>48601</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48602"></span>48602</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL'=the next value from the job</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48603"></span>48603</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE'=the next value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48604"></span>48604</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48605"></span>48605</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">BC=the next value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48606"></span>48606</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=the next value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48607"></span>48607</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">IY=the next routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48609"></span>48609</td>
+<td class="instruction">LD (42303),SP</td>
+<td class="comment-1" rowspan="1">Remember the stack pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48613"></span>48613</td>
+<td class="instruction">LD SP,HL</td>
+<td class="comment-1" rowspan="1">SP=the job's saved-background area</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48614"></span>48614</td>
+<td class="instruction">INC SP</td>
+<td class="comment-1" rowspan="1">Step past the last byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48615"></span>48615</td>
+<td class="instruction">JP (IY)</td>
+<td class="comment-1" rowspan="1">Run the second routine (it finishes with a jump to <a href="48539.html#48617">48617</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48617"></span>48617</td>
+<td class="instruction">LD SP,IX</td>
+<td class="comment-1" rowspan="1">Restore the real stack pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48619"></span>48619</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the timer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48620"></span>48620</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the counters</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48621"></span>48621</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">Timer: 0 becomes 1 (the figure is ready for orders)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48622"></span>48622</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48623"></span>48623</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Next figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48624"></span>48624</td>
+<td class="instruction">DJNZ <a href="48539.html#48556">48556</a></td>
+<td class="comment-1" rowspan="1">Loop for all the figures</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48626"></span>48626</td>
+<td class="instruction">CALL <a href="46460.html">46460</a></td>
+<td class="comment-1" rowspan="1">Read the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48629"></span>48629</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48631"></span>48631</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48633"></span>48633</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48634"></span>48634</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48635"></span>48635</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48636"></span>48636</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48637"></span>48637</td>
+<td class="instruction">EI</td>
+<td class="comment-1" rowspan="1">Enable interrupts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48638"></span>48638</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return from the interrupt</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47082.html">47082</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#48539">Map</a></td>
+<td class="next">
+Next: <a href="48639.html">48639</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

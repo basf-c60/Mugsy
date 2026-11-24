@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 33937</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33909.html">33909</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33937">Map</a></td>
+<td class="next">
+Next: <a href="33993.html">33993</a>
+</td>
+</tr>
+</table>
+<div class="description">33937: Initialise the game variables</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Copies the initial values of v0-v18 from the table at <a href="33552.html#33812">33812</a>, sets the nine VM flags at <a href="33888.html">33888</a> to 1 and chooses the length of the game: v36 = 7 + 4 x (a random number from 0 to 1.00), which is not rounded (see <a href="../reference/bugs.html#years">the bugs page</a>).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="33937"></span>33937</td>
+<td class="instruction">LD HL,33812</td>
+<td class="comment-1" rowspan="1">Copy the initial values of v0-v18...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33940"></span>33940</td>
+<td class="instruction">LD DE,33552</td>
+<td class="comment-1" rowspan="1">...from the table at <a href="33552.html#33812">33812</a> (which doubles as variables v65-v83)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33943"></span>33943</td>
+<td class="instruction">LD BC,76</td>
+<td class="comment-1" rowspan="1">BC=76: nineteen four-byte variables</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33946"></span>33946</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy them into place</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33948"></span>33948</td>
+<td class="instruction">LD HL,33888</td>
+<td class="comment-1" rowspan="1">Set the nine VM flag bytes at <a href="33888.html">33888</a>...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33951"></span>33951</td>
+<td class="instruction">LD B,10</td>
+<td class="comment-1" rowspan="1">B=10: nine VM flags plus the game status flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33953"></span>33953</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">...and the game status flag to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33955"></span>33955</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33956"></span>33956</td>
+<td class="instruction">DJNZ <a href="33937.html#33953">33953</a></td>
+<td class="comment-1" rowspan="1">Loop for all ten</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33958"></span>33958</td>
+<td class="instruction">LD DE,100</td>
+<td class="comment-1" rowspan="1">BCDE=1.00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33961"></span>33961</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC=0: the high half of 1.00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33964"></span>33964</td>
+<td class="instruction">CALL <a href="30482.html">30482</a></td>
+<td class="comment-1" rowspan="1">Get a random number in BCDE (0..1.00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33967"></span>33967</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers to hold the multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33968"></span>33968</td>
+<td class="instruction">LD DE,400</td>
+<td class="comment-1" rowspan="1">BC'DE'=4.00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33971"></span>33971</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC'=0: the high half of 4.00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33974"></span>33974</td>
+<td class="instruction">CALL <a href="30657.html">30657</a></td>
+<td class="comment-1" rowspan="1">Multiply</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33977"></span>33977</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33978"></span>33978</td>
+<td class="instruction">LD DE,700</td>
+<td class="comment-1" rowspan="1">BC'DE'=7.00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33981"></span>33981</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC=0: the high half of 7.00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33984"></span>33984</td>
+<td class="instruction">CALL <a href="30441.html">30441</a></td>
+<td class="comment-1" rowspan="1">Add</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33987"></span>33987</td>
+<td class="instruction">LD L,36</td>
+<td class="comment-1" rowspan="1">Store the result in v36 (the length of the game in years)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33989"></span>33989</td>
+<td class="instruction">CALL <a href="31179.html">31179</a></td>
+<td class="comment-1" rowspan="1">Store BCDE in v36: the length of the game, 7 + 4 x (a random number), an unrounded number of years</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33992"></span>33992</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33909.html">33909</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33937">Map</a></td>
+<td class="next">
+Next: <a href="33993.html">33993</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

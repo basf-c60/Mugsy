@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 29897</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29873.html">29873</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29897">Map</a></td>
+<td class="next">
+Next: <a href="29907.html">29907</a>
+</td>
+</tr>
+</table>
+<div class="description">29897: Control code 8 handler (broken backspace)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The handler for message control code 8, which was evidently meant to be a backspace: it steps the text buffer pointer (<a href="29926.html">29926</a>) back one character so that the next character overwrites the last. The jump table at <a href="29248.html">29248</a> points here. These bytes are Z80 code; each comment gives the instruction.
+</div>
+<div class="paragraph">
+It is broken. The first instruction, PUSH HL, is never undone, and the dispatcher (<a href="29519.html#29544">29544</a>) has just put the handler's own address in HL, so the final RET goes back to the start of the handler. The handler then runs a second time and this time returns to 23807, one byte before the start of the text buffer (23808), and executes whatever is there as code. Run in the simulator, the buffer pointer dropped by two and the call never returned. No message in the game uses code 8, so nobody ever sees it (see the <a href="../reference/bugs.html#backspace">bugs page</a>).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29897"></span>29897</td>
+<td class="instruction">DEFB 229</td>
+<td class="comment-1" rowspan="1">PUSH HL: the stray instruction (nothing ever pops it)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29898"></span>29898</td>
+<td class="instruction">DEFB 42,230,116</td>
+<td class="comment-1" rowspan="1">LD HL,(<a href="29926.html">29926</a>): HL=the text buffer pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29901"></span>29901</td>
+<td class="instruction">DEFB 43</td>
+<td class="comment-1" rowspan="1">DEC HL: step back one character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29902"></span>29902</td>
+<td class="instruction">DEFB 34,230,116</td>
+<td class="comment-1" rowspan="1">LD (<a href="29926.html">29926</a>),HL: store the new pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29905"></span>29905</td>
+<td class="instruction">DEFB 175</td>
+<td class="comment-1" rowspan="1">XOR A: set the zero flag (code done)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29906"></span>29906</td>
+<td class="instruction">DEFB 201</td>
+<td class="comment-1" rowspan="1">RET: return, but to the wrong place because of the PUSH HL</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29873.html">29873</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29897">Map</a></td>
+<td class="next">
+Next: <a href="29907.html">29907</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

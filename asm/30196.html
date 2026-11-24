@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30196</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30193.html">30193</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30196">Map</a></td>
+<td class="next">
+Next: <a href="30211.html">30211</a>
+</td>
+</tr>
+</table>
+<div class="description">30196: Fetch a word from the VM stream</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Flags are preserved.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Word</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30196"></span>30196</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30197"></span>30197</td>
+<td class="instruction">LD HL,(30090)</td>
+<td class="comment-1" rowspan="1">Pick up the VM program counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30200"></span>30200</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Fetch the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30201"></span>30201</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Step past the low byte...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30202"></span>30202</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...and the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30203"></span>30203</td>
+<td class="instruction">LD (30090),HL</td>
+<td class="comment-1" rowspan="1">Advance the program counter by 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30206"></span>30206</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Back to the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30207"></span>30207</td>
+<td class="instruction">LD H,(HL)</td>
+<td class="comment-1" rowspan="1">Fetch the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30208"></span>30208</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">HL=word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30209"></span>30209</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30210"></span>30210</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: HL=the 16-bit operand</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30193.html">30193</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30196">Map</a></td>
+<td class="next">
+Next: <a href="30211.html">30211</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

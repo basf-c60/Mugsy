@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32034</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31917.html">31917</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32034">Map</a></td>
+<td class="next">
+Next: <a href="32045.html">32045</a>
+</td>
+</tr>
+</table>
+<div class="description">32034: Plot the pixel at HL (mask D) and set its attribute</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32034"></span>32034</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32035"></span>32035</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the pixel mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32036"></span>32036</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Keep it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32037"></span>32037</td>
+<td class="instruction">CALL <a href="32045.html">32045</a></td>
+<td class="comment-1" rowspan="1">Set the ink of the cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32040"></span>32040</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Get the mask back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32041"></span>32041</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Set the pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32042"></span>32042</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store the byte with the pixel set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32043"></span>32043</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32044"></span>32044</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31917.html">31917</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32034">Map</a></td>
+<td class="next">
+Next: <a href="32045.html">32045</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

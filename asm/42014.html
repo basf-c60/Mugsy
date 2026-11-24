@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42014</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41997.html">41997</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42014">Map</a></td>
+<td class="next">
+Next: <a href="42026.html">42026</a>
+</td>
+</tr>
+</table>
+<div class="description">42014: Short delay (length at 41995)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42014"></span>42014</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42015"></span>42015</td>
+<td class="instruction">LD BC,(41995)</td>
+<td class="comment-1" rowspan="1">BC=the short delay length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42019"></span>42019</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Count down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42020"></span>42020</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Test BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42021"></span>42021</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">...for zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42022"></span>42022</td>
+<td class="instruction">JR NZ,<a href="42014.html#42019">42019</a></td>
+<td class="comment-1" rowspan="1">Loop until it is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42024"></span>42024</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42025"></span>42025</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41997.html">41997</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42014">Map</a></td>
+<td class="next">
+Next: <a href="42026.html">42026</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

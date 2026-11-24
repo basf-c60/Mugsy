@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31201</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31197.html">31197</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31201">Map</a></td>
+<td class="next">
+Next: <a href="31218.html">31218</a>
+</td>
+</tr>
+</table>
+<div class="description">31201: Load variable L into BCDE</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Input:L Variable number
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31201"></span>31201</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">HL=4*variable number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31203"></span>31203</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=2*variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31204"></span>31204</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=4*variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31205"></span>31205</td>
+<td class="instruction">LD DE,33552</td>
+<td class="comment-1" rowspan="1">Point HL at the variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31208"></span>31208</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=address of the variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31209"></span>31209</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">Load it into BCDE (low byte first)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31210"></span>31210</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31211"></span>31211</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=second byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31212"></span>31212</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31213"></span>31213</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1">C=third byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31214"></span>31214</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31215"></span>31215</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1">B=top byte (the sign)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31216"></span>31216</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point past the variable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31217"></span>31217</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: BCDE=the variable</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31197.html">31197</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31201">Map</a></td>
+<td class="next">
+Next: <a href="31218.html">31218</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

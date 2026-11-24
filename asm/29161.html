@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29161</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29029.html">29029</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29161">Map</a></td>
+<td class="next">
+Next: <a href="29236.html">29236</a>
+</td>
+</tr>
+</table>
+<div class="description">29161: Work out the bubble shape for the text</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Chooses the smallest bubble (number of lines, B) into which the measured words will fit, using the line widths at <a href="28728.html">28728</a>.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Number of lines</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29161"></span>29161</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29163"></span>29163</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29165"></span>29165</td>
+<td class="instruction">LD IX,24191</td>
+<td class="comment-1" rowspan="1">IX=just before the list of word widths (24192)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29169"></span>29169</td>
+<td class="instruction">LD IY,24192</td>
+<td class="comment-1" rowspan="1">IY=the list of word widths</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29173"></span>29173</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">A=a width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29176"></span>29176</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Next one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29178"></span>29178</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">The end marker is 255</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29179"></span>29179</td>
+<td class="instruction">JR NZ,<a href="29161.html#29173">29173</a></td>
+<td class="comment-1" rowspan="1">Keep looking for it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29181"></span>29181</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">IY=the end marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29183"></span>29183</td>
+<td class="instruction">LD B,0</td>
+<td class="comment-1" rowspan="1">B=0: no lines yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29185"></span>29185</td>
+<td class="instruction">LD HL,28728</td>
+<td class="comment-1" rowspan="1">HL=the table of line widths (<a href="28728.html">28728</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29188"></span>29188</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=0: nothing in this line yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29190"></span>29190</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Next word from the front of the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29192"></span>29192</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">A=its width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29195"></span>29195</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1">Add it to the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29196"></span>29196</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the line width so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29197"></span>29197</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the width allowed for this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29198"></span>29198</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="1">Does the word fit?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29199"></span>29199</td>
+<td class="instruction">JR NC,<a href="29161.html#29190">29190</a></td>
+<td class="comment-1" rowspan="1">Yes: try another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29201"></span>29201</td>
+<td class="instruction">DEC IX</td>
+<td class="comment-1" rowspan="1">Back off the last word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29203"></span>29203</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">One more line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29204"></span>29204</td>
+<td class="instruction">CALL <a href="29236.html">29236</a></td>
+<td class="comment-1" rowspan="1">Have the front and back met?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29207"></span>29207</td>
+<td class="instruction">JR NC,<a href="29161.html#29231">29231</a></td>
+<td class="comment-1" rowspan="1">Yes: finished</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29209"></span>29209</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=0: nothing in the line from the back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29211"></span>29211</td>
+<td class="instruction">DEC IY</td>
+<td class="comment-1" rowspan="1">Back one word from the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29213"></span>29213</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="1">A=its width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29216"></span>29216</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1">Add it to the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29217"></span>29217</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the line width so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29218"></span>29218</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=the width allowed for this line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29219"></span>29219</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="1">Does the word fit?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29220"></span>29220</td>
+<td class="instruction">JR NC,<a href="29161.html#29211">29211</a></td>
+<td class="comment-1" rowspan="1">Yes: try another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29222"></span>29222</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">One more line (the last one, filled from the back)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29223"></span>29223</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Put the word back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29225"></span>29225</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next width in the table (the next pair of lines is wider)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29226"></span>29226</td>
+<td class="instruction">CALL <a href="29236.html">29236</a></td>
+<td class="comment-1" rowspan="1">Have the front and back met?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29229"></span>29229</td>
+<td class="instruction">JR C,<a href="29161.html#29188">29188</a></td>
+<td class="comment-1" rowspan="1">No: fill another line from the front</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29231"></span>29231</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29233"></span>29233</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29235"></span>29235</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29029.html">29029</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29161">Map</a></td>
+<td class="next">
+Next: <a href="29236.html">29236</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

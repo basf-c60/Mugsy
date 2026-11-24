@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28017</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28006.html">28006</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28017">Map</a></td>
+<td class="next">
+Next: <a href="28021.html">28021</a>
+</td>
+</tr>
+</table>
+<div class="description">28017: Set the "decimal point" result</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns with the zero flag reset and the carry flag set.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28017"></span>28017</td>
+<td class="instruction">OR 1</td>
+<td class="comment-1" rowspan="1">Reset the zero flag...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28019"></span>28019</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">...and set the carry flag: a decimal point was found</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28020"></span>28020</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: NZ and carry set means a decimal point</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28006.html">28006</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28017">Map</a></td>
+<td class="next">
+Next: <a href="28021.html">28021</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

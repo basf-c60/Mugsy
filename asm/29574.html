@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29574</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29570.html">29570</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29574">Map</a></td>
+<td class="next">
+Next: <a href="29594.html">29594</a>
+</td>
+</tr>
+</table>
+<div class="description">29574: Control code 21: full stop and end</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29574"></span>29574</td>
+<td class="instruction">LD D,48</td>
+<td class="comment-1" rowspan="1">D=48 (as for a type 3 last word)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29576"></span>29576</td>
+<td class="instruction">JR <a href="29574.html#29581">29581</a></td>
+<td class="comment-1" rowspan="1">End the message with a full stop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29578"></span>29578</td>
+<td class="instruction">CALL <a href="29928.html">29928</a></td>
+<td class="comment-1" rowspan="1">Print the last word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29581"></span>29581</td>
+<td class="instruction">LD A,46</td>
+<td class="comment-1" rowspan="1">A=full stop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29583"></span>29583</td>
+<td class="instruction">BIT 6,D</td>
+<td class="comment-1" rowspan="1">Type 6?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29585"></span>29585</td>
+<td class="instruction">JR NZ,<a href="29594.html">29594</a></td>
+<td class="comment-1" rowspan="1">Jump if so: no full stop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29587"></span>29587</td>
+<td class="instruction">BIT 4,D</td>
+<td class="comment-1" rowspan="1">Type 3?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29589"></span>29589</td>
+<td class="instruction">CALL NZ,<a href="29509.html">29509</a></td>
+<td class="comment-1" rowspan="1">Print the full stop if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29592"></span>29592</td>
+<td class="instruction">BIT 4,D</td>
+<td class="comment-1" rowspan="1">Test bit 4 of D again</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29570.html">29570</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29574">Map</a></td>
+<td class="next">
+Next: <a href="29594.html">29594</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

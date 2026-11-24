@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 35406</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="35366.html">35366</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#35406">Map</a></td>
+<td class="next">
+Next: <a href="35854.html">35854</a>
+</td>
+</tr>
+</table>
+<div class="description">35406: Draw the car (unrolled, clipped at the screen edge)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+A long unrolled loop that ORs the car graphic into the screen, with clipping at column 30, for speed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="35406"></span>35406</td>
+<td class="instruction">LD DE,24119</td>
+<td class="comment-1" rowspan="1">DE=the first buffer (24119, 12 bytes per row)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35409"></span>35409</td>
+<td class="instruction">LD HL,(38792)</td>
+<td class="comment-1" rowspan="1">HL=the screen address where the picture starts (38792)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35412"></span>35412</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35413"></span>35413</td>
+<td class="instruction">LD HL,38794</td>
+<td class="comment-1" rowspan="1">HL'=the car buffer (38794, 12 bytes by 38 rows)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35416"></span>35416</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35417"></span>35417</td>
+<td class="instruction">LD C,38</td>
+<td class="comment-1" rowspan="1">C=38 pixel rows to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35419"></span>35419</td>
+<td class="instruction">LD A,(38791)</td>
+<td class="comment-1" rowspan="1">A=the shift flag (38791)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35422"></span>35422</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35423"></span>35423</td>
+<td class="instruction">JP Z,<a href="35854.html#35890">35890</a></td>
+<td class="comment-1" rowspan="1">Zero: use the version that copies the first buffer (<a href="35854.html#35890">35890</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35426"></span>35426</td>
+<td class="instruction">JP <a href="35406.html#35452">35452</a></td>
+<td class="comment-1" rowspan="1">Non-zero: use the version that ORs in the car buffer (<a href="35406.html#35452">35452</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35429"></span>35429</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35430"></span>35430</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35431"></span>35431</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35432"></span>35432</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35433"></span>35433</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35434"></span>35434</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35435"></span>35435</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35436"></span>35436</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35437"></span>35437</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35438"></span>35438</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35439"></span>35439</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35440"></span>35440</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35441"></span>35441</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35442"></span>35442</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35443"></span>35443</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35444"></span>35444</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35445"></span>35445</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35446"></span>35446</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35447"></span>35447</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35448"></span>35448</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35449"></span>35449</td>
+<td class="instruction">JP <a href="35406.html#35616">35616</a></td>
+<td class="comment-1" rowspan="1">Carry on with the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35452"></span>35452</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the screen address of the start of this row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35453"></span>35453</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35454"></span>35454</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Keep the row bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35456"></span>35456</td>
+<td class="instruction">OR 30</td>
+<td class="comment-1" rowspan="1">Column 30: the right-hand clip position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35458"></span>35458</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the low byte of the clip position on this row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35459"></span>35459</td>
+<td class="instruction">BIT 7,H</td>
+<td class="comment-1" rowspan="1">Is the left-clip flag (bit 7 of H) set for this row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35461"></span>35461</td>
+<td class="instruction">JP NZ,<a href="35406.html#35657">35657</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the columns left of the street scene first</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35464"></span>35464</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35465"></span>35465</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35466"></span>35466</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35467"></span>35467</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35468"></span>35468</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35469"></span>35469</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35470"></span>35470</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35471"></span>35471</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35472"></span>35472</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35473"></span>35473</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35474"></span>35474</td>
+<td class="instruction">JR Z,<a href="35406.html#35429">35429</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35476"></span>35476</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35477"></span>35477</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35478"></span>35478</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35479"></span>35479</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35480"></span>35480</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35481"></span>35481</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35482"></span>35482</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35483"></span>35483</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35484"></span>35484</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35485"></span>35485</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35486"></span>35486</td>
+<td class="instruction">JR Z,<a href="35406.html#35433">35433</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35488"></span>35488</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35489"></span>35489</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35490"></span>35490</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35491"></span>35491</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35492"></span>35492</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35493"></span>35493</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35494"></span>35494</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35495"></span>35495</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35496"></span>35496</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35497"></span>35497</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35498"></span>35498</td>
+<td class="instruction">JR Z,<a href="35406.html#35437">35437</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35500"></span>35500</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35501"></span>35501</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35502"></span>35502</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35503"></span>35503</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35504"></span>35504</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35505"></span>35505</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35506"></span>35506</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35507"></span>35507</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35508"></span>35508</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35509"></span>35509</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35510"></span>35510</td>
+<td class="instruction">JR Z,<a href="35406.html#35441">35441</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35512"></span>35512</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35513"></span>35513</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35514"></span>35514</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35515"></span>35515</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35516"></span>35516</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35517"></span>35517</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35518"></span>35518</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35519"></span>35519</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35520"></span>35520</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35521"></span>35521</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35522"></span>35522</td>
+<td class="instruction">JR Z,<a href="35406.html#35445">35445</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35524"></span>35524</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35525"></span>35525</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35526"></span>35526</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35527"></span>35527</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35528"></span>35528</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35529"></span>35529</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35530"></span>35530</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35531"></span>35531</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35532"></span>35532</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35533"></span>35533</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35534"></span>35534</td>
+<td class="instruction">JR Z,<a href="35406.html#35616">35616</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35536"></span>35536</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35537"></span>35537</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35538"></span>35538</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35539"></span>35539</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35540"></span>35540</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35541"></span>35541</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35542"></span>35542</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35543"></span>35543</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35544"></span>35544</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35545"></span>35545</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35546"></span>35546</td>
+<td class="instruction">JR Z,<a href="35406.html#35620">35620</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35548"></span>35548</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35549"></span>35549</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35550"></span>35550</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35551"></span>35551</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35552"></span>35552</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35553"></span>35553</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35554"></span>35554</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35555"></span>35555</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35556"></span>35556</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35557"></span>35557</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35558"></span>35558</td>
+<td class="instruction">JR Z,<a href="35406.html#35624">35624</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35560"></span>35560</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35561"></span>35561</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35562"></span>35562</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35563"></span>35563</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35564"></span>35564</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35565"></span>35565</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35566"></span>35566</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35567"></span>35567</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35568"></span>35568</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35569"></span>35569</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35570"></span>35570</td>
+<td class="instruction">JR Z,<a href="35406.html#35628">35628</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35572"></span>35572</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35573"></span>35573</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35574"></span>35574</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35575"></span>35575</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35576"></span>35576</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35577"></span>35577</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35578"></span>35578</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35579"></span>35579</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35580"></span>35580</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35581"></span>35581</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35582"></span>35582</td>
+<td class="instruction">JR Z,<a href="35406.html#35632">35632</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35584"></span>35584</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35585"></span>35585</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35586"></span>35586</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35587"></span>35587</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35588"></span>35588</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35589"></span>35589</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35590"></span>35590</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35591"></span>35591</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35592"></span>35592</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen column byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35593"></span>35593</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Reached the clip column (30)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35594"></span>35594</td>
+<td class="instruction">JR Z,<a href="35406.html#35636">35636</a></td>
+<td class="comment-1" rowspan="1">Yes: skip the rest of the row (the picture is clipped at column 30)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35596"></span>35596</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next byte of the buffer at 24119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35597"></span>35597</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35598"></span>35598</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">OR in the matching byte of the car buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35599"></span>35599</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35600"></span>35600</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35601"></span>35601</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Draw it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35602"></span>35602</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35603"></span>35603</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35604"></span>35604</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Get the start of the row back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35605"></span>35605</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35606"></span>35606</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35607"></span>35607</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Crossed into the next character row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35609"></span>35609</td>
+<td class="instruction">JR Z,<a href="35406.html#35643">35643</a></td>
+<td class="comment-1" rowspan="1">Yes: move down to the next character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35611"></span>35611</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35612"></span>35612</td>
+<td class="instruction">JP NZ,<a href="35406.html#35452">35452</a></td>
+<td class="comment-1" rowspan="1">Draw the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35615"></span>35615</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35616"></span>35616</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35617"></span>35617</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35618"></span>35618</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35619"></span>35619</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35620"></span>35620</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35621"></span>35621</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35622"></span>35622</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35623"></span>35623</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35624"></span>35624</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35625"></span>35625</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35626"></span>35626</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35627"></span>35627</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35628"></span>35628</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35629"></span>35629</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35630"></span>35630</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35631"></span>35631</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35632"></span>35632</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35633"></span>35633</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35634"></span>35634</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35635"></span>35635</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35636"></span>35636</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35637"></span>35637</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35638"></span>35638</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35639"></span>35639</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35640"></span>35640</td>
+<td class="instruction">JP <a href="35406.html#35604">35604</a></td>
+<td class="comment-1" rowspan="1">Carry on with the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35643"></span>35643</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35644"></span>35644</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Add one character row (32 bytes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35646"></span>35646</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35647"></span>35647</td>
+<td class="instruction">JP C,<a href="35406.html#35611">35611</a></td>
+<td class="comment-1" rowspan="1">Carry: that was the last character row of its third, so H (already 8 higher) is right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35650"></span>35650</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">No carry: still in the same third, so A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35651"></span>35651</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8 that the pixel row steps added</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35653"></span>35653</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=the new high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35654"></span>35654</td>
+<td class="instruction">JP <a href="35406.html#35611">35611</a></td>
+<td class="comment-1" rowspan="1">Carry on with the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35657"></span>35657</td>
+<td class="instruction">RES 7,H</td>
+<td class="comment-1" rowspan="1">Clear the left-clip flag in H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35659"></span>35659</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35660"></span>35660</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35662"></span>35662</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35664"></span>35664</td>
+<td class="instruction">JP Z,<a href="35406.html#35464">35464</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35667"></span>35667</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35668"></span>35668</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35671"></span>35671</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35672"></span>35672</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35673"></span>35673</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35674"></span>35674</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35675"></span>35675</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35676"></span>35676</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35678"></span>35678</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35680"></span>35680</td>
+<td class="instruction">JP Z,<a href="35406.html#35476">35476</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35683"></span>35683</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35684"></span>35684</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35687"></span>35687</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35688"></span>35688</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35689"></span>35689</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35690"></span>35690</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35691"></span>35691</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35692"></span>35692</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35694"></span>35694</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35696"></span>35696</td>
+<td class="instruction">JP Z,<a href="35406.html#35488">35488</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35699"></span>35699</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35700"></span>35700</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35703"></span>35703</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35704"></span>35704</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35705"></span>35705</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35706"></span>35706</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35707"></span>35707</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35708"></span>35708</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35710"></span>35710</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35712"></span>35712</td>
+<td class="instruction">JP Z,<a href="35406.html#35500">35500</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35715"></span>35715</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35716"></span>35716</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35719"></span>35719</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35720"></span>35720</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35721"></span>35721</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35722"></span>35722</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35723"></span>35723</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35724"></span>35724</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35726"></span>35726</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35728"></span>35728</td>
+<td class="instruction">JP Z,<a href="35406.html#35512">35512</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35731"></span>35731</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35732"></span>35732</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35735"></span>35735</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35736"></span>35736</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35737"></span>35737</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35738"></span>35738</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35739"></span>35739</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35740"></span>35740</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35742"></span>35742</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35744"></span>35744</td>
+<td class="instruction">JP Z,<a href="35406.html#35524">35524</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35747"></span>35747</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35748"></span>35748</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35751"></span>35751</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35752"></span>35752</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35753"></span>35753</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35754"></span>35754</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35755"></span>35755</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35756"></span>35756</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35758"></span>35758</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35760"></span>35760</td>
+<td class="instruction">JP Z,<a href="35406.html#35536">35536</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35763"></span>35763</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35764"></span>35764</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35767"></span>35767</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35768"></span>35768</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35769"></span>35769</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35770"></span>35770</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35771"></span>35771</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35772"></span>35772</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35774"></span>35774</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35776"></span>35776</td>
+<td class="instruction">JP Z,<a href="35406.html#35548">35548</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35779"></span>35779</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35780"></span>35780</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35783"></span>35783</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35784"></span>35784</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35785"></span>35785</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35786"></span>35786</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35787"></span>35787</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35788"></span>35788</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35790"></span>35790</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35792"></span>35792</td>
+<td class="instruction">JP Z,<a href="35406.html#35560">35560</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35795"></span>35795</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35796"></span>35796</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35799"></span>35799</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35800"></span>35800</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35801"></span>35801</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35802"></span>35802</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35803"></span>35803</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35804"></span>35804</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35806"></span>35806</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35808"></span>35808</td>
+<td class="instruction">JP Z,<a href="35406.html#35572">35572</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35811"></span>35811</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35812"></span>35812</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35815"></span>35815</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35816"></span>35816</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35817"></span>35817</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35818"></span>35818</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35819"></span>35819</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35820"></span>35820</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35822"></span>35822</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35824"></span>35824</td>
+<td class="instruction">JP Z,<a href="35406.html#35584">35584</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35827"></span>35827</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35828"></span>35828</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35831"></span>35831</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35832"></span>35832</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35833"></span>35833</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35834"></span>35834</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35835"></span>35835</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35836"></span>35836</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Isolate the column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35838"></span>35838</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="1">Reached column 3, the left edge of the street scene?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35840"></span>35840</td>
+<td class="instruction">JP Z,<a href="35406.html#35596">35596</a></td>
+<td class="comment-1" rowspan="1">Yes: start drawing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35843"></span>35843</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">No: skip this column (it is off the left of the scene)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35844"></span>35844</td>
+<td class="instruction">CALL Z,<a href="35854.html">35854</a></td>
+<td class="comment-1" rowspan="1">If L wrapped round, move down to the next third of the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35847"></span>35847</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Skip a byte of the first buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35848"></span>35848</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the car buffer pointer (HL')</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35849"></span>35849</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip a car buffer byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35850"></span>35850</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the first buffer and screen pointers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35851"></span>35851</td>
+<td class="instruction">JP <a href="35406.html#35604">35604</a></td>
+<td class="comment-1" rowspan="1">Carry on with the next row</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="35366.html">35366</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#35406">Map</a></td>
+<td class="next">
+Next: <a href="35854.html">35854</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 35192</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="35141.html">35141</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#35192">Map</a></td>
+<td class="next">
+Next: <a href="35251.html">35251</a>
+</td>
+</tr>
+</table>
+<div class="description">35192: Getaway car animation: draw the masked graphic at 19299</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="35192"></span>35192</td>
+<td class="instruction">LD HL,19299</td>
+<td class="comment-1" rowspan="1">HL=the screen address (19299)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35195"></span>35195</td>
+<td class="instruction">LD DE,39286</td>
+<td class="comment-1" rowspan="1">DE=the masked graphic (39286)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35198"></span>35198</td>
+<td class="instruction">LD B,5</td>
+<td class="comment-1" rowspan="1">B=5 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35200"></span>35200</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=a graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35201"></span>35201</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Mask the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35202"></span>35202</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35203"></span>35203</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35204"></span>35204</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35205"></span>35205</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35206"></span>35206</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Mask the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35207"></span>35207</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35208"></span>35208</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35209"></span>35209</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35210"></span>35210</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35211"></span>35211</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Mask the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35212"></span>35212</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35213"></span>35213</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35214"></span>35214</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Back a column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35215"></span>35215</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">And another</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35216"></span>35216</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down a pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35217"></span>35217</td>
+<td class="instruction">DJNZ <a href="35192.html#35200">35200</a></td>
+<td class="comment-1" rowspan="1">Loop for 5 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35219"></span>35219</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35220"></span>35220</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35222"></span>35222</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35223"></span>35223</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35224"></span>35224</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35226"></span>35226</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35227"></span>35227</td>
+<td class="instruction">LD C,3</td>
+<td class="comment-1" rowspan="1">C=3 character rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35229"></span>35229</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1">B=8 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35231"></span>35231</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=a graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35232"></span>35232</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Mask the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35233"></span>35233</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35234"></span>35234</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35235"></span>35235</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down a pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35236"></span>35236</td>
+<td class="instruction">DJNZ <a href="35192.html#35231">35231</a></td>
+<td class="comment-1" rowspan="1">Loop for 8 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35238"></span>35238</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35239"></span>35239</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35241"></span>35241</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35242"></span>35242</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35243"></span>35243</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35245"></span>35245</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35246"></span>35246</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One character row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35247"></span>35247</td>
+<td class="instruction">JP NZ,<a href="35192.html#35229">35229</a></td>
+<td class="comment-1" rowspan="1">Loop</td>
+</tr>
+<tr>
+<td class="address-1"><span id="35250"></span>35250</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="35141.html">35141</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#35192">Map</a></td>
+<td class="next">
+Next: <a href="35251.html">35251</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

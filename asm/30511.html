@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30511</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30508.html">30508</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30511">Map</a></td>
+<td class="next">
+Next: <a href="30580.html">30580</a>
+</td>
+</tr>
+</table>
+<div class="description">30511: VM op 33: SQRT (Newton's method; never terminates for some values; see <a href="../reference/bugs.html#sqrt">the bugs page</a>)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30511"></span>30511</td>
+<td class="instruction">LD (30504),DE</td>
+<td class="comment-1" rowspan="1">Store the argument n</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30515"></span>30515</td>
+<td class="instruction">LD (30506),BC</td>
+<td class="comment-1" rowspan="1">Store the top word of the argument</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30519"></span>30519</td>
+<td class="instruction">CALL <a href="30491.html">30491</a></td>
+<td class="comment-1" rowspan="1">First estimate: x=n/2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30522"></span>30522</td>
+<td class="instruction">LD (30500),DE</td>
+<td class="comment-1" rowspan="1">Store the estimate x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30526"></span>30526</td>
+<td class="instruction">LD (30502),BC</td>
+<td class="comment-1" rowspan="1">Store the top word of the estimate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30530"></span>30530</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers (BC'DE' will hold x)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30531"></span>30531</td>
+<td class="instruction">LD DE,(30504)</td>
+<td class="comment-1" rowspan="1">BCDE=n</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30535"></span>30535</td>
+<td class="instruction">LD BC,(30506)</td>
+<td class="comment-1" rowspan="1">BC=top word of n</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30539"></span>30539</td>
+<td class="instruction">CALL <a href="30715.html">30715</a></td>
+<td class="comment-1" rowspan="1">BCDE=n/x (BC'DE' holds x)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30542"></span>30542</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30543"></span>30543</td>
+<td class="instruction">LD DE,(30500)</td>
+<td class="comment-1" rowspan="1">BCDE=x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30547"></span>30547</td>
+<td class="instruction">LD BC,(30502)</td>
+<td class="comment-1" rowspan="1">BC=top word of x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30551"></span>30551</td>
+<td class="instruction">CALL <a href="30441.html">30441</a></td>
+<td class="comment-1" rowspan="1">Add n/x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30554"></span>30554</td>
+<td class="instruction">CALL <a href="30491.html">30491</a></td>
+<td class="comment-1" rowspan="1">Halve: the new estimate is (x+n/x)/2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30557"></span>30557</td>
+<td class="instruction">LD HL,30500</td>
+<td class="comment-1" rowspan="1">Compare it with the previous estimate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30560"></span>30560</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=byte 0 of the previous estimate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30561"></span>30561</td>
+<td class="instruction">CP E</td>
+<td class="comment-1" rowspan="1">Same as E?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30562"></span>30562</td>
+<td class="instruction">JR NZ,<a href="30511.html#30522">30522</a></td>
+<td class="comment-1" rowspan="1">Try again if different</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30564"></span>30564</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30565"></span>30565</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=byte 1 of the previous estimate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30566"></span>30566</td>
+<td class="instruction">CP D</td>
+<td class="comment-1" rowspan="1">Same as D?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30567"></span>30567</td>
+<td class="instruction">JR NZ,<a href="30511.html#30522">30522</a></td>
+<td class="comment-1" rowspan="1">Not the same: do another iteration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30569"></span>30569</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30570"></span>30570</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=byte 2 of the previous estimate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30571"></span>30571</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="1">Same as C?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30572"></span>30572</td>
+<td class="instruction">JR NZ,<a href="30511.html#30522">30522</a></td>
+<td class="comment-1" rowspan="1">Not the same: do another iteration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30574"></span>30574</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30575"></span>30575</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=byte 3 of the previous estimate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30576"></span>30576</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Same as B?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30577"></span>30577</td>
+<td class="instruction">JR NZ,<a href="30511.html#30522">30522</a></td>
+<td class="comment-1" rowspan="1">Try again if different (for some arguments the estimates alternate for ever)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30579"></span>30579</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return with the square root in BCDE</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30508.html">30508</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30511">Map</a></td>
+<td class="next">
+Next: <a href="30580.html">30580</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29294</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29248.html">29248</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29294">Map</a></td>
+<td class="next">
+Next: <a href="29319.html">29319</a>
+</td>
+</tr>
+</table>
+<div class="description">29294: Measure the width of the text buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns the total pixel width of the text at 23808 in HL.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29294"></span>29294</td>
+<td class="instruction">LD IX,23808</td>
+<td class="comment-1" rowspan="1">IX=the text buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29298"></span>29298</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">HL=0: the width so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29301"></span>29301</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">A=the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29304"></span>29304</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29305"></span>29305</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">End of the text: return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29306"></span>29306</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the width so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29307"></span>29307</td>
+<td class="instruction">CALL <a href="26921.html">26921</a></td>
+<td class="comment-1" rowspan="1">HL=the character's glyph address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29310"></span>29310</td>
+<td class="instruction">LD L,(HL)</td>
+<td class="comment-1" rowspan="1">L=the glyph width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29311"></span>29311</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">H=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29313"></span>29313</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Add one pixel of spacing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29314"></span>29314</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add the width so far</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29315"></span>29315</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29317"></span>29317</td>
+<td class="instruction">JR <a href="29294.html#29301">29301</a></td>
+<td class="comment-1" rowspan="1">Loop</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="29248.html">29248</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29294">Map</a></td>
+<td class="next">
+Next: <a href="29319.html">29319</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

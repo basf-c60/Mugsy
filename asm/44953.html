@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 44953</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44884.html">44884</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44953">Map</a></td>
+<td class="next">
+Next: <a href="45044.html">45044</a>
+</td>
+</tr>
+</table>
+<div class="description">44953: Shootout: move a figure</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="44953"></span>44953</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the record address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44954"></span>44954</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the direction code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44955"></span>44955</td>
+<td class="instruction">CALL <a href="45693.html">45693</a></td>
+<td class="comment-1" rowspan="1">Copy the record to the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44958"></span>44958</td>
+<td class="instruction">CALL <a href="45155.html">45155</a></td>
+<td class="comment-1" rowspan="1">Copy the coordinates</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44961"></span>44961</td>
+<td class="instruction">LD HL,42336</td>
+<td class="comment-1" rowspan="1">HL=the workspace</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44964"></span>44964</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Get the direction code back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44965"></span>44965</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44966"></span>44966</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44967"></span>44967</td>
+<td class="instruction">JR Z,<a href="44953.html#44970">44970</a></td>
+<td class="comment-1" rowspan="1">Then keep the old direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44969"></span>44969</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Store the new one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44970"></span>44970</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next workspace byte (the animation delay)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44971"></span>44971</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44972"></span>44972</td>
+<td class="instruction">JR NZ,<a href="44953.html#44981">44981</a></td>
+<td class="comment-1" rowspan="1">Not time to change frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44974"></span>44974</td>
+<td class="instruction">LD A,(42313)</td>
+<td class="comment-1" rowspan="1">A=the frame delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44977"></span>44977</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Reload it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44978"></span>44978</td>
+<td class="instruction">CALL <a href="45122.html">45122</a></td>
+<td class="comment-1" rowspan="1">Move to the next frame of the animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44981"></span>44981</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next workspace byte (the step counter)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44982"></span>44982</td>
+<td class="instruction">DEC (HL)</td>
+<td class="comment-1" rowspan="1">One tick less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44983"></span>44983</td>
+<td class="instruction">JR NZ,<a href="44953.html#45007">45007</a></td>
+<td class="comment-1" rowspan="1">Not time to step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44985"></span>44985</td>
+<td class="instruction">LD A,(42372)</td>
+<td class="comment-1" rowspan="1">A=the step delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44988"></span>44988</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Reload it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44989"></span>44989</td>
+<td class="instruction">CALL <a href="45044.html">45044</a></td>
+<td class="comment-1" rowspan="1">Is there a gun flash to remove?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44992"></span>44992</td>
+<td class="instruction">JR NZ,<a href="44953.html#45002">45002</a></td>
+<td class="comment-1" rowspan="1">Yes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44994"></span>44994</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44996"></span>44996</td>
+<td class="instruction">LD (42338),A</td>
+<td class="comment-1" rowspan="1">Mark the figure as standing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44999"></span>44999</td>
+<td class="instruction">JP <a href="44953.html#45007">45007</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45002"></span>45002</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45003"></span>45003</td>
+<td class="instruction">CALL <a href="45423.html">45423</a></td>
+<td class="comment-1" rowspan="1">Step the figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45006"></span>45006</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45007"></span>45007</td>
+<td class="instruction">CALL <a href="45079.html">45079</a></td>
+<td class="comment-1" rowspan="1">Update the position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45010"></span>45010</td>
+<td class="instruction">LD (42353),DE</td>
+<td class="comment-1" rowspan="1">Store the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45014"></span>45014</td>
+<td class="instruction">CALL <a href="45182.html">45182</a></td>
+<td class="comment-1" rowspan="1">Compute the pixel shift</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45017"></span>45017</td>
+<td class="instruction">CALL <a href="45626.html">45626</a></td>
+<td class="comment-1" rowspan="1">Convert to an attribute address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45020"></span>45020</td>
+<td class="instruction">LD (42365),DE</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45024"></span>45024</td>
+<td class="instruction">LD A,(42336)</td>
+<td class="comment-1" rowspan="1">A=the state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45027"></span>45027</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45029"></span>45029</td>
+<td class="instruction">JR NZ,<a href="44953.html#45036">45036</a></td>
+<td class="comment-1" rowspan="1">Yes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45031"></span>45031</td>
+<td class="instruction">CALL <a href="45201.html">45201</a></td>
+<td class="comment-1" rowspan="1">Draw it facing right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45034"></span>45034</td>
+<td class="instruction">JR <a href="44953.html#45039">45039</a></td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45036"></span>45036</td>
+<td class="instruction">CALL <a href="45276.html">45276</a></td>
+<td class="comment-1" rowspan="1">Draw it facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45039"></span>45039</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=the record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45040"></span>45040</td>
+<td class="instruction">CALL <a href="45702.html">45702</a></td>
+<td class="comment-1" rowspan="1">Copy back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45043"></span>45043</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44884.html">44884</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44953">Map</a></td>
+<td class="next">
+Next: <a href="45044.html">45044</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

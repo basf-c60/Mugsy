@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28652</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28549.html">28549</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28652">Map</a></td>
+<td class="next">
+Next: <a href="28671.html">28671</a>
+</td>
+</tr>
+</table>
+<div class="description">28652: Check whether the bubble layout has changed</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Compares IY with the current layout (<a href="33888.html#33904">33904</a>).
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">0 if unchanged, 1 if changed</td>
+</tr>
+<tr>
+<td class="register">F</td>
+<td class="register-desc">Zero flag set if unchanged</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28652"></span>28652</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28653"></span>28653</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">...and DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28654"></span>28654</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">HL=IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28656"></span>28656</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=IY, the layout being asked for</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28657"></span>28657</td>
+<td class="instruction">LD DE,(33904)</td>
+<td class="comment-1" rowspan="1">DE=current layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28661"></span>28661</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28662"></span>28662</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Compare</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28664"></span>28664</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0 (unchanged)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28666"></span>28666</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28667"></span>28667</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">...and HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28668"></span>28668</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return with A=0 and the zero flag set if they are the same</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28669"></span>28669</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">A=1 (changed)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28670"></span>28670</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: A=1 and NZ if the layout is different</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28549.html">28549</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28652">Map</a></td>
+<td class="next">
+Next: <a href="28671.html">28671</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

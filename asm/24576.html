@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 24576</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+</td>
+<td class="up">Up: <a href="../maps/all.html#24576">Map</a></td>
+<td class="next">
+Next: <a href="24589.html">24589</a>
+</td>
+</tr>
+</table>
+<div class="description">24576: Start the game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+This is the entry point (from <a href="24576.html">PRINT USR 24576</a> in the BASIC loader). It disables interrupts, moves the stack down into the printer buffer, saves IY (which the ROM interrupt routine needs) and calls the main loop. When the player answers "nope" to "Hows about another game, Mugsy?" the main loop returns here and the machine locks up in an infinite loop (see <a href="../reference/bugs.html#noquit">the bugs page</a>).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24576"></span>24576</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Disable interrupts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24577"></span>24577</td>
+<td class="instruction">LD SP,23552</td>
+<td class="comment-1" rowspan="1">Put the stack in the printer buffer, just below the system variables</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24580"></span>24580</td>
+<td class="instruction">LD (33900),IY</td>
+<td class="comment-1" rowspan="1">Save IY (the ROM interrupt routine needs it to point at the system variables)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24584"></span>24584</td>
+<td class="instruction">CALL <a href="24589.html">24589</a></td>
+<td class="comment-1" rowspan="1">Play games until the player has had enough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24587"></span>24587</td>
+<td class="instruction">JR <a href="24576.html#24587">24587</a></td>
+<td class="comment-1" rowspan="1">Then hang forever (see <a href="../reference/bugs.html#noquit">the bugs page</a>)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+</td>
+<td class="up">Up: <a href="../maps/all.html#24576">Map</a></td>
+<td class="next">
+Next: <a href="24589.html">24589</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

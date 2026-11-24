@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 27724</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27087.html">27087</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27724">Map</a></td>
+<td class="next">
+Next: <a href="27753.html">27753</a>
+</td>
+</tr>
+</table>
+<div class="description">27724: Print a character using the ROM font</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used for the status line at the bottom of the screen. Copies the 8x8 glyph from the ROM character set (15360+8*A) to the cell at HL, then moves HL one cell right.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Character code</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Display file address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="27724"></span>27724</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE (the screen address)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27725"></span>27725</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27726"></span>27726</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">...and HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27727"></span>27727</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">HL=character code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27728"></span>27728</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">HL=character code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27730"></span>27730</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=2*code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27731"></span>27731</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=4*code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27732"></span>27732</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=8*code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27733"></span>27733</td>
+<td class="instruction">LD DE,15360</td>
+<td class="comment-1" rowspan="1">Add 15360 (the ROM character set minus 256)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27736"></span>27736</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=address of the glyph in the ROM font</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27737"></span>27737</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">DE=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27738"></span>27738</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Keep the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27739"></span>27739</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=screen, DE=glyph</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27740"></span>27740</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1">8 pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27742"></span>27742</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Copy a row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27743"></span>27743</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store the glyph row on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27744"></span>27744</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next glyph row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27745"></span>27745</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Next pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27746"></span>27746</td>
+<td class="instruction">DJNZ <a href="27724.html#27742">27742</a></td>
+<td class="comment-1" rowspan="1">Repeat for all 8 rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27748"></span>27748</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">HL=screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27749"></span>27749</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27750"></span>27750</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27751"></span>27751</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Move one cell right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27752"></span>27752</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: the character is on screen and HL has moved right</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27087.html">27087</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27724">Map</a></td>
+<td class="next">
+Next: <a href="27753.html">27753</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

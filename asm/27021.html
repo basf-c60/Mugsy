@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 27021</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27020.html">27020</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27021">Map</a></td>
+<td class="next">
+Next: <a href="27059.html">27059</a>
+</td>
+</tr>
+</table>
+<div class="description">27021: Print one pixel row of a glyph</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Shifts the pixel row in A right by C bits across a 16-bit word and ORs it into the two screen bytes at HL and HL+1, using the mask at <a href="27018.html">27018</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Pixel row</td>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Pixel offset</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Display file address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="27021"></span>27021</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27022"></span>27022</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27023"></span>27023</td>
+<td class="instruction">LD E,0</td>
+<td class="comment-1" rowspan="1">E=0 (the overflow into the next cell)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27025"></span>27025</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27026"></span>27026</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=pixel offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27027"></span>27027</td>
+<td class="instruction">LD BC,(27018)</td>
+<td class="comment-1" rowspan="1">BC=glyph mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27031"></span>27031</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Is the offset 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27032"></span>27032</td>
+<td class="instruction">JR Z,<a href="27021.html#27046">27046</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27034"></span>27034</td>
+<td class="instruction">SRL D</td>
+<td class="comment-1" rowspan="1">Shift the row right one pixel...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27036"></span>27036</td>
+<td class="instruction">RR E</td>
+<td class="comment-1" rowspan="1">The bits that fall off go into E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27038"></span>27038</td>
+<td class="instruction">SCF</td>
+<td class="comment-1" rowspan="1">...and the mask, bringing in a 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27039"></span>27039</td>
+<td class="instruction">RR B</td>
+<td class="comment-1" rowspan="1">Shift a 1 into the mask (B)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27041"></span>27041</td>
+<td class="instruction">RR C</td>
+<td class="comment-1" rowspan="1">...and on into C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27043"></span>27043</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">One fewer shift to go</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27044"></span>27044</td>
+<td class="instruction">JR NZ,<a href="27021.html#27034">27034</a></td>
+<td class="comment-1" rowspan="1">Repeat for each pixel of the offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27046"></span>27046</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Clear the pixels behind the glyph in the first cell...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27047"></span>27047</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Keep the background pixels outside the glyph</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27048"></span>27048</td>
+<td class="instruction">OR D</td>
+<td class="comment-1" rowspan="1">...and draw the left part of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27049"></span>27049</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store the combined byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27050"></span>27050</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27051"></span>27051</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">Do the same for the second cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27052"></span>27052</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Keep the background pixels in the second cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27053"></span>27053</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">Add the overflow from the shifted row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27054"></span>27054</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27055"></span>27055</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Back to the first cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27056"></span>27056</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27057"></span>27057</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="27058"></span>27058</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="27020.html">27020</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#27021">Map</a></td>
+<td class="next">
+Next: <a href="27059.html">27059</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

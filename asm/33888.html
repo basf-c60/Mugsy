@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 33888</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33552.html">33552</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33888">Map</a></td>
+<td class="next">
+Next: <a href="33909.html">33909</a>
+</td>
+</tr>
+</table>
+<div class="description">33888: VM flags</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Nine flag bytes that the script tests and sets with IFPEEKEQ, IFPEEKNE and POKE, followed by the game status flag and some workspace used by the speech bubble code. <a href="33937.html">33937</a> sets the nine flags and the status flag to 1 at the start of each game; the values below are those in the saved game image.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33888"></span>33888</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 0: the feds flag. 1 normally, 2 when the feds have been tipped off (set at the end of the recruiting step, tested in the next report; see the <a href="../Economics.html">economics page</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33889"></span>33889</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 1: set to 2 when the ammo comes to 1 grand per hood or less (adequate or not), but never tested</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33890"></span>33890</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 2: set to 2 when the game ends early (the mob walks out, Nick the Greek, no money left for ammo, cousin Abe, an empty safe, or the hit man); the end of the game then skips the farewell from the hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33891"></span>33891</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 3: Rocco. Set to 2 when Rocco gets uppity; next year's report then halves the takings (if they are 3 grand or more) and changes its wording. Reset to 1 after the report</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33892"></span>33892</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 4: the contract. 2 when the hit man is coming, 3 when he has won the shootout (set by <a href="28358.html">28358</a>); reset to 1 afterwards</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33893"></span>33893</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 5: chooses between two openings of the contract warning; never changed from 1, so the second opening is never used</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33894"></span>33894</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 6: the ammo flag. 2 when last year's ammo was inadequate and not forgiven (cousin Abe then takes over), 1 otherwise</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33895"></span>33895</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 7: 1 in the first year, set to 2 at the end of every year</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33896"></span>33896</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Flag 8: the type of the last number entered, set by <a href="27835.html">27835</a> (1 negative, 2 zero, 3 exactly 0.01, 4 anything else)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33897"></span>33897</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Game status flag: non-zero ends the main loop at <a href="24614.html">24614</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="33898"></span>33898</td>
+<td class="instruction">DEFB 0,0</td>
+<td class="comment-1" rowspan="1">Default sub-message address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33900"></span>33900</td>
+<td class="instruction">DEFB 0,0</td>
+<td class="comment-1" rowspan="1">Saved IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33902"></span>33902</td>
+<td class="instruction">DEFB 121,132</td>
+<td class="comment-1" rowspan="1">Pointer to this year's bubble layout table (<a href="33909.html#33913">33913</a> or <a href="33909.html#33925">33925</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33904"></span>33904</td>
+<td class="instruction">DEFB 0,0</td>
+<td class="comment-1" rowspan="1">The current bubble layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33906"></span>33906</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">Layout-unchanged flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="33907"></span>33907</td>
+<td class="instruction">DEFB 0,0</td>
+<td class="comment-1" rowspan="1">Text width</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="33552.html">33552</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#33888">Map</a></td>
+<td class="next">
+Next: <a href="33909.html">33909</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

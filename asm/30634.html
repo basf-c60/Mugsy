@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30634</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30580.html">30580</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30634">Map</a></td>
+<td class="next">
+Next: <a href="30649.html">30649</a>
+</td>
+</tr>
+</table>
+<div class="description">30634: VM op 31: NEG (BCDE=-BCDE)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30634"></span>30634</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">Negate the low word...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30637"></span>30637</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30638"></span>30638</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Subtract the low word from 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30640"></span>30640</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">DE=the negated low word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30641"></span>30641</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">...and the high word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30644"></span>30644</td>
+<td class="instruction">SBC HL,BC</td>
+<td class="comment-1" rowspan="1">Subtract the high word from 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30646"></span>30646</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Copy HL into BC...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30647"></span>30647</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">...by way of the stack</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30648"></span>30648</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: BCDE=-BCDE</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30580.html">30580</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30634">Map</a></td>
+<td class="next">
+Next: <a href="30649.html">30649</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

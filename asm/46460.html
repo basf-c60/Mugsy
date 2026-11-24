@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 46460</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46454.html">46454</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46460">Map</a></td>
+<td class="next">
+Next: <a href="46639.html">46639</a>
+</td>
+</tr>
+</table>
+<div class="description">46460: Shootout: read the controls</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Reads Q (up), Z (down), I (left), P (right) and B/N/M (fire) and converts them to a direction code. Opposite directions pressed together cancel out.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Direction code</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46460"></span>46460</td>
+<td class="instruction">LD HL,42453</td>
+<td class="comment-1" rowspan="1">HL=Mugsy's record (the figure the keys move)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46463"></span>46463</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1">C=0: the direction bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46465"></span>46465</td>
+<td class="instruction">LD A,223</td>
+<td class="comment-1" rowspan="1">Read the half-row Y U I O P</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46467"></span>46467</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46469"></span>46469</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the key states</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46470"></span>46470</td>
+<td class="instruction">AND 1</td>
+<td class="comment-1" rowspan="1">Is P pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46472"></span>46472</td>
+<td class="instruction">JR NZ,<a href="46460.html#46476">46476</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46474"></span>46474</td>
+<td class="instruction">SET 2,C</td>
+<td class="comment-1" rowspan="1">Set bit 2: right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46476"></span>46476</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the key states</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46477"></span>46477</td>
+<td class="instruction">AND 4</td>
+<td class="comment-1" rowspan="1">Is I pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46479"></span>46479</td>
+<td class="instruction">JR NZ,<a href="46460.html#46483">46483</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46481"></span>46481</td>
+<td class="instruction">SET 6,C</td>
+<td class="comment-1" rowspan="1">Set bit 6: left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46483"></span>46483</td>
+<td class="instruction">LD A,254</td>
+<td class="comment-1" rowspan="1">Read the half-row CAPS Z X C V</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46485"></span>46485</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46487"></span>46487</td>
+<td class="instruction">AND 2</td>
+<td class="comment-1" rowspan="1">Is Z pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46489"></span>46489</td>
+<td class="instruction">JR NZ,<a href="46460.html#46493">46493</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46491"></span>46491</td>
+<td class="instruction">SET 4,C</td>
+<td class="comment-1" rowspan="1">Set bit 4: down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46493"></span>46493</td>
+<td class="instruction">LD A,251</td>
+<td class="comment-1" rowspan="1">Read the half-row Q W E R T</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46495"></span>46495</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46497"></span>46497</td>
+<td class="instruction">AND 1</td>
+<td class="comment-1" rowspan="1">Is Q pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46499"></span>46499</td>
+<td class="instruction">JR NZ,<a href="46460.html#46503">46503</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46501"></span>46501</td>
+<td class="instruction">SET 0,C</td>
+<td class="comment-1" rowspan="1">Set bit 0: up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46503"></span>46503</td>
+<td class="instruction">LD A,127</td>
+<td class="comment-1" rowspan="1">Read the half-row SPACE SYM M N B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46505"></span>46505</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46507"></span>46507</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the key states</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46508"></span>46508</td>
+<td class="instruction">AND 4</td>
+<td class="comment-1" rowspan="1">Is M pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46510"></span>46510</td>
+<td class="instruction">JR NZ,<a href="46460.html#46514">46514</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46512"></span>46512</td>
+<td class="instruction">SET 7,C</td>
+<td class="comment-1" rowspan="1">Set bit 7: fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46514"></span>46514</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the key states</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46515"></span>46515</td>
+<td class="instruction">AND 8</td>
+<td class="comment-1" rowspan="1">Is N pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46517"></span>46517</td>
+<td class="instruction">JR NZ,<a href="46460.html#46521">46521</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46519"></span>46519</td>
+<td class="instruction">SET 7,C</td>
+<td class="comment-1" rowspan="1">Set bit 7: fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46521"></span>46521</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the key states</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46522"></span>46522</td>
+<td class="instruction">AND 16</td>
+<td class="comment-1" rowspan="1">Is B pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46524"></span>46524</td>
+<td class="instruction">JR NZ,<a href="46460.html#46528">46528</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46526"></span>46526</td>
+<td class="instruction">SET 7,C</td>
+<td class="comment-1" rowspan="1">Set bit 7: fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46528"></span>46528</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=the combined bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46529"></span>46529</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46530"></span>46530</td>
+<td class="instruction">JR Z,<a href="46640.html">46640</a></td>
+<td class="comment-1" rowspan="1">No key pressed: no movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46532"></span>46532</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46533"></span>46533</td>
+<td class="instruction">AND 17</td>
+<td class="comment-1" rowspan="1">Up and down together?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46535"></span>46535</td>
+<td class="instruction">CP 17</td>
+<td class="comment-1" rowspan="1">Compare</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46537"></span>46537</td>
+<td class="instruction">JR Z,<a href="46640.html">46640</a></td>
+<td class="comment-1" rowspan="1">Yes: they cancel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46539"></span>46539</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46540"></span>46540</td>
+<td class="instruction">AND 68</td>
+<td class="comment-1" rowspan="1">Left and right together?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46542"></span>46542</td>
+<td class="instruction">CP 68</td>
+<td class="comment-1" rowspan="1">Compare</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46544"></span>46544</td>
+<td class="instruction">JR Z,<a href="46640.html">46640</a></td>
+<td class="comment-1" rowspan="1">Yes: they cancel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46546"></span>46546</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46547"></span>46547</td>
+<td class="instruction">AND 128</td>
+<td class="comment-1" rowspan="1">Is fire pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46549"></span>46549</td>
+<td class="instruction">LD A,10</td>
+<td class="comment-1" rowspan="1">A=10: the code for fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46551"></span>46551</td>
+<td class="instruction">JR NZ,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Yes: use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46553"></span>46553</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46554"></span>46554</td>
+<td class="instruction">AND 127</td>
+<td class="comment-1" rowspan="1">Drop the fire bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46556"></span>46556</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the direction bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46557"></span>46557</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46559"></span>46559</td>
+<td class="instruction">JR Z,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46561"></span>46561</td>
+<td class="instruction">CP 64</td>
+<td class="comment-1" rowspan="1">Left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46563"></span>46563</td>
+<td class="instruction">JR Z,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46565"></span>46565</td>
+<td class="instruction">CP 5</td>
+<td class="comment-1" rowspan="1">Up and right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46567"></span>46567</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="1">A=2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46569"></span>46569</td>
+<td class="instruction">JR Z,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46571"></span>46571</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46572"></span>46572</td>
+<td class="instruction">CP 20</td>
+<td class="comment-1" rowspan="1">Down and right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46574"></span>46574</td>
+<td class="instruction">LD A,8</td>
+<td class="comment-1" rowspan="1">A=8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46576"></span>46576</td>
+<td class="instruction">JR Z,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46578"></span>46578</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46579"></span>46579</td>
+<td class="instruction">CP 65</td>
+<td class="comment-1" rowspan="1">Up and left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46581"></span>46581</td>
+<td class="instruction">LD A,128</td>
+<td class="comment-1" rowspan="1">A=128</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46583"></span>46583</td>
+<td class="instruction">JR Z,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46585"></span>46585</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46586"></span>46586</td>
+<td class="instruction">CP 80</td>
+<td class="comment-1" rowspan="1">Down and left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46588"></span>46588</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">A=32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46590"></span>46590</td>
+<td class="instruction">JR Z,<a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46592"></span>46592</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46593"></span>46593</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="1">Up only?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46595"></span>46595</td>
+<td class="instruction">JR NZ,<a href="46460.html#46616">46616</a></td>
+<td class="comment-1" rowspan="1">No: try down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46597"></span>46597</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=Mugsy's state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46598"></span>46598</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46599"></span>46599</td>
+<td class="instruction">AND 14</td>
+<td class="comment-1" rowspan="1">Is he facing right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46601"></span>46601</td>
+<td class="instruction">JR Z,<a href="46460.html#46607">46607</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46603"></span>46603</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="1">A=2: up and right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46605"></span>46605</td>
+<td class="instruction">JR <a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46607"></span>46607</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=his state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46608"></span>46608</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Is he facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46610"></span>46610</td>
+<td class="instruction">JR Z,<a href="46460.html#46616">46616</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46612"></span>46612</td>
+<td class="instruction">LD A,128</td>
+<td class="comment-1" rowspan="1">A=128: up and left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46614"></span>46614</td>
+<td class="instruction">JR <a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46616"></span>46616</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46617"></span>46617</td>
+<td class="instruction">CP 16</td>
+<td class="comment-1" rowspan="1">Down only?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46619"></span>46619</td>
+<td class="instruction">JR NZ,<a href="46640.html">46640</a></td>
+<td class="comment-1" rowspan="1">No: no movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46621"></span>46621</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">A=Mugsy's state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46622"></span>46622</td>
+<td class="instruction">AND 14</td>
+<td class="comment-1" rowspan="1">Is he facing right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46624"></span>46624</td>
+<td class="instruction">JR Z,<a href="46460.html#46630">46630</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46626"></span>46626</td>
+<td class="instruction">LD A,8</td>
+<td class="comment-1" rowspan="1">A=8: down and right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46628"></span>46628</td>
+<td class="instruction">JR <a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46630"></span>46630</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=his state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46631"></span>46631</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Is he facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46633"></span>46633</td>
+<td class="instruction">JR Z,<a href="46640.html">46640</a></td>
+<td class="comment-1" rowspan="1">No: no movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46635"></span>46635</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">A=32: down and left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46637"></span>46637</td>
+<td class="instruction">JR <a href="46640.html#46641">46641</a></td>
+<td class="comment-1" rowspan="1">Use the code</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46454.html">46454</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46460">Map</a></td>
+<td class="next">
+Next: <a href="46639.html">46639</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

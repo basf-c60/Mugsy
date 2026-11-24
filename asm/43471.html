@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 43471</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43246.html">43246</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43471">Map</a></td>
+<td class="next">
+Next: <a href="43709.html">43709</a>
+</td>
+</tr>
+</table>
+<div class="description">43471: Shootout: handler for Mugsy</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Takes the direction code from <a href="46460.html">46460</a>, handles firing (state 0 idle, 1 and 2 raising the gun, 3 firing a bullet) and Mugsy's death.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43471"></span>43471</td>
+<td class="instruction">LD A,(42325)</td>
+<td class="comment-1" rowspan="1">Handler for slot 2 (Mugsy): is he dead?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43474"></span>43474</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43475"></span>43475</td>
+<td class="instruction">JR Z,<a href="43471.html#43509">43509</a></td>
+<td class="comment-1" rowspan="1">No: carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43477"></span>43477</td>
+<td class="instruction">LD HL,42252</td>
+<td class="comment-1" rowspan="1">HL=his timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43480"></span>43480</td>
+<td class="instruction">LD (HL),3</td>
+<td class="comment-1" rowspan="1">Park it at 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43482"></span>43482</td>
+<td class="instruction">LD A,(42333)</td>
+<td class="comment-1" rowspan="1">A=the "somebody is down" flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43485"></span>43485</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43486"></span>43486</td>
+<td class="instruction">JR NZ,<a href="43471.html#43493">43493</a></td>
+<td class="comment-1" rowspan="1">Already set: skip</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43488"></span>43488</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43490"></span>43490</td>
+<td class="instruction">LD (42333),A</td>
+<td class="comment-1" rowspan="1">Tell the other figures that a gunfight has ended</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43493"></span>43493</td>
+<td class="instruction">LD IX,42453</td>
+<td class="comment-1" rowspan="1">IX=his record (42453)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43497"></span>43497</td>
+<td class="instruction">LD HL,18576</td>
+<td class="comment-1" rowspan="1">HL=18576: where he lies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43500"></span>43500</td>
+<td class="instruction">LD (IX+17),L</td>
+<td class="comment-1" rowspan="1">Put him there (low byte)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43503"></span>43503</td>
+<td class="instruction">LD (IX+18),H</td>
+<td class="comment-1" rowspan="1">And the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43506"></span>43506</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43509"></span>43509</td>
+<td class="instruction">LD A,(42329)</td>
+<td class="comment-1" rowspan="1">Has the hit man's bullet used up his hit points?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43512"></span>43512</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43513"></span>43513</td>
+<td class="instruction">JR NZ,<a href="43471.html#43541">43541</a></td>
+<td class="comment-1" rowspan="1">Yes: he dies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43515"></span>43515</td>
+<td class="instruction">LD A,(42316)</td>
+<td class="comment-1" rowspan="1">A=is Mugsy's gun being fired (his fire state)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43518"></span>43518</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43519"></span>43519</td>
+<td class="instruction">JP NZ,<a href="43471.html#43639">43639</a></td>
+<td class="comment-1" rowspan="1">Yes: continue the firing sequence</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43522"></span>43522</td>
+<td class="instruction">LD A,(42315)</td>
+<td class="comment-1" rowspan="1">A=the direction code from the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43525"></span>43525</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43526"></span>43526</td>
+<td class="instruction">CP 10</td>
+<td class="comment-1" rowspan="1">10 means fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43528"></span>43528</td>
+<td class="instruction">JR Z,<a href="43471.html#43608">43608</a></td>
+<td class="comment-1" rowspan="1">Start firing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43530"></span>43530</td>
+<td class="instruction">CP 0</td>
+<td class="comment-1" rowspan="1">0 means no key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43532"></span>43532</td>
+<td class="instruction">JR Z,<a href="43471.html#43565">43565</a></td>
+<td class="comment-1" rowspan="1">Stand still</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43534"></span>43534</td>
+<td class="instruction">AND 238</td>
+<td class="comment-1" rowspan="1">Keep only the bits that are not 1 or 16</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43536"></span>43536</td>
+<td class="instruction">JR NZ,<a href="43471.html#43565">43565</a></td>
+<td class="comment-1" rowspan="1">A real direction: move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43538"></span>43538</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Otherwise do nothing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43541"></span>43541</td>
+<td class="instruction">LD HL,42334</td>
+<td class="comment-1" rowspan="1">HL=the result byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43544"></span>43544</td>
+<td class="instruction">SET 0,(HL)</td>
+<td class="comment-1" rowspan="1">Set bit 0: Mugsy has been killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43546"></span>43546</td>
+<td class="instruction">LD (42325),A</td>
+<td class="comment-1" rowspan="1">Remember he is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43549"></span>43549</td>
+<td class="instruction">LD A,30</td>
+<td class="comment-1" rowspan="1">A=30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43551"></span>43551</td>
+<td class="instruction">LD (42277),A</td>
+<td class="comment-1" rowspan="1">His countdown is 30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43554"></span>43554</td>
+<td class="instruction">LD A,16</td>
+<td class="comment-1" rowspan="1">A=16: the falling animation length</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43556"></span>43556</td>
+<td class="instruction">LD BC,48106</td>
+<td class="comment-1" rowspan="1">BC=48106: the falling-over graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43559"></span>43559</td>
+<td class="instruction">LD HL,42453</td>
+<td class="comment-1" rowspan="1">HL=his record (42453)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43562"></span>43562</td>
+<td class="instruction">JP <a href="44558.html">44558</a></td>
+<td class="comment-1" rowspan="1">Set up the falling animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43565"></span>43565</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="1">A=2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43567"></span>43567</td>
+<td class="instruction">LD (42312),A</td>
+<td class="comment-1" rowspan="1">Mugsy's animation has two frames</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43570"></span>43570</td>
+<td class="instruction">LD (42277),A</td>
+<td class="comment-1" rowspan="1">Countdown 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43573"></span>43573</td>
+<td class="instruction">LD A,4</td>
+<td class="comment-1" rowspan="1">A=4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43575"></span>43575</td>
+<td class="instruction">LD (42313),A</td>
+<td class="comment-1" rowspan="1">Frame delay 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43578"></span>43578</td>
+<td class="instruction">LD HL,42206</td>
+<td class="comment-1" rowspan="1">HL=Mugsy's walking frame table (<a href="42174.html#42206">42206</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43581"></span>43581</td>
+<td class="instruction">LD (42309),HL</td>
+<td class="comment-1" rowspan="1">Use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43584"></span>43584</td>
+<td class="instruction">LD DE,23775</td>
+<td class="comment-1" rowspan="1">DE=frame buffer (23775)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43587"></span>43587</td>
+<td class="instruction">LD (42307),DE</td>
+<td class="comment-1" rowspan="1">Use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43591"></span>43591</td>
+<td class="instruction">LD IX,42453</td>
+<td class="comment-1" rowspan="1">IX=his record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43595"></span>43595</td>
+<td class="instruction">CALL <a href="44612.html">44612</a></td>
+<td class="comment-1" rowspan="1">Work out the limits of his movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43598"></span>43598</td>
+<td class="instruction">LD HL,42453</td>
+<td class="comment-1" rowspan="1">HL=his record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43601"></span>43601</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the direction code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43602"></span>43602</td>
+<td class="instruction">CALL <a href="44953.html">44953</a></td>
+<td class="comment-1" rowspan="1">Move him</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43605"></span>43605</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43608"></span>43608</td>
+<td class="instruction">LD HL,42316</td>
+<td class="comment-1" rowspan="1">He is firing: HL=his fire state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43611"></span>43611</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">Raise it to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43612"></span>43612</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">And to 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43613"></span>43613</td>
+<td class="instruction">LD HL,42214</td>
+<td class="comment-1" rowspan="1">HL=Mugsy's firing frame table (<a href="42174.html#42214">42214</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43616"></span>43616</td>
+<td class="instruction">LD (42309),HL</td>
+<td class="comment-1" rowspan="1">Use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43619"></span>43619</td>
+<td class="instruction">LD HL,23775</td>
+<td class="comment-1" rowspan="1">HL=frame buffer (23775)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43622"></span>43622</td>
+<td class="instruction">LD (42307),HL</td>
+<td class="comment-1" rowspan="1">Use it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43625"></span>43625</td>
+<td class="instruction">LD A,5</td>
+<td class="comment-1" rowspan="1">A=5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43627"></span>43627</td>
+<td class="instruction">LD (42277),A</td>
+<td class="comment-1" rowspan="1">Countdown 5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43630"></span>43630</td>
+<td class="instruction">LD HL,42453</td>
+<td class="comment-1" rowspan="1">HL=his record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43633"></span>43633</td>
+<td class="instruction">CALL <a href="44726.html">44726</a></td>
+<td class="comment-1" rowspan="1">Draw the gun being raised</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43636"></span>43636</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43639"></span>43639</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="1">Is the fire state 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43641"></span>43641</td>
+<td class="instruction">JP NZ,<a href="43709.html#43779">43779</a></td>
+<td class="comment-1" rowspan="1">No: end of the firing sequence</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43644"></span>43644</td>
+<td class="instruction">LD IX,42453</td>
+<td class="comment-1" rowspan="1">IX=Mugsy's record</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43648"></span>43648</td>
+<td class="instruction">LD A,(IX+0)</td>
+<td class="comment-1" rowspan="1">A=his state byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43651"></span>43651</td>
+<td class="instruction">AND 224</td>
+<td class="comment-1" rowspan="1">Which way is he facing (bits 5-7)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43653"></span>43653</td>
+<td class="instruction">JR NZ,<a href="43471.html#43666">43666</a></td>
+<td class="comment-1" rowspan="1">Facing left: use that branch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43655"></span>43655</td>
+<td class="instruction">LD A,(IX+17)</td>
+<td class="comment-1" rowspan="1">A=his screen address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43658"></span>43658</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43660"></span>43660</td>
+<td class="instruction">CP 28</td>
+<td class="comment-1" rowspan="1">Is he at column 28, the right wall?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43662"></span>43662</td>
+<td class="instruction">JR Z,<a href="43471.html#43697">43697</a></td>
+<td class="comment-1" rowspan="1">Yes: no room for a bullet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43664"></span>43664</td>
+<td class="instruction">JR <a href="43471.html#43678">43678</a></td>
+<td class="comment-1" rowspan="1">Fire the bullet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43666"></span>43666</td>
+<td class="instruction">LD A,(IX+17)</td>
+<td class="comment-1" rowspan="1">Facing left: A=screen address low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43669"></span>43669</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43671"></span>43671</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43672"></span>43672</td>
+<td class="instruction">LD A,(42314)</td>
+<td class="comment-1" rowspan="1">A=the left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43675"></span>43675</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Same column?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43676"></span>43676</td>
+<td class="instruction">JR Z,<a href="43471.html#43697">43697</a></td>
+<td class="comment-1" rowspan="1">Yes: no room for a bullet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43678"></span>43678</td>
+<td class="instruction">LD IY,42531</td>
+<td class="comment-1" rowspan="1">IY=the bullet's record (42531)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43682"></span>43682</td>
+<td class="instruction">LD B,11</td>
+<td class="comment-1" rowspan="1">B=11: the bullet starts 11 pixel rows down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43684"></span>43684</td>
+<td class="instruction">CALL <a href="43709.html">43709</a></td>
+<td class="comment-1" rowspan="1">Position the bullet next to the gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43687"></span>43687</td>
+<td class="instruction">LD A,10</td>
+<td class="comment-1" rowspan="1">A=10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43689"></span>43689</td>
+<td class="instruction">LD (42318),A</td>
+<td class="comment-1" rowspan="1">The bullet flies for 10 steps</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43692"></span>43692</td>
+<td class="instruction">LD HL,42254</td>
+<td class="comment-1" rowspan="1">HL=the bullet's timer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43695"></span>43695</td>
+<td class="instruction">LD (HL),1</td>
+<td class="comment-1" rowspan="1">Make the bullet ready to move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43697"></span>43697</td>
+<td class="instruction">LD HL,42316</td>
+<td class="comment-1" rowspan="1">HL=fire state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43700"></span>43700</td>
+<td class="instruction">INC (HL)</td>
+<td class="comment-1" rowspan="1">Raise it to 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43701"></span>43701</td>
+<td class="instruction">LD A,5</td>
+<td class="comment-1" rowspan="1">A=5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43703"></span>43703</td>
+<td class="instruction">LD (42277),A</td>
+<td class="comment-1" rowspan="1">Countdown 5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43706"></span>43706</td>
+<td class="instruction">JP <a href="42977.html#43010">43010</a></td>
+<td class="comment-1" rowspan="1">Back to the dispatcher</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43246.html">43246</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43471">Map</a></td>
+<td class="next">
+Next: <a href="43709.html">43709</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45458</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45438.html">45438</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45458">Map</a></td>
+<td class="next">
+Next: <a href="45479.html">45479</a>
+</td>
+</tr>
+</table>
+<div class="description">45458: Shootout: move left one cell (unless at the left limit)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45458"></span>45458</td>
+<td class="instruction">LD A,(42314)</td>
+<td class="comment-1" rowspan="1">A=the left limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45461"></span>45461</td>
+<td class="instruction">CP E</td>
+<td class="comment-1" rowspan="1">Is the figure there?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45462"></span>45462</td>
+<td class="instruction">JR NZ,<a href="45458.html#45473">45473</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45464"></span>45464</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="1">A=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45466"></span>45466</td>
+<td class="instruction">LD (42338),A</td>
+<td class="comment-1" rowspan="1">Stop the figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45469"></span>45469</td>
+<td class="instruction">LD (42322),A</td>
+<td class="comment-1" rowspan="1">Report that it could not move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45472"></span>45472</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45473"></span>45473</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Move one column left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45474"></span>45474</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45475"></span>45475</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="1">Up?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45477"></span>45477</td>
+<td class="instruction">JR NZ,<a href="45479.html#45511">45511</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45438.html">45438</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45458">Map</a></td>
+<td class="next">
+Next: <a href="45479.html">45479</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

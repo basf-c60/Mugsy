@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34579</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34558.html">34558</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34579">Map</a></td>
+<td class="next">
+Next: <a href="34600.html">34600</a>
+</td>
+</tr>
+</table>
+<div class="description">34579: Getaway step 8</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34579"></span>34579</td>
+<td class="instruction">CALL <a href="34862.html">34862</a></td>
+<td class="comment-1" rowspan="1">Draw the next frame of the street animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34582"></span>34582</td>
+<td class="instruction">CALL <a href="34611.html">34611</a></td>
+<td class="comment-1" rowspan="1">Scroll the car and redraw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34585"></span>34585</td>
+<td class="instruction">CALL <a href="35366.html">35366</a></td>
+<td class="comment-1" rowspan="1">Draw the next frame of the figure at 17728</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34588"></span>34588</td>
+<td class="instruction">LD HL,(38789)</td>
+<td class="comment-1" rowspan="1">HL=the car's screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34591"></span>34591</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34592"></span>34592</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34594"></span>34594</td>
+<td class="instruction">CP 30</td>
+<td class="comment-1" rowspan="1">Column 30?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34596"></span>34596</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">No: keep going</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34597"></span>34597</td>
+<td class="instruction">BIT 7,H</td>
+<td class="comment-1" rowspan="1">Is the left-clip flag set?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34599"></span>34599</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return (Z set when the car has gone)</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34558.html">34558</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34579">Map</a></td>
+<td class="next">
+Next: <a href="34600.html">34600</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

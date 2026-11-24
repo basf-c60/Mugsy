@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30715</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30712.html">30712</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30715">Map</a></td>
+<td class="next">
+Next: <a href="30782.html">30782</a>
+</td>
+</tr>
+</table>
+<div class="description">30715: Divide BCDE by BC'DE' (x100)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Returns 0 if the divisor is 0.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30715"></span>30715</td>
+<td class="instruction">CALL <a href="30993.html">30993</a></td>
+<td class="comment-1" rowspan="1">Make both operands positive, noting the sign of the result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30718"></span>30718</td>
+<td class="instruction">LD (31038),DE</td>
+<td class="comment-1" rowspan="1">Store BCDE (the dividend) as the multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30722"></span>30722</td>
+<td class="instruction">LD (31040),BC</td>
+<td class="comment-1" rowspan="1">Store the top word of the dividend</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30726"></span>30726</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">HL=0...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30729"></span>30729</td>
+<td class="instruction">LD (31042),HL</td>
+<td class="comment-1" rowspan="1">...clear the upper half...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30732"></span>30732</td>
+<td class="instruction">LD (31044),HL</td>
+<td class="comment-1" rowspan="1">...of the 64-bit multiplier</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30735"></span>30735</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to BC'DE', the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30736"></span>30736</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Is the divisor zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30737"></span>30737</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine C...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30738"></span>30738</td>
+<td class="instruction">OR D</td>
+<td class="comment-1" rowspan="1">...D...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30739"></span>30739</td>
+<td class="instruction">OR E</td>
+<td class="comment-1" rowspan="1">...E: the divisor is zero if all clear</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30740"></span>30740</td>
+<td class="instruction">JR NZ,<a href="30715.html#30750">30750</a></td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30742"></span>30742</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30743"></span>30743</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">Return 0 for division by zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30746"></span>30746</td>
+<td class="instruction">LD DE,0</td>
+<td class="comment-1" rowspan="1">DE=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30749"></span>30749</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: division by zero gives zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30750"></span>30750</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30751"></span>30751</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the divisor's low word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30752"></span>30752</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BCDE=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30755"></span>30755</td>
+<td class="instruction">LD DE,100</td>
+<td class="comment-1" rowspan="1">BCDE=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30758"></span>30758</td>
+<td class="instruction">CALL <a href="30782.html">30782</a></td>
+<td class="comment-1" rowspan="1">64-bit product=dividend*100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30761"></span>30761</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore the divisor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30762"></span>30762</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the divisor's high word</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30763"></span>30763</td>
+<td class="instruction">CALL <a href="31055.html">31055</a></td>
+<td class="comment-1" rowspan="1">Divide the product by it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30766"></span>30766</td>
+<td class="instruction">LD DE,(31038)</td>
+<td class="comment-1" rowspan="1">BCDE=quotient</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30770"></span>30770</td>
+<td class="instruction">LD BC,(31040)</td>
+<td class="comment-1" rowspan="1">BC=the high word of the quotient</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30774"></span>30774</td>
+<td class="instruction">LD A,(31054)</td>
+<td class="comment-1" rowspan="1">Should it be negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30777"></span>30777</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the result sign flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30778"></span>30778</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30779"></span>30779</td>
+<td class="instruction">JP <a href="30634.html">30634</a></td>
+<td class="comment-1" rowspan="1">Negate it</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30712.html">30712</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30715">Map</a></td>
+<td class="next">
+Next: <a href="30782.html">30782</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

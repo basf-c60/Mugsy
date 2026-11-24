@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 34097</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34093.html">34093</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34097">Map</a></td>
+<td class="next">
+Next: <a href="34135.html">34135</a>
+</td>
+</tr>
+</table>
+<div class="description">34097: Draw a 3-cell-wide sprite (no mask)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+As <a href="34093.html">34093</a> but 3 bytes wide.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="34097"></span>34097</td>
+<td class="instruction">LD B,3</td>
+<td class="comment-1" rowspan="1">B=3: three bytes per pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34099"></span>34099</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=the height of the sprite (the first byte of the sprite data)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34100"></span>34100</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Move to the graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34101"></span>34101</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the number of pixel rows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34102"></span>34102</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save the row counter and width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34103"></span>34103</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34104"></span>34104</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">A=a byte of the graphic</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34105"></span>34105</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Put it on the screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34106"></span>34106</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Next graphic byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34107"></span>34107</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next screen column</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34108"></span>34108</td>
+<td class="instruction">DJNZ <a href="34097.html#34104">34104</a></td>
+<td class="comment-1" rowspan="1">Loop for every byte of the row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34110"></span>34110</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34111"></span>34111</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the row counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34112"></span>34112</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34113"></span>34113</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34114"></span>34114</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Crossed into a new character row?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34116"></span>34116</td>
+<td class="instruction">JR Z,<a href="34097.html#34122">34122</a></td>
+<td class="comment-1" rowspan="1">Yes: adjust the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34118"></span>34118</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One row less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34119"></span>34119</td>
+<td class="instruction">JR NZ,<a href="34097.html#34102">34102</a></td>
+<td class="comment-1" rowspan="1">Loop for every pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34121"></span>34121</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34122"></span>34122</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34123"></span>34123</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34125"></span>34125</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=the new low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34126"></span>34126</td>
+<td class="instruction">JR C,<a href="34097.html#34118">34118</a></td>
+<td class="comment-1" rowspan="1">Carry: the next third of the screen (H is already right)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34128"></span>34128</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34129"></span>34129</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8 added by the pixel row steps</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34131"></span>34131</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="34132"></span>34132</td>
+<td class="instruction">JP <a href="34097.html#34118">34118</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="34093.html">34093</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#34097">Map</a></td>
+<td class="next">
+Next: <a href="34135.html">34135</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

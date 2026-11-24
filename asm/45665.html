@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45665</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45651.html">45651</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45665">Map</a></td>
+<td class="next">
+Next: <a href="45693.html">45693</a>
+</td>
+</tr>
+</table>
+<div class="description">45665: Shootout: clear the screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45665"></span>45665</td>
+<td class="instruction">LD HL,16384</td>
+<td class="comment-1" rowspan="1">HL=the start of the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45668"></span>45668</td>
+<td class="instruction">LD DE,16385</td>
+<td class="comment-1" rowspan="1">DE=the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45671"></span>45671</td>
+<td class="instruction">LD BC,6143</td>
+<td class="comment-1" rowspan="1">BC=6143</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45674"></span>45674</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45675"></span>45675</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Clear the first byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45676"></span>45676</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Clear the rest of the pixels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45678"></span>45678</td>
+<td class="instruction">LD HL,22528</td>
+<td class="comment-1" rowspan="1">HL=the start of the attributes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45681"></span>45681</td>
+<td class="instruction">LD DE,22529</td>
+<td class="comment-1" rowspan="1">DE=the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45684"></span>45684</td>
+<td class="instruction">LD BC,767</td>
+<td class="comment-1" rowspan="1">BC=767</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45687"></span>45687</td>
+<td class="instruction">LD A,56</td>
+<td class="comment-1" rowspan="1">A=56: white paper, black ink</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45689"></span>45689</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Set the first attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45690"></span>45690</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Set the rest of the attributes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45692"></span>45692</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45651.html">45651</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45665">Map</a></td>
+<td class="next">
+Next: <a href="45693.html">45693</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 26921</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26907.html">26907</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26921">Map</a></td>
+<td class="next">
+Next: <a href="26939.html">26939</a>
+</td>
+</tr>
+</table>
+<div class="description">26921: Get the address of a character in the font</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The proportional font at <a href="27087.html">27087</a> has 7 bytes per character (a width byte and six rows of pixels), starting with character 32. This routine computes 26863+7*A.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Character code</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address of the character's width byte</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26921"></span>26921</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26922"></span>26922</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">HL=A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26923"></span>26923</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">HL=the character code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26925"></span>26925</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">DE=A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26926"></span>26926</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1">DE=the character code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26927"></span>26927</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=2*code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26928"></span>26928</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=4*code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26929"></span>26929</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">HL=8*A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26930"></span>26930</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26931"></span>26931</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">HL=7*A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26933"></span>26933</td>
+<td class="instruction">LD DE,26863</td>
+<td class="comment-1" rowspan="1">Add <a href="26812.html#26863">26863</a> (the font minus 7*32)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26936"></span>26936</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">HL=address of the glyph</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26937"></span>26937</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26938"></span>26938</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="26907.html">26907</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#26921">Map</a></td>
+<td class="next">
+Next: <a href="26939.html">26939</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

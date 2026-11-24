@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32803</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32801.html">32801</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32803">Map</a></td>
+<td class="next">
+Next: <a href="32832.html">32832</a>
+</td>
+</tr>
+</table>
+<div class="description">32803: Play the tune fragments listed at <a href="32832.html">32832</a></div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32803"></span>32803</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32805"></span>32805</td>
+<td class="instruction">LD IX,32832</td>
+<td class="comment-1" rowspan="1">Point IX at the list of tune fragments</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32809"></span>32809</td>
+<td class="instruction">LD L,(IX+0)</td>
+<td class="comment-1" rowspan="1">Pick up the next fragment address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32812"></span>32812</td>
+<td class="instruction">LD H,(IX+1)</td>
+<td class="comment-1" rowspan="1">H=the high byte of the fragment address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32815"></span>32815</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">End of the list?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32816"></span>32816</td>
+<td class="instruction">OR H</td>
+<td class="comment-1" rowspan="1">Combine with L: a zero address ends the list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32817"></span>32817</td>
+<td class="instruction">JR Z,<a href="32803.html#32828">32828</a></td>
+<td class="comment-1" rowspan="1">Finish if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32819"></span>32819</td>
+<td class="instruction">CALL <a href="32866.html">32866</a></td>
+<td class="comment-1" rowspan="1">Play the fragment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32822"></span>32822</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Next fragment...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32824"></span>32824</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">...(2 bytes per entry)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32826"></span>32826</td>
+<td class="instruction">JR <a href="32803.html#32809">32809</a></td>
+<td class="comment-1" rowspan="1">Next fragment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32828"></span>32828</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32830"></span>32830</td>
+<td class="instruction">JR <a href="32785.html#32796">32796</a></td>
+<td class="comment-1" rowspan="1">Restore the stack and return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32801.html">32801</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32803">Map</a></td>
+<td class="next">
+Next: <a href="32832.html">32832</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

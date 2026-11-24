@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 45353</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45276.html">45276</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45353">Map</a></td>
+<td class="next">
+Next: <a href="45423.html">45423</a>
+</td>
+</tr>
+</table>
+<div class="description">45353: Shootout: get the next animation frame</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45353"></span>45353</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save the record address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45354"></span>45354</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Skip the state and counters...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45355"></span>45355</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">...to the frame table pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45356"></span>45356</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=the frame table address, low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45357"></span>45357</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45358"></span>45358</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45359"></span>45359</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">HL=the frame table address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45360"></span>45360</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the number of frames</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45361"></span>45361</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=a byte of the frame table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45362"></span>45362</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45364"></span>45364</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45365"></span>45365</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45367"></span>45367</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45368"></span>45368</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45370"></span>45370</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45371"></span>45371</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45373"></span>45373</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45374"></span>45374</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45376"></span>45376</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45377"></span>45377</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45379"></span>45379</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45380"></span>45380</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45382"></span>45382</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45383"></span>45383</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45385"></span>45385</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45386"></span>45386</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the reversed byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45387"></span>45387</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45388"></span>45388</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45389"></span>45389</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45391"></span>45391</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45392"></span>45392</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45394"></span>45394</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45395"></span>45395</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45397"></span>45397</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45398"></span>45398</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45400"></span>45400</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45401"></span>45401</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45403"></span>45403</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45404"></span>45404</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45406"></span>45406</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45407"></span>45407</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45409"></span>45409</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45410"></span>45410</td>
+<td class="instruction">RR D</td>
+<td class="comment-1" rowspan="1">Shift the next bit out of D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45412"></span>45412</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">and into A (this reverses the bits)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45413"></span>45413</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Store the second byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45414"></span>45414</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Back one byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45415"></span>45415</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Store the first</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45416"></span>45416</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Forward</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45417"></span>45417</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">And on to the next pair</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45418"></span>45418</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">One frame less</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45419"></span>45419</td>
+<td class="instruction">JR NZ,<a href="45353.html#45361">45361</a></td>
+<td class="comment-1" rowspan="1">Loop for every frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45421"></span>45421</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the record address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45422"></span>45422</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45276.html">45276</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45353">Map</a></td>
+<td class="next">
+Next: <a href="45423.html">45423</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

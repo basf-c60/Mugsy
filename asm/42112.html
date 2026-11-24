@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 42112</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42057.html">42057</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42112">Map</a></td>
+<td class="next">
+Next: <a href="42174.html">42174</a>
+</td>
+</tr>
+</table>
+<div class="description">42112: Shootout with the hit man from Detroit</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+An arcade sequence. Mugsy (controlled with Q/Z up/down, I/P left/right and B/N/M to fire) must shoot the hit man in a restaurant before the hit man shoots him. Installs its own IM2 interrupt routine (<a href="48539.html">48539</a>), sets Mugsy's hit points to (A AND 7)+1 (42301; the hit man always has 4, at 42302), runs the game and restores IM1 on exit.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Value from the handout: Mugsy gets (A AND 7)+1 hit points (8 if A is 255)</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Result: bit 0 set if Mugsy was killed; bits 2-3 set if bystanders were hit</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42112"></span>42112</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Interrupts off while the IM2 handler is installed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42113"></span>42113</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the strength value passed in A (it is needed again below)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42114"></span>42114</td>
+<td class="instruction">LD HL,48539</td>
+<td class="comment-1" rowspan="1">HL=address of the shootout's interrupt routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42117"></span>42117</td>
+<td class="instruction">LD (53457),HL</td>
+<td class="comment-1" rowspan="1">Patch it into the JP at 53457 that the IM2 vector table (<a href="53504.html">53504</a>) leads to</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42120"></span>42120</td>
+<td class="instruction">LD A,209</td>
+<td class="comment-1" rowspan="1">A=209: the high byte of the vector table address, which is filled with 208</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42122"></span>42122</td>
+<td class="instruction">LD I,A</td>
+<td class="comment-1" rowspan="1">Set the interrupt vector register: IM 2 interrupts now vector through <a href="53504.html">53504</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42124"></span>42124</td>
+<td class="instruction">IM 2</td>
+<td class="comment-1" rowspan="1">Select interrupt mode 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42126"></span>42126</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">A=0: black border, speaker off</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42128"></span>42128</td>
+<td class="instruction">OUT (254),A</td>
+<td class="comment-1" rowspan="1">Set the border colour and speaker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42130"></span>42130</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Get the strength value back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42131"></span>42131</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Keep the low 3 bits (0-7)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42133"></span>42133</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Add 1 to make 1-8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42134"></span>42134</td>
+<td class="instruction">LD (42301),A</td>
+<td class="comment-1" rowspan="1">Store it as Mugsy's hit points (the hit man's bullets take one off each time they hit him)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42137"></span>42137</td>
+<td class="instruction">CALL <a href="42639.html">42639</a></td>
+<td class="comment-1" rowspan="1">Draw the restaurant and put the figures in place</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42140"></span>42140</td>
+<td class="instruction">CALL <a href="42977.html">42977</a></td>
+<td class="comment-1" rowspan="1">Main loop: let any figure whose timer says it is ready decide what to do next</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42143"></span>42143</td>
+<td class="instruction">CALL <a href="44766.html">44766</a></td>
+<td class="comment-1" rowspan="1">Deal with Mugsy's and the hit man's bullets landing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42146"></span>42146</td>
+<td class="instruction">CALL <a href="44884.html">44884</a></td>
+<td class="comment-1" rowspan="1">Deal with anyone who has been hit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42149"></span>42149</td>
+<td class="instruction">LD A,(42335)</td>
+<td class="comment-1" rowspan="1">A=the "shootout over" flag (set when Mugsy or the hit man has fallen over)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42152"></span>42152</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42153"></span>42153</td>
+<td class="instruction">JR Z,<a href="42112.html#42140">42140</a></td>
+<td class="comment-1" rowspan="1">Keep going until it is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42155"></span>42155</td>
+<td class="instruction">LD BC,65535</td>
+<td class="comment-1" rowspan="1">BC=65535: a pause of about a second and a half so the player can see the result</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42158"></span>42158</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Count BC down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42159"></span>42159</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42160"></span>42160</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Combine with C to test for zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42161"></span>42161</td>
+<td class="instruction">JR NZ,<a href="42112.html#42158">42158</a></td>
+<td class="comment-1" rowspan="1">Loop until BC is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42163"></span>42163</td>
+<td class="instruction">LD A,63</td>
+<td class="comment-1" rowspan="1">A=63: the high byte of the ROM's interrupt table address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42165"></span>42165</td>
+<td class="instruction">LD I,A</td>
+<td class="comment-1" rowspan="1">Put the interrupt vector register back as the ROM expects it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42167"></span>42167</td>
+<td class="instruction">IM 1</td>
+<td class="comment-1" rowspan="1">Back to interrupt mode 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42169"></span>42169</td>
+<td class="instruction">LD A,(42334)</td>
+<td class="comment-1" rowspan="1">A=the result bits (bit 0 Mugsy killed, bit 1 hit man killed, bit 2 bystander 1 hit, bit 3 bystander 2 hit)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42172"></span>42172</td>
+<td class="instruction">DI</td>
+<td class="comment-1" rowspan="1">Leave with interrupts disabled (the caller restores the ROM's FLAGS)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42173"></span>42173</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return to the VM's native-call routine</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42057.html">42057</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42112">Map</a></td>
+<td class="next">
+Next: <a href="42174.html">42174</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

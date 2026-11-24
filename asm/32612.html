@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32612</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32610.html">32610</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32612">Map</a></td>
+<td class="next">
+Next: <a href="32785.html">32785</a>
+</td>
+</tr>
+</table>
+<div class="description">32612: Draw a line from the last point to (C,B)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+A Bresenham line drawer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32612"></span>32612</td>
+<td class="instruction">LD L,C</td>
+<td class="comment-1" rowspan="1">L=the target x</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32613"></span>32613</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">H=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32615"></span>32615</td>
+<td class="instruction">LD A,(32610)</td>
+<td class="comment-1" rowspan="1">A=the start x (<a href="32610.html">32610</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32618"></span>32618</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32619"></span>32619</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1">D=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32620"></span>32620</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32621"></span>32621</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">HL=target x minus start x: the signed x distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32623"></span>32623</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte of the distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32624"></span>32624</td>
+<td class="instruction">LD DE,257</td>
+<td class="comment-1" rowspan="1">D=1, E=1: the y step and the x step both start as +1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32627"></span>32627</td>
+<td class="instruction">BIT 7,H</td>
+<td class="comment-1" rowspan="1">Is the x distance negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32629"></span>32629</td>
+<td class="instruction">JR Z,<a href="32612.html#32635">32635</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32631"></span>32631</td>
+<td class="instruction">NEG</td>
+<td class="comment-1" rowspan="1">A=its size</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32633"></span>32633</td>
+<td class="instruction">LD E,255</td>
+<td class="comment-1" rowspan="1">E=255: the x step is -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32635"></span>32635</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the size of the x distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32636"></span>32636</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the steps</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32637"></span>32637</td>
+<td class="instruction">LD L,B</td>
+<td class="comment-1" rowspan="1">L=the target y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32638"></span>32638</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1">H=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32640"></span>32640</td>
+<td class="instruction">LD A,(32611)</td>
+<td class="comment-1" rowspan="1">A=the start y (32611)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32643"></span>32643</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32644"></span>32644</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1">D=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32645"></span>32645</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32646"></span>32646</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">HL=target y minus start y: the signed y distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32648"></span>32648</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Get the steps back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32649"></span>32649</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte of the distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32650"></span>32650</td>
+<td class="instruction">BIT 7,H</td>
+<td class="comment-1" rowspan="1">Is the y distance negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32652"></span>32652</td>
+<td class="instruction">JR Z,<a href="32612.html#32658">32658</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32654"></span>32654</td>
+<td class="instruction">NEG</td>
+<td class="comment-1" rowspan="1">A=its size</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32656"></span>32656</td>
+<td class="instruction">LD D,255</td>
+<td class="comment-1" rowspan="1">D=255: the y step is -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32658"></span>32658</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the size of the y distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32659"></span>32659</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=the size of the x distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32660"></span>32660</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Compare it with the y distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32661"></span>32661</td>
+<td class="instruction">JR NC,<a href="32612.html#32673">32673</a></td>
+<td class="comment-1" rowspan="1">x is the longer: that is the main direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32663"></span>32663</td>
+<td class="instruction">LD L,C</td>
+<td class="comment-1" rowspan="1">y is the longer: L=the x distance (the shorter)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32664"></span>32664</td>
+<td class="instruction">LD (32694),DE</td>
+<td class="comment-1" rowspan="1">Store the steps in the operand of the LD BC,0 at <a href="32612.html#32693">32693</a> (self-modifying)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32668"></span>32668</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32669"></span>32669</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=0: no x step on the main direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32670"></span>32670</td>
+<td class="instruction">JP <a href="32612.html#32681">32681</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32673"></span>32673</td>
+<td class="instruction">LD L,B</td>
+<td class="comment-1" rowspan="1">L=the y distance (the shorter)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32674"></span>32674</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1">B=the x distance (the number of pixels to draw)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32675"></span>32675</td>
+<td class="instruction">LD (32694),DE</td>
+<td class="comment-1" rowspan="1">Store the steps in the operand of the LD BC,0 at <a href="32612.html#32693">32693</a> (self-modifying)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32679"></span>32679</td>
+<td class="instruction">LD D,0</td>
+<td class="comment-1" rowspan="1">D=0: no y step on the main direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32681"></span>32681</td>
+<td class="instruction">LD H,B</td>
+<td class="comment-1" rowspan="1">H=the length of the main direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32682"></span>32682</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32683"></span>32683</td>
+<td class="instruction">RRA</td>
+<td class="comment-1" rowspan="1">Halve it: the error term starts half-way</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32684"></span>32684</td>
+<td class="instruction">ADD A,L</td>
+<td class="comment-1" rowspan="1">Add the shorter distance to the error term</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32685"></span>32685</td>
+<td class="instruction">JR C,<a href="32612.html#32690">32690</a></td>
+<td class="comment-1" rowspan="1">It overflowed a byte: step sideways</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32687"></span>32687</td>
+<td class="instruction">CP H</td>
+<td class="comment-1" rowspan="1">Compare with the longer distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32688"></span>32688</td>
+<td class="instruction">JR C,<a href="32612.html#32699">32699</a></td>
+<td class="comment-1" rowspan="1">Smaller: no sideways step this time</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32690"></span>32690</td>
+<td class="instruction">SUB H</td>
+<td class="comment-1" rowspan="1">Take off the longer distance</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32691"></span>32691</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the new error term</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32692"></span>32692</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32693"></span>32693</td>
+<td class="instruction">LD BC,0</td>
+<td class="comment-1" rowspan="1">BC=the step for both directions (set above)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32696"></span>32696</td>
+<td class="instruction">JP <a href="32612.html#32703">32703</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32699"></span>32699</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the error term</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32700"></span>32700</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save the main-direction step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32701"></span>32701</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the alternate registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32702"></span>32702</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">BC=the main-direction step only</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32703"></span>32703</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the vertical step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32704"></span>32704</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32705"></span>32705</td>
+<td class="instruction">JR Z,<a href="32612.html#32728">32728</a></td>
+<td class="comment-1" rowspan="1">None: skip the vertical move</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32707"></span>32707</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="1">Is it negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32709"></span>32709</td>
+<td class="instruction">JR Z,<a href="32612.html#32722">32722</a></td>
+<td class="comment-1" rowspan="1">No: move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32711"></span>32711</td>
+<td class="instruction">DEC H</td>
+<td class="comment-1" rowspan="1">Up one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32712"></span>32712</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte of the screen address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32713"></span>32713</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Pixel row within the character cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32715"></span>32715</td>
+<td class="instruction">CP 7</td>
+<td class="comment-1" rowspan="1">Did the row wrap round to 7 (crossed a character boundary)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32717"></span>32717</td>
+<td class="instruction">JR Z,<a href="32612.html#32772">32772</a></td>
+<td class="comment-1" rowspan="1">Yes: adjust the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32719"></span>32719</td>
+<td class="instruction">JP <a href="32612.html#32728">32728</a></td>
+<td class="comment-1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32722"></span>32722</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Down one pixel row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32723"></span>32723</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32724"></span>32724</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1">Pixel row within the character cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32726"></span>32726</td>
+<td class="instruction">JR Z,<a href="32612.html#32759">32759</a></td>
+<td class="comment-1" rowspan="1">Crossed into the next character row: adjust</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32728"></span>32728</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=the horizontal step</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32729"></span>32729</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32730"></span>32730</td>
+<td class="instruction">JR Z,<a href="32612.html#32751">32751</a></td>
+<td class="comment-1" rowspan="1">None: plot the pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32732"></span>32732</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="1">Is it negative?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32734"></span>32734</td>
+<td class="instruction">JR NZ,<a href="32612.html#32745">32745</a></td>
+<td class="comment-1" rowspan="1">Yes: move left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32736"></span>32736</td>
+<td class="instruction">RRC D</td>
+<td class="comment-1" rowspan="1">Rotate the pixel mask right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32738"></span>32738</td>
+<td class="instruction">JP NC,<a href="32612.html#32751">32751</a></td>
+<td class="comment-1" rowspan="1">Still in the same byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32741"></span>32741</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32742"></span>32742</td>
+<td class="instruction">JP <a href="32612.html#32751">32751</a></td>
+<td class="comment-1" rowspan="1">Plot the pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32745"></span>32745</td>
+<td class="instruction">RLC D</td>
+<td class="comment-1" rowspan="1">Rotate the pixel mask left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32747"></span>32747</td>
+<td class="instruction">JP NC,<a href="32612.html#32751">32751</a></td>
+<td class="comment-1" rowspan="1">Still in the same byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32750"></span>32750</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Previous byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32751"></span>32751</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1">A=the pixel mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32752"></span>32752</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Combine it with the screen byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32753"></span>32753</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Plot the pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32754"></span>32754</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the main registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32755"></span>32755</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">A=the error term</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32756"></span>32756</td>
+<td class="instruction">DJNZ <a href="32612.html#32684">32684</a></td>
+<td class="comment-1" rowspan="1">Loop for every pixel of the line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32758"></span>32758</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32759"></span>32759</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32760"></span>32760</td>
+<td class="instruction">ADD A,32</td>
+<td class="comment-1" rowspan="1">Down one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32762"></span>32762</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32763"></span>32763</td>
+<td class="instruction">JR C,<a href="32612.html#32728">32728</a></td>
+<td class="comment-1" rowspan="1">Carry: this was the last row of the third, so H is already right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32765"></span>32765</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32766"></span>32766</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">Take back the 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32768"></span>32768</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32769"></span>32769</td>
+<td class="instruction">JP <a href="32612.html#32728">32728</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32772"></span>32772</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">A=the low byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32773"></span>32773</td>
+<td class="instruction">SUB 32</td>
+<td class="comment-1" rowspan="1">Up one character row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32775"></span>32775</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">L=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32776"></span>32776</td>
+<td class="instruction">JR C,<a href="32612.html#32728">32728</a></td>
+<td class="comment-1" rowspan="1">Carry: the borrow means H is already right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32778"></span>32778</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">A=the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32779"></span>32779</td>
+<td class="instruction">ADD A,8</td>
+<td class="comment-1" rowspan="1">Move up 8 in the high byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32781"></span>32781</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1">H=it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32782"></span>32782</td>
+<td class="instruction">JP <a href="32612.html#32728">32728</a></td>
+<td class="comment-1" rowspan="1">Carry on</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32610.html">32610</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32612">Map</a></td>
+<td class="next">
+Next: <a href="32785.html">32785</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

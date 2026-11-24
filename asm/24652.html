@@ -1,0 +1,3461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Data at 24652</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-b">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Data</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24614.html">24614</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24652">Map</a></td>
+<td class="next">
+Next: <a href="26740.html">26740</a>
+</td>
+</tr>
+</table>
+<div class="description">24652: VM script: one year of the game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Run by <a href="24614.html">24614</a>. This is the whole game: the report on last year, Rocco, the contract, buying and selling clients, ammo, the squeeze, the kickback, the hit man, the year's results and finally the end-of-game rating. See the <a href="../VM.html">VM reference</a> for the instruction set.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24652"></span>24652</td>
+<td class="instruction">DEFB 1,174,194,1,4,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49838">49838</a>,1 "Last year (Killed) guys got rubbed out by other mobs and (Recruits) hoods wuz recruited by the organisation."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24658"></span>24658</td>
+<td class="instruction">DEFB 6,72,9,94,96</td>
+<td class="comment-1" rowspan="1">VM: IFLT K0,Recruits,<a href="24652.html#24670">24670</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24663"></span>24663</td>
+<td class="instruction">DEFB 1,253,194,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49917">49917</a>,9 "[City Hall think you stink/Some of da boys is sayin' you're all washed up], Boss."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24667"></span>24667</td>
+<td class="instruction">DEFB 13,137,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24713">24713</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24670"></span>24670</td>
+<td class="instruction">DEFB 9,96,132,1,137,96</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html">33888</a>,1,<a href="24652.html#24713">24713</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24676"></span>24676</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24678"></span>24678</td>
+<td class="instruction">DEFB 23,69</td>
+<td class="comment-1" rowspan="1">VM: MUL K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24680"></span>24680</td>
+<td class="instruction">DEFB 23,9</td>
+<td class="comment-1" rowspan="1">VM: MUL Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24682"></span>24682</td>
+<td class="instruction">DEFB 25,3</td>
+<td class="comment-1" rowspan="1">VM: DIV Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24684"></span>24684</td>
+<td class="instruction">DEFB 15,24</td>
+<td class="comment-1" rowspan="1">VM: STORE FedsKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24686"></span>24686</td>
+<td class="instruction">DEFB 26,9,43</td>
+<td class="comment-1" rowspan="1">VM: DIV Recruits,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24689"></span>24689</td>
+<td class="instruction">DEFB 17,24</td>
+<td class="comment-1" rowspan="1">VM: ADD FedsKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24691"></span>24691</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24692"></span>24692</td>
+<td class="instruction">DEFB 15,24</td>
+<td class="comment-1" rowspan="1">VM: STORE FedsKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24694"></span>24694</td>
+<td class="instruction">DEFB 18,10,24</td>
+<td class="comment-1" rowspan="1">VM: ADD TotalKilled,FedsKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24697"></span>24697</td>
+<td class="instruction">DEFB 15,10</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24699"></span>24699</td>
+<td class="instruction">DEFB 21,3,24</td>
+<td class="comment-1" rowspan="1">VM: SUB Hoods,FedsKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24702"></span>24702</td>
+<td class="instruction">DEFB 15,3</td>
+<td class="comment-1" rowspan="1">VM: STORE Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24704"></span>24704</td>
+<td class="instruction">DEFB 1,7,195,9,24</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49927">49927</a>,9 "But some was undercover feds and (FedsKilled) got killed in the shootout."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24709"></span>24709</td>
+<td class="instruction">DEFB 11,1,96,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html">33888</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24713"></span>24713</td>
+<td class="instruction">DEFB 9,96,132,1,153,96</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html">33888</a>,1,<a href="24652.html#24729">24729</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24719"></span>24719</td>
+<td class="instruction">DEFB 1,40,195,8,3,36,208</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49960">49960</a>,8 "So da mob now contains (Hoods) &lt;msg 53284&gt; hoodlums."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24726"></span>24726</td>
+<td class="instruction">DEFB 13,160,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24736">24736</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24729"></span>24729</td>
+<td class="instruction">DEFB 1,40,195,9,3,38,208</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49960">49960</a>,9 "So da mob now contains (Hoods) &lt;msg 53286&gt; hoodlums."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24736"></span>24736</td>
+<td class="instruction">DEFB 6,51,3,180,96</td>
+<td class="comment-1" rowspan="1">VM: IFLT K9,Hoods,<a href="24652.html#24756">24756</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24741"></span>24741</td>
+<td class="instruction">DEFB 1,64,195,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49984">49984</a>,1 "Me and the boys is gettin' out pronto."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24745"></span>24745</td>
+<td class="instruction">DEFB 1,83,195,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50003">50003</a>,9 "What a Schmuck you are, Mugsy!"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24749"></span>24749</td>
+<td class="instruction">DEFB 11,2,98,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33890">33890</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24753"></span>24753</td>
+<td class="instruction">DEFB 13,63,103</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#26431">26431</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24756"></span>24756</td>
+<td class="instruction">DEFB 18,13,3</td>
+<td class="comment-1" rowspan="1">VM: ADD HoodYears,Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24759"></span>24759</td>
+<td class="instruction">DEFB 15,13</td>
+<td class="comment-1" rowspan="1">VM: STORE HoodYears</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24761"></span>24761</td>
+<td class="instruction">DEFB 4,72,1,205,96</td>
+<td class="comment-1" rowspan="1">VM: IFNE K0,Squeezed,<a href="24652.html#24781">24781</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24766"></span>24766</td>
+<td class="instruction">DEFB 1,96,195,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50016">50016</a>,1 "We didn't run no rackets, Boss."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24770"></span>24770</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24772"></span>24772</td>
+<td class="instruction">DEFB 15,25</td>
+<td class="comment-1" rowspan="1">VM: STORE Takings</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24774"></span>24774</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24776"></span>24776</td>
+<td class="instruction">DEFB 15,26</td>
+<td class="comment-1" rowspan="1">VM: STORE Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24778"></span>24778</td>
+<td class="instruction">DEFB 13,0,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24832">24832</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24781"></span>24781</td>
+<td class="instruction">DEFB 24,1,5</td>
+<td class="comment-1" rowspan="1">VM: MUL Squeezed,Price</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24784"></span>24784</td>
+<td class="instruction">DEFB 17,41</td>
+<td class="comment-1" rowspan="1">VM: ADD K05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24786"></span>24786</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24787"></span>24787</td>
+<td class="instruction">DEFB 15,25</td>
+<td class="comment-1" rowspan="1">VM: STORE Takings</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24789"></span>24789</td>
+<td class="instruction">DEFB 24,5,38</td>
+<td class="comment-1" rowspan="1">VM: MUL Price,K1000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24792"></span>24792</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24794"></span>24794</td>
+<td class="instruction">DEFB 1,117,195,1,1,8,33,25</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50037">50037</a>,1 "We protected (Squeezed) of your (Clients) clients last year and squeezed them for an average of $(Tmp), so we made (Takings) thousand bucks."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24802"></span>24802</td>
+<td class="instruction">DEFB 28,25</td>
+<td class="comment-1" rowspan="1">VM: LOAD Takings</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24804"></span>24804</td>
+<td class="instruction">DEFB 15,26</td>
+<td class="comment-1" rowspan="1">VM: STORE Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24806"></span>24806</td>
+<td class="instruction">DEFB 18,16,25</td>
+<td class="comment-1" rowspan="1">VM: ADD TotalTakings,Takings</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24809"></span>24809</td>
+<td class="instruction">DEFB 15,16</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalTakings</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24811"></span>24811</td>
+<td class="instruction">DEFB 9,99,132,1,11,97</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33891">33891</a>,1,<a href="24652.html#24843">24843</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24817"></span>24817</td>
+<td class="instruction">DEFB 8,44,25,11,97</td>
+<td class="comment-1" rowspan="1">VM: IFGE K3,Takings,<a href="24652.html#24843">24843</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24822"></span>24822</td>
+<td class="instruction">DEFB 26,25,43</td>
+<td class="comment-1" rowspan="1">VM: DIV Takings,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24825"></span>24825</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24826"></span>24826</td>
+<td class="instruction">DEFB 15,26</td>
+<td class="comment-1" rowspan="1">VM: STORE Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24828"></span>24828</td>
+<td class="instruction">DEFB 1,160,195,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50080">50080</a>,9 "but Rocco's mob got half of that when they jumped us last winter."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24832"></span>24832</td>
+<td class="instruction">DEFB 3,72,2,47,97</td>
+<td class="comment-1" rowspan="1">VM: IFEQ K0,Raided,<a href="24652.html#24879">24879</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24837"></span>24837</td>
+<td class="instruction">DEFB 2,45,208</td>
+<td class="comment-1" rowspan="1">VM: SETMSG <a href="49774.html#53293">53293</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24840"></span>24840</td>
+<td class="instruction">DEFB 13,19,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24851">24851</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24843"></span>24843</td>
+<td class="instruction">DEFB 3,72,2,47,97</td>
+<td class="comment-1" rowspan="1">VM: IFEQ K0,Raided,<a href="24652.html#24879">24879</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24848"></span>24848</td>
+<td class="instruction">DEFB 2,47,208</td>
+<td class="comment-1" rowspan="1">VM: SETMSG <a href="49774.html#53295">53295</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24851"></span>24851</td>
+<td class="instruction">DEFB 18,7,26</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24854"></span>24854</td>
+<td class="instruction">DEFB 20,2</td>
+<td class="comment-1" rowspan="1">VM: SUB Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24856"></span>24856</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24858"></span>24858</td>
+<td class="instruction">DEFB 6,69,33,71,97</td>
+<td class="comment-1" rowspan="1">VM: IFLT K10,Tmp,<a href="24652.html#24903">24903</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24863"></span>24863</td>
+<td class="instruction">DEFB 18,7,26</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24866"></span>24866</td>
+<td class="instruction">DEFB 20,69</td>
+<td class="comment-1" rowspan="1">VM: SUB K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24868"></span>24868</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24870"></span>24870</td>
+<td class="instruction">DEFB 6,71,2,71,97</td>
+<td class="comment-1" rowspan="1">VM: IFLT K1,Raided,<a href="24652.html#24903">24903</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24875"></span>24875</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24877"></span>24877</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24879"></span>24879</td>
+<td class="instruction">DEFB 9,99,132,1,62,97</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33891">33891</a>,1,<a href="24652.html#24894">24894</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24885"></span>24885</td>
+<td class="instruction">DEFB 1,201,195,9,47,208</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50121">50121</a>,9 "&lt;msg 53295&gt;, we kept our noses clean wit' da inmates of da precint house,"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24891"></span>24891</td>
+<td class="instruction">DEFB 13,68,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24900">24900</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24894"></span>24894</td>
+<td class="instruction">DEFB 1,201,195,9,45,208</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50121">50121</a>,9 "&lt;msg 53293&gt;, we kept our noses clean wit' da inmates of da precint house,"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24900"></span>24900</td>
+<td class="instruction">DEFB 13,78,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24910">24910</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24903"></span>24903</td>
+<td class="instruction">DEFB 1,253,195,9,0,0,2</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50173">50173</a>,9 "&lt;msg 0&gt; the cops raided us and took (Raided) grand from our safe, Boss."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24910"></span>24910</td>
+<td class="instruction">DEFB 11,1,99,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33891">33891</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24914"></span>24914</td>
+<td class="instruction">DEFB 18,18,8</td>
+<td class="comment-1" rowspan="1">VM: ADD ClientYears,Clients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24917"></span>24917</td>
+<td class="instruction">DEFB 15,18</td>
+<td class="comment-1" rowspan="1">VM: STORE ClientYears</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24919"></span>24919</td>
+<td class="instruction">DEFB 18,7,26</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24922"></span>24922</td>
+<td class="instruction">DEFB 20,2</td>
+<td class="comment-1" rowspan="1">VM: SUB Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24924"></span>24924</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24926"></span>24926</td>
+<td class="instruction">DEFB 18,17,26</td>
+<td class="comment-1" rowspan="1">VM: ADD TotalProfit,Profit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24929"></span>24929</td>
+<td class="instruction">DEFB 15,17</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalProfit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24931"></span>24931</td>
+<td class="instruction">DEFB 3,72,14,155,97</td>
+<td class="comment-1" rowspan="1">VM: IFEQ K0,Loan,<a href="24652.html#24987">24987</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24936"></span>24936</td>
+<td class="instruction">DEFB 18,27,64</td>
+<td class="comment-1" rowspan="1">VM: ADD Interest,K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24939"></span>24939</td>
+<td class="instruction">DEFB 23,14</td>
+<td class="comment-1" rowspan="1">VM: MUL Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24941"></span>24941</td>
+<td class="instruction">DEFB 25,64</td>
+<td class="comment-1" rowspan="1">VM: DIV K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24943"></span>24943</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24944"></span>24944</td>
+<td class="instruction">DEFB 15,14</td>
+<td class="comment-1" rowspan="1">VM: STORE Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24946"></span>24946</td>
+<td class="instruction">DEFB 21,7,14</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24949"></span>24949</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24951"></span>24951</td>
+<td class="instruction">DEFB 5,72,33,133,97</td>
+<td class="comment-1" rowspan="1">VM: IFLE K0,Tmp,<a href="24652.html#24965">24965</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24956"></span>24956</td>
+<td class="instruction">DEFB 1,27,196,1,7,14</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50203">50203</a>,1 "You've got exactly (Dough) grand in the safe, Boss. Anyways, dat's less than da (Loan) grand ya owe Nick the Greek, so he's takin' over."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24962"></span>24962</td>
+<td class="instruction">DEFB 13,169,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24745">24745</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24965"></span>24965</td>
+<td class="instruction">DEFB 1,91,196,1,14</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50267">50267</a>,1 "Nick the Greek has got the (Loan) grand ya owed him."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24970"></span>24970</td>
+<td class="instruction">DEFB 4,69,33,150,97</td>
+<td class="comment-1" rowspan="1">VM: IFNE K10,Tmp,<a href="24652.html#24982">24982</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24975"></span>24975</td>
+<td class="instruction">DEFB 1,113,196,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50289">50289</a>,1 "So ya aint got the dough ta buy rods and bullets so da boys can defend theirselves. Sorry, Boss,- you're goin' for a ride."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24979"></span>24979</td>
+<td class="instruction">DEFB 13,169,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24745">24745</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="24982"></span>24982</td>
+<td class="instruction">DEFB 21,7,14</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24985"></span>24985</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24987"></span>24987</td>
+<td class="instruction">DEFB 1,175,196,9,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50351">50351</a>,9 "You got (Dough) thousand bucks."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24992"></span>24992</td>
+<td class="instruction">DEFB 9,103,132,1,183,97</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33895">33895</a>,1,<a href="24652.html#25015">25015</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="24998"></span>24998</td>
+<td class="instruction">DEFB 9,102,132,1,179,97</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33894">33894</a>,1,<a href="24652.html#25011">25011</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25004"></span>25004</td>
+<td class="instruction">DEFB 1,88,197,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50520">50520</a>,1 "Your cousin Abe has muscled in on your territory. You've had it."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25008"></span>25008</td>
+<td class="instruction">DEFB 13,169,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24745">24745</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25011"></span>25011</td>
+<td class="instruction">DEFB 1,238,197,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50670">50670</a>,9 "[Well, ya lived for another year./Lucky you're still in charge./I gotta hand it to ya, Boss./I just don't know how ya do it, Boss./Ya sure are a survivor, Boss./Gee, You're still da boss, Boss./Cripes, you're still hangin' on.]"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25015"></span>25015</td>
+<td class="instruction">DEFB 18,12,11</td>
+<td class="comment-1" rowspan="1">VM: ADD TotalBlunders,Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25018"></span>25018</td>
+<td class="instruction">DEFB 15,12</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalBlunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25020"></span>25020</td>
+<td class="instruction">DEFB 3,36,6,63,103</td>
+<td class="comment-1" rowspan="1">VM: IFEQ Years,Year,<a href="24652.html#26431">26431</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25025"></span>25025</td>
+<td class="instruction">DEFB 8,43,11,205,97</td>
+<td class="comment-1" rowspan="1">VM: IFGE K2,Blunders,<a href="24652.html#25037">25037</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25030"></span>25030</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25032"></span>25032</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25034"></span>25034</td>
+<td class="instruction">DEFB 13,216,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25048">25048</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25037"></span>25037</td>
+<td class="instruction">DEFB 26,36,43</td>
+<td class="comment-1" rowspan="1">VM: DIV Years,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25040"></span>25040</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25041"></span>25041</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25043"></span>25043</td>
+<td class="instruction">DEFB 4,36,6,50,98</td>
+<td class="comment-1" rowspan="1">VM: IFNE Years,Year,<a href="24652.html#25138">25138</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25048"></span>25048</td>
+<td class="instruction">DEFB 9,101,132,1,231,97</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33893">33893</a>,1,<a href="24652.html#25063">25063</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25054"></span>25054</td>
+<td class="instruction">DEFB 1,255,197,0,51,208</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50687">50687</a>,0 "&lt;msg 53299&gt; some of da boys in the mob is sayin' you're past it and they're talkin about puttin' out a contract on you. If it goes any further, how many grand ( if any) will you pay to keep the good guys faithful?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25060"></span>25060</td>
+<td class="instruction">DEFB 13,237,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25069">25069</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25063"></span>25063</td>
+<td class="instruction">DEFB 1,255,197,0,49,208</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50687">50687</a>,0 "&lt;msg 53297&gt; some of da boys in the mob is sayin' you're past it and they're talkin about puttin' out a contract on you. If it goes any further, how many grand ( if any) will you pay to keep the good guys faithful?"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25069"></span>25069</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25072"></span>25072</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25074"></span>25074</td>
+<td class="instruction">DEFB 15,30</td>
+<td class="comment-1" rowspan="1">VM: STORE Handout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25076"></span>25076</td>
+<td class="instruction">DEFB 9,104,132,1,23,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25111">25111</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25082"></span>25082</td>
+<td class="instruction">DEFB 9,104,132,2,46,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25134">25134</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25088"></span>25088</td>
+<td class="instruction">DEFB 21,7,30</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Handout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25091"></span>25091</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25093"></span>25093</td>
+<td class="instruction">DEFB 6,72,33,37,98</td>
+<td class="comment-1" rowspan="1">VM: IFLT K0,Tmp,<a href="24652.html#25125">25125</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25098"></span>25098</td>
+<td class="instruction">DEFB 1,131,198,9,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50819">50819</a>,9 "You'll kill us wit' kindness, Boss.....( you've only got (Dough) grand). Tell me that again, Boss."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25103"></span>25103</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25106"></span>25106</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25108"></span>25108</td>
+<td class="instruction">DEFB 13,30,98</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25118">25118</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25111"></span>25111</td>
+<td class="instruction">DEFB 1,99,198,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50787">50787</a>,9 "Boss, the boys'll gun ya down."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25115"></span>25115</td>
+<td class="instruction">DEFB 14,137,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28297.html">28297</a> (Louey charges hush money for a blunder)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25118"></span>25118</td>
+<td class="instruction">DEFB 1,118,198,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50806">50806</a>,8 "How many grand for the handout?."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25122"></span>25122</td>
+<td class="instruction">DEFB 13,237,97</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25069">25069</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25125"></span>25125</td>
+<td class="instruction">DEFB 1,181,198,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50869">50869</a>,9 "Okay, Boss, my guys will help ya."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25129"></span>25129</td>
+<td class="instruction">DEFB 21,7,30</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Handout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25132"></span>25132</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25134"></span>25134</td>
+<td class="instruction">DEFB 11,2,100,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33892">33892</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25138"></span>25138</td>
+<td class="instruction">DEFB 9,103,132,2,60,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33895">33895</a>,2,<a href="24652.html#25148">25148</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25144"></span>25144</td>
+<td class="instruction">DEFB 1,200,198,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50888">50888</a>,9 "It costs one grand to put the squeeze on each client, and the godfather made the rule that our gangsters each get one client to protect for theirselves."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25148"></span>25148</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25150"></span>25150</td>
+<td class="instruction">DEFB 23,48</td>
+<td class="comment-1" rowspan="1">VM: MUL K6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25152"></span>25152</td>
+<td class="instruction">DEFB 17,71</td>
+<td class="comment-1" rowspan="1">VM: ADD K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25154"></span>25154</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25156"></span>25156</td>
+<td class="instruction">DEFB 6,47,33,80,98</td>
+<td class="comment-1" rowspan="1">VM: IFLT K5,Tmp,<a href="24652.html#25168">25168</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25161"></span>25161</td>
+<td class="instruction">DEFB 11,1,99,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33891">33891</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25165"></span>25165</td>
+<td class="instruction">DEFB 13,199,98</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25287">25287</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25168"></span>25168</td>
+<td class="instruction">DEFB 11,2,99,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33891">33891</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25172"></span>25172</td>
+<td class="instruction">DEFB 1,11,199,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50955">50955</a>,1 "The word is that Rocco's gettin' uppity. They say he wants ta muscle in on your patch, Boss."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25176"></span>25176</td>
+<td class="instruction">DEFB 24,3,43</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25179"></span>25179</td>
+<td class="instruction">DEFB 17,8</td>
+<td class="comment-1" rowspan="1">VM: ADD Clients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25181"></span>25181</td>
+<td class="instruction">DEFB 17,14</td>
+<td class="comment-1" rowspan="1">VM: ADD Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25183"></span>25183</td>
+<td class="instruction">DEFB 17,64</td>
+<td class="comment-1" rowspan="1">VM: ADD K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25185"></span>25185</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25187"></span>25187</td>
+<td class="instruction">DEFB 6,33,7,199,98</td>
+<td class="comment-1" rowspan="1">VM: IFLT Tmp,Dough,<a href="24652.html#25287">25287</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25192"></span>25192</td>
+<td class="instruction">DEFB 1,57,199,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51001">51001</a>,8 "Dis could be tough, but maybe we can buy off Rocco's mob. How many grand ( if any) can you pay?"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25196"></span>25196</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25199"></span>25199</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25201"></span>25201</td>
+<td class="instruction">DEFB 15,31</td>
+<td class="comment-1" rowspan="1">VM: STORE Bribe</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25203"></span>25203</td>
+<td class="instruction">DEFB 9,104,132,1,147,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25235">25235</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25209"></span>25209</td>
+<td class="instruction">DEFB 9,104,132,2,199,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25287">25287</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25215"></span>25215</td>
+<td class="instruction">DEFB 5,31,7,161,98</td>
+<td class="comment-1" rowspan="1">VM: IFLE Bribe,Dough,<a href="24652.html#25249">25249</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25220"></span>25220</td>
+<td class="instruction">DEFB 1,169,199,9,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51113">51113</a>,9 "You must be off ya rocker, Boss, we've only got (Dough) grand."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25225"></span>25225</td>
+<td class="instruction">DEFB 14,137,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28297.html">28297</a> (Louey charges hush money for a blunder)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25228"></span>25228</td>
+<td class="instruction">DEFB 1,200,199,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51144">51144</a>,8 "Better try again - how many G's?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25232"></span>25232</td>
+<td class="instruction">DEFB 13,108,98</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25196">25196</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25235"></span>25235</td>
+<td class="instruction">DEFB 1,104,199,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51048">51048</a>,9 "Rocco aint usually regarded as a philanthropist, Boss. He don't give nuthin' away."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25239"></span>25239</td>
+<td class="instruction">DEFB 14,137,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28297.html">28297</a> (Louey charges hush money for a blunder)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25242"></span>25242</td>
+<td class="instruction">DEFB 1,159,199,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51103">51103</a>,8 "How many thousand, Boss?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25246"></span>25246</td>
+<td class="instruction">DEFB 13,108,98</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25196">25196</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25249"></span>25249</td>
+<td class="instruction">DEFB 21,7,31</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Bribe</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25252"></span>25252</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25254"></span>25254</td>
+<td class="instruction">DEFB 6,47,33,186,98</td>
+<td class="comment-1" rowspan="1">VM: IFLT K5,Tmp,<a href="24652.html#25274">25274</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25259"></span>25259</td>
+<td class="instruction">DEFB 1,219,199,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51163">51163</a>,9 "Geez, Boss, we're gonna need some ourselves. Ya wanna think again?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25263"></span>25263</td>
+<td class="instruction">DEFB 14,137,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28297.html">28297</a> (Louey charges hush money for a blunder)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25266"></span>25266</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25269"></span>25269</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25271"></span>25271</td>
+<td class="instruction">DEFB 13,108,98</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25196">25196</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25274"></span>25274</td>
+<td class="instruction">DEFB 1,255,199,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51199">51199</a>,9 "Okay, Boss, we'll see if it works."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25278"></span>25278</td>
+<td class="instruction">DEFB 21,7,31</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Bribe</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25281"></span>25281</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25283"></span>25283</td>
+<td class="instruction">DEFB 11,1,99,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33891">33891</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25287"></span>25287</td>
+<td class="instruction">DEFB 9,103,132,1,217,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33895">33895</a>,1,<a href="24652.html#25305">25305</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25293"></span>25293</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25295"></span>25295</td>
+<td class="instruction">DEFB 23,48</td>
+<td class="comment-1" rowspan="1">VM: MUL K6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25297"></span>25297</td>
+<td class="instruction">DEFB 17,54</td>
+<td class="comment-1" rowspan="1">VM: ADD K13</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25299"></span>25299</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25300"></span>25300</td>
+<td class="instruction">DEFB 15,34</td>
+<td class="comment-1" rowspan="1">VM: STORE ClientCost</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25302"></span>25302</td>
+<td class="instruction">DEFB 13,226,98</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25314">25314</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25305"></span>25305</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25307"></span>25307</td>
+<td class="instruction">DEFB 23,69</td>
+<td class="comment-1" rowspan="1">VM: MUL K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25309"></span>25309</td>
+<td class="instruction">DEFB 17,52</td>
+<td class="comment-1" rowspan="1">VM: ADD K11</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25311"></span>25311</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25312"></span>25312</td>
+<td class="instruction">DEFB 15,34</td>
+<td class="comment-1" rowspan="1">VM: STORE ClientCost</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25314"></span>25314</td>
+<td class="instruction">DEFB 1,23,200,1,34</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51223">51223</a>,1 "This year we can buy or sell clients for (ClientCost) grand each."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25319"></span>25319</td>
+<td class="instruction">DEFB 24,3,47</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25322"></span>25322</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25324"></span>25324</td>
+<td class="instruction">DEFB 7,8,33,1,99</td>
+<td class="comment-1" rowspan="1">VM: IFGT Clients,Tmp,<a href="24652.html#25345">25345</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25329"></span>25329</td>
+<td class="instruction">DEFB 1,41,200,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51241">51241</a>,9 "The boys is workin' real hard. Now, how many clients do we buy from the syndicate?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25333"></span>25333</td>
+<td class="instruction">DEFB 13,17,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25361">25361</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25336"></span>25336</td>
+<td class="instruction">DEFB 1,117,200,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51317">51317</a>,9 "Minuses won't wash here, Mugsy. How many do we buy?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25340"></span>25340</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25343"></span>25343</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25345"></span>25345</td>
+<td class="instruction">DEFB 5,54,34,13,99</td>
+<td class="comment-1" rowspan="1">VM: IFLE K13,ClientCost,<a href="24652.html#25357">25357</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25350"></span>25350</td>
+<td class="instruction">DEFB 1,112,200,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51312">51312</a>,8 "How many do we buy from the syndicate this year, Boss? ( The price is right!)."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25354"></span>25354</td>
+<td class="instruction">DEFB 13,17,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25361">25361</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25357"></span>25357</td>
+<td class="instruction">DEFB 1,92,200,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51292">51292</a>,8 "How many do we buy from the syndicate this year, Boss?"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25361"></span>25361</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25364"></span>25364</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25366"></span>25366</td>
+<td class="instruction">DEFB 15,19</td>
+<td class="comment-1" rowspan="1">VM: STORE Bought</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25368"></span>25368</td>
+<td class="instruction">DEFB 9,104,132,2,79,99</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25423">25423</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25374"></span>25374</td>
+<td class="instruction">DEFB 9,104,132,1,248,98</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25336">25336</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25380"></span>25380</td>
+<td class="instruction">DEFB 24,19,34</td>
+<td class="comment-1" rowspan="1">VM: MUL Bought,ClientCost</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25383"></span>25383</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25385"></span>25385</td>
+<td class="instruction">DEFB 21,7,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25388"></span>25388</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25390"></span>25390</td>
+<td class="instruction">DEFB 5,72,33,58,99</td>
+<td class="comment-1" rowspan="1">VM: IFLE K0,Tmp,<a href="24652.html#25402">25402</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25395"></span>25395</td>
+<td class="instruction">DEFB 1,140,200,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51340">51340</a>,9 "Cripes, Boss, you gotta be outa ya mind, we aint made of money."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25399"></span>25399</td>
+<td class="instruction">DEFB 13,1,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25345">25345</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25402"></span>25402</td>
+<td class="instruction">DEFB 28,33</td>
+<td class="comment-1" rowspan="1">VM: LOAD Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25404"></span>25404</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25406"></span>25406</td>
+<td class="instruction">DEFB 18,8,19</td>
+<td class="comment-1" rowspan="1">VM: ADD Clients,Bought</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25409"></span>25409</td>
+<td class="instruction">DEFB 15,8</td>
+<td class="comment-1" rowspan="1">VM: STORE Clients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25411"></span>25411</td>
+<td class="instruction">DEFB 13,161,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25505">25505</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25414"></span>25414</td>
+<td class="instruction">DEFB 1,5,201,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51461">51461</a>,1 "Cut the minus garbage, Mugsy!"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25418"></span>25418</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25421"></span>25421</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25423"></span>25423</td>
+<td class="instruction">DEFB 8,57,34,91,99</td>
+<td class="comment-1" rowspan="1">VM: IFGE K19,ClientCost,<a href="24652.html#25435">25435</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25428"></span>25428</td>
+<td class="instruction">DEFB 1,182,200,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51382">51382</a>,8 "How many do ya wanna sell? ( The price is right!)."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25432"></span>25432</td>
+<td class="instruction">DEFB 13,95,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25439">25439</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25435"></span>25435</td>
+<td class="instruction">DEFB 1,171,200,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51371">51371</a>,8 "How many do ya wanna sell?"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25439"></span>25439</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25442"></span>25442</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25444"></span>25444</td>
+<td class="instruction">DEFB 15,20</td>
+<td class="comment-1" rowspan="1">VM: STORE Sold</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25446"></span>25446</td>
+<td class="instruction">DEFB 9,104,132,2,161,99</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25505">25505</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25452"></span>25452</td>
+<td class="instruction">DEFB 9,104,132,1,70,99</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25414">25414</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25458"></span>25458</td>
+<td class="instruction">DEFB 8,8,20,130,99</td>
+<td class="comment-1" rowspan="1">VM: IFGE Clients,Sold,<a href="24652.html#25474">25474</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25463"></span>25463</td>
+<td class="instruction">DEFB 1,187,200,9,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51387">51387</a>,9 "Geez, Boss, we've only got (Clients) customers. If the boys think you wanna make a fast buck and then skip, you could be takin' an unexpected ride!"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25468"></span>25468</td>
+<td class="instruction">DEFB 14,137,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28297.html">28297</a> (Louey charges hush money for a blunder)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25471"></span>25471</td>
+<td class="instruction">DEFB 13,79,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25423">25423</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25474"></span>25474</td>
+<td class="instruction">DEFB 4,8,20,139,99</td>
+<td class="comment-1" rowspan="1">VM: IFNE Clients,Sold,<a href="24652.html#25483">25483</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25479"></span>25479</td>
+<td class="instruction">DEFB 1,27,201,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51483">51483</a>,9 "Jumpin' jellyfish, Boss,- how do ya expect us ta survive if ya sell all our clients to the syndicate?"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25483"></span>25483</td>
+<td class="instruction">DEFB 21,8,20</td>
+<td class="comment-1" rowspan="1">VM: SUB Clients,Sold</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25486"></span>25486</td>
+<td class="instruction">DEFB 15,22</td>
+<td class="comment-1" rowspan="1">VM: STORE ClientsLeft</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25488"></span>25488</td>
+<td class="instruction">DEFB 7,3,22,119,99</td>
+<td class="comment-1" rowspan="1">VM: IFGT Hoods,ClientsLeft,<a href="24652.html#25463">25463</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25493"></span>25493</td>
+<td class="instruction">DEFB 24,20,34</td>
+<td class="comment-1" rowspan="1">VM: MUL Sold,ClientCost</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25496"></span>25496</td>
+<td class="instruction">DEFB 17,7</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25498"></span>25498</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25500"></span>25500</td>
+<td class="instruction">DEFB 21,8,20</td>
+<td class="comment-1" rowspan="1">VM: SUB Clients,Sold</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25503"></span>25503</td>
+<td class="instruction">DEFB 15,8</td>
+<td class="comment-1" rowspan="1">VM: STORE Clients</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25505"></span>25505</td>
+<td class="instruction">DEFB 4,72,7,173,99</td>
+<td class="comment-1" rowspan="1">VM: IFNE K0,Dough,<a href="24652.html#25517">25517</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25510"></span>25510</td>
+<td class="instruction">DEFB 1,78,201,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51534">51534</a>,1 "As you know, Mugsy, that means we aint got nuthin' left."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25514"></span>25514</td>
+<td class="instruction">DEFB 13,169,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24745">24745</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25517"></span>25517</td>
+<td class="instruction">DEFB 1,98,201,0,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51554">51554</a>,0 "As you know, Boss, that leaves (Dough) thousand bucks in the safe. How many grand are ya gonna give the boys for artillery and ammo?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25522"></span>25522</td>
+<td class="instruction">DEFB 13,190,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25534">25534</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25525"></span>25525</td>
+<td class="instruction">DEFB 1,228,201,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51684">51684</a>,8 "Cut the negatives, sucker!"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25529"></span>25529</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25532"></span>25532</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25534"></span>25534</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25537"></span>25537</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25539"></span>25539</td>
+<td class="instruction">DEFB 15,23</td>
+<td class="comment-1" rowspan="1">VM: STORE Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25541"></span>25541</td>
+<td class="instruction">DEFB 9,104,132,2,21,100</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25621">25621</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25547"></span>25547</td>
+<td class="instruction">DEFB 9,104,132,1,181,99</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25525">25525</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25553"></span>25553</td>
+<td class="instruction">DEFB 21,7,23</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25556"></span>25556</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25558"></span>25558</td>
+<td class="instruction">DEFB 3,72,33,239,99</td>
+<td class="comment-1" rowspan="1">VM: IFEQ K0,Tmp,<a href="24652.html#25583">25583</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25563"></span>25563</td>
+<td class="instruction">DEFB 6,72,33,251,99</td>
+<td class="comment-1" rowspan="1">VM: IFLT K0,Tmp,<a href="24652.html#25595">25595</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25568"></span>25568</td>
+<td class="instruction">DEFB 1,156,201,9,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51612">51612</a>,9 "You aint thinkin' straight, Boss. There's only (Dough) grand left in the safe."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25573"></span>25573</td>
+<td class="instruction">DEFB 14,137,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28297.html">28297</a> (Louey charges hush money for a blunder)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25576"></span>25576</td>
+<td class="instruction">DEFB 1,159,199,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51103">51103</a>,8 "How many thousand, Boss?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25580"></span>25580</td>
+<td class="instruction">DEFB 13,190,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25534">25534</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25583"></span>25583</td>
+<td class="instruction">DEFB 1,188,201,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51644">51644</a>,8 "Geez, there'll be nuthin' left. Tell me that again, Boss, I musta misheard you."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25587"></span>25587</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25590"></span>25590</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25592"></span>25592</td>
+<td class="instruction">DEFB 13,190,99</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25534">25534</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25595"></span>25595</td>
+<td class="instruction">DEFB 6,3,23,41,100</td>
+<td class="comment-1" rowspan="1">VM: IFLT Hoods,Ammo,<a href="24652.html#25641">25641</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25600"></span>25600</td>
+<td class="instruction">DEFB 1,243,201,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51699">51699</a>,9 "Gee, da boys is gonna be hoppin' mad, Boss- you sure got guts!"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25604"></span>25604</td>
+<td class="instruction">DEFB 26,23,3</td>
+<td class="comment-1" rowspan="1">VM: DIV Ammo,Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25607"></span>25607</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25609"></span>25609</td>
+<td class="instruction">DEFB 7,41,33,25,100</td>
+<td class="comment-1" rowspan="1">VM: IFGT K05,Tmp,<a href="24652.html#25625">25625</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25614"></span>25614</td>
+<td class="instruction">DEFB 11,1,102,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33894">33894</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25618"></span>25618</td>
+<td class="instruction">DEFB 13,29,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25629">25629</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25621"></span>25621</td>
+<td class="instruction">DEFB 1,22,202,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51734">51734</a>,9 "Ya gonna get da guys bumped off."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25625"></span>25625</td>
+<td class="instruction">DEFB 11,2,102,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33894">33894</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25629"></span>25629</td>
+<td class="instruction">DEFB 11,2,97,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33889">33889</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25633"></span>25633</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25636"></span>25636</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25638"></span>25638</td>
+<td class="instruction">DEFB 13,81,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25681">25681</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25641"></span>25641</td>
+<td class="instruction">DEFB 24,3,43</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25644"></span>25644</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25646"></span>25646</td>
+<td class="instruction">DEFB 5,33,23,58,100</td>
+<td class="comment-1" rowspan="1">VM: IFLE Tmp,Ammo,<a href="24652.html#25658">25658</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25651"></span>25651</td>
+<td class="instruction">DEFB 1,39,202,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51751">51751</a>,9 "Yeah, Boss, keep'em scared, eh!"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25655"></span>25655</td>
+<td class="instruction">DEFB 13,72,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25672">25672</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25658"></span>25658</td>
+<td class="instruction">DEFB 24,3,47</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25661"></span>25661</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25663"></span>25663</td>
+<td class="instruction">DEFB 7,3,23,77,100</td>
+<td class="comment-1" rowspan="1">VM: IFGT Hoods,Ammo,<a href="24652.html#25677">25677</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25668"></span>25668</td>
+<td class="instruction">DEFB 1,58,202,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51770">51770</a>,9 "Cripes, Boss, they could fight a war with the hardware that'll buy."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25672"></span>25672</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25675"></span>25675</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25677"></span>25677</td>
+<td class="instruction">DEFB 11,1,102,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33894">33894</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25681"></span>25681</td>
+<td class="instruction">DEFB 21,7,23</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25684"></span>25684</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25686"></span>25686</td>
+<td class="instruction">DEFB 21,8,3</td>
+<td class="comment-1" rowspan="1">VM: SUB Clients,Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25689"></span>25689</td>
+<td class="instruction">DEFB 15,21</td>
+<td class="comment-1" rowspan="1">VM: STORE Unsqueezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25691"></span>25691</td>
+<td class="instruction">DEFB 6,72,21,125,100</td>
+<td class="comment-1" rowspan="1">VM: IFLT K0,Unsqueezed,<a href="24652.html#25725">25725</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25696"></span>25696</td>
+<td class="instruction">DEFB 1,97,202,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51809">51809</a>,9 "We got so few clients left that squeezin' them aint gonna pay your moll's hooch bills."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25700"></span>25700</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25703"></span>25703</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25705"></span>25705</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25707"></span>25707</td>
+<td class="instruction">DEFB 15,1</td>
+<td class="comment-1" rowspan="1">VM: STORE Squeezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25709"></span>25709</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25711"></span>25711</td>
+<td class="instruction">DEFB 15,14</td>
+<td class="comment-1" rowspan="1">VM: STORE Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25713"></span>25713</td>
+<td class="instruction">DEFB 13,53,101</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25909">25909</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25716"></span>25716</td>
+<td class="instruction">DEFB 1,177,202,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51889">51889</a>,9 "Forget the negatives, Mugsy- just tell me how many customers to lean on this year."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25720"></span>25720</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25723"></span>25723</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25725"></span>25725</td>
+<td class="instruction">DEFB 1,146,202,8,21</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51858">51858</a>,8 "We got (Unsqueezed) clients in need of protection, Boss. How many do we put the squeeze on this year?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25730"></span>25730</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25733"></span>25733</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25735"></span>25735</td>
+<td class="instruction">DEFB 15,1</td>
+<td class="comment-1" rowspan="1">VM: STORE Squeezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25737"></span>25737</td>
+<td class="instruction">DEFB 9,104,132,2,30,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25886">25886</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25743"></span>25743</td>
+<td class="instruction">DEFB 9,104,132,1,116,100</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25716">25716</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25749"></span>25749</td>
+<td class="instruction">DEFB 8,21,1,162,100</td>
+<td class="comment-1" rowspan="1">VM: IFGE Unsqueezed,Squeezed,<a href="24652.html#25762">25762</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25754"></span>25754</td>
+<td class="instruction">DEFB 1,207,202,9,21</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51919">51919</a>,9 "Boss, there's only (Unsqueezed) clients, and da guys gotta make an honest livin'........ How many clients, Mugsy?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25759"></span>25759</td>
+<td class="instruction">DEFB 13,120,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25720">25720</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25762"></span>25762</td>
+<td class="instruction">DEFB 8,7,1,228,100</td>
+<td class="comment-1" rowspan="1">VM: IFGE Dough,Squeezed,<a href="24652.html#25828">25828</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25767"></span>25767</td>
+<td class="instruction">DEFB 1,106,203,9,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52074">52074</a>,9 "[But we've only got (Dough) grand./Have ya lost ya marbles, Mugsy? We've only $(Dough) thousand left./Cut the kiddin', Boss. You know there's only (Dough) grand in the safe.]"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25772"></span>25772</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25775"></span>25775</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25777"></span>25777</td>
+<td class="instruction">DEFB 21,1,7</td>
+<td class="comment-1" rowspan="1">VM: SUB Squeezed,Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25780"></span>25780</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25782"></span>25782</td>
+<td class="instruction">DEFB 7,58,33,125,100</td>
+<td class="comment-1" rowspan="1">VM: IFGT K20,Tmp,<a href="24652.html#25725">25725</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25787"></span>25787</td>
+<td class="instruction">DEFB 7,37,33,200,100</td>
+<td class="comment-1" rowspan="1">VM: IFGT K800,Tmp,<a href="24652.html#25800">25800</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25792"></span>25792</td>
+<td class="instruction">DEFB 1,115,203,9,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52083">52083</a>,9 "What wuz dat, Boss? I could've swore you said (Squeezed)."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25797"></span>25797</td>
+<td class="instruction">DEFB 13,125,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25725">25725</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25800"></span>25800</td>
+<td class="instruction">DEFB 21,1,7</td>
+<td class="comment-1" rowspan="1">VM: SUB Squeezed,Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25803"></span>25803</td>
+<td class="instruction">DEFB 15,14</td>
+<td class="comment-1" rowspan="1">VM: STORE Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25805"></span>25805</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25807"></span>25807</td>
+<td class="instruction">DEFB 23,62</td>
+<td class="comment-1" rowspan="1">VM: MUL K60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25809"></span>25809</td>
+<td class="instruction">DEFB 17,68</td>
+<td class="comment-1" rowspan="1">VM: ADD K40</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25811"></span>25811</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25812"></span>25812</td>
+<td class="instruction">DEFB 15,27</td>
+<td class="comment-1" rowspan="1">VM: STORE Interest</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25814"></span>25814</td>
+<td class="instruction">DEFB 1,146,203,9,14,27</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52114">52114</a>,9 "Great noos, Boss!...... I set up this deal wit' Nick the Greek. He's gonna lend you the other (Loan) grand at only (Interest) percent interest."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25820"></span>25820</td>
+<td class="instruction">DEFB 18,7,14</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,Loan</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25823"></span>25823</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25825"></span>25825</td>
+<td class="instruction">DEFB 13,242,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25842">25842</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25828"></span>25828</td>
+<td class="instruction">DEFB 26,21,44</td>
+<td class="comment-1" rowspan="1">VM: DIV Unsqueezed,K3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25831"></span>25831</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25833"></span>25833</td>
+<td class="instruction">DEFB 8,33,1,30,101</td>
+<td class="comment-1" rowspan="1">VM: IFGE Tmp,Squeezed,<a href="24652.html#25886">25886</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25838"></span>25838</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25840"></span>25840</td>
+<td class="instruction">DEFB 15,14</td>
+<td class="comment-1" rowspan="1">VM: STORE Loan</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25842"></span>25842</td>
+<td class="instruction">DEFB 24,3,68</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K40</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25845"></span>25845</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25847"></span>25847</td>
+<td class="instruction">DEFB 6,1,33,48,101</td>
+<td class="comment-1" rowspan="1">VM: IFLT Squeezed,Tmp,<a href="24652.html#25904">25904</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25852"></span>25852</td>
+<td class="instruction">DEFB 1,226,203,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52194">52194</a>,9 "Watch out, Boss, the boys aint gonna like workin' that hard."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25856"></span>25856</td>
+<td class="instruction">DEFB 18,7,23</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25859"></span>25859</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25861"></span>25861</td>
+<td class="instruction">DEFB 24,3,61</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K50</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25864"></span>25864</td>
+<td class="instruction">DEFB 31</td>
+<td class="comment-1" rowspan="1">VM: NEG</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25865"></span>25865</td>
+<td class="instruction">DEFB 17,1</td>
+<td class="comment-1" rowspan="1">VM: ADD Squeezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25867"></span>25867</td>
+<td class="instruction">DEFB 17,23</td>
+<td class="comment-1" rowspan="1">VM: ADD Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25869"></span>25869</td>
+<td class="instruction">DEFB 15,23</td>
+<td class="comment-1" rowspan="1">VM: STORE Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25871"></span>25871</td>
+<td class="instruction">DEFB 24,3,61</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K50</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25874"></span>25874</td>
+<td class="instruction">DEFB 15,1</td>
+<td class="comment-1" rowspan="1">VM: STORE Squeezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25876"></span>25876</td>
+<td class="instruction">DEFB 21,7,23</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Ammo</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25879"></span>25879</td>
+<td class="instruction">DEFB 20,1</td>
+<td class="comment-1" rowspan="1">VM: SUB Squeezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25881"></span>25881</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25883"></span>25883</td>
+<td class="instruction">DEFB 13,53,101</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25909">25909</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25886"></span>25886</td>
+<td class="instruction">DEFB 1,3,203,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#51971">51971</a>,9 "You sure don't dig da protection racket, - do ya, Boss?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25890"></span>25890</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25893"></span>25893</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25895"></span>25895</td>
+<td class="instruction">DEFB 9,104,132,2,53,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25909">25909</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25901"></span>25901</td>
+<td class="instruction">DEFB 13,238,100</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25838">25838</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25904"></span>25904</td>
+<td class="instruction">DEFB 21,7,1</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Squeezed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25907"></span>25907</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25909"></span>25909</td>
+<td class="instruction">DEFB 3,72,7,135,101</td>
+<td class="comment-1" rowspan="1">VM: IFEQ K0,Dough,<a href="24652.html#25991">25991</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25914"></span>25914</td>
+<td class="instruction">DEFB 13,73,101</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25929">25929</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25917"></span>25917</td>
+<td class="instruction">DEFB 1,38,204,8</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52262">52262</a>,8 "If dat means you want the cops to pay us, forget it. How much?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25921"></span>25921</td>
+<td class="instruction">DEFB 18,11,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25924"></span>25924</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25926"></span>25926</td>
+<td class="instruction">DEFB 13,78,101</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25934">25934</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25929"></span>25929</td>
+<td class="instruction">DEFB 1,249,203,8,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52217">52217</a>,8 "Outa you (Dough) grand, how much are you putting aside for the annual kickback to the cops?"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25934"></span>25934</td>
+<td class="instruction">DEFB 14,142,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27790.html">27790</a> (get a number from the player)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25937"></span>25937</td>
+<td class="instruction">DEFB 28,35</td>
+<td class="comment-1" rowspan="1">VM: LOAD Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25939"></span>25939</td>
+<td class="instruction">DEFB 15,32</td>
+<td class="comment-1" rowspan="1">VM: STORE Kickback</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25941"></span>25941</td>
+<td class="instruction">DEFB 9,104,132,2,139,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,2,<a href="24652.html#25995">25995</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25947"></span>25947</td>
+<td class="instruction">DEFB 9,104,132,1,61,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33896">33896</a>,1,<a href="24652.html#25917">25917</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25953"></span>25953</td>
+<td class="instruction">DEFB 7,32,7,110,101</td>
+<td class="comment-1" rowspan="1">VM: IFGT Kickback,Dough,<a href="24652.html#25966">25966</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25958"></span>25958</td>
+<td class="instruction">DEFB 21,7,32</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Kickback</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25961"></span>25961</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25963"></span>25963</td>
+<td class="instruction">DEFB 13,139,101</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25995">25995</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25966"></span>25966</td>
+<td class="instruction">DEFB 3,72,7,131,101</td>
+<td class="comment-1" rowspan="1">VM: IFEQ K0,Dough,<a href="24652.html#25987">25987</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25971"></span>25971</td>
+<td class="instruction">DEFB 1,129,204,9,7</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52353">52353</a>,9 "Geez, Boss, you sure are scared of these cops. But you musta forgot you only have (Dough) grand...... Anyway, I guess you want I should let da cops have the whole lot. ( Ya stoopid jerk )."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25976"></span>25976</td>
+<td class="instruction">DEFB 28,7</td>
+<td class="comment-1" rowspan="1">VM: LOAD Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25978"></span>25978</td>
+<td class="instruction">DEFB 15,32</td>
+<td class="comment-1" rowspan="1">VM: STORE Kickback</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25980"></span>25980</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25982"></span>25982</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25984"></span>25984</td>
+<td class="instruction">DEFB 13,139,101</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#25995">25995</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="25987"></span>25987</td>
+<td class="instruction">DEFB 1,65,204,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52289">52289</a>,9 "Boy are you scared of da cops! Well they're gonna get a dissy dis year'cos there aint no funds left. ( Ya stoopid wally )."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25991"></span>25991</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25993"></span>25993</td>
+<td class="instruction">DEFB 15,32</td>
+<td class="comment-1" rowspan="1">VM: STORE Kickback</td>
+</tr>
+<tr>
+<td class="address-2"><span id="25995"></span>25995</td>
+<td class="instruction">DEFB 11,2,103,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33895">33895</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25999"></span>25999</td>
+<td class="instruction">DEFB 10,100,132,2,215,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKNE <a href="33888.html#33892">33892</a>,2,<a href="24652.html#26071">26071</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26005"></span>26005</td>
+<td class="instruction">DEFB 26,30,3</td>
+<td class="comment-1" rowspan="1">VM: DIV Handout,Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26008"></span>26008</td>
+<td class="instruction">DEFB 25,44</td>
+<td class="comment-1" rowspan="1">VM: DIV K3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26010"></span>26010</td>
+<td class="instruction">DEFB 17,71</td>
+<td class="comment-1" rowspan="1">VM: ADD K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26012"></span>26012</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26014"></span>26014</td>
+<td class="instruction">DEFB 1,183,196,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50359">50359</a>,9 "You're through, Boss, the hit man from Detroit is on his way in,"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26018"></span>26018</td>
+<td class="instruction">DEFB 14,198,110</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="28358.html">28358</a> (shootout with the hit man from Detroit)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26021"></span>26021</td>
+<td class="instruction">DEFB 10,100,132,3,178,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKNE <a href="33888.html#33892">33892</a>,3,<a href="24652.html#26034">26034</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26027"></span>26027</td>
+<td class="instruction">DEFB 1,2,197,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50434">50434</a>,1 "Tough luck Boss, me and the boys'll give ya a decent funeral."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26031"></span>26031</td>
+<td class="instruction">DEFB 13,169,96</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#24745">24745</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26034"></span>26034</td>
+<td class="instruction">DEFB 1,222,196,1</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50398">50398</a>,1 "Geez, so much for the contract, you've eliminated their hit man."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26038"></span>26038</td>
+<td class="instruction">DEFB 10,100,132,2,211,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKNE <a href="33888.html#33892">33892</a>,2,<a href="24652.html#26067">26067</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26044"></span>26044</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26046"></span>26046</td>
+<td class="instruction">DEFB 23,68</td>
+<td class="comment-1" rowspan="1">VM: MUL K40</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26048"></span>26048</td>
+<td class="instruction">DEFB 17,58</td>
+<td class="comment-1" rowspan="1">VM: ADD K20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26050"></span>26050</td>
+<td class="instruction">DEFB 25,64</td>
+<td class="comment-1" rowspan="1">VM: DIV K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26052"></span>26052</td>
+<td class="instruction">DEFB 23,7</td>
+<td class="comment-1" rowspan="1">VM: MUL Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26054"></span>26054</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26055"></span>26055</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26057"></span>26057</td>
+<td class="instruction">DEFB 21,7,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Dough,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26060"></span>26060</td>
+<td class="instruction">DEFB 15,7</td>
+<td class="comment-1" rowspan="1">VM: STORE Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26062"></span>26062</td>
+<td class="instruction">DEFB 1,39,197,9,33</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#50471">50471</a>,9 "But its gonna cost ya (Tmp) grand to keep the cops quiet about all the people what got wasted in the shootout."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26067"></span>26067</td>
+<td class="instruction">DEFB 11,1,100,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33892">33892</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26071"></span>26071</td>
+<td class="instruction">DEFB 9,102,132,1,234,101</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33894">33894</a>,1,<a href="24652.html#26090">26090</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26077"></span>26077</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26079"></span>26079</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26081"></span>26081</td>
+<td class="instruction">DEFB 8,41,33,234,101</td>
+<td class="comment-1" rowspan="1">VM: IFGE K05,Tmp,<a href="24652.html#26090">26090</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26086"></span>26086</td>
+<td class="instruction">DEFB 11,1,102,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33894">33894</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26090"></span>26090</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26092"></span>26092</td>
+<td class="instruction">DEFB 23,45</td>
+<td class="comment-1" rowspan="1">VM: MUL K35</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26094"></span>26094</td>
+<td class="instruction">DEFB 17,42</td>
+<td class="comment-1" rowspan="1">VM: ADD K15</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26096"></span>26096</td>
+<td class="instruction">DEFB 15,5</td>
+<td class="comment-1" rowspan="1">VM: STORE Price</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26098"></span>26098</td>
+<td class="instruction">DEFB 24,5,64</td>
+<td class="comment-1" rowspan="1">VM: MUL Price,K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26101"></span>26101</td>
+<td class="instruction">DEFB 17,41</td>
+<td class="comment-1" rowspan="1">VM: ADD K05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26103"></span>26103</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26104"></span>26104</td>
+<td class="instruction">DEFB 25,64</td>
+<td class="comment-1" rowspan="1">VM: DIV K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26106"></span>26106</td>
+<td class="instruction">DEFB 15,5</td>
+<td class="comment-1" rowspan="1">VM: STORE Price</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26108"></span>26108</td>
+<td class="instruction">DEFB 21,69,5</td>
+<td class="comment-1" rowspan="1">VM: SUB K10,Price</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26111"></span>26111</td>
+<td class="instruction">DEFB 20,11</td>
+<td class="comment-1" rowspan="1">VM: SUB Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26113"></span>26113</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26115"></span>26115</td>
+<td class="instruction">DEFB 4,72,33,13,102</td>
+<td class="comment-1" rowspan="1">VM: IFNE K0,Tmp,<a href="24652.html#26125">26125</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26120"></span>26120</td>
+<td class="instruction">DEFB 21,11,71</td>
+<td class="comment-1" rowspan="1">VM: SUB Blunders,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26123"></span>26123</td>
+<td class="instruction">DEFB 15,11</td>
+<td class="comment-1" rowspan="1">VM: STORE Blunders</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26125"></span>26125</td>
+<td class="instruction">DEFB 18,7,32</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,Kickback</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26128"></span>26128</td>
+<td class="instruction">DEFB 17,71</td>
+<td class="comment-1" rowspan="1">VM: ADD K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26130"></span>26130</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26132"></span>26132</td>
+<td class="instruction">DEFB 24,7,7</td>
+<td class="comment-1" rowspan="1">VM: MUL Dough,Dough</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26135"></span>26135</td>
+<td class="instruction">DEFB 25,33</td>
+<td class="comment-1" rowspan="1">VM: DIV Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26137"></span>26137</td>
+<td class="instruction">DEFB 15,35</td>
+<td class="comment-1" rowspan="1">VM: STORE Input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26139"></span>26139</td>
+<td class="instruction">DEFB 24,32,50</td>
+<td class="comment-1" rowspan="1">VM: MUL Kickback,K8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26142"></span>26142</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26144"></span>26144</td>
+<td class="instruction">DEFB 24,1,5</td>
+<td class="comment-1" rowspan="1">VM: MUL Squeezed,Price</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26147"></span>26147</td>
+<td class="instruction">DEFB 20,2</td>
+<td class="comment-1" rowspan="1">VM: SUB Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26149"></span>26149</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26151"></span>26151</td>
+<td class="instruction">DEFB 21,69,5</td>
+<td class="comment-1" rowspan="1">VM: SUB K10,Price</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26154"></span>26154</td>
+<td class="instruction">DEFB 20,11</td>
+<td class="comment-1" rowspan="1">VM: SUB Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26156"></span>26156</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26158"></span>26158</td>
+<td class="instruction">DEFB 26,2,33</td>
+<td class="comment-1" rowspan="1">VM: DIV Raided,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26161"></span>26161</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26163"></span>26163</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26165"></span>26165</td>
+<td class="instruction">DEFB 23,32</td>
+<td class="comment-1" rowspan="1">VM: MUL Kickback</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26167"></span>26167</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26169"></span>26169</td>
+<td class="instruction">DEFB 21,35,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Input,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26172"></span>26172</td>
+<td class="instruction">DEFB 17,2</td>
+<td class="comment-1" rowspan="1">VM: ADD Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26174"></span>26174</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26175"></span>26175</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26177"></span>26177</td>
+<td class="instruction">DEFB 6,58,2,74,102</td>
+<td class="comment-1" rowspan="1">VM: IFLT K20,Raided,<a href="24652.html#26186">26186</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26182"></span>26182</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26184"></span>26184</td>
+<td class="instruction">DEFB 15,2</td>
+<td class="comment-1" rowspan="1">VM: STORE Raided</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26186"></span>26186</td>
+<td class="instruction">DEFB 34,3</td>
+<td class="comment-1" rowspan="1">VM: SQRT Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26188"></span>26188</td>
+<td class="instruction">DEFB 23,3</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26190"></span>26190</td>
+<td class="instruction">DEFB 23,8</td>
+<td class="comment-1" rowspan="1">VM: MUL Clients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26192"></span>26192</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26194"></span>26194</td>
+<td class="instruction">DEFB 18,23,32</td>
+<td class="comment-1" rowspan="1">VM: ADD Ammo,Kickback</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26197"></span>26197</td>
+<td class="instruction">DEFB 33</td>
+<td class="comment-1" rowspan="1">VM: SQRT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26198"></span>26198</td>
+<td class="instruction">DEFB 23,8</td>
+<td class="comment-1" rowspan="1">VM: MUL Clients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26200"></span>26200</td>
+<td class="instruction">DEFB 23,8</td>
+<td class="comment-1" rowspan="1">VM: MUL Clients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26202"></span>26202</td>
+<td class="instruction">DEFB 25,33</td>
+<td class="comment-1" rowspan="1">VM: DIV Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26204"></span>26204</td>
+<td class="instruction">DEFB 15,9</td>
+<td class="comment-1" rowspan="1">VM: STORE Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26206"></span>26206</td>
+<td class="instruction">DEFB 24,11,46</td>
+<td class="comment-1" rowspan="1">VM: MUL Blunders,K4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26209"></span>26209</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26211"></span>26211</td>
+<td class="instruction">DEFB 21,9,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Recruits,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26214"></span>26214</td>
+<td class="instruction">DEFB 15,9</td>
+<td class="comment-1" rowspan="1">VM: STORE Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26216"></span>26216</td>
+<td class="instruction">DEFB 24,11,43</td>
+<td class="comment-1" rowspan="1">VM: MUL Blunders,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26219"></span>26219</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26221"></span>26221</td>
+<td class="instruction">DEFB 21,9,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Recruits,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26224"></span>26224</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26225"></span>26225</td>
+<td class="instruction">DEFB 15,9</td>
+<td class="comment-1" rowspan="1">VM: STORE Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26227"></span>26227</td>
+<td class="instruction">DEFB 9,102,132,1,126,102</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33894">33894</a>,1,<a href="24652.html#26238">26238</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26233"></span>26233</td>
+<td class="instruction">DEFB 18,9,9</td>
+<td class="comment-1" rowspan="1">VM: ADD Recruits,Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26236"></span>26236</td>
+<td class="instruction">DEFB 15,9</td>
+<td class="comment-1" rowspan="1">VM: STORE Recruits</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26238"></span>26238</td>
+<td class="instruction">DEFB 5,72,9,138,102</td>
+<td class="comment-1" rowspan="1">VM: IFLE K0,Recruits,<a href="24652.html#26250">26250</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26243"></span>26243</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26245"></span>26245</td>
+<td class="instruction">DEFB 15,9</td>
+<td class="comment-1" rowspan="1">VM: STORE Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26247"></span>26247</td>
+<td class="instruction">DEFB 13,147,102</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#26259">26259</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26250"></span>26250</td>
+<td class="instruction">DEFB 7,64,9,147,102</td>
+<td class="comment-1" rowspan="1">VM: IFGT K100,Recruits,<a href="24652.html#26259">26259</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26255"></span>26255</td>
+<td class="instruction">DEFB 28,63</td>
+<td class="comment-1" rowspan="1">VM: LOAD K99</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26257"></span>26257</td>
+<td class="instruction">DEFB 15,9</td>
+<td class="comment-1" rowspan="1">VM: STORE Recruits</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26259"></span>26259</td>
+<td class="instruction">DEFB 11,1,96,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html">33888</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26263"></span>26263</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26265"></span>26265</td>
+<td class="instruction">DEFB 23,69</td>
+<td class="comment-1" rowspan="1">VM: MUL K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26267"></span>26267</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26269"></span>26269</td>
+<td class="instruction">DEFB 7,50,33,166,102</td>
+<td class="comment-1" rowspan="1">VM: IFGT K8,Tmp,<a href="24652.html#26278">26278</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26274"></span>26274</td>
+<td class="instruction">DEFB 11,2,96,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html">33888</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26278"></span>26278</td>
+<td class="instruction">DEFB 7,55,9,175,102</td>
+<td class="comment-1" rowspan="1">VM: IFGT K15b,Recruits,<a href="24652.html#26287">26287</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26283"></span>26283</td>
+<td class="instruction">DEFB 1,55,205,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52535">52535</a>,9 "[Say, Boss, the word is you're doin' okay!/They're sayin' you're doin' a good job here, Boss./The Chicago mobs have heard of you now. They think you might be another Scarface.]"</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26287"></span>26287</td>
+<td class="instruction">DEFB 24,23,43</td>
+<td class="comment-1" rowspan="1">VM: MUL Ammo,K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26290"></span>26290</td>
+<td class="instruction">DEFB 17,71</td>
+<td class="comment-1" rowspan="1">VM: ADD K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26292"></span>26292</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26294"></span>26294</td>
+<td class="instruction">DEFB 24,3,3</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26297"></span>26297</td>
+<td class="instruction">DEFB 25,33</td>
+<td class="comment-1" rowspan="1">VM: DIV Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26299"></span>26299</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26301"></span>26301</td>
+<td class="instruction">DEFB 18,7,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Dough,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26304"></span>26304</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26306"></span>26306</td>
+<td class="instruction">DEFB 24,32,58</td>
+<td class="comment-1" rowspan="1">VM: MUL Kickback,K20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26309"></span>26309</td>
+<td class="instruction">DEFB 25,33</td>
+<td class="comment-1" rowspan="1">VM: DIV Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26311"></span>26311</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26313"></span>26313</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26315"></span>26315</td>
+<td class="instruction">DEFB 23,11</td>
+<td class="comment-1" rowspan="1">VM: MUL Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26317"></span>26317</td>
+<td class="instruction">DEFB 23,69</td>
+<td class="comment-1" rowspan="1">VM: MUL K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26319"></span>26319</td>
+<td class="instruction">DEFB 17,4</td>
+<td class="comment-1" rowspan="1">VM: ADD Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26321"></span>26321</td>
+<td class="instruction">DEFB 20,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26323"></span>26323</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26324"></span>26324</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26326"></span>26326</td>
+<td class="instruction">DEFB 5,72,4,226,102</td>
+<td class="comment-1" rowspan="1">VM: IFLE K0,Killed,<a href="24652.html#26338">26338</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26331"></span>26331</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26333"></span>26333</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26335"></span>26335</td>
+<td class="instruction">DEFB 13,34,103</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#26402">26402</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26338"></span>26338</td>
+<td class="instruction">DEFB 7,64,4,235,102</td>
+<td class="comment-1" rowspan="1">VM: IFGT K100,Killed,<a href="24652.html#26347">26347</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26343"></span>26343</td>
+<td class="instruction">DEFB 28,63</td>
+<td class="comment-1" rowspan="1">VM: LOAD K99</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26345"></span>26345</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26347"></span>26347</td>
+<td class="instruction">DEFB 6,4,3,34,103</td>
+<td class="comment-1" rowspan="1">VM: IFLT Killed,Hoods,<a href="24652.html#26402">26402</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26352"></span>26352</td>
+<td class="instruction">DEFB 18,11,48</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders,K6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26355"></span>26355</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26357"></span>26357</td>
+<td class="instruction">DEFB 30,71</td>
+<td class="comment-1" rowspan="1">VM: RND K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26359"></span>26359</td>
+<td class="instruction">DEFB 17,11</td>
+<td class="comment-1" rowspan="1">VM: ADD Blunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26361"></span>26361</td>
+<td class="instruction">DEFB 17,47</td>
+<td class="comment-1" rowspan="1">VM: ADD K5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26363"></span>26363</td>
+<td class="instruction">DEFB 25,4</td>
+<td class="comment-1" rowspan="1">VM: DIV Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26365"></span>26365</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26367"></span>26367</td>
+<td class="instruction">DEFB 18,3,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Hoods,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26370"></span>26370</td>
+<td class="instruction">DEFB 23,4</td>
+<td class="comment-1" rowspan="1">VM: MUL Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26372"></span>26372</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26373"></span>26373</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26375"></span>26375</td>
+<td class="instruction">DEFB 8,64,4,16,103</td>
+<td class="comment-1" rowspan="1">VM: IFGE K100,Killed,<a href="24652.html#26384">26384</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26380"></span>26380</td>
+<td class="instruction">DEFB 28,63</td>
+<td class="comment-1" rowspan="1">VM: LOAD K99</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26382"></span>26382</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26384"></span>26384</td>
+<td class="instruction">DEFB 24,3,48</td>
+<td class="comment-1" rowspan="1">VM: MUL Hoods,K6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26387"></span>26387</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26389"></span>26389</td>
+<td class="instruction">DEFB 7,33,23,30,103</td>
+<td class="comment-1" rowspan="1">VM: IFGT Tmp,Ammo,<a href="24652.html#26398">26398</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26394"></span>26394</td>
+<td class="instruction">DEFB 32,4</td>
+<td class="comment-1" rowspan="1">VM: HALF Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26396"></span>26396</td>
+<td class="instruction">DEFB 15,4</td>
+<td class="comment-1" rowspan="1">VM: STORE Killed</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26398"></span>26398</td>
+<td class="instruction">DEFB 1,64,205,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52544">52544</a>,9 "You aint doin' too good, Mugsy! The organisation is gettin' a bad reputation an some of da boys is thinkin' of gettin' out while they can."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26402"></span>26402</td>
+<td class="instruction">DEFB 21,3,4</td>
+<td class="comment-1" rowspan="1">VM: SUB Hoods,Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26405"></span>26405</td>
+<td class="instruction">DEFB 17,9</td>
+<td class="comment-1" rowspan="1">VM: ADD Recruits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26407"></span>26407</td>
+<td class="instruction">DEFB 15,3</td>
+<td class="comment-1" rowspan="1">VM: STORE Hoods</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26409"></span>26409</td>
+<td class="instruction">DEFB 18,10,4</td>
+<td class="comment-1" rowspan="1">VM: ADD TotalKilled,Killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26412"></span>26412</td>
+<td class="instruction">DEFB 15,10</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalKilled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26414"></span>26414</td>
+<td class="instruction">DEFB 1,120,194,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#49784">49784</a>,9 "A year goes by ......"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26418"></span>26418</td>
+<td class="instruction">DEFB 14,202,132</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="33994.html">33994</a> ("A year goes by ......" animation)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26421"></span>26421</td>
+<td class="instruction">DEFB 18,6,71</td>
+<td class="comment-1" rowspan="1">VM: ADD Year,K1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26424"></span>26424</td>
+<td class="instruction">DEFB 15,6</td>
+<td class="comment-1" rowspan="1">VM: STORE Year</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26426"></span>26426</td>
+<td class="instruction">DEFB 11,0,105,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 0,<a href="33888.html#33897">33897</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26430"></span>26430</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">VM: END</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26431"></span>26431</td>
+<td class="instruction">DEFB 9,98,132,2,101,103</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33890">33890</a>,2,<a href="24652.html#26469">26469</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26437"></span>26437</td>
+<td class="instruction">DEFB 1,127,205,5,3</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52607">52607</a>,5 "Okay, Mugsy, me an the (Hoods) boys,"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26442"></span>26442</td>
+<td class="instruction">DEFB 24,6,53</td>
+<td class="comment-1" rowspan="1">VM: MUL Year,K12</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26445"></span>26445</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26447"></span>26447</td>
+<td class="instruction">DEFB 7,33,10,92,103</td>
+<td class="comment-1" rowspan="1">VM: IFGT Tmp,TotalKilled,<a href="24652.html#26460">26460</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26452"></span>26452</td>
+<td class="instruction">DEFB 1,151,205,5,6</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52631">52631</a>,5 "has had enough of your crazy mob for the last (Year) years. So we're off ta find some better rackets in [The Bahamas/Florida/Disneyland/Hawaii/Las Vegas]."</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26457"></span>26457</td>
+<td class="instruction">DEFB 13,97,103</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#26465">26465</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26460"></span>26460</td>
+<td class="instruction">DEFB 1,225,205,5,6</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52705">52705</a>,5 "has done pretty good in the mob for the last (Year) years. So we're goin' ta invest in some new rackets in [Alcatraz/Sing - Sing/San Quentin/Siberia]."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26465"></span>26465</td>
+<td class="instruction">DEFB 1,110,194,9</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html">49774</a>,9 "So long Mugsy."</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26469"></span>26469</td>
+<td class="instruction">DEFB 21,3,68</td>
+<td class="comment-1" rowspan="1">VM: SUB Hoods,K40</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26472"></span>26472</td>
+<td class="instruction">DEFB 23,64</td>
+<td class="comment-1" rowspan="1">VM: MUL K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26474"></span>26474</td>
+<td class="instruction">DEFB 25,68</td>
+<td class="comment-1" rowspan="1">VM: DIV K40</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26476"></span>26476</td>
+<td class="instruction">DEFB 15,28</td>
+<td class="comment-1" rowspan="1">VM: STORE HoodGrowth</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26478"></span>26478</td>
+<td class="instruction">DEFB 26,16,13</td>
+<td class="comment-1" rowspan="1">VM: DIV TotalTakings,HoodYears</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26481"></span>26481</td>
+<td class="instruction">DEFB 15,16</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalTakings</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26483"></span>26483</td>
+<td class="instruction">DEFB 21,8,0</td>
+<td class="comment-1" rowspan="1">VM: SUB Clients,StartClients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26486"></span>26486</td>
+<td class="instruction">DEFB 23,64</td>
+<td class="comment-1" rowspan="1">VM: MUL K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26488"></span>26488</td>
+<td class="instruction">DEFB 25,0</td>
+<td class="comment-1" rowspan="1">VM: DIV StartClients</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26490"></span>26490</td>
+<td class="instruction">DEFB 15,29</td>
+<td class="comment-1" rowspan="1">VM: STORE ClientGrowth</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26492"></span>26492</td>
+<td class="instruction">DEFB 26,17,18</td>
+<td class="comment-1" rowspan="1">VM: DIV TotalProfit,ClientYears</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26495"></span>26495</td>
+<td class="instruction">DEFB 15,17</td>
+<td class="comment-1" rowspan="1">VM: STORE TotalProfit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26497"></span>26497</td>
+<td class="instruction">DEFB 18,15,69</td>
+<td class="comment-1" rowspan="1">VM: ADD Score,K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26500"></span>26500</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26502"></span>26502</td>
+<td class="instruction">DEFB 9,98,132,2,145,103</td>
+<td class="comment-1" rowspan="1">VM: IFPEEKEQ <a href="33888.html#33890">33890</a>,2,<a href="24652.html#26513">26513</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26508"></span>26508</td>
+<td class="instruction">DEFB 18,15,69</td>
+<td class="comment-1" rowspan="1">VM: ADD Score,K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26511"></span>26511</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26513"></span>26513</td>
+<td class="instruction">DEFB 21,36,6</td>
+<td class="comment-1" rowspan="1">VM: SUB Years,Year</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26516"></span>26516</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26518"></span>26518</td>
+<td class="instruction">DEFB 8,46,33,159,103</td>
+<td class="comment-1" rowspan="1">VM: IFGE K4,Tmp,<a href="24652.html#26527">26527</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26523"></span>26523</td>
+<td class="instruction">DEFB 28,46</td>
+<td class="comment-1" rowspan="1">VM: LOAD K4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26525"></span>26525</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26527"></span>26527</td>
+<td class="instruction">DEFB 24,33,44</td>
+<td class="comment-1" rowspan="1">VM: MUL Tmp,K3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26530"></span>26530</td>
+<td class="instruction">DEFB 31</td>
+<td class="comment-1" rowspan="1">VM: NEG</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26531"></span>26531</td>
+<td class="instruction">DEFB 17,15</td>
+<td class="comment-1" rowspan="1">VM: ADD Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26533"></span>26533</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26535"></span>26535</td>
+<td class="instruction">DEFB 26,28,69</td>
+<td class="comment-1" rowspan="1">VM: DIV HoodGrowth,K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26538"></span>26538</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26539"></span>26539</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26541"></span>26541</td>
+<td class="instruction">DEFB 5,39,33,182,103</td>
+<td class="comment-1" rowspan="1">VM: IFLE Km005,Tmp,<a href="24652.html#26550">26550</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26546"></span>26546</td>
+<td class="instruction">DEFB 28,39</td>
+<td class="comment-1" rowspan="1">VM: LOAD Km005</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26548"></span>26548</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26550"></span>26550</td>
+<td class="instruction">DEFB 8,55,33,191,103</td>
+<td class="comment-1" rowspan="1">VM: IFGE K15b,Tmp,<a href="24652.html#26559">26559</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26555"></span>26555</td>
+<td class="instruction">DEFB 28,55</td>
+<td class="comment-1" rowspan="1">VM: LOAD K15b</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26557"></span>26557</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26559"></span>26559</td>
+<td class="instruction">DEFB 18,15,33</td>
+<td class="comment-1" rowspan="1">VM: ADD Score,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26562"></span>26562</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26564"></span>26564</td>
+<td class="instruction">DEFB 21,16,59</td>
+<td class="comment-1" rowspan="1">VM: SUB TotalTakings,K25</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26567"></span>26567</td>
+<td class="instruction">DEFB 23,43</td>
+<td class="comment-1" rowspan="1">VM: MUL K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26569"></span>26569</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26570"></span>26570</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26572"></span>26572</td>
+<td class="instruction">DEFB 5,72,33,213,103</td>
+<td class="comment-1" rowspan="1">VM: IFLE K0,Tmp,<a href="24652.html#26581">26581</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26577"></span>26577</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26579"></span>26579</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26581"></span>26581</td>
+<td class="instruction">DEFB 8,69,33,222,103</td>
+<td class="comment-1" rowspan="1">VM: IFGE K10,Tmp,<a href="24652.html#26590">26590</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26586"></span>26586</td>
+<td class="instruction">DEFB 28,69</td>
+<td class="comment-1" rowspan="1">VM: LOAD K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26588"></span>26588</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26590"></span>26590</td>
+<td class="instruction">DEFB 18,33,15</td>
+<td class="comment-1" rowspan="1">VM: ADD Tmp,Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26593"></span>26593</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26595"></span>26595</td>
+<td class="instruction">DEFB 26,29,46</td>
+<td class="comment-1" rowspan="1">VM: DIV ClientGrowth,K4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26598"></span>26598</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26599"></span>26599</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26601"></span>26601</td>
+<td class="instruction">DEFB 5,40,33,242,103</td>
+<td class="comment-1" rowspan="1">VM: IFLE Km010,Tmp,<a href="24652.html#26610">26610</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26606"></span>26606</td>
+<td class="instruction">DEFB 28,40</td>
+<td class="comment-1" rowspan="1">VM: LOAD Km010</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26608"></span>26608</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26610"></span>26610</td>
+<td class="instruction">DEFB 8,56,33,251,103</td>
+<td class="comment-1" rowspan="1">VM: IFGE K17,Tmp,<a href="24652.html#26619">26619</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26615"></span>26615</td>
+<td class="instruction">DEFB 28,56</td>
+<td class="comment-1" rowspan="1">VM: LOAD K17</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26617"></span>26617</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26619"></span>26619</td>
+<td class="instruction">DEFB 18,15,33</td>
+<td class="comment-1" rowspan="1">VM: ADD Score,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26622"></span>26622</td>
+<td class="instruction">DEFB 17,60</td>
+<td class="comment-1" rowspan="1">VM: ADD K35b</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26624"></span>26624</td>
+<td class="instruction">DEFB 20,12</td>
+<td class="comment-1" rowspan="1">VM: SUB TotalBlunders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26626"></span>26626</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26628"></span>26628</td>
+<td class="instruction">DEFB 26,10,46</td>
+<td class="comment-1" rowspan="1">VM: DIV TotalKilled,K4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26631"></span>26631</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26632"></span>26632</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26634"></span>26634</td>
+<td class="instruction">DEFB 8,58,33,19,104</td>
+<td class="comment-1" rowspan="1">VM: IFGE K20,Tmp,<a href="24652.html#26643">26643</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26639"></span>26639</td>
+<td class="instruction">DEFB 28,58</td>
+<td class="comment-1" rowspan="1">VM: LOAD K20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26641"></span>26641</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26643"></span>26643</td>
+<td class="instruction">DEFB 21,15,33</td>
+<td class="comment-1" rowspan="1">VM: SUB Score,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26646"></span>26646</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26648"></span>26648</td>
+<td class="instruction">DEFB 21,17,70</td>
+<td class="comment-1" rowspan="1">VM: SUB TotalProfit,K25c</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26651"></span>26651</td>
+<td class="instruction">DEFB 23,58</td>
+<td class="comment-1" rowspan="1">VM: MUL K20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26653"></span>26653</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26654"></span>26654</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26656"></span>26656</td>
+<td class="instruction">DEFB 5,40,33,41,104</td>
+<td class="comment-1" rowspan="1">VM: IFLE Km010,Tmp,<a href="24652.html#26665">26665</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26661"></span>26661</td>
+<td class="instruction">DEFB 28,40</td>
+<td class="comment-1" rowspan="1">VM: LOAD Km010</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26663"></span>26663</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26665"></span>26665</td>
+<td class="instruction">DEFB 8,69,33,50,104</td>
+<td class="comment-1" rowspan="1">VM: IFGE K10,Tmp,<a href="24652.html#26674">26674</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26670"></span>26670</td>
+<td class="instruction">DEFB 28,69</td>
+<td class="comment-1" rowspan="1">VM: LOAD K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26672"></span>26672</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26674"></span>26674</td>
+<td class="instruction">DEFB 18,15,33</td>
+<td class="comment-1" rowspan="1">VM: ADD Score,Tmp</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26677"></span>26677</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26679"></span>26679</td>
+<td class="instruction">DEFB 8,64,15,64,104</td>
+<td class="comment-1" rowspan="1">VM: IFGE K100,Score,<a href="24652.html#26688">26688</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26684"></span>26684</td>
+<td class="instruction">DEFB 28,64</td>
+<td class="comment-1" rowspan="1">VM: LOAD K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26686"></span>26686</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26688"></span>26688</td>
+<td class="instruction">DEFB 6,72,15,80,104</td>
+<td class="comment-1" rowspan="1">VM: IFLT K0,Score,<a href="24652.html#26704">26704</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26693"></span>26693</td>
+<td class="instruction">DEFB 28,72</td>
+<td class="comment-1" rowspan="1">VM: LOAD K0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26695"></span>26695</td>
+<td class="instruction">DEFB 15,15</td>
+<td class="comment-1" rowspan="1">VM: STORE Score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26697"></span>26697</td>
+<td class="instruction">DEFB 11,1,104,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33896">33896</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26701"></span>26701</td>
+<td class="instruction">DEFB 13,90,104</td>
+<td class="comment-1" rowspan="1">VM: GOTO <a href="24652.html#26714">26714</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="26704"></span>26704</td>
+<td class="instruction">DEFB 26,15,69</td>
+<td class="comment-1" rowspan="1">VM: DIV Score,K10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26707"></span>26707</td>
+<td class="instruction">DEFB 27</td>
+<td class="comment-1" rowspan="1">VM: INT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26708"></span>26708</td>
+<td class="instruction">DEFB 17,43</td>
+<td class="comment-1" rowspan="1">VM: ADD K2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26710"></span>26710</td>
+<td class="instruction">DEFB 25,64</td>
+<td class="comment-1" rowspan="1">VM: DIV K100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26712"></span>26712</td>
+<td class="instruction">DEFB 15,33</td>
+<td class="comment-1" rowspan="1">VM: STORE Tmp</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26714"></span>26714</td>
+<td class="instruction">DEFB 14,116,104</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="26740.html">26740</a> (choose the end-of-game rating)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26717"></span>26717</td>
+<td class="instruction">DEFB 1,34,206,8,0,0,15</td>
+<td class="comment-1" rowspan="1">VM: SAY <a href="49774.html#52770">52770</a>,8 "You were &lt;msg 0&gt;. You scored (Score)%. Hows about another game, Mugsy?"</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26724"></span>26724</td>
+<td class="instruction">DEFB 14,105,108</td>
+<td class="comment-1" rowspan="1">VM: CALL <a href="27753.html">27753</a> (get a yes/no answer)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="26727"></span>26727</td>
+<td class="instruction">DEFB 12,111,104</td>
+<td class="comment-1" rowspan="1">VM: JZ <a href="24652.html#26735">26735</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26730"></span>26730</td>
+<td class="instruction">DEFB 11,1,105,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 1,<a href="33888.html#33897">33897</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26734"></span>26734</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">VM: END</td>
+</tr>
+<tr>
+<td class="address-2"><span id="26735"></span>26735</td>
+<td class="instruction">DEFB 11,2,105,132</td>
+<td class="comment-1" rowspan="1">VM: POKE 2,<a href="33888.html#33897">33897</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26739"></span>26739</td>
+<td class="instruction">DEFB 0</td>
+<td class="comment-1" rowspan="1">VM: END</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24614.html">24614</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24652">Map</a></td>
+<td class="next">
+Next: <a href="26740.html">26740</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

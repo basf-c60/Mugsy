@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 31755</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31525.html">31525</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31755">Map</a></td>
+<td class="next">
+Next: <a href="31772.html">31772</a>
+</td>
+</tr>
+</table>
+<div class="description">31755: Move up one attribute row (unless at the top)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="31755"></span>31755</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31756"></span>31756</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31757"></span>31757</td>
+<td class="instruction">LD DE,32</td>
+<td class="comment-1" rowspan="1">Move up one attribute row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31760"></span>31760</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Clear the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31761"></span>31761</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Subtract 32 from the address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31763"></span>31763</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1">Above the top?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31764"></span>31764</td>
+<td class="instruction">CP 87</td>
+<td class="comment-1" rowspan="1">Is it 87 (just below the attribute file at 88)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31766"></span>31766</td>
+<td class="instruction">JR NZ,<a href="31755.html#31769">31769</a></td>
+<td class="comment-1" rowspan="1">No: the move is fine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31768"></span>31768</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Undo the move if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31769"></span>31769</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31770"></span>31770</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="31771"></span>31771</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="31525.html">31525</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#31755">Map</a></td>
+<td class="next">
+Next: <a href="31772.html">31772</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

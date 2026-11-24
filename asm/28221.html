@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 28221</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28219.html">28219</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28221">Map</a></td>
+<td class="next">
+Next: <a href="28266.html">28266</a>
+</td>
+</tr>
+</table>
+<div class="description">28221: Wait for a key, flashing the cursor</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Calls <a href="28266.html">28266</a> to wait for a key while flashing an asterisk cursor (every fourth frame) in the answer bubble.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Key code (from LAST-K)</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="28221"></span>28221</td>
+<td class="instruction">CALL <a href="28266.html">28266</a></td>
+<td class="comment-1" rowspan="1">Wait one frame and check for a key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28224"></span>28224</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28225"></span>28225</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28226"></span>28226</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28227"></span>28227</td>
+<td class="instruction">LD A,(28220)</td>
+<td class="comment-1" rowspan="1">Advance the flash counter (0-3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28230"></span>28230</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Add one</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28231"></span>28231</td>
+<td class="instruction">AND 3</td>
+<td class="comment-1" rowspan="1">Wrap round after 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28233"></span>28233</td>
+<td class="instruction">LD (28220),A</td>
+<td class="comment-1" rowspan="1">Store the counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28236"></span>28236</td>
+<td class="instruction">LD A,(28219)</td>
+<td class="comment-1" rowspan="1">Pick up the cursor character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28239"></span>28239</td>
+<td class="instruction">JR NZ,<a href="28221.html#28252">28252</a></td>
+<td class="comment-1" rowspan="1">Jump unless it is time to flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28241"></span>28241</td>
+<td class="instruction">CP 32</td>
+<td class="comment-1" rowspan="1">Swap between "*" and a space</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28243"></span>28243</td>
+<td class="instruction">LD A,42</td>
+<td class="comment-1" rowspan="1">A=42: the asterisk cursor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28245"></span>28245</td>
+<td class="instruction">JR Z,<a href="28221.html#28249">28249</a></td>
+<td class="comment-1" rowspan="1">It was a space: switch to the asterisk</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28247"></span>28247</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">A=32: a space</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28249"></span>28249</td>
+<td class="instruction">LD (28219),A</td>
+<td class="comment-1" rowspan="1">Store the cursor character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28252"></span>28252</td>
+<td class="instruction">CALL <a href="26940.html">26940</a></td>
+<td class="comment-1" rowspan="1">Print the cursor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28255"></span>28255</td>
+<td class="instruction">LD A,32</td>
+<td class="comment-1" rowspan="1">A=space: blank the next position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28257"></span>28257</td>
+<td class="instruction">CALL <a href="26940.html">26940</a></td>
+<td class="comment-1" rowspan="1">Print it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28260"></span>28260</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28261"></span>28261</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28262"></span>28262</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28263"></span>28263</td>
+<td class="instruction">JR Z,<a href="28221.html#28221">28221</a></td>
+<td class="comment-1" rowspan="1">Back for another frame if no key was pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="28265"></span>28265</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28219.html">28219</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#28221">Map</a></td>
+<td class="next">
+Next: <a href="28266.html">28266</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

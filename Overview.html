@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Overview</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="mugsy.css" />
+<script type="text/javascript" src="mugsy.js" defer></script>
+</head>
+<body class="Overview">
+<header class="site"><div class="bar"><a class="brand" href="index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Overview</h1>
+<div class="paragraph">
+<b>Mugsy</b> (Melbourne House, 1984) is a "comic strip" strategy game.
+You are Mugsy, boss of a 1920s protection racket, and your sidekick Louey reports to you each year in speech bubbles
+over full-screen pictures. You decide how many clients to buy or sell, how much to spend on artillery and ammo, how
+many clients to squeeze, how much to hand to the cops as a kickback, and whether to pay off rival mobs or your own
+disgruntled hoods. The game is meant to last 7 to 11 years (chosen at random, but see the <a href="reference/bugs.html#years">bug about the game rarely ending on time</a>) unless you are rubbed out first, and ends with a
+percentage score and a rating.
+</div>
+<div class="paragraph">
+<b>Loading.</b> The tape holds a BASIC loader (CLEAR 24575, then LOAD "s" CODE 16384 for the loading screen and
+LOAD "mugsy" CODE for 40,960 bytes at <a href="asm/24576.html">24576</a>-65535) and starts the game with PRINT USR 24576 (<a href="asm/24576.html">24576</a>). There is no
+copy protection; the TAP and TZX images in this project have identical code and screen blocks.
+</div>
+<div class="paragraph">
+<b>Economics.</b> The yearly model, what each of your answers really does and the best strategy are on the
+<a href="Economics.html">economics page</a>. In short: squeeze everybody, buy clients, spend about 1.5 grand per hood on ammo,
+pay a large (but not total) kickback, keep nothing in the safe, and pay a small handout (about 0.1 grand per hood) that
+gives Mugsy the full 8 hit points for the shootout.
+</div>
+<div class="paragraph">
+<b>Structure.</b> Almost all of the game logic is written not in Z80 code but in a compact bytecode, interpreted by
+the routine at <a href="asm/30092.html">30092</a> (see the <a href="VM.html">VM reference</a>). The script for one year is the block at <a href="asm/24652.html">24652</a>. The VM has
+84 signed 32-bit fixed-point variables (two decimal places; see the <a href="Variables.html">variables page</a>), nine flag
+bytes at <a href="asm/33888.html">33888</a>, and op 14 calls native Z80 routines for input (<a href="asm/27790.html">27790</a>, <a href="asm/27753.html">27753</a>), the hush-money scene (<a href="asm/28297.html">28297</a>),
+the end-of-game rating (<a href="asm/26740.html">26740</a>), the "A year goes by" animation (<a href="asm/33994.html">33994</a>) and the hit-man shootout (<a href="asm/28358.html">28358</a>).
+</div>
+<div class="paragraph">
+<b>Text.</b> Louey's lines (<a href="asm/49774.html">49774</a>) are compressed. The 32 commonest words are single bytes (96-127, via <a href="asm/49710.html">49710</a>) and
+the other words are two-byte references into a dictionary of 225 words (<a href="asm/48640.html">48640</a>). Control codes insert numbers and
+money values taken from the VM stream after the SAY instruction, pick random alternatives, or repeat earlier text (<a href="asm/29458.html">29458</a>).
+The rendered text is word-wrapped into an oval speech bubble (<a href="asm/28757.html">28757</a>) in a six-pixel-high proportional font
+(<a href="asm/27087.html">27087</a>), while the status lines use the ROM font (<a href="asm/27724.html">27724</a>).
+</div>
+<div class="paragraph">
+<b>Pictures.</b> The bubble backgrounds are vector pictures drawn by <a href="asm/31247.html">31247</a> from command lists (lines, flood fills,
+bitmap blocks and attribute runs), chosen at random from two tables of layouts (<a href="asm/33909.html">33909</a>). The two full-screen pictures
+used in the animations (the Partridge Club and the street) are in a more compact bit-stream format drawn by <a href="asm/32126.html">32126</a>.
+All nine pictures are shown on the <a href="Pictures.html">pictures page</a>. The picture engine is a descendant of the one in The Hobbit; see the <a href="Hobbit.html">Hobbit page</a>.
+</div>
+<div class="paragraph">
+<b>Animations and arcade sequence.</b> At the end of each year one of two IM2-driven animations plays (<a href="asm/33994.html">33994</a>): the
+hoods passing through the Partridge Club, or the getaway car. Nothing in the game decides which: it is a random choice, and because the random routine is uneven the club comes up about 60% of the time and the car about 40% (see the <a href="reference/facts.html#yeargoesby">trivia page</a>). If your hoods put out a contract on you, the hit man from
+Detroit arrives and you play an arcade shootout in a restaurant (<a href="asm/42112.html">42112</a>), controlled with Q/Z (up/down), I/P
+(left/right) and B/N/M (fire).
+</div>
+<div class="paragraph">
+<b>Memory map.</b>
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Address</th>
+<th colspan="1" rowspan="1">Contents</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/24576.html">24576</a>-24651</td>
+<td class="" colspan="1" rowspan="1">Start-up and main loop</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/24652.html">24652</a>-26739</td>
+<td class="" colspan="1" rowspan="1">VM script for one year</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/26740.html">26740</a>-28403</td>
+<td class="" colspan="1" rowspan="1">Keyboard, input and font printing</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/27087.html">27087</a>-27723</td>
+<td class="" colspan="1" rowspan="1">Proportional font</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/28404.html">28404</a>-30013</td>
+<td class="" colspan="1" rowspan="1">Status lines, speech bubbles and the text renderer</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/30014.html">30014</a>-31217</td>
+<td class="" colspan="1" rowspan="1">Random numbers, the VM interpreter and fixed-point arithmetic</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/31218.html">31218</a>-32830</td>
+<td class="" colspan="1" rowspan="1">Picture drawing (both formats)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/32832.html">32832</a>-33550</td>
+<td class="" colspan="1" rowspan="1">Theme tune</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33552.html">33552</a>-33936</td>
+<td class="" colspan="1" rowspan="1">VM variables, flags and bubble layouts</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/33937.html">33937</a>-37100</td>
+<td class="" colspan="1" rowspan="1">Initialisation and the end-of-year animations</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/37101.html">37101</a>-41996</td>
+<td class="" colspan="1" rowspan="1">Animation graphics</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/41997.html">41997</a>-48638</td>
+<td class="" colspan="1" rowspan="1">The hit-man shootout (code, data and graphics)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/48640.html">48640</a>-53352</td>
+<td class="" colspan="1" rowspan="1">Dictionary, common words and messages</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/53353.html">53353</a>-53792</td>
+<td class="" colspan="1" rowspan="1">Leftover assembler source, the interrupt jump and the IM2 vector table</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="asm/53793.html">53793</a>-65535</td>
+<td class="" colspan="1" rowspan="1">Pictures</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<b>How this disassembly was made.</b> The code was separated from the data by running the game in SkoolKit's Z80
+simulator with scripted keypresses for many games (recording every executed address), then following every branch
+statically from those addresses. The VM scripts were traced from the nine places that start the interpreter, and the
+messages were decoded with a Python reimplementation of the text renderer. About 95% of the code instructions have comments written
+by hand (the shootout, the animations and the picture routines were also checked by running them in the simulator); the
+rest carry comments generated from a table of known variables and routines, so they say what the instruction does in
+game terms where that is known and literally otherwise.
+The generated mugsy.asm also assembles, with an unmodified copy of sjasmplus 1.24.1 (<code>sjasmplus --raw=out.bin mugsy.asm</code>), to exactly the same 40,960 bytes as the tape, in addition to SkoolKit's own skool2bin check.
+</div>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

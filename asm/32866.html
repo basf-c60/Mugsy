@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 32866</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32832.html">32832</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32866">Map</a></td>
+<td class="next">
+Next: <a href="32982.html">32982</a>
+</td>
+</tr>
+</table>
+<div class="description">32866: Play a tune fragment</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Each note is four bytes: pitch, duration (2 bytes) and a flags byte. Stops early if a key is pressed.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Note data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="32866"></span>32866</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Stop if a key is pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32867"></span>32867</td>
+<td class="instruction">IN A,(254)</td>
+<td class="comment-1" rowspan="1">Read the keyboard</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32869"></span>32869</td>
+<td class="instruction">AND 31</td>
+<td class="comment-1" rowspan="1">Keep the key bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32871"></span>32871</td>
+<td class="instruction">CP 31</td>
+<td class="comment-1" rowspan="1">No key pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32873"></span>32873</td>
+<td class="instruction">JR NZ,<a href="32866.html#32976">32976</a></td>
+<td class="comment-1" rowspan="1">A key is pressed: stop the tune</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32875"></span>32875</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1">D=pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32876"></span>32876</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">A pitch of 0 ends the fragment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32877"></span>32877</td>
+<td class="instruction">CP D</td>
+<td class="comment-1" rowspan="1">Is the pitch zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32878"></span>32878</td>
+<td class="instruction">JP Z,<a href="32866.html#32976">32976</a></td>
+<td class="comment-1" rowspan="1">A pitch of zero: the fragment is over</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32881"></span>32881</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte (the duration)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32882"></span>32882</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">E=duration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32883"></span>32883</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte (the flags)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32884"></span>32884</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1">C=flags</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32885"></span>32885</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte (the repeat count)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32886"></span>32886</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1">B=repeat count</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32887"></span>32887</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Next byte (the next note)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32888"></span>32888</td>
+<td class="instruction">LD A,24</td>
+<td class="comment-1" rowspan="1">Default border/speaker value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32890"></span>32890</td>
+<td class="instruction">LD (33000),A</td>
+<td class="comment-1" rowspan="1">Modify the OUT value at 33000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32893"></span>32893</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">Bits 4-7 of the flags...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32894"></span>32894</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Shift bits 4-7 down...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32895"></span>32895</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32896"></span>32896</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32897"></span>32897</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32898"></span>32898</td>
+<td class="instruction">AND 15</td>
+<td class="comment-1" rowspan="1">Keep them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32900"></span>32900</td>
+<td class="instruction">JR NZ,<a href="32866.html#32906">32906</a></td>
+<td class="comment-1" rowspan="1">Non-zero: use it as the delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32902"></span>32902</td>
+<td class="instruction">LD (33000),A</td>
+<td class="comment-1" rowspan="1">...override it if non-zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32905"></span>32905</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">A=1: the default delay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32906"></span>32906</td>
+<td class="instruction">LD (32930),A</td>
+<td class="comment-1" rowspan="1">Modify the delay at 32930</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32909"></span>32909</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">C=pitch slide (bits 0-3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32910"></span>32910</td>
+<td class="instruction">AND 15</td>
+<td class="comment-1" rowspan="1">Keep the slide bits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32912"></span>32912</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=the slide</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32913"></span>32913</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32914"></span>32914</td>
+<td class="instruction">JP <a href="32866.html#32928">32928</a></td>
+<td class="comment-1" rowspan="1">Start the note</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32917"></span>32917</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32918"></span>32918</td>
+<td class="instruction">LD B,5</td>
+<td class="comment-1" rowspan="1">Short pause between repeats</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32920"></span>32920</td>
+<td class="instruction">DJNZ <a href="32866.html#32920">32920</a></td>
+<td class="comment-1" rowspan="1">Pause</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32922"></span>32922</td>
+<td class="instruction">JP <a href="32866.html#32925">32925</a></td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32925"></span>32925</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32926"></span>32926</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32927"></span>32927</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32928"></span>32928</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32929"></span>32929</td>
+<td class="instruction">LD B,4</td>
+<td class="comment-1" rowspan="1">Delay (modified above)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32931"></span>32931</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32932"></span>32932</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32933"></span>32933</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32934"></span>32934</td>
+<td class="instruction">CALL <a href="32982.html">32982</a></td>
+<td class="comment-1" rowspan="1">Play the note</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32937"></span>32937</td>
+<td class="instruction">LD A,0</td>
+<td class="comment-1" rowspan="1">Pad the timing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32939"></span>32939</td>
+<td class="instruction">DJNZ <a href="32866.html#32934">32934</a></td>
+<td class="comment-1" rowspan="1">Play the note again for each repeat</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32941"></span>32941</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32942"></span>32942</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="1">Slide the pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32943"></span>32943</td>
+<td class="instruction">ADD A,D</td>
+<td class="comment-1" rowspan="1">Add the slide to the pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32944"></span>32944</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">D=the new pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32945"></span>32945</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32946"></span>32946</td>
+<td class="instruction">BIT 7,C</td>
+<td class="comment-1" rowspan="1">Up or down?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32948"></span>32948</td>
+<td class="instruction">JP Z,<a href="32866.html#32958">32958</a></td>
+<td class="comment-1" rowspan="1">Pitch slide is upward: go on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32951"></span>32951</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32952"></span>32952</td>
+<td class="instruction">JP NC,<a href="32866.html#32977">32977</a></td>
+<td class="comment-1" rowspan="1">Stop if the pitch wrapped round</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32955"></span>32955</td>
+<td class="instruction">JP <a href="32866.html#32965">32965</a></td>
+<td class="comment-1" rowspan="1">Continue</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32958"></span>32958</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore the carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32959"></span>32959</td>
+<td class="instruction">JP C,<a href="32866.html#32977">32977</a></td>
+<td class="comment-1" rowspan="1">Stop if the pitch wrapped round</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32962"></span>32962</td>
+<td class="instruction">JP <a href="32866.html#32965">32965</a></td>
+<td class="comment-1" rowspan="1">Continue</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32965"></span>32965</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">Shorten the duration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32966"></span>32966</td>
+<td class="instruction">SUB C</td>
+<td class="comment-1" rowspan="1">Take the slide off the duration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32967"></span>32967</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">E=the new duration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32968"></span>32968</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="1">A=refresh register (adds a little noise)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32970"></span>32970</td>
+<td class="instruction">DJNZ <a href="32866.html#32917">32917</a></td>
+<td class="comment-1" rowspan="1">Repeat</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32972"></span>32972</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32973"></span>32973</td>
+<td class="instruction">JP <a href="32866.html#32866">32866</a></td>
+<td class="comment-1" rowspan="1">Next note</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32976"></span>32976</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32977"></span>32977</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32978"></span>32978</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="32979"></span>32979</td>
+<td class="instruction">JP <a href="32866.html#32970">32970</a></td>
+<td class="comment-1" rowspan="1">Finish this note</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="32832.html">32832</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#32866">Map</a></td>
+<td class="next">
+Next: <a href="32982.html">32982</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

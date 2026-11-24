@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 29006</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28905.html">28905</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29006">Map</a></td>
+<td class="next">
+Next: <a href="29027.html">29027</a>
+</td>
+</tr>
+</table>
+<div class="description">29006: Fill part of a bubble line with white cells</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Paints A+16 pixels of white bubble background (via <a href="27060.html">27060</a>) from the cell at HL.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="29006"></span>29006</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29007"></span>29007</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29008"></span>29008</td>
+<td class="instruction">ADD A,16</td>
+<td class="comment-1" rowspan="1">Add 16 pixels of margin to the line width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29010"></span>29010</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=pixels to paint</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29011"></span>29011</td>
+<td class="instruction">DEC L</td>
+<td class="comment-1" rowspan="1">Start one cell to the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29012"></span>29012</td>
+<td class="instruction">CALL <a href="27060.html">27060</a></td>
+<td class="comment-1" rowspan="1">Clear a cell and make it white</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29015"></span>29015</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Next cell</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29016"></span>29016</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">A=the width again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29017"></span>29017</td>
+<td class="instruction">SUB 8</td>
+<td class="comment-1" rowspan="1">8 pixels done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29019"></span>29019</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=the width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29020"></span>29020</td>
+<td class="instruction">CP 8</td>
+<td class="comment-1" rowspan="1">Any more?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29022"></span>29022</td>
+<td class="instruction">JR NC,<a href="29006.html#29012">29012</a></td>
+<td class="comment-1" rowspan="1">Jump back if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29024"></span>29024</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29025"></span>29025</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="29026"></span>29026</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="28905.html">28905</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#29006">Map</a></td>
+<td class="next">
+Next: <a href="29027.html">29027</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

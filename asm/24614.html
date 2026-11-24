@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 24614</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24609.html">24609</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24614">Map</a></td>
+<td class="next">
+Next: <a href="24652.html">24652</a>
+</td>
+</tr>
+</table>
+<div class="description">24614: Play one year</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Picks one of the two speech bubble layout tables at random (<a href="33909.html#33913">33913</a> or <a href="33909.html#33925">33925</a>), runs the main VM script at <a href="24652.html">24652</a> and loops until the script sets the game status flag at <a href="33888.html#33897">33897</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="24614"></span>24614</td>
+<td class="instruction">LD HL,0</td>
+<td class="comment-1" rowspan="1">No bubble layout is current yet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24617"></span>24617</td>
+<td class="instruction">LD (33904),HL</td>
+<td class="comment-1" rowspan="1">Remember that no layout is current</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24620"></span>24620</td>
+<td class="instruction">LD A,100</td>
+<td class="comment-1" rowspan="1">A=100: the upper limit (<a href="30014.html">30014</a> takes the absolute value, giving 0..100)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24622"></span>24622</td>
+<td class="instruction">CALL <a href="30014.html">30014</a></td>
+<td class="comment-1" rowspan="1">A=a random number from 0 to 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24625"></span>24625</td>
+<td class="instruction">CP 50</td>
+<td class="comment-1" rowspan="1">Is it less than 50?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24627"></span>24627</td>
+<td class="instruction">LD HL,33913</td>
+<td class="comment-1" rowspan="1">Use the first table of bubble layouts...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24630"></span>24630</td>
+<td class="instruction">JR C,<a href="24614.html#24635">24635</a></td>
+<td class="comment-1" rowspan="1">...if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24632"></span>24632</td>
+<td class="instruction">LD HL,33925</td>
+<td class="comment-1" rowspan="1">Otherwise use the second table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24635"></span>24635</td>
+<td class="instruction">LD (33902),HL</td>
+<td class="comment-1" rowspan="1">Store the layout table pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24638"></span>24638</td>
+<td class="instruction">LD IY,24652</td>
+<td class="comment-1" rowspan="1">Run the main script at <a href="24652.html">24652</a> for this year</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24642"></span>24642</td>
+<td class="instruction">CALL <a href="30092.html">30092</a></td>
+<td class="comment-1" rowspan="1">Run the year's script</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24645"></span>24645</td>
+<td class="instruction">LD A,(33897)</td>
+<td class="comment-1" rowspan="1">Has the game finished?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24648"></span>24648</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Test the game status flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24649"></span>24649</td>
+<td class="instruction">JR Z,<a href="24614.html#24614">24614</a></td>
+<td class="comment-1" rowspan="1">Play another year if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24651"></span>24651</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return: the game is over</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24609.html">24609</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24614">Map</a></td>
+<td class="next">
+Next: <a href="24652.html">24652</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>

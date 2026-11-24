@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mugsy: Routine at 30026</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../mugsy.css" />
+<script type="text/javascript" src="../mugsy.js" defer></script>
+</head>
+<body class="Asm-c">
+<header class="site"><div class="bar"><a class="brand" href="../index.html">Mugsy: annotated disassembly</a><nav aria-label="Site"></nav></div></header>
+<main>
+<h1 class="page-title">Routines</h1>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30023.html">30023</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30026">Map</a></td>
+<td class="next">
+Next: <a href="30090.html">30090</a>
+</td>
+</tr>
+</table>
+<div class="description">30026: Get a random number</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Steps a pointer through the code of the program itself (<a href="30023.html">30023</a>) and mixes the bytes it finds, ensuring that the same value never comes up twice in a row, halves it until it is no more than 2*A, and subtracts A, giving a number between -A and A.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Upper limit</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Random number</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="30026"></span>30026</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30028"></span>30028</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30029"></span>30029</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1">C=upper limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30030"></span>30030</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="1">Double it for the mask comparison</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30032"></span>30032</td>
+<td class="instruction">JR NC,<a href="30026.html#30036">30036</a></td>
+<td class="comment-1" rowspan="1">The doubled limit fits in a byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30034"></span>30034</td>
+<td class="instruction">LD A,255</td>
+<td class="comment-1" rowspan="1">Limit to 255</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30036"></span>30036</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">B=limit*2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30037"></span>30037</td>
+<td class="instruction">LD IX,30023</td>
+<td class="comment-1" rowspan="1">Point IX at the random number pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30041"></span>30041</td>
+<td class="instruction">INC (IX+1)</td>
+<td class="comment-1" rowspan="1">Step the pointer on by 256 bytes (increment its high byte)...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30044"></span>30044</td>
+<td class="instruction">JR NZ,<a href="30026.html#30049">30049</a></td>
+<td class="comment-1" rowspan="1">No wrap-round: carry on</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30046"></span>30046</td>
+<td class="instruction">INC (IX+0)</td>
+<td class="comment-1" rowspan="1">...and the low byte too if the high byte wrapped</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30049"></span>30049</td>
+<td class="instruction">LD IX,(30023)</td>
+<td class="comment-1" rowspan="1">IX=the pointer (which wanders through the whole of memory)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30053"></span>30053</td>
+<td class="instruction">LD A,(30025)</td>
+<td class="comment-1" rowspan="1">Pick up the last random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30056"></span>30056</td>
+<td class="instruction">ADC A,(IX+0)</td>
+<td class="comment-1" rowspan="1">Add the byte at the pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30059"></span>30059</td>
+<td class="instruction">ADD IX,DE</td>
+<td class="comment-1" rowspan="1">Step on by DE (whatever DE happens to hold)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30061"></span>30061</td>
+<td class="instruction">XOR (IX+1)</td>
+<td class="comment-1" rowspan="1">Mix in another byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30064"></span>30064</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30065"></span>30065</td>
+<td class="instruction">LD HL,30025</td>
+<td class="comment-1" rowspan="1">Is the new number the same as the last one?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30068"></span>30068</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">Same as the previous number?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30069"></span>30069</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30070"></span>30070</td>
+<td class="instruction">JR Z,<a href="30026.html#30037">30037</a></td>
+<td class="comment-1" rowspan="1">Try again if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30072"></span>30072</td>
+<td class="instruction">LD (30025),A</td>
+<td class="comment-1" rowspan="1">Store the new random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30075"></span>30075</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Halve it until it is no greater than 2*limit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30076"></span>30076</td>
+<td class="instruction">JR C,<a href="30026.html#30085">30085</a></td>
+<td class="comment-1" rowspan="1">Within range: done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30078"></span>30078</td>
+<td class="instruction">JR Z,<a href="30026.html#30085">30085</a></td>
+<td class="comment-1" rowspan="1">Exactly equal to the limit: done</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30080"></span>30080</td>
+<td class="instruction">SRL A</td>
+<td class="comment-1" rowspan="1">Halve the number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30082"></span>30082</td>
+<td class="instruction">JP <a href="30026.html#30075">30075</a></td>
+<td class="comment-1" rowspan="1">Check again</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30085"></span>30085</td>
+<td class="instruction">SUB C</td>
+<td class="comment-1" rowspan="1">Subtract the limit (giving -limit..+limit)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30086"></span>30086</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30087"></span>30087</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="30089"></span>30089</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Done: A=a random number from -limit to +limit</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="30023.html">30023</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#30026">Map</a></td>
+<td class="next">
+Next: <a href="30090.html">30090</a>
+</td>
+</tr>
+</table>
+</main>
+<footer>
+<div class="release">Mugsy disassembly 1.0 (SkoolKit 10.2)</div>
+<div class="copyright">&copy; 1984 Melbourne House. Disassembly &copy; 2026.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 10.2.</div>
+</footer>
+</body>
+</html>
